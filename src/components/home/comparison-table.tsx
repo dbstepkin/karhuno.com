@@ -1,112 +1,127 @@
 "use client";
-import { Plus, Minus } from "lucide-react";
-import { motion } from "framer-motion";
 
-interface FeatureProps {
-  name: string,
-  apollo: boolean,
-  clay: boolean,
-  karhuno: boolean
+import { motion } from "framer-motion";
+import { Check, X } from "lucide-react";
+
+interface ComparisonFeature {
+  feature: string;
+  zoomInfo: boolean;
+  apollo: boolean;
+  karhuno: boolean;
 }
 
-const features: FeatureProps[] = [
+const features: ComparisonFeature[] = [
   {
-    name: "Lead search based on any criteria",
+    feature: "Sales signals with context — not guesses",
+    zoomInfo: false,
     apollo: false,
-    clay: true,
     karhuno: true,
   },
   {
-    name: "Sales signals with proofs",
+    feature: "Define your ICP exactly — no presets",
+    zoomInfo: false,
     apollo: false,
-    clay: false,
     karhuno: true,
   },
   {
-    name: "Quick start - no data analysts needed",
+    feature: "Launch in minutes. No tech team needed",
+    zoomInfo: false,
+    apollo: true,
+    karhuno: true,
+  },
+  {
+    feature: "Emails and LinkedIn links ready-to-use",
+    zoomInfo: true,
+    apollo: true,
+    karhuno: true,
+  },
+  {
+    feature: "Discover signals others can't",
+    zoomInfo: false,
     apollo: false,
-    clay: false,
     karhuno: true,
   },
 ];
 
-const Indicator = ({ positive }: { positive: boolean }) => {
-  return positive ? (
-    <Plus className="w-4 h-4 md:w-6 md:h-6 text-emerald-500" />
-  ) : (
-    <Minus className="w-4 h-4 md:w-6 md:h-6 text-red-400" />
-  );
-};
-
 export default function ComparisonTable() {
   return (
-    <section className="py-20 inset-0 bg-gradient-to-b from-white via-purple-50/50 to-white relative overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="py-20 px-4 bg-gradient-to-b from-[#f7f4ff] to-[#edf0ff]">
+      <div className="container mx-auto max-w-5xl">
+        {/* Title and Subtitle */}
+        <div className="text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-block bg-purple-100 text-purple-700 px-3 py-1 text-xs font-medium rounded-full uppercase tracking-wider mb-4"
+          >
+            Feature Comparison
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 text-center mb-4"
+          >
+            Why top sales teams choose Karhuno AI
+          </motion.h2>
+        </div>
+
+        {/* Comparison Table */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="relative overflow-x-auto rounded-xl shadow-lg bg-white"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Feel the difference
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            See how Karhuno compares to other solutions in the market
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="max-w-4xl mx-auto"
-        >
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr>
-                  <th className="p-4 text-left bg-primary text-white rounded-tl-xl"></th>
-                  {["Apollo", "Clay", "Karhuno"].map((platform) => (
-                    <th
-                      key={platform}
-                      className="p-4 text-center bg-primary text-white last:rounded-tr-xl font-medium text-xs md:text-lg"
-                    >
-                      {platform}
-                    </th>
-                  ))}
+          <table className="w-full">
+            <thead>
+              <tr className="border-b border-gray-100">
+                <th className="py-4 px-6 text-left text-gray-600 font-medium w-[40%]">Feature</th>
+                <th className="py-4 px-6 text-center text-gray-600 font-medium">ZoomInfo</th>
+                <th className="py-4 px-6 text-center text-gray-600 font-medium">Apollo</th>
+                <th className="py-4 px-6 text-center text-gray-600 font-medium bg-purple-50/50 border-l-4 border-purple-500 rounded-tr-xl">
+                  Karhuno AI
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {features.map((item, index) => (
+                <tr
+                  key={item.feature}
+                  className={`${index !== features.length - 1 ? "border-b border-gray-100" : ""} hover:bg-gray-50/50 transition-colors`}
+                >
+                  <td className="py-4 px-6 text-gray-800 font-medium">{item.feature}</td>
+                  <td className="py-4 px-6 text-center">
+                    {item.zoomInfo ? (
+                      <Check className="w-5 h-5 text-gray-400 mx-auto" />
+                    ) : (
+                      <X className="w-5 h-5 text-gray-300 mx-auto" />
+                    )}
+                  </td>
+                  <td className="py-4 px-6 text-center">
+                    {item.apollo ? (
+                      <Check className="w-5 h-5 text-gray-400 mx-auto" />
+                    ) : (
+                      <X className="w-5 h-5 text-gray-300 mx-auto" />
+                    )}
+                  </td>
+                  <td className={`py-4 px-6 text-center bg-purple-50/50 border-l-4 border-purple-500 ${
+                    index === features.length - 1 ? "rounded-br-xl" : ""
+                  }`}>
+                    {item.karhuno ? (
+                      <Check className="w-5 h-5 text-green-500 mx-auto" />
+                    ) : (
+                      <X className="w-5 h-5 text-gray-300 mx-auto" />
+                    )}
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {features.map((feature: FeatureProps, index) => (
-                  <tr
-                    key={index}
-                    className="border-b border-purple-100 last:border-none bg-white/80 hover:bg-purple-50/50 transition-colors"
-                  >
-                    <td className="text-xs md:text-lg p-4 text-left font-medium text-black dark:text-white">
-                      {feature.name}
-                    </td>
-                    <td className="p-4">
-                      <div className="flex justify-center">
-                        <Indicator positive={feature.apollo} />
-                      </div>
-                    </td>
-                    <td className="p-4">
-                      <div className="flex justify-center">
-                        <Indicator positive={feature.clay} />
-                      </div>
-                    </td>
-                    <td className="p-4">
-                      <div className="flex justify-center">
-                        <Indicator positive={feature.karhuno} />
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </motion.div>
       </div>
     </section>

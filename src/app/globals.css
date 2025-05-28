@@ -167,3 +167,46 @@
     display: none;
   }
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 15s linear infinite;
+}
+
+.animate-scroll-horizontal {
+  animation: scroll-horizontal 20s linear infinite;
+}
+
+.animate-scroll-vertical {
+  animation: scroll 25s linear infinite;
+}
+
+.animate-scroll > * {
+  min-height: 60px;
+}
+
+/* Duplicate the items to create a seamless loop */
+.animate-scroll {
+  padding-bottom: 100%;
+}
+
+.animate-scroll > * {
+  white-space: nowrap;
+}
