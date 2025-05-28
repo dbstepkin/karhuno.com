@@ -1,68 +1,88 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Package, Search } from "lucide-react";
 
 const caseStudies = [
   {
     id: "logtech",
     label: "LogTech",
-    product: "Energy-Efficient Lighting for Warehouses",
-    signalSearch: [
-      "Announcements of plans or the launch of cold storage warehouses.",
-    ],
-    image:
-      "/images/Logtech.webp",
+    product: {
+      title: "Smart Lighting Systems for Cold Storage and Industrial Warehouses",
+      icon: <Package className="w-5 h-5 text-purple-400" />
+    },
+    signalSearch: {
+      title: "Detection of warehouse expansion news, including cold storage build-outs and infrastructure upgrades. Tracking press releases, local news and investment announcements.",
+      icon: <Search className="w-5 h-5 text-purple-400" />
+    },
+    image: "/images/Logtech.webp",
   },
   {
     id: "hrtech",
     label: "HRTech",
-    product: "HR Gamification Platform",
-    signalSearch: [
-      "Companies publicly emphasizing a focus on corporate entrepreneurship",
-      "Teams that have implemented SCRUM",
-    ],
-    image:
-      "/images/HRTech.webp",
+    product: {
+      title: "Gamification Platforms for Corporate Learning & Engagement",
+      icon: <Package className="w-5 h-5 text-purple-400" />
+    },
+    signalSearch: {
+      title: "Companies promoting internal entrepreneurship or team agility through SCRUM-based frameworks.",
+      icon: <Search className="w-5 h-5 text-purple-400" />
+    },
+    image: "/images/HRTech.webp",
   },
   {
     id: "legaltech",
     label: "LegalTech",
-    product: "IP platform",
-    signalSearch: [
-      "Projects that have successfully completed crowdfunding campaigns",
-    ],
-    image:
-      "/images/LegalTech.webp",
+    product: {
+      title: "Intellectual Property Platforms for Startup & Crowdfunding Compliance",
+      icon: <Package className="w-5 h-5 text-purple-400" />
+    },
+    signalSearch: {
+      title: "Startups that completed successful crowdfunding campaigns, indicating a need for IP protection or licensing.",
+      icon: <Search className="w-5 h-5 text-purple-400" />
+    },
+    image: "/images/LegalTech.webp",
   },
   {
     id: "greentech",
     label: "GreenTech",
-    product: "Energy management software",
-    signalSearch: [
-      "Companies that have invested in energy-efficient technologies",
-    ],
-    image:
-      "/images/GreenTech.webp",
+    product: {
+      title: "AI-Based Energy Management Software for Sustainable Operations",
+      icon: <Package className="w-5 h-5 text-purple-400" />
+    },
+    signalSearch: {
+      title: "Companies investing in green technology, energy efficiency, or sustainability-driven upgrades.",
+      icon: <Search className="w-5 h-5 text-purple-400" />
+    },
+    image: "/images/GreenTech.webp",
   },
   {
     id: "fintech",
     label: "FinTech",
-    product: "Money transfer service",
-    signalSearch: ["Currently active fintech companies in UAE"],
-    image:
-      "/images/Fintech.webp",
+    product: {
+      title: "Real-Time Money Transfer Solutions for the UAE Market",
+      icon: <Package className="w-5 h-5 text-purple-400" />
+    },
+    signalSearch: {
+      title: "Fintech companies operating or expanding in the UAE, flagged by financial activity and product launches.",
+      icon: <Search className="w-5 h-5 text-purple-400" />
+    },
+    image: "/images/Fintech.webp",
   },
   {
     id: "martech",
     label: "MarTech",
-    product: "Marketing services",
-    signalSearch: [
-      "HoReCa companies from Brazil with rapidly growing Instagram accounts",
-    ],
-    image:
-      "/images/MarTech.webp",
+    product: {
+      title: "Marketing Strategy & Campaign Services for the HoReCa Sector",
+      icon: <Package className="w-5 h-5 text-purple-400" />
+    },
+    signalSearch: {
+      title: "Rapidly growing Instagram profiles of Brazilian HoReCa brands, signaling active audience engagement and digital investment.",
+      icon: <Search className="w-5 h-5 text-purple-400" />
+    },
+    image: "/images/MarTech.webp",
   },
 ];
 
@@ -70,264 +90,122 @@ interface CaseStudiesProps {
   id?: string;
 }
 
-export default function CaseStudies({id}: CaseStudiesProps) {
+export default function CaseStudies({ id }: CaseStudiesProps) {
   const [activeTab, setActiveTab] = useState("logtech");
-  const [isVisible, setIsVisible] = useState(false);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    let timer: NodeJS.Timeout | undefined;
-    if (isVisible && isAutoPlaying) {
-      timer = setInterval(() => {
-        setActiveTab((prevTab) => {
-          const currentIndex = caseStudies.findIndex(
-            (study) => study.id === prevTab
-          );
-          const nextIndex = (currentIndex + 1) % caseStudies.length;
-          return caseStudies[nextIndex].id;
-        });
-      }, 4000);
-    }
-
-    return () => clearInterval(timer);
-  }, [isVisible, isAutoPlaying]);
+  const activeCase = caseStudies.find((cs) => cs.id === activeTab);
 
   return (
-    <section
-      id={id}
-      className="py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 relative overflow-hidden"
-    >
-      <div className="absolute inset-0 opacity-10">
-        <svg
-          className="w-full h-full"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <radialGradient
-              id="Gradient1"
-              cx="50%"
-              cy="50%"
-              fx="0.441602%"
-              fy="50%"
-              r=".5"
-            >
-              <animate
-                attributeName="fx"
-                dur="34s"
-                values="0%;3%;0%"
-                repeatCount="indefinite"
-              ></animate>
-              <stop offset="0%" stopColor="rgba(255, 0, 255, 1)"></stop>
-              <stop offset="100%" stopColor="rgba(255, 0, 255, 0)"></stop>
-            </radialGradient>
-            <radialGradient
-              id="Gradient2"
-              cx="50%"
-              cy="50%"
-              fx="2.68147%"
-              fy="50%"
-              r=".5"
-            >
-              <animate
-                attributeName="fx"
-                dur="23.5s"
-                values="0%;3%;0%"
-                repeatCount="indefinite"
-              ></animate>
-              <stop offset="0%" stopColor="rgba(255, 255, 0, 1)"></stop>
-              <stop offset="100%" stopColor="rgba(255, 255, 0, 0)"></stop>
-            </radialGradient>
-            <radialGradient
-              id="Gradient3"
-              cx="50%"
-              cy="50%"
-              fx="0.836536%"
-              fy="50%"
-              r=".5"
-            >
-              <animate
-                attributeName="fx"
-                dur="21.5s"
-                values="0%;3%;0%"
-                repeatCount="indefinite"
-              ></animate>
-              <stop offset="0%" stopColor="rgba(0, 255, 255, 1)"></stop>
-              <stop offset="100%" stopColor="rgba(0, 255, 255, 0)"></stop>
-            </radialGradient>
-          </defs>
-          <rect x="0" y="0" width="100%" height="100%" fill="url(#Gradient1)">
-            <animate
-              attributeName="x"
-              dur="20s"
-              values="25%;0%;25%"
-              repeatCount="indefinite"
-            />
-            <animate
-              attributeName="y"
-              dur="21s"
-              values="0%;25%;0%"
-              repeatCount="indefinite"
-            />
-            <animateTransform
-              attributeName="transform"
-              type="rotate"
-              from="0 50 50"
-              to="360 50 50"
-              dur="17s"
-              repeatCount="indefinite"
-            />
-          </rect>
-          <rect x="0" y="0" width="100%" height="100%" fill="url(#Gradient2)">
-            <animate
-              attributeName="x"
-              dur="23s"
-              values="0%;-25%;0%"
-              repeatCount="indefinite"
-            />
-            <animate
-              attributeName="y"
-              dur="24s"
-              values="25%;-25%;25%"
-              repeatCount="indefinite"
-            />
-            <animateTransform
-              attributeName="transform"
-              type="rotate"
-              from="0 50 50"
-              to="360 50 50"
-              dur="18s"
-              repeatCount="indefinite"
-            />
-          </rect>
-          <rect x="0" y="0" width="100%" height="100%" fill="url(#Gradient3)">
-            <animate
-              attributeName="x"
-              dur="25s"
-              values="-25%;0%;-25%"
-              repeatCount="indefinite"
-            />
-            <animate
-              attributeName="y"
-              dur="26s"
-              values="0%;-25%;0%"
-              repeatCount="indefinite"
-            />
-            <animateTransform
-              attributeName="transform"
-              type="rotate"
-              from="360 50 50"
-              to="0 50 50"
-              dur="19s"
-              repeatCount="indefinite"
-            />
-          </rect>
-        </svg>
-      </div>
+    <section id={id} className="py-20 px-4 bg-[#0f1117]">
+      <div className="container mx-auto">
+        <div className="text-center mb-12">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-1.5 bg-purple-700/20 rounded-full text-purple-300 text-sm font-medium mb-4"
+          >
+            case studies
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl md:text-4xl font-bold mb-4 text-white"
+          >
+            Success Stories
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-gray-300 text-lg max-w-2xl mx-auto"
+          >
+            See how companies use Karhuno AI to find their perfect customers
+          </motion.p>
+        </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-3xl md:text-4xl  text-center mb-8 md:mb-12 text-white">
-          Case studies
-        </h2>
-
-        <div className="w-full">
-          <div className="relative flex overflow-x-scroll scrollbar-hide mb-4 md:mb-8">
-            <div
-              className="absolute inset-0 flex items-center"
-              aria-hidden="true"
-            >
-            </div>
-            <div className="bg-gray-800 relative flex justify-between rounded-full p-1 mx-auto w-auto lg:w-full">
-              {caseStudies.map((study) => (
-                <button
-                  key={study.id}
-                  onClick={() => {
-                    setActiveTab(study.id);
-                    setIsAutoPlaying(false);
-                  }}
-                  className={`
-                    rounded-full px-4 py-2 text-sm font-medium transition-all flex-grow
-                    ${
-                      activeTab === study.id
-                        ? "bg-indigo-600 text-white"
-                        : "text-gray-300 hover:text-white"
-                    }
-                  `}
-                >
-                  {study.label}
-                </button>
-              ))}
-            </div>
+        {/* Tabs */}
+        <div className="flex justify-center mb-12 overflow-x-auto no-scrollbar">
+          <div className="inline-flex gap-2 p-1 bg-black/20 backdrop-blur-sm rounded-full border border-white/10">
+            {caseStudies.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`
+                  px-6 py-2 text-sm font-medium rounded-full transition-all duration-200
+                  ${activeTab === tab.id
+                    ? "bg-purple-700 text-white shadow-md"
+                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                  }
+                `}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
+        </div>
 
+        {/* Content */}
+        <div className="max-w-6xl mx-auto">
           <AnimatePresence mode="wait">
-            {caseStudies.map(
-              (study) =>
-                study.id === activeTab && (
-                  <motion.div
-                    key={study.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="grid md:grid-cols-2 gap-8 items-center bg-gray-800 rounded-3xl p-8 shadow-lg"
-                  >
-                    <div className="space-y-6">
-                      <div>
-                        <h3 className="text-xl font-semibold text-white mb-2">
-                          Product
-                        </h3>
-                        <p className="text-gray-300">{study.product}</p>
+            {activeCase && (
+              <motion.div
+                key={activeCase.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="grid md:grid-cols-2 gap-8 items-center"
+              >
+                {/* Left Column - Image */}
+                <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden border border-white/10">
+                  <Image
+                    src={activeCase.image}
+                    alt={`${activeCase.label} case study`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Right Column - Content */}
+                <div className="bg-[#12141b] backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-white/10 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  {/* Product Section */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="p-2 bg-purple-500/10 rounded-lg">
+                        {activeCase.product.icon}
                       </div>
-                      <div>
-                        <h3 className="text-xl font-semibold text-white mb-2">
-                          Signal Search
-                        </h3>
-                        <ul className="space-y-2">
-                          {study.signalSearch.map((signal, index) => (
-                            <li
-                              key={index}
-                              className="text-gray-300 flex items-start gap-2"
-                            >
-                              <span className="w-2 h-2 rounded-full bg-indigo-400 mt-2 shrink-0" />
-                              {signal}
-                            </li>
-                          ))}
-                        </ul>
+                      <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 font-semibold text-lg">
+                        Product
+                      </h3>
+                    </div>
+                    <p className="text-gray-100 leading-relaxed">
+                      {activeCase.product.title}
+                    </p>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="border-t border-white/10 my-6" />
+
+                  {/* Signal Search Section */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="p-2 bg-purple-500/10 rounded-lg">
+                        {activeCase.signalSearch.icon}
                       </div>
+                      <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 font-semibold text-lg">
+                        Signal Search
+                      </h3>
                     </div>
-                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                      <Image
-                        quality={50}
-                        src={study.image}
-                        alt={`${study.label} case study`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </motion.div>
-                )
+                    <p className="text-gray-100 leading-relaxed">
+                      {activeCase.signalSearch.title}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             )}
           </AnimatePresence>
         </div>
