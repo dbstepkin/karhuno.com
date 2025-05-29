@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { Clock, Plug, Layers, RefreshCw } from "lucide-react";
 import Link from "next/link";
@@ -12,7 +13,7 @@ const roboto = Roboto({
 });
 
 interface FeatureCard {
-  icon: JSX.Element;
+  icon: React.ReactElement;
   title: string;
   description: string;
 }
