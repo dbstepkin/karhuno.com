@@ -1,5 +1,12 @@
 import Link from "next/link";
 import { Linkedin } from "lucide-react";
+import { Montserrat, Roboto } from "next/font/google";
+
+const montserrat = Montserrat({ subsets: ['latin'] });
+const roboto = Roboto({ 
+  weight: ['300', '400', '500', '700', '900'],
+  subsets: ['latin'] 
+});
 
 export default function Footer() {
   return (
@@ -8,77 +15,73 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Contact Details */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold mb-4 text-purple-300">
+            <h4 className={`text-lg font-semibold mb-4 text-purple-300 ${roboto.className}`}>
               Contact Details
             </h4>
-            <p className="text-gray-300">+358 465381366</p>
-            <p className="text-gray-300">team@karhuno.com</p>
-            <p className="text-gray-300">
+            <p className={`text-gray-300 ${montserrat.className}`}>+358 465381366</p>
+            <p className={`text-gray-300 ${montserrat.className}`}>team@karhuno.com</p>
+            <p className={`text-gray-300 ${montserrat.className}`}>
               Daring Spirit Oy <br /> Hiihtomäentie 14, 00810 <br /> Helsinki,
               Finland
             </p>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-purple-300">
+          <div className="space-y-4">
+            <h4 className={`text-lg font-semibold mb-4 text-purple-300 ${roboto.className}`}>
               Quick Links
             </h4>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="#features"
-                  className="text-gray-300 hover:text-purple-400 transition-colors"
-                >
-                  What we do
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#case-studies"
-                  className="text-gray-300 hover:text-purple-400 transition-colors"
-                >
-                  Case studies
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#pricing"
-                  className="text-gray-300 hover:text-purple-400 transition-colors"
-                >
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy-policy"
-                  className="text-gray-300 hover:text-purple-400 transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-            </ul>
+            <div className="space-y-2">
+              <Link
+                href="/pricing"
+                className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
+              >
+                Pricing
+              </Link>
+              <Link
+                href="/tutorial"
+                className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
+              >
+                Tutorial
+              </Link>
+              <Link
+                href="/faq"
+                className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
+              >
+                FAQ
+              </Link>
+              <Link
+                href="/roi-calculation"
+                className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
+              >
+                ROI Calculator
+              </Link>
+            </div>
           </div>
 
           {/* Social Media */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-purple-300">
+          <div className="space-y-4">
+            <h4 className={`text-lg font-semibold mb-4 text-purple-300 ${roboto.className}`}>
               Follow Us
             </h4>
-            <Link
-              href="https://www.linkedin.com/company/karhuno/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 text-gray-200 hover:text-purple-400 transition-colors"
-            >
-              <Linkedin size={24} />
-              <span>LinkedIn</span>
-            </Link>
+            <div className="flex space-x-4">
+              <Link
+                href="https://www.linkedin.com/company/karhuno-ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Linkedin className="h-6 w-6" />
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="mt-4 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-200 md:mt-8">
-          © {new Date().getFullYear()} Karhuno. All rights reserved.
+        {/* Bottom Section */}
+        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+          <p className={`text-gray-400 text-sm ${montserrat.className}`}>
+            © 2024 Karhuno AI. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

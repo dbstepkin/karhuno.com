@@ -97,8 +97,8 @@ export default {
         "circle-3": "circle-appear 0.6s ease-out 0.9s forwards",
       },
       fontFamily: {
-        montserrat: ["var(--font-montserrat-sans)", "sans-serif"],
-        roboto: ["var(--font-roboto-mono)", "monospace"],
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
+        roboto: ["var(--font-roboto)", "sans-serif"],
       }
     },
   },

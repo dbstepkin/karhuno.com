@@ -3,6 +3,13 @@
 import { motion } from "framer-motion";
 import { Clock, Plug, Layers, RefreshCw } from "lucide-react";
 import Link from "next/link";
+import { Montserrat, Roboto } from "next/font/google";
+
+const montserrat = Montserrat({ subsets: ['latin'] });
+const roboto = Roboto({ 
+  weight: ['300', '400', '500', '700', '900'],
+  subsets: ['latin'] 
+});
 
 interface FeatureCard {
   icon: JSX.Element;
@@ -43,7 +50,7 @@ export default function Automation() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="block text-center text-sm font-medium tracking-wider uppercase text-purple-600 mb-4"
+          className={`block text-center text-sm font-medium tracking-wider uppercase text-purple-600 mb-4 ${montserrat.className}`}
         >
           AI-powered automation
         </motion.span>
@@ -54,7 +61,7 @@ export default function Automation() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 text-center mb-4"
+          className={`text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 text-center mb-4 ${roboto.className}`}
         >
           Maximize efficiency with automation
         </motion.h2>
@@ -63,7 +70,7 @@ export default function Automation() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-gray-600 text-center mb-12 text-lg"
+          className={`text-gray-600 text-center mb-12 text-lg ${montserrat.className}`}
         >
           Automate your lead generation with saved searches, API integration, and real-time updates.
         </motion.p>
@@ -82,8 +89,8 @@ export default function Automation() {
               <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
                 {feature.icon}
               </div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">{feature.title}</h3>
-              <p className="text-sm text-gray-600">{feature.description}</p>
+              <h3 className={`text-lg font-semibold text-gray-800 mb-2 ${roboto.className}`}>{feature.title}</h3>
+              <p className={`text-sm text-gray-600 ${montserrat.className}`}>{feature.description}</p>
             </motion.div>
           ))}
         </div>
@@ -98,7 +105,7 @@ export default function Automation() {
         >
           <Link
             href="/login"
-            className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-6 py-3 rounded-full hover:brightness-110 transition"
+            className={`inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-6 py-3 rounded-full hover:brightness-110 transition ${montserrat.className}`}
           >
             Start Free Trial →
           </Link>

@@ -4,6 +4,14 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Linkedin, Mail, MapPin, TrendingUp } from "lucide-react";
+import Link from "next/link";
+import { Montserrat, Roboto } from "next/font/google";
+
+const montserrat = Montserrat({ subsets: ['latin'] });
+const roboto = Roboto({ 
+  weight: ['300', '400', '500', '700', '900'],
+  subsets: ['latin'] 
+});
 
 const tabs = [
   {
@@ -271,7 +279,7 @@ export default function WhatYouGet() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-block px-4 py-1.5 bg-purple-700/20 rounded-full text-purple-300 text-sm font-medium mb-6"
+            className={`inline-block px-4 py-1.5 bg-purple-700/20 rounded-full text-purple-300 text-sm font-medium mb-6 ${montserrat.className}`}
           >
             real buying signal
           </motion.span>
@@ -279,7 +287,7 @@ export default function WhatYouGet() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className={`text-4xl md:text-5xl font-bold mb-6 ${roboto.className}`}
           >
             What we <span className="text-purple-500">do</span>
           </motion.h2>
@@ -287,7 +295,7 @@ export default function WhatYouGet() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto"
+            className={`text-gray-300 text-lg md:text-xl max-w-2xl mx-auto ${montserrat.className}`}
           >
             Unlock actionable market signals to fuel your B2B growth
           </motion.p>
@@ -301,7 +309,7 @@ export default function WhatYouGet() {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`
-                  px-8 py-3 text-base font-medium rounded-full transition-all duration-200
+                  px-8 py-3 text-base font-medium rounded-full transition-all duration-200 ${montserrat.className}
                   ${activeTab === tab.id 
                     ? "bg-purple-700 text-white" 
                     : "text-white hover:bg-white/10"
@@ -322,45 +330,27 @@ export default function WhatYouGet() {
           transition={{ duration: 0.3 }}
           className="rounded-3xl p-8 bg-white/5 border border-white/10 backdrop-blur-sm shadow-lg"
         >
-          <div className="md:flex gap-12 items-start">
-            {/* Left Column - Text */}
-            <div className="w-full md:w-1/2 mb-8 md:mb-0">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                {activeTab === "identify" && (
-                  <motion.h3
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
-                  >
-                    Supercharge your conversions with sales signals
-                  </motion.h3>
-                )}
-                {activeTab === "scan" && (
-                  <motion.h3
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
-                  >
-                    Continuous discovery of high-intent signals
-                  </motion.h3>
-                )}
-                {activeTab === "act" && (
-                  <motion.h3
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent tracking-tight"
-                  >
-                    Turn signals into sales with proof-backed contacts
-                  </motion.h3>
-                )}
-                <p className="text-lg text-gray-100 leading-relaxed">
-                  {tabs.find(tab => tab.id === activeTab)?.description}
-                </p>
-              </motion.div>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Left side - Text content */}
+            <div className="space-y-6">
+              <h3 className={`text-2xl md:text-3xl font-bold text-white ${roboto.className}`}>
+                {tabs.find(tab => tab.id === activeTab)?.title}
+              </h3>
+              <p className={`text-gray-300 text-lg leading-relaxed ${montserrat.className}`}>
+                {tabs.find(tab => tab.id === activeTab)?.description}
+              </p>
+              <div className="space-y-3">
+                {tabs.find(tab => tab.id === activeTab)?.features.map((feature, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-purple-500 flex items-center justify-center mt-0.5 flex-shrink-0">
+                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span className={`text-gray-300 ${montserrat.className}`}>{feature}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Right Column - Image/Animation */}

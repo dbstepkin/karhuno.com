@@ -2,6 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
+import { Montserrat, Roboto } from "next/font/google";
+
+const montserrat = Montserrat({ subsets: ['latin'] });
+const roboto = Roboto({ 
+  weight: ['300', '400', '500', '700', '900'],
+  subsets: ['latin'] 
+});
 
 interface ComparisonFeature {
   feature: string;
@@ -54,7 +61,7 @@ export default function ComparisonTable() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-block bg-purple-100 text-purple-700 px-3 py-1 text-xs font-medium rounded-full uppercase tracking-wider mb-4"
+            className={`inline-block bg-purple-100 text-purple-700 px-3 py-1 text-xs font-medium rounded-full uppercase tracking-wider mb-4 ${montserrat.className}`}
           >
             Feature Comparison
           </motion.div>
@@ -63,7 +70,7 @@ export default function ComparisonTable() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 text-center mb-4"
+            className={`text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 text-center mb-4 ${roboto.className}`}
           >
             Why top sales teams choose Karhuno AI
           </motion.h2>

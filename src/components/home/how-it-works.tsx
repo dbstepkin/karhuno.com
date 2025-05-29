@@ -4,6 +4,13 @@ import { FileText, Linkedin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { Montserrat, Roboto } from "next/font/google";
+
+const montserrat = Montserrat({ subsets: ['latin'] });
+const roboto = Roboto({ 
+  weight: ['300', '400', '500', '700', '900'],
+  subsets: ['latin'] 
+});
 
 export default function HowItWorks() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -45,7 +52,7 @@ export default function HowItWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900"
+          className={`text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900 ${roboto.className}`}
         >
           How It Works
         </motion.h2>

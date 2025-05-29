@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -8,6 +10,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
+import { Montserrat, Roboto } from "next/font/google";
+
+const montserrat = Montserrat({ subsets: ['latin'] });
+const roboto = Roboto({ 
+  weight: ['300', '400', '500', '700', '900'],
+  subsets: ['latin'] 
+});
 
 const faqs = [
   {
@@ -63,6 +72,8 @@ const faqs = [
 ];
 
 export default function FAQ({ className }: { className?: string }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
     <section className={cn("relative py-24 overflow-hidden", className)}>
       {/* Gradient Background */}
@@ -103,57 +114,61 @@ export default function FAQ({ className }: { className?: string }) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl  mb-4">
+          <h2 className={`text-3xl md:text-4xl font-bold text-gray-900 mb-4 ${roboto.className}`}>
             Frequently Asked Questions
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Find answers to common questions about Karhuno AI and how it can
-            help your business grow
+          <p className={`text-lg text-gray-600 max-w-2xl mx-auto ${montserrat.className}`}>
+            Everything you need to know about Karhuno AI
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto"
-        >
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.slice(0, Math.ceil(faqs.length / 2)).map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="bg-white/80 backdrop-blur-sm rounded-xl border border-purple-100 px-6 shadow-sm hover:shadow-md transition-all duration-300"
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white/80 backdrop-blur-sm rounded-2xl border border-purple-100 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-purple-50/50 transition-colors"
               >
-                <AccordionTrigger className="text-left text-lg font-medium hover:text-purple-700 transition-colors [&[data-state=open]>svg]:text-purple-600">
+                <h3 className={`text-lg font-semibold text-gray-900 pr-4 ${roboto.className}`}>
                   {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.slice(Math.ceil(faqs.length / 2)).map((faq, index) => (
-              <AccordionItem
-                key={index + Math.ceil(faqs.length / 2)}
-                value={`item-${index + Math.ceil(faqs.length / 2)}`}
-                className="bg-white/80 backdrop-blur-sm rounded-xl border border-purple-100 px-6 shadow-sm hover:shadow-md transition-all duration-300"
-              >
-                <AccordionTrigger className="text-left text-lg font-medium hover:text-purple-700 transition-colors [&[data-state=open]>svg]:text-purple-600">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
+                </h3>
+                <ChevronDown
+                  className={`w-5 h-5 text-purple-600 transition-transform duration-200 flex-shrink-0 ${
+                    openIndex === index ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-5">
+                      <p className={`text-gray-600 leading-relaxed ${montserrat.className}`}>
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import { CheckCircle2, Menu } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Montserrat, Roboto } from "next/font/google";
 
 import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 // UI
@@ -31,6 +32,12 @@ import Footer from "@/components/home/footer";
 import SignalCarousel from "@/components/home/signal-carousel";
 import HowItWorks from "@/components/home/how-it-works";
 import { sendToWebhook } from "@/lib/webhook";
+
+const montserrat = Montserrat({ subsets: ['latin'] });
+const roboto = Roboto({ 
+  weight: ['300', '400', '500', '700', '900'],
+  subsets: ['latin'] 
+});
 
 const placeholderTexts = [
   "European energy companies working with startups",
@@ -202,14 +209,14 @@ export default function Home() {
         {/* Main Content */}
         <div className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] text-center px-4 max-w-6xl mx-auto">
           {/* Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 max-w-4xl">
+          <h1 className={`text-5xl md:text-7xl font-bold mb-6 max-w-4xl ${roboto.className}`}>
             <span className="text-black">Stop Searching,</span>
             <br />
             <span className="text-[#792abf]">Start Selling</span>
             </h1>
 
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-2xl mx-auto text-center">
+          <p className={`text-xl md:text-2xl text-gray-500 mb-12 max-w-2xl mx-auto text-center ${montserrat.className}`}>
             Find real-time market signals for B2B companies with unparalleled precision. Transforms thousands of data points into sales wins.
           </p>
 
@@ -218,11 +225,11 @@ export default function Home() {
             <input
                   type="text"
               placeholder={placeholder || "Companies developing internal entreprene"}
-              className="flex-1 rounded-l-full px-6 py-3 text-gray-900 border border-gray-200 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className={`flex-1 rounded-l-full px-6 py-3 text-gray-900 border border-gray-200 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent ${montserrat.className}`}
             />
             <button 
                 onClick={handleFind}
-              className="bg-purple-700 text-white rounded-r-full px-6 py-3 hover:bg-purple-800 transition-colors"
+              className={`bg-purple-700 text-white rounded-r-full px-6 py-3 hover:bg-purple-800 transition-colors ${montserrat.className}`}
               >
                 Find
             </button>
@@ -231,7 +238,7 @@ export default function Home() {
           {/* Try for free button */}
           <button 
             onClick={() => handleButtonClick(() => setIsFirstDialogOpen(true))}
-            className="bg-purple-700 text-white px-8 py-3 rounded-full hover:bg-purple-800 transition-colors font-medium"
+            className={`bg-purple-700 text-white px-8 py-3 rounded-full hover:bg-purple-800 transition-colors font-medium ${montserrat.className}`}
           >
             Try for free
           </button>

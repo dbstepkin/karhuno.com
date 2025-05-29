@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -15,8 +16,8 @@
 
 @layer base {
   :root {
-    --font-montserrat-sans: "Montserrat", sans-serif;
-    --font-roboto-mono: "Roboto", monospace;
+    --font-montserrat: "Montserrat", sans-serif;
+    --font-roboto: "Roboto", sans-serif;
     --background: 240 13% 96%;
     --foreground: 223 24% 25%;
     --card: 0 0% 100%;
@@ -121,12 +122,8 @@
   body {
     @apply font-montserrat bg-background text-foreground;
   }
-  h1 {
-    @apply font-bold;
-  }
-
-  h2 {
-    @apply font-bold;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-roboto font-bold;
   }
 }
 
@@ -186,6 +183,17 @@
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-scroll {
   animation: scroll 15s linear infinite;
 }
@@ -199,7 +207,7 @@
 }
 
 .animate-scroll > * {
-  min-height: 60px;
+  animation-fill-mode: both;
 }
 
 /* Duplicate the items to create a seamless loop */
