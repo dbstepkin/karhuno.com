@@ -218,7 +218,9 @@ export default function PricingPage() {
               </div>
               <div className="flex-shrink-0">
                 <a
-                  href="mailto:sales@karhuno.ai"
+                  href="https://calendly.com/team-karhuno/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block bg-gradient-to-r from-purple-600 to-purple-400 text-white px-8 py-3 rounded-full font-semibold shadow-md hover:scale-105 transition-transform duration-200 font-montserrat"
                 >
                   Contact Sales

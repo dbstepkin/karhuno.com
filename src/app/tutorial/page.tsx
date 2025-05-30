@@ -40,7 +40,15 @@ export default function TutorialPage() {
             {/* CTA Buttons */}
             <div className="flex flex-col items-center gap-6 opacity-0 animate-[fadeInUp_0.6s_ease-out_0.3s_both]">
               <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">
-                <button className={`inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-2xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 min-h-[56px] ${montserrat.className}`}>
+                <button 
+                  onClick={() => {
+                    const gettingStartedSection = document.getElementById('getting-started-video');
+                    if (gettingStartedSection) {
+                      gettingStartedSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className={`inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-2xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 min-h-[56px] ${montserrat.className}`}
+                >
                   <Play className="w-6 h-6 mr-3" />
                   Start Learning
                 </button>
@@ -116,7 +124,7 @@ export default function TutorialPage() {
       </div>
 
       {/* Getting Started Section */}
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#F9F9FC' }}>
+      <div id="getting-started-video" className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#F9F9FC' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
             {/* Purple Number Badge */}

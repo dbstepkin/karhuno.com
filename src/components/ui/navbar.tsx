@@ -144,7 +144,7 @@ export const Navbar: React.FC = () => {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3 flex-shrink-0">
             <Link
-              href="/login"
+              href="https://my.karhuno.com/signin"
               className={`border border-gray-300 px-5 py-2.5 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all ${montserrat.className}`}
             >
               Log in
@@ -247,7 +247,7 @@ export const Navbar: React.FC = () => {
 
               <div className="pt-4 space-y-3">
                 <Link
-                  href="/login"
+                  href="https://my.karhuno.com/signin"
                   className={`block w-full border border-gray-300 px-5 py-3 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors text-center ${montserrat.className}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
