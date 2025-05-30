@@ -105,7 +105,7 @@ export default function Automation() {
           className="text-center"
         >
           <Link
-            href="/login"
+            href="/early-access"
             className={`inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-6 py-3 rounded-full hover:brightness-110 transition ${montserrat.className}`}
           >
             Start Free Trial →

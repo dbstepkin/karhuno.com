@@ -159,6 +159,7 @@ export default function PricingPage() {
               </div>
 
               <button 
+                onClick={() => window.location.href = '/early-access'}
                 className="w-full bg-gradient-to-r from-purple-600 to-purple-400 text-white px-6 py-2 rounded-full font-semibold shadow-md hover:scale-105 transition font-montserrat mb-6"
               >
                 Get Started

@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 text-white">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Contact Details */}
           <div className="space-y-4">
             <h4 className={`text-lg font-semibold mb-4 text-purple-300 ${roboto.className}`}>
@@ -55,6 +55,27 @@ export default function Footer() {
                 className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
               >
                 ROI Calculator
+              </Link>
+            </div>
+          </div>
+
+          {/* Legal */}
+          <div className="space-y-4">
+            <h4 className={`text-lg font-semibold mb-4 text-purple-300 ${roboto.className}`}>
+              Legal
+            </h4>
+            <div className="space-y-2">
+              <Link
+                href="/privacy-policy"
+                className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms-of-service"
+                className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
+              >
+                Terms of Service
               </Link>
             </div>
           </div>

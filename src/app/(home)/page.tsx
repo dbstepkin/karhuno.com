@@ -8,7 +8,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Montserrat, Roboto } from "next/font/google";
 
-import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 // UI
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -32,6 +31,15 @@ import Footer from "@/components/home/footer";
 import SignalCarousel from "@/components/home/signal-carousel";
 import HowItWorks from "@/components/home/how-it-works";
 import { sendToWebhook } from "@/lib/webhook";
+
+// Type definition for email parameters
+interface SendEmailParams {
+  to: string;
+  ICP: string;
+  moreDetails: string;
+  company: string;
+  name: string;
+}
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 const roboto = Roboto({ 
@@ -57,7 +65,6 @@ export default function Home() {
   const [placeholder, setPlaceholder] = useState("");
   const [icp, setIcp] = useState("");
   const [isThankYouDialogOpen, setIsThankYouDialogOpen] = useState(false);
-  const tawkMessengerRef = useRef(null);
 
   const [formData, setFormData] = useState<SendEmailParams>({
     to: "",
@@ -95,21 +102,26 @@ export default function Home() {
     return () => clearTimeout(timeout);
   }, [placeholder, placeholderIndex, isDeleting]);
 
-  const onLoad = () => {
-    tawkMessengerRef.current.hideWidget();
+  // Load Tawk.to script directly
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://embed.tawk.to/67cb23b4d19cb2190dbd2fbb/1iloo6u5l';
+    script.charset = 'UTF-8';
+    script.setAttribute('crossorigin', '*');
+    document.head.appendChild(script);
 
-    if (tawkMessengerRef.current.isChatHidden()) {
-      // do something if chat widget is hidden
-      tawkMessengerRef.current.hideWidget();
-    }
-  };
-
-  const onBeforeLoad = () => {
-    tawkMessengerRef.current.hideWidget();
-  };
+    return () => {
+      // Cleanup script on unmount
+      document.head.removeChild(script);
+    };
+  }, []);
 
   const openChat = () => {
-    tawkMessengerRef.current.showWidget();
+    // Use Tawk_API if available
+    if (typeof window !== 'undefined' && (window as any).Tawk_API) {
+      (window as any).Tawk_API.showWidget();
+    }
   };
 
   const handleButtonClick = (action: () => void) => {
@@ -130,12 +142,10 @@ export default function Home() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev: SendEmailParams) => ({ ...prev, [name]: value }));
 
-    // Track form field changes (debounced to avoid too many requests)
-    if (name !== "password") {
-      return () => clearTimeout(debounceTimeout);
-    }
+    // Track form field changes
+    // Note: debounceTimeout was removed as it wasn't defined
   };
 
   const handleFind = () => {
@@ -237,7 +247,7 @@ export default function Home() {
 
           {/* Try for free button */}
           <button 
-            onClick={() => handleButtonClick(() => setIsFirstDialogOpen(true))}
+            onClick={() => window.location.href = '/early-access'}
             className={`bg-purple-700 text-white px-8 py-3 rounded-full hover:bg-purple-800 transition-colors font-medium ${montserrat.className}`}
           >
             Try for free
@@ -252,14 +262,6 @@ export default function Home() {
       <Automation />
       <ComparisonTable />
       <Footer />
-
-      <TawkMessengerReact
-        propertyId="67cb23b4d19cb2190dbd2fbb"
-        widgetId="1iloo6u5l"
-        onLoad={onLoad}
-        onBeforeLoad={onBeforeLoad}
-        ref={tawkMessengerRef}
-      />
     </>
   );
 }

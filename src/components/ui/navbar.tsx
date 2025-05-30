@@ -90,7 +90,13 @@ export const Navbar: React.FC = () => {
                   className={`block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors rounded-lg mx-2 ${montserrat.className}`}
                 >
                   <span className="flex items-center">
-                    <span className="text-purple-600 mr-3">💡</span>
+                    <Image
+                      src="/images/lampadinatutorial1.png"
+                      alt="Tutorial"
+                      width={20}
+                      height={20}
+                      className="mr-3"
+                    />
                     Tutorial
                   </span>
                 </Link>
@@ -99,7 +105,13 @@ export const Navbar: React.FC = () => {
                   className={`block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors rounded-lg mx-2 ${montserrat.className}`}
                 >
                   <span className="flex items-center">
-                    <span className="text-purple-600 mr-3">❓</span>
+                    <Image
+                      src="/images/domanda2.png"
+                      alt="FAQ"
+                      width={20}
+                      height={20}
+                      className="mr-3"
+                    />
                     F.A.Q.
                   </span>
                 </Link>
@@ -108,7 +120,13 @@ export const Navbar: React.FC = () => {
                   className={`block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors rounded-lg mx-2 ${montserrat.className}`}
                 >
                   <span className="flex items-center">
-                    <span className="text-purple-600 mr-3">💰</span>
+                    <Image
+                      src="/roi1.png"
+                      alt="ROI Calculation"
+                      width={20}
+                      height={20}
+                      className="mr-3"
+                    />
                     ROI Calculation
                   </span>
                 </Link>
@@ -132,7 +150,7 @@ export const Navbar: React.FC = () => {
               Log in
             </Link>
             <Link
-              href="/signup"
+              href="/early-access"
               className={`bg-gradient-to-r from-[#792abf] to-[#792abf] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:brightness-110 hover:shadow-lg hover:shadow-purple-500/25 transition-all ${montserrat.className}`}
             >
               Free Trial
@@ -175,7 +193,13 @@ export const Navbar: React.FC = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span className="flex items-center">
-                    <span className="text-purple-600 mr-3">💡</span>
+                    <Image
+                      src="/images/lampadinatutorial1.png"
+                      alt="Tutorial"
+                      width={20}
+                      height={20}
+                      className="mr-3"
+                    />
                     Tutorial
                   </span>
                 </Link>
@@ -185,7 +209,13 @@ export const Navbar: React.FC = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span className="flex items-center">
-                    <span className="text-purple-600 mr-3">❓</span>
+                    <Image
+                      src="/images/domanda2.png"
+                      alt="FAQ"
+                      width={20}
+                      height={20}
+                      className="mr-3"
+                    />
                     F.A.Q.
                   </span>
                 </Link>
@@ -195,7 +225,13 @@ export const Navbar: React.FC = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span className="flex items-center">
-                    <span className="text-purple-600 mr-3">💰</span>
+                    <Image
+                      src="/roi1.png"
+                      alt="ROI Calculation"
+                      width={20}
+                      height={20}
+                      className="mr-3"
+                    />
                     ROI Calculation
                   </span>
                 </Link>
@@ -218,7 +254,7 @@ export const Navbar: React.FC = () => {
                   Log in
                 </Link>
                 <Link
-                  href="/signup"
+                  href="/early-access"
                   className={`block w-full bg-gradient-to-r from-[#792abf] to-[#792abf] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:brightness-110 transition-all text-center ${montserrat.className}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

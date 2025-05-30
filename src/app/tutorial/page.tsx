@@ -45,7 +45,7 @@ export default function TutorialPage() {
                   Start Learning
                 </button>
                 <Link 
-                  href="/signup" 
+                  href="/early-access" 
                   className={`inline-flex items-center px-8 py-4 bg-transparent border-2 border-purple-500 text-white font-semibold rounded-2xl hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-blue-500/10 transition-all duration-300 transform hover:scale-105 shadow-lg backdrop-blur-sm min-h-[56px] ${montserrat.className}`}
                 >
                   Claim 1,000 Free Credits
@@ -136,13 +136,23 @@ export default function TutorialPage() {
             
             {/* Video Placeholder */}
             <div className="mb-16 max-w-4xl mx-auto">
-              <div className="bg-white rounded-2xl p-12 border border-gray-200 shadow-lg">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">📺</span>
-                  </div>
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
+                {/* YouTube Video Embed */}
+                <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full rounded-xl"
+                    src="https://www.youtube.com/embed/FejlAbOXU-Q"
+                    title="Getting Started Tutorial - Karhuno AI"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                
+                {/* Video Label */}
+                <div className="mt-4 text-center">
                   <p className={`text-lg font-medium ${montserrat.className}`} style={{ color: '#666666' }}>
-                    Tutorial video will appear here
+                    Learn how to get started with Karhuno AI
                   </p>
                 </div>
               </div>
@@ -620,11 +630,21 @@ export default function TutorialPage() {
             
             {/* Video Placeholder */}
             <div className="mb-16 max-w-4xl mx-auto">
-              <div className="bg-white rounded-2xl p-12 border border-gray-200 shadow-lg">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">📺</span>
-                  </div>
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
+                {/* YouTube Video Embed */}
+                <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full rounded-xl"
+                    src="https://www.youtube.com/embed/j1N_ZWcLVXY"
+                    title="LinkedIn Tracker Tutorial - Karhuno AI"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                
+                {/* Video Label */}
+                <div className="mt-4 text-center">
                   <p className={`text-lg font-medium ${montserrat.className}`} style={{ color: '#666666' }}>
                     Watch LinkedIn Tracker in action
                   </p>
@@ -871,7 +891,7 @@ export default function TutorialPage() {
               Join thousands of sales professionals who have transformed their results with our platform.
             </p>
             <Link
-              href="/signup"
+              href="/early-access"
               className={`inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 ${montserrat.className}`}
             >
               Start Your Free Trial

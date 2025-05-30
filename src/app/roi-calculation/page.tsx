@@ -150,7 +150,7 @@ export default function ROICalculation() {
             className="text-center mt-8"
           >
             <a
-              href="/signup"
+              href="/early-access"
               className="inline-block bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-8 py-3 rounded-full text-base font-semibold hover:brightness-110 transition-all"
             >
               Start Free Trial
