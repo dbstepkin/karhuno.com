@@ -22,12 +22,31 @@ export default function EarlyAccessPage() {
 
     setIsSubmitting(true)
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitted(true)
+    try {
+      const response = await fetch('/api/early-access', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email.trim() }),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setIsSubmitted(true)
+        setEmail('')
+      } else {
+        console.error('Error:', result.error)
+        // You could add error state here if needed
+        alert('There was an error. Please try again.')
+      }
+    } catch (error) {
+      console.error('Submit error:', error)
+      alert('There was an error. Please try again.')
+    } finally {
       setIsSubmitting(false)
-      setEmail('')
-    }, 1000)
+    }
   }
 
   return (
