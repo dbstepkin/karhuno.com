@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, Play, CheckCircle, Clock, Users, BookOpen } from 'lucide-react'
+import { ArrowRight, Play, CheckCircle, Clock, Users, BookOpen, Database } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Montserrat, Roboto } from 'next/font/google'
@@ -107,17 +107,17 @@ export default function TutorialPage() {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
-                <Users className="w-8 h-8 text-white" />
+                <Database className="w-8 h-8 text-white" />
               </div>
-              <div className={`text-4xl md:text-5xl font-bold text-white mb-3 ${roboto.className}`}>10K+</div>
-              <div className={`text-lg text-gray-300 font-medium ${montserrat.className}`}>Users trained</div>
+              <div className={`text-4xl md:text-5xl font-bold text-white mb-3 ${roboto.className}`}>20+</div>
+              <div className={`text-lg text-gray-300 font-medium ${montserrat.className}`}>Data sources integrated</div>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
                 <CheckCircle className="w-8 h-8 text-white" />
               </div>
-              <div className={`text-4xl md:text-5xl font-bold text-white mb-3 ${roboto.className}`}>98%</div>
-              <div className={`text-lg text-gray-300 font-medium ${montserrat.className}`}>Success rate</div>
+              <div className={`text-4xl md:text-5xl font-bold text-white mb-3 ${roboto.className}`}>60%</div>
+              <div className={`text-lg text-gray-300 font-medium ${montserrat.className}`}>Reply rate</div>
             </div>
           </div>
         </div>
@@ -155,7 +155,7 @@ export default function TutorialPage() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
-                </div>
+                  </div>
                 
                 {/* Video Label */}
                 <div className="mt-4 text-center">
@@ -228,14 +228,14 @@ export default function TutorialPage() {
                     </div>
                   </div>
                   
-                  {/* Deep Research */}
+                  {/* Deep Signal Search */}
                   <div className="flex items-start gap-4">
                     <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                       <span className="text-white text-sm">🧠</span>
                     </div>
                     <div>
                       <h4 className={`text-xl font-bold mb-2 ${roboto.className}`} style={{ color: '#111111' }}>
-                        Deep Research
+                        Deep Signal Search
                       </h4>
                       <p className={`leading-relaxed ${montserrat.className}`} style={{ color: '#666666' }}>
                         Enter your Ideal Customer Profile in plain language, and our AI will scan thousands of online sources to surface companies showing real buying intent.
@@ -271,7 +271,7 @@ export default function TutorialPage() {
                         This section automatically organizes the results from both modules:
                       </p>
                       <ul className={`space-y-1 ml-4 ${montserrat.className}`} style={{ color: '#666666' }}>
-                        <li>• Companies from Deep Research</li>
+                        <li>• Companies from Deep Signal Search</li>
                         <li>• Contacts from LinkedIn Tracker</li>
                       </ul>
                       <p className={`leading-relaxed mt-3 ${montserrat.className}`} style={{ color: '#666666' }}>
@@ -316,7 +316,7 @@ export default function TutorialPage() {
         </div>
       </div>
 
-      {/* Deep Research Section */}
+      {/* Deep Signal Search Section */}
       <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
@@ -327,12 +327,12 @@ export default function TutorialPage() {
             
             {/* Title */}
             <h2 className={`text-4xl md:text-6xl font-bold text-white mb-6 ${roboto.className}`}>
-              Deep Research
+              Deep Signal Search
             </h2>
             
             {/* Subtitle */}
             <p className={`text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed ${montserrat.className}`}>
-              Master our AI-powered research engine. Discover companies through advanced analysis of articles, news, and market signals to find prospects with the highest potential.
+              Master our AI-powered signal detection engine. Discover companies through advanced analysis of articles, news, and market signals to find prospects with the highest potential.
             </p>
             
             {/* Video Placeholder */}
@@ -343,17 +343,17 @@ export default function TutorialPage() {
                   <iframe
                     className="absolute top-0 left-0 w-full h-full rounded-xl"
                     src="https://www.youtube.com/embed/xOa4gAOrRsY"
-                    title="Deep Research Tutorial - Karhuno AI"
+                    title="Deep Signal Search Tutorial - Karhuno AI"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
-                </div>
+                  </div>
                 
                 {/* Video Label */}
                 <div className="mt-4 text-center">
                   <p className={`text-lg font-medium text-gray-300 ${montserrat.className}`}>
-                    Watch how Deep Research works in action
+                    Watch how Deep Signal Search works in action
                   </p>
                 </div>
               </div>
@@ -391,11 +391,11 @@ export default function TutorialPage() {
               {/* Main Introduction */}
               <div className="bg-gradient-to-br from-slate-800/20 to-slate-900/20 rounded-2xl p-8 border border-purple-500/10 shadow-lg backdrop-blur-sm">
                 <h3 className={`text-3xl font-bold text-white mb-6 text-center ${roboto.className}`}>
-                  🔍 What is Deep Research?
+                  🔍 What is Deep Signal Search?
                 </h3>
                 <div className={`text-gray-300 space-y-4 ${montserrat.className}`}>
                   <p className="text-xl text-center mb-6">
-                    <strong>Deep Research is your AI-powered scout.</strong>
+                    <strong>Deep Signal Search is your AI-powered scout.</strong>
                   </p>
                   <p className="text-lg leading-relaxed">
                     It allows you to type a buying signal or ICP (Ideal Customer Profile) in plain English — like:
@@ -435,11 +435,11 @@ export default function TutorialPage() {
                 {/* Valid Examples - Left Column */}
                 <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-2xl p-8 border border-green-400/20 shadow-lg backdrop-blur-sm">
                   <h4 className={`text-2xl font-bold text-green-300 mb-6 text-center ${roboto.className}`}>
-                    ✅ What works best in Deep Research
+                    ✅ What works best in Deep Signal Search
                   </h4>
                   <div className={`text-gray-300 space-y-4 ${montserrat.className}`}>
                     <p className="leading-relaxed">
-                      Deep Research is most powerful when used to track public, visible company actions — things you'd normally find in the news or online.
+                      Deep Signal Search is most powerful when used to track public, visible company actions — things you'd normally find in the news or online.
                     </p>
                     <div>
                       <p className="font-semibold text-green-200 mb-3">Here are great ICP examples:</p>
@@ -649,7 +649,7 @@ export default function TutorialPage() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
-                </div>
+                  </div>
                 
                 {/* Video Label */}
                 <div className="mt-4 text-center">

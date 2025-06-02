@@ -72,7 +72,7 @@ export default function HowItWorks() {
                   <FileText className="w-8 h-8 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Deep Research</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Deep signal search</h3>
                   <p className="text-gray-700">
                     Discover companies with real buying signals from thousands of articles, news, tenders, and more.
                   </p>

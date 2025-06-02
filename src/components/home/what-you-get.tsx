@@ -29,7 +29,7 @@ const tabs = [
   {
     id: "act",
     title: "Act",
-    description: "Receive a curated list of verified companies or contacts, complete with proof links and context, ready for targeted outreach — all accessible from a single intuitive dashboard.",
+    description: "Receive a curated list of verified companies or contacts, complete with proof links and context, ready for targeted outreach — all accessible from a single intuitive dashboard. (coming soon)",
     image: "/images/database-storage.png"
   }
 ];
@@ -778,8 +778,8 @@ export default function WhatYouGet() {
                   </motion.h3>
                 )}
                 <p className={`text-lg text-gray-100 leading-relaxed ${montserrat.className}`}>
-                  {tabs.find(tab => tab.id === activeTab)?.description}
-                </p>
+                {tabs.find(tab => tab.id === activeTab)?.description}
+              </p>
               </motion.div>
             </div>
 

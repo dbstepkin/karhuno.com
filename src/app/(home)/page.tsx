@@ -114,7 +114,7 @@ export default function Home() {
     return () => {
       // Cleanup script on unmount
       document.head.removeChild(script);
-    };
+  };
   }, []);
 
   const openChat = () => {

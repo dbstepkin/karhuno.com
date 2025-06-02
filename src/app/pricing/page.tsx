@@ -54,7 +54,7 @@ const pricingPackages: PricingPackage[] = [
         text: "Enrich up to 600 verified emails (5 credits per email)",
       },
     ],
-    isPopular: true,
+    isPopular: false,
   },
   {
     price: 45,
@@ -74,7 +74,7 @@ const pricingPackages: PricingPackage[] = [
         text: "Enrich up to 1,000 verified emails (5 credits per email)",
       },
     ],
-    isPopular: false,
+    isPopular: true,
   },
   {
     price: 80,
@@ -243,8 +243,15 @@ export default function PricingPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex-1 bg-[#0F0F0F] p-6 rounded-2xl hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-in-out"
+                className="flex-1 bg-[#0F0F0F] p-6 rounded-2xl hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-in-out relative"
               >
+                {/* Coming Soon Badge */}
+                <div className="absolute -top-2 -right-2">
+                  <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg font-montserrat">
+                    Coming Soon
+                  </span>
+                </div>
+                
                 <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
