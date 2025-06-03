@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Footer from "@/components/home/footer";
+import { Montserrat } from "next/font/google";
 
 interface Feature {
   text: string;
@@ -98,6 +99,11 @@ const pricingPackages: PricingPackage[] = [
   },
 ];
 
+const montserrat = Montserrat({
+  weight: "600",
+  subsets: ["latin"],
+});
+
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#F6F3FF] to-[#EDEBFA]">
@@ -110,11 +116,11 @@ export default function PricingPage() {
           className="text-center mb-16 px-4"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-roboto leading-tight">
-            <span className="bg-gradient-to-r from-purple-600 to-purple-400 text-transparent bg-clip-text">Pay</span>{" "}
+            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">Pay</span>{" "}
             only for
             <br />
             what you{" "}
-            <span className="bg-gradient-to-r from-purple-600 to-purple-400 text-transparent bg-clip-text">
+            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
               use
             </span>
           </h2>
@@ -160,7 +166,7 @@ export default function PricingPage() {
 
               <button 
                 onClick={() => window.location.href = '/early-access'}
-                className="w-full bg-gradient-to-r from-purple-600 to-purple-400 text-white px-6 py-2 rounded-full font-semibold shadow-md hover:scale-105 transition font-montserrat mb-6"
+                className={`w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 mb-6 ${montserrat.className}`}
               >
                 Get Started
               </button>
@@ -190,8 +196,10 @@ export default function PricingPage() {
           className="py-[60px] text-center"
         >
           <div className="credit-system-info">
-            <h2 className="text-[26px] font-bold font-roboto leading-tight bg-gradient-to-r from-[#A14EFF] to-[#5F6DF8] text-transparent bg-clip-text mb-6">
-              Flexible Credit System
+            <h2 className="text-[26px] font-bold font-roboto leading-tight mb-6">
+              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                Flexible Credit System
+              </span>
             </h2>
             <p className="text-[18px] font-normal text-[#4A4A4A] max-w-[700px] mx-auto mt-[10px] font-montserrat">
               Credits are valid forever and can be used anytime. Purchase more credits as you need them, with better rates for larger packages.
@@ -209,8 +217,10 @@ export default function PricingPage() {
           >
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="text-center md:text-left">
-                <h3 className="text-2xl font-bold font-roboto bg-gradient-to-r from-[#C084FC] to-[#60A5FA] text-transparent bg-clip-text mb-2">
-                  Need a bigger plan?
+                <h3 className="text-2xl font-bold font-roboto mb-2">
+                  <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                    Need a bigger plan?
+                  </span>
                 </h3>
                 <p className="text-base text-gray-500 font-montserrat max-w-xl">
                   Talk to our team for custom credit packages and tailored support for large-scale prospecting.
@@ -221,7 +231,7 @@ export default function PricingPage() {
                   href="https://calendly.com/team-karhuno/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-gradient-to-r from-purple-600 to-purple-400 text-white px-8 py-3 rounded-full font-semibold shadow-md hover:scale-105 transition-transform duration-200 font-montserrat"
+                  className={`inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
                 >
                   Contact Sales
                 </a>
@@ -233,8 +243,10 @@ export default function PricingPage() {
         {/* Included Features Section */}
         <div className="py-16 bg-[#F4F2FD]">
           <div className="max-w-[1100px] mx-auto px-4">
-            <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 text-center mb-10 font-roboto">
-              Included in every plan
+            <h2 className="text-3xl font-bold text-center mb-10 font-roboto">
+              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                Included in every plan
+              </span>
             </h2>
 
             <div className="flex flex-col md:flex-row justify-center gap-6">

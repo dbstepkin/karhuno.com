@@ -163,6 +163,15 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+  
+  /* Karhuno AI Brand Gradient */
+  .text-gradient-primary {
+    background: linear-gradient(90deg, #a974ff, #679eff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
 }
 
 @keyframes scroll {

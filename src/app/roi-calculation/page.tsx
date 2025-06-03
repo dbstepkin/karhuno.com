@@ -4,6 +4,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Slider } from "@/components/ui/slider";
 import Footer from "@/components/home/footer";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: "600",
+});
 
 export default function ROICalculation() {
   const [hours, setHours] = useState(12);
@@ -33,8 +39,10 @@ export default function ROICalculation() {
           >
             <span className="inline-flex items-center justify-center space-x-3 mb-4">
               <span className="text-4xl">💸</span>
-              <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-400">
-                Calculate Your ROI
+              <h1 className="text-4xl md:text-5xl font-bold">
+                <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                  Calculate Your ROI
+                </span>
               </h1>
             </span>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -151,7 +159,7 @@ export default function ROICalculation() {
           >
             <a
               href="/early-access"
-              className="inline-block bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-8 py-3 rounded-full text-base font-semibold hover:brightness-110 transition-all"
+              className={`inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
             >
               Start Free Trial
             </a>

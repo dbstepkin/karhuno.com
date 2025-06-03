@@ -109,8 +109,10 @@ export default function EarlyAccessPage() {
                       </div>
                       
                       {/* Title */}
-                      <h1 className={`text-3xl font-bold text-center mb-4 bg-gradient-to-r from-purple-600 via-purple-500 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}>
-                        Join Karhuno AI Early Access
+                      <h1 className={`text-3xl font-bold text-center mb-4 ${roboto.className}`}>
+                        <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                          Join Karhuno AI Early Access
+                        </span>
                       </h1>
                       
                       {/* Description */}
@@ -173,8 +175,8 @@ export default function EarlyAccessPage() {
                 </div>
                 
                 {/* Success Title */}
-                <h2 className={`text-2xl font-bold mb-4 text-green-700 ${roboto.className}`}>
-                  🎉 You're on the list!
+                <h2 className={`text-2xl font-bold mb-4 ${roboto.className}`}>
+                  🎉 <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">You're on the list!</span>
                 </h2>
                 
                 {/* Success Message */}

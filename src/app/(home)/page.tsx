@@ -102,28 +102,6 @@ export default function Home() {
     return () => clearTimeout(timeout);
   }, [placeholder, placeholderIndex, isDeleting]);
 
-  // Load Tawk.to script directly
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://embed.tawk.to/67cb23b4d19cb2190dbd2fbb/1iloo6u5l';
-    script.charset = 'UTF-8';
-    script.setAttribute('crossorigin', '*');
-    document.head.appendChild(script);
-
-    return () => {
-      // Cleanup script on unmount
-      document.head.removeChild(script);
-  };
-  }, []);
-
-  const openChat = () => {
-    // Use Tawk_API if available
-    if (typeof window !== 'undefined' && (window as any).Tawk_API) {
-      (window as any).Tawk_API.showWidget();
-    }
-  };
-
   const handleButtonClick = (action: () => void) => {
     if (action === handleFind) {
       action();
@@ -222,7 +200,7 @@ export default function Home() {
           <h1 className={`text-5xl md:text-7xl font-bold mb-6 max-w-4xl ${roboto.className}`}>
             <span className="text-black">Stop Searching,</span>
             <br />
-            <span className="text-[#792abf]">Start Selling</span>
+            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">Start Selling</span>
             </h1>
 
           {/* Subheading */}
@@ -239,7 +217,7 @@ export default function Home() {
             />
             <button 
                 onClick={handleFind}
-              className={`bg-purple-700 text-white rounded-r-full px-6 py-3 hover:bg-purple-800 transition-colors ${montserrat.className}`}
+              className={`bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-r-full px-6 py-3 font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
               >
                 Find
             </button>
@@ -248,7 +226,7 @@ export default function Home() {
           {/* Try for free button */}
           <button 
             onClick={() => window.location.href = '/early-access'}
-            className={`bg-purple-700 text-white px-8 py-3 rounded-full hover:bg-purple-800 transition-colors font-medium ${montserrat.className}`}
+            className={`bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
           >
             Try for free
           </button>

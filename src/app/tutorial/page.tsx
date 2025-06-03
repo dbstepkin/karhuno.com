@@ -27,7 +27,7 @@ export default function TutorialPage() {
             
             {/* Main Title */}
             <h1 className={`text-5xl md:text-7xl font-extrabold text-center mb-8 ${roboto.className} opacity-0 animate-[fadeInUp_0.6s_ease-out_0.3s_both]`}>
-              <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
                 Master Karhuno AI in Minutes
               </span>
             </h1>
@@ -47,14 +47,14 @@ export default function TutorialPage() {
                       gettingStartedSection.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className={`inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-2xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 min-h-[56px] ${montserrat.className}`}
+                  className={`inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 min-h-[56px] ${montserrat.className}`}
                 >
                   <Play className="w-6 h-6 mr-3" />
                   Start Learning
                 </button>
                 <Link 
                   href="/early-access" 
-                  className={`inline-flex items-center px-8 py-4 bg-transparent border-2 border-purple-500 text-white font-semibold rounded-2xl hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-blue-500/10 transition-all duration-300 transform hover:scale-105 shadow-lg backdrop-blur-sm min-h-[56px] ${montserrat.className}`}
+                  className={`inline-flex items-center px-8 py-4 bg-transparent border-2 border-purple-500 text-white font-semibold rounded-xl hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-blue-500/10 transition-all duration-300 transform hover:scale-105 shadow-lg backdrop-blur-sm min-h-[56px] ${montserrat.className}`}
                 >
                   Claim 1,000 Free Credits
                   <ArrowRight className="w-6 h-6 ml-3" />
@@ -134,7 +134,9 @@ export default function TutorialPage() {
             
             {/* Title */}
             <h2 className={`text-4xl md:text-6xl font-bold mb-6 ${roboto.className}`} style={{ color: '#111111' }}>
-              Getting Started
+              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                Getting Started
+              </span>
             </h2>
             
             {/* Subtitle */}
@@ -327,7 +329,9 @@ export default function TutorialPage() {
             
             {/* Title */}
             <h2 className={`text-4xl md:text-6xl font-bold text-white mb-6 ${roboto.className}`}>
-              Deep Signal Search
+              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                Deep Signal Search
+              </span>
             </h2>
             
             {/* Subtitle */}
@@ -628,7 +632,9 @@ export default function TutorialPage() {
             
             {/* Title */}
             <h2 className={`text-4xl md:text-6xl font-bold mb-6 ${roboto.className}`} style={{ color: '#111111' }}>
-              LinkedIn Tracker
+              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                LinkedIn Tracker
+              </span>
             </h2>
             
             {/* Subtitle */}
@@ -892,15 +898,17 @@ export default function TutorialPage() {
       <div className="border-t border-purple-500/20 bg-black/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <h2 className={`text-3xl font-bold text-white mb-4 ${roboto.className}`}>
-              Ready to become a Karhuno AI expert?
+            <h2 className={`text-3xl font-bold mb-4 ${roboto.className}`}>
+              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                Ready to become a Karhuno AI expert?
+              </span>
             </h2>
             <p className={`text-xl text-gray-300 mb-8 max-w-2xl mx-auto ${montserrat.className}`}>
               Join thousands of sales professionals who have transformed their results with our platform.
             </p>
             <Link
               href="/early-access"
-              className={`inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 ${montserrat.className}`}
+              className={`inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
             >
               Start Your Free Trial
               <ArrowRight className="w-5 h-5 ml-2" />

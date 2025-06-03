@@ -4,6 +4,13 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Package, Search } from "lucide-react";
+import { Montserrat, Roboto } from "next/font/google";
+
+const montserrat = Montserrat({ subsets: ['latin'] });
+const roboto = Roboto({ 
+  weight: ['300', '400', '500', '700', '900'],
+  subsets: ['latin'] 
+});
 
 const caseStudies = [
   {
@@ -112,9 +119,11 @@ export default function CaseStudies({ id }: CaseStudiesProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold mb-4 text-white"
+            className={`text-4xl md:text-5xl font-bold mb-4 ${roboto.className}`}
           >
-            Success Stories
+            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+              Success Stories
+            </span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

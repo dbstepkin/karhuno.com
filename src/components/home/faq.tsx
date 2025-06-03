@@ -159,9 +159,11 @@ export default function FAQ({ className }: { className?: string }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className={`text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-purple-500 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}
+            className={`text-4xl md:text-5xl font-bold mb-4 ${roboto.className}`}
           >
-            Got questions?
+            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+              Got questions?
+            </span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -264,9 +266,11 @@ export default function FAQ({ className }: { className?: string }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className={`text-2xl font-bold mb-4 bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}
+              className={`text-2xl font-bold mb-4 ${roboto.className}`}
             >
-              Still have questions or doubts?
+              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                Still have questions or doubts?
+              </span>
             </motion.h3>
             
             <motion.p

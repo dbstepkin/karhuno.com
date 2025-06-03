@@ -70,9 +70,11 @@ export default function ComparisonTable() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className={`text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 text-center mb-4 ${roboto.className}`}
+            className={`text-4xl md:text-5xl font-bold text-center mb-4 ${roboto.className}`}
           >
-            Why top sales teams choose Karhuno AI
+            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+              Why top sales teams choose Karhuno AI
+            </span>
           </motion.h2>
         </div>
 

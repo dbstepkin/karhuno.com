@@ -4,6 +4,12 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  weight: "600",
+  subsets: ["latin"],
+});
 
 export default function SignupPage() {
   return (
@@ -82,7 +88,7 @@ export default function SignupPage() {
               <Input id="email" type="email" placeholder="Enter your email" />
             </div>
 
-            <Button className="w-full bg-purple-600 hover:bg-purple-700">
+            <Button className={`w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 py-3 rounded-xl font-semibold ${montserrat.className}`}>
               Sign up with email
             </Button>
           </div>

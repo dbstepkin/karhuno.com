@@ -701,7 +701,7 @@ export default function WhatYouGet() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className={`text-4xl md:text-5xl font-bold mb-6 ${roboto.className}`}
           >
-            What we <span className="text-purple-500">do</span>
+            What we <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">do</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -754,27 +754,33 @@ export default function WhatYouGet() {
                   <motion.h3
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className={`text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent ${roboto.className}`}
+                    className={`text-2xl md:text-3xl font-bold mb-6 ${roboto.className}`}
                   >
-                    Supercharge your conversions with sales signals
+                    <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                      Supercharge your conversions with sales signals
+                    </span>
                   </motion.h3>
                 )}
                 {activeTab === "scan" && (
                   <motion.h3
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className={`text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent ${roboto.className}`}
+                    className={`text-2xl md:text-3xl font-bold mb-6 ${roboto.className}`}
                   >
-                    Continuous discovery of high-intent signals
+                    <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                      Continuous discovery of high-intent signals
+                    </span>
                   </motion.h3>
                 )}
                 {activeTab === "act" && (
                   <motion.h3
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className={`text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent tracking-tight ${roboto.className}`}
+                    className={`text-2xl md:text-3xl font-bold mb-6 tracking-tight ${roboto.className}`}
                   >
-                    Turn signals into sales with proof-backed contacts
+                    <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                      Turn signals into sales with proof-backed contacts
+                    </span>
                   </motion.h3>
                 )}
                 <p className={`text-lg text-gray-100 leading-relaxed ${montserrat.className}`}>

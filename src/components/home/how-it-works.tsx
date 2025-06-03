@@ -52,9 +52,11 @@ export default function HowItWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className={`text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900 ${roboto.className}`}
+          className={`text-4xl md:text-5xl font-bold text-center mb-12 ${roboto.className}`}
         >
-          How It Works
+          <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+            How It Works
+          </span>
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto items-start">

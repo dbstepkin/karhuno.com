@@ -165,7 +165,7 @@ export const Navbar: React.FC = () => {
             </Link>
             <Link
               href="/early-access"
-              className={`bg-gradient-to-r from-[#792abf] to-[#792abf] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:brightness-110 hover:shadow-lg hover:shadow-purple-500/25 transition-all ${montserrat.className}`}
+              className={`bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2.5 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
             >
               Free Trial
             </Link>
@@ -269,7 +269,7 @@ export const Navbar: React.FC = () => {
                 </Link>
                 <Link
                   href="/early-access"
-                  className={`block w-full bg-gradient-to-r from-[#792abf] to-[#792abf] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:brightness-110 transition-all text-center ${montserrat.className}`}
+                  className={`block w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 text-center ${montserrat.className}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Free Trial
