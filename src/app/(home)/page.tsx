@@ -41,10 +41,17 @@ interface SendEmailParams {
   name: string;
 }
 
-const montserrat = Montserrat({ subsets: ['latin'] });
+const montserrat = Montserrat({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat'
+});
+
 const roboto = Roboto({ 
   weight: ['300', '400', '500', '700', '900'],
-  subsets: ['latin'] 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto'
 });
 
 const placeholderTexts = [

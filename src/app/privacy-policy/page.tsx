@@ -5,10 +5,17 @@ import { Shield, Mail } from "lucide-react";
 import Footer from "@/components/home/footer";
 import { Montserrat, Roboto } from "next/font/google";
 
-const montserrat = Montserrat({ subsets: ['latin'] });
+const montserrat = Montserrat({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat'
+});
+
 const roboto = Roboto({ 
   weight: ['300', '400', '500', '700', '900'],
-  subsets: ['latin'] 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto'
 });
 
 export default function PrivacyPolicyPage() {
