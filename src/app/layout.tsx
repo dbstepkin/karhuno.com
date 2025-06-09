@@ -19,8 +19,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Karhuno AI - Find real unparalleled AI solutions for your business",
-  description: "Karhuno AI provides tailored AI solutions to boost your business efficiency and innovation. Get started today with our consultation.",
+  title: "Karhuno AI",
+  description: "Karhuno AI - a signal-based search engine for global B2B sales.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
