@@ -5,53 +5,52 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hide Next.js development indicators */
-div[data-nextjs-build-indicator] {
-  display: none !important;
-}
-
-div[data-nextjs-build-indicator="true"] {
-  display: none !important;
-}
-
-div[data-nextjs-build-indicator="false"] {
-  display: none !important;
-}
-
-/* Hide any potential dev indicators */
-[data-nextjs-build-indicator] {
-  display: none !important;
-}
-
-.__next-build-indicator {
-  display: none !important;
-}
-
-/* Hide static route indicator */
-div[data-nextjs-router-prefetch] {
-  display: none !important;
-}
-
-/* Hide all possible Next.js development indicators */
-*[class*="__next"] {
-  display: none !important;
-}
-
+/* Hide Next.js development indicators - AGGRESSIVE APPROACH */
+div[data-nextjs-build-indicator],
+div[data-nextjs-build-indicator="true"],
+div[data-nextjs-build-indicator="false"],
+[data-nextjs-build-indicator],
+.__next-build-indicator,
+div[data-nextjs-router-prefetch],
+*[class*="__next"],
 *[id*="__next-build"] {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
 }
 
-/* Hide any element with text "Static route" */
-*:contains("Static route") {
+/* Hide lightning bolt and static route indicators */
+div[style*="position: fixed"][style*="bottom"],
+div[style*="position: fixed"][style*="left"],
+div[style*="position: fixed"][style*="z-index: 99"],
+div[style*="position: fixed"][style*="z-index: 999"],
+div[style*="position: fixed"][style*="z-index: 9999"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Target specific Next.js dev indicator patterns */
+div[style*="font-family: menlo"],
+div[style*="border-radius: 5px"][style*="position: fixed"],
+div[style*="padding: 2px"][style*="position: fixed"] {
   display: none !important;
 }
 
-/* Hide elements with specific styles that match dev indicators */
-div[style*="position: fixed"][style*="bottom"][style*="right"] {
-  display: none !important;
+/* Hide any element that might contain "Static route" text */
+*:before,
+*:after {
+  content: none !important;
 }
 
-div[style*="position: fixed"][style*="z-index: 99"] {
+/* Prevent any fixed positioned elements in bottom area during development */
+body div[style*="position: fixed"][style*="bottom: 10px"],
+body div[style*="position: fixed"][style*="bottom: 20px"],
+body div[style*="position: fixed"][style*="left: 20px"] {
   display: none !important;
 }
 
