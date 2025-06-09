@@ -5,6 +5,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide Next.js development indicators */
+div[data-nextjs-build-indicator] {
+  display: none !important;
+}
+
+div[data-nextjs-build-indicator="true"] {
+  display: none !important;
+}
+
+div[data-nextjs-build-indicator="false"] {
+  display: none !important;
+}
+
+/* Hide any potential dev indicators */
+[data-nextjs-build-indicator] {
+  display: none !important;
+}
+
+.__next-build-indicator {
+  display: none !important;
+}
+
 /* globals.css */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

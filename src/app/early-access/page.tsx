@@ -5,7 +5,6 @@ import { CheckCircle, Mail, Send } from 'lucide-react'
 import { Montserrat, Roboto } from 'next/font/google'
 import Image from 'next/image'
 import Footer from '@/components/home/footer'
-import { sendToWebhook } from '@/lib/webhook'
 
 const montserrat = Montserrat({ 
   subsets: ['latin'],
@@ -45,14 +44,6 @@ export default function EarlyAccessPage() {
       if (result.success) {
         setIsSubmitted(true)
         setEmail('')
-        
-        // Send webhook data to n8n for processing
-        sendToWebhook({
-          type: "early_access_submission",
-          email: email.trim(),
-          feedbackCall: false, // Default value for checkbox, can be modified later
-          timestamp: new Date().toISOString()
-        })
       } else {
         console.error('Error:', result.error)
         // You could add error state here if needed

@@ -28,10 +28,30 @@ function getCookie(name: string): string | null {
   return null;
 }
 
+// Google Analytics control functions
+function enableAnalytics() {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('config', 'G-VQ94784XQM', {
+      anonymize_ip: false
+    });
+    (window as any).gtag('consent', 'update', {
+      analytics_storage: 'granted'
+    });
+  }
+}
+
+function disableAnalytics() {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('consent', 'update', {
+      analytics_storage: 'denied'
+    });
+    // Disable future GA tracking
+    (window as any)['ga-disable-G-VQ94784XQM'] = true;
+  }
+}
+
 export function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [preferences, setPreferences] = useState<CookiePreferences>({
     necessary: true, // Always required
     analytics: true,
@@ -43,13 +63,23 @@ export function CookieConsent() {
     const cookieConsent = getCookie("cookie-consent");
     if (!cookieConsent) {
       setShowBanner(true);
+      // Default deny analytics until user consents
+      disableAnalytics();
     } else {
       try {
         const savedPreferences = JSON.parse(cookieConsent);
         setPreferences(savedPreferences);
+        
+        // Apply saved preferences to Google Analytics
+        if (savedPreferences.analytics) {
+          enableAnalytics();
+        } else {
+          disableAnalytics();
+        }
       } catch (e) {
         console.warn("Failed to parse cookie consent", e);
         setShowBanner(true);
+        disableAnalytics();
       }
     }
   }, []);
@@ -63,6 +93,9 @@ export function CookieConsent() {
     setPreferences(allAccepted);
     setCookie("cookie-consent", JSON.stringify(allAccepted), 365);
     setShowBanner(false);
+    
+    // Enable Google Analytics
+    enableAnalytics();
   };
 
   const decline = () => {
@@ -74,6 +107,9 @@ export function CookieConsent() {
     setPreferences(minimal);
     setCookie("cookie-consent", JSON.stringify(minimal), 365);
     setShowBanner(false);
+    
+    // Disable Google Analytics
+    disableAnalytics();
   };
 
   return (
@@ -87,8 +123,7 @@ export function CookieConsent() {
                 <div>
                   <h3 className="text-lg font-semibold">Cookie Preferences</h3>
                   <p className="text-sm text-muted-foreground mt-1">
-                    We use cookies to enhance your browsing experience, serve
-                    personalized ads or content, and analyze our traffic.
+                    We use cookies to enhance your browsing experience and analyze our traffic with Google Analytics.
                   </p>
                 </div>
                 <Button
