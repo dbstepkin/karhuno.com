@@ -5,6 +5,54 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ULTRA AGGRESSIVE: Hide ALL Next.js development indicators */
+*[data-nextjs-build-indicator="true"],
+*[data-nextjs-build-indicator="false"], 
+*[data-nextjs-build-indicator],
+*[class*="nextjs"],
+*[class*="__next"],
+*[id*="__next"],
+*[class*="build-indicator"],
+*[id*="build-indicator"],
+div[style*="position: fixed"][style*="bottom"],
+div[style*="position: fixed"][style*="left"],
+div[style*="position: fixed"][style*="right"],
+div[style*="z-index: 99"],
+div[style*="z-index: 999"],
+div[style*="z-index: 9999"],
+div[style*="z-index: 99999"],
+div[style*="font-family: menlo"],
+div[style*="font-family: monaco"],
+div[style*="font-family: consolas"],
+div[style*="border-radius: 5px"][style*="position: fixed"],
+div[style*="padding: 2px"][style*="position: fixed"],
+div[style*="background-color: rgb(0, 0, 0)"][style*="position: fixed"],
+div[style*="background-color: #000"][style*="position: fixed"],
+div[style*="color: rgb(255, 255, 255)"][style*="position: fixed"],
+div[style*="color: #fff"][style*="position: fixed"],
+div[style*="color: #ffffff"][style*="position: fixed"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  left: -99999px !important;
+  top: -99999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
+/* Target specific text content */
+div:has-text("Static route"),
+div:has-text("⚡"),
+div:has-text("🔥"),
+*:contains("Static route"),
+*:contains("⚡"),
+*:contains("🔥") {
+  display: none !important;
+}
+
 /* Hide Next.js development indicators - AGGRESSIVE APPROACH */
 div[data-nextjs-build-indicator],
 div[data-nextjs-build-indicator="true"],

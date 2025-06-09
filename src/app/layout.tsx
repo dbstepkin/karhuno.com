@@ -57,15 +57,29 @@ export default function RootLayout({
         <Script id="remove-dev-indicators" strategy="afterInteractive">
           {`
             function removeDevIndicators() {
-              // Remove all possible Next.js development indicators
+              // Remove all possible Next.js development indicators with ultra-aggressive approach
               const selectors = [
                 '[data-nextjs-build-indicator]',
+                '[data-nextjs-build-indicator="true"]',
+                '[data-nextjs-build-indicator="false"]',
                 '.__next-build-indicator',
                 '[data-nextjs-router-prefetch]',
                 'div[style*="position: fixed"][style*="bottom"]',
+                'div[style*="position: fixed"][style*="left"]',
+                'div[style*="position: fixed"][style*="right"]',
                 'div[style*="position: fixed"][style*="z-index: 99"]',
+                'div[style*="z-index: 999"]',
+                'div[style*="z-index: 9999"]',
+                'div[style*="z-index: 99999"]',
                 '*[class*="__next"]',
-                '*[id*="__next-build"]'
+                '*[id*="__next-build"]',
+                '*[class*="nextjs"]',
+                '*[class*="build-indicator"]',
+                'div[style*="font-family: menlo"]',
+                'div[style*="font-family: monaco"]',
+                'div[style*="font-family: consolas"]',
+                'div[style*="border-radius: 5px"][style*="position: fixed"]',
+                'div[style*="padding: 2px"][style*="position: fixed"]'
               ];
               
               selectors.forEach(selector => {
@@ -73,7 +87,16 @@ export default function RootLayout({
                   const elements = document.querySelectorAll(selector);
                   elements.forEach(el => {
                     if (el && el.parentNode) {
-                      el.parentNode.removeChild(el);
+                      el.style.display = 'none';
+                      el.style.visibility = 'hidden';
+                      el.style.opacity = '0';
+                      el.style.position = 'absolute';
+                      el.style.left = '-99999px';
+                      el.style.top = '-99999px';
+                      el.style.width = '0';
+                      el.style.height = '0';
+                      el.style.zIndex = '-1';
+                      el.remove();
                     }
                   });
                 } catch (e) {
@@ -81,29 +104,52 @@ export default function RootLayout({
                 }
               });
               
-              // Also check for elements containing "Static route" text
-              const walker = document.createTreeWalker(
-                document.body,
-                NodeFilter.SHOW_TEXT,
-                null,
-                false
-              );
-              
-              const textNodes = [];
-              let node;
-              while (node = walker.nextNode()) {
-                if (node.textContent && node.textContent.includes('Static route')) {
-                  textNodes.push(node);
+              // Check for any element containing development indicator text
+              const textPatterns = ['Static route', '⚡', '🔥', 'build', 'compiled'];
+              textPatterns.forEach(pattern => {
+                const walker = document.createTreeWalker(
+                  document.body || document.documentElement,
+                  NodeFilter.SHOW_TEXT,
+                  null,
+                  false
+                );
+                
+                const textNodes = [];
+                let node;
+                while (node = walker.nextNode()) {
+                  if (node.textContent && node.textContent.toLowerCase().includes(pattern.toLowerCase())) {
+                    textNodes.push(node);
+                  }
                 }
-              }
+                
+                textNodes.forEach(textNode => {
+                  const parent = textNode.parentElement;
+                  if (parent && parent.tagName === 'DIV') {
+                    const style = window.getComputedStyle(parent);
+                    if (style.position === 'fixed' || style.zIndex > 99) {
+                      parent.style.display = 'none';
+                      parent.remove();
+                    }
+                  }
+                });
+              });
               
-              textNodes.forEach(textNode => {
-                const parent = textNode.parentElement;
-                if (parent) {
-                  parent.style.display = 'none';
+              // Remove any fixed positioned elements in development areas
+              const fixedElements = document.querySelectorAll('div[style*="position: fixed"]');
+              fixedElements.forEach(el => {
+                const style = window.getComputedStyle(el);
+                const rect = el.getBoundingClientRect();
+                // Check if it's a small element positioned at bottom/corner (typical for dev indicators)
+                if ((rect.bottom > window.innerHeight - 100 || rect.right < 200 || rect.left > window.innerWidth - 200) && 
+                    rect.width < 200 && rect.height < 100) {
+                  el.style.display = 'none';
+                  el.remove();
                 }
               });
             }
+            
+            // Remove immediately
+            removeDevIndicators();
             
             // Remove on DOM ready
             if (document.readyState === 'loading') {
@@ -112,11 +158,33 @@ export default function RootLayout({
               removeDevIndicators();
             }
             
-            // Remove periodically in case they get added back
-            setInterval(removeDevIndicators, 1000);
+            // Remove frequently
+            setInterval(removeDevIndicators, 500);
             
-            // Also remove when page visibility changes
+            // Remove on page interactions
             document.addEventListener('visibilitychange', removeDevIndicators);
+            document.addEventListener('focus', removeDevIndicators);
+            window.addEventListener('resize', removeDevIndicators);
+            
+            // Override any potential Next.js functions that might create indicators
+            if (typeof window !== 'undefined') {
+              const originalCreateElement = document.createElement;
+              document.createElement = function(tagName) {
+                const element = originalCreateElement.call(this, tagName);
+                if (tagName.toLowerCase() === 'div') {
+                  const observer = new MutationObserver(() => {
+                    const style = window.getComputedStyle(element);
+                    if (style.position === 'fixed' && 
+                        (element.textContent?.includes('Static') || element.textContent?.includes('⚡'))) {
+                      element.style.display = 'none';
+                      element.remove();
+                    }
+                  });
+                  observer.observe(element, { childList: true, subtree: true, attributes: true });
+                }
+                return element;
+              };
+            }
           `}
         </Script>
       </head>
