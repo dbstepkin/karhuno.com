@@ -27,6 +27,34 @@ div[data-nextjs-build-indicator="false"] {
   display: none !important;
 }
 
+/* Hide static route indicator */
+div[data-nextjs-router-prefetch] {
+  display: none !important;
+}
+
+/* Hide all possible Next.js development indicators */
+*[class*="__next"] {
+  display: none !important;
+}
+
+*[id*="__next-build"] {
+  display: none !important;
+}
+
+/* Hide any element with text "Static route" */
+*:contains("Static route") {
+  display: none !important;
+}
+
+/* Hide elements with specific styles that match dev indicators */
+div[style*="position: fixed"][style*="bottom"][style*="right"] {
+  display: none !important;
+}
+
+div[style*="position: fixed"][style*="z-index: 99"] {
+  display: none !important;
+}
+
 /* globals.css */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -34,6 +62,12 @@ div[data-nextjs-build-indicator="false"] {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.gradient-border {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2px;
+  border-radius: 12px;
 }
 
 @layer base {

@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   devIndicators: {
     buildActivity: false,
+    buildActivityPosition: 'bottom-right',
   },
   experimental: {
     appDocumentPreloading: false,
