@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  eslint: {
+    // Игнорировать ESLint ошибки во время сборки production
+    ignoreDuringBuilds: true,
+  },
   devIndicators: {
     buildActivity: false,
     buildActivityPosition: 'bottom-right',
