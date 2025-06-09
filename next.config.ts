@@ -15,8 +15,6 @@ const nextConfig: NextConfig = {
   },
   // Output configuration for standalone deployment
   output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
-  // Optimization for production
-  swcMinify: true,
   // Image optimization
   images: {
     formats: ['image/webp', 'image/avif'],
