@@ -213,7 +213,7 @@ export default function Automation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-[200px] flex flex-col justify-between"
+                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-auto md:h-[200px] flex flex-col justify-between"
                 style={{ boxShadow: '0 4px 20px rgba(123, 47, 247, 0.15)' }}
               >
                 <div>
@@ -277,7 +277,7 @@ export default function Automation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-[200px] flex flex-col justify-between"
+                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-auto md:h-[200px] flex flex-col justify-between"
                 style={{ boxShadow: '0 4px 20px rgba(123, 47, 247, 0.15)' }}
               >
                 <div>
@@ -328,7 +328,7 @@ export default function Automation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.7 }}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-[200px] flex flex-col justify-between"
+                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-auto md:h-[200px] flex flex-col justify-between"
                 style={{ boxShadow: '0 4px 20px rgba(123, 47, 247, 0.15)' }}
               >
                 <div>
@@ -409,7 +409,7 @@ export default function Automation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-[200px] flex flex-col justify-between"
+                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-auto md:h-[200px] flex flex-col justify-between"
                 style={{ boxShadow: '0 4px 20px rgba(79, 172, 254, 0.15)' }}
               >
                 <div>
@@ -473,7 +473,7 @@ export default function Automation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-[200px] flex flex-col justify-between"
+                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-auto md:h-[200px] flex flex-col justify-between"
                 style={{ boxShadow: '0 4px 20px rgba(79, 172, 254, 0.15)' }}
               >
                 <div>
@@ -524,7 +524,7 @@ export default function Automation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.7 }}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-[200px] flex flex-col justify-between"
+                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-auto md:h-[200px] flex flex-col justify-between"
                 style={{ boxShadow: '0 4px 20px rgba(79, 172, 254, 0.15)' }}
               >
                 <div>
