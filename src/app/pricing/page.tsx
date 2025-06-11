@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import Footer from "@/components/home/footer";
 import { Montserrat } from "next/font/google";
 
@@ -105,6 +106,28 @@ const montserrat = Montserrat({
 });
 
 export default function PricingPage() {
+  useEffect(() => {
+    const cta = document.querySelector('a[href="https://calendly.com/team-karhuno/30min"]');
+
+    if (!cta) return;
+
+    const handleClick = () => {
+      if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+        (window as any).gtag('event', 'cta_bottom_click', {
+          event_category: 'engagement',
+          event_label: 'pricing_bottom',
+          value: 1
+        });
+      }
+    };
+
+    cta.addEventListener('click', handleClick);
+
+    return () => {
+      cta.removeEventListener('click', handleClick);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#F6F3FF] to-[#EDEBFA]">
       <div className="container mx-auto max-w-7xl pt-24 pb-16">
