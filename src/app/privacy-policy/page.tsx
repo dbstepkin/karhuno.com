@@ -149,7 +149,7 @@ export default function PrivacyPolicyPage() {
                 </div>
               </motion.div>
 
-              {/* Section 3: Data Security */}
+              {/* Section 3: LinkedIn Data & Regional Compliance */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -158,7 +158,25 @@ export default function PrivacyPolicyPage() {
                 className="bg-white/70 backdrop-blur-sm rounded-2xl border border-purple-200/50 p-8 shadow-sm"
               >
                 <h2 className={`text-2xl font-bold mb-6 bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}>
-                  3. Data Security & Compliance
+                  3. LinkedIn Data & Regional Compliance
+                </h2>
+                <div className={`text-gray-900 leading-relaxed space-y-4 ${montserrat.className}`}>
+                  <p>
+                    In accordance with GDPR and local interpretations of public data usage, some LinkedIn comment data may be restricted or limited in countries such as Germany, France, and Austria. Karhuno AI does not simulate login sessions or bypass LinkedIn's visibility controls. The availability and visibility of publicly accessible content may vary depending on national privacy laws. We are committed to complying with these regulations and adapting our platform's behavior accordingly in restricted jurisdictions.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Section 4: Data Security */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="bg-white/70 backdrop-blur-sm rounded-2xl border border-purple-200/50 p-8 shadow-sm"
+              >
+                <h2 className={`text-2xl font-bold mb-6 bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}>
+                  4. Data Security & Compliance
                 </h2>
                 <div className={`text-gray-900 leading-relaxed space-y-4 ${montserrat.className}`}>
                   <p>
@@ -175,16 +193,16 @@ export default function PrivacyPolicyPage() {
                 </div>
               </motion.div>
 
-              {/* Section 4: Third-Party Services */}
+              {/* Section 5: Third-Party Services */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
                 className="bg-white/70 backdrop-blur-sm rounded-2xl border border-purple-200/50 p-8 shadow-sm"
               >
                 <h2 className={`text-2xl font-bold mb-6 bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}>
-                  4. Third-Party Services
+                  5. Third-Party Services
                 </h2>
                 <div className={`text-gray-900 leading-relaxed space-y-4 ${montserrat.className}`}>
                   <p>
@@ -202,16 +220,16 @@ export default function PrivacyPolicyPage() {
                 </div>
               </motion.div>
 
-              {/* Section 5: Marketing Communication */}
+              {/* Section 6: Marketing Communication */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
                 className="bg-white/70 backdrop-blur-sm rounded-2xl border border-purple-200/50 p-8 shadow-sm"
               >
                 <h2 className={`text-2xl font-bold mb-6 bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}>
-                  5. Marketing Communication
+                  6. Marketing Communication
                 </h2>
                 <div className={`text-gray-900 leading-relaxed space-y-4 ${montserrat.className}`}>
                   <p>
@@ -225,16 +243,16 @@ export default function PrivacyPolicyPage() {
                 </div>
               </motion.div>
 
-              {/* Section 6: Cookies */}
+              {/* Section 7: Cookies */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
                 className="bg-white/70 backdrop-blur-sm rounded-2xl border border-purple-200/50 p-8 shadow-sm"
               >
                 <h2 className={`text-2xl font-bold mb-6 bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}>
-                  6. Cookies & Tracking
+                  7. Cookies & Tracking
                 </h2>
                 <div className={`text-gray-900 leading-relaxed space-y-4 ${montserrat.className}`}>
                   <p>
@@ -248,16 +266,16 @@ export default function PrivacyPolicyPage() {
                 </div>
               </motion.div>
 
-              {/* Section 7: Your Rights */}
+              {/* Section 8: Your Rights */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
                 className="bg-white/70 backdrop-blur-sm rounded-2xl border border-purple-200/50 p-8 shadow-sm"
               >
                 <h2 className={`text-2xl font-bold mb-6 bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}>
-                  7. Your Rights
+                  8. Your Rights
                 </h2>
                 <div className={`text-gray-900 leading-relaxed space-y-4 ${montserrat.className}`}>
                   <p>
@@ -274,16 +292,16 @@ export default function PrivacyPolicyPage() {
                 </div>
               </motion.div>
 
-              {/* Section 8: Governing Law */}
+              {/* Section 9: Governing Law */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.7 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
                 className="bg-white/70 backdrop-blur-sm rounded-2xl border border-purple-200/50 p-8 shadow-sm"
               >
                 <h2 className={`text-2xl font-bold mb-6 bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}>
-                  8. Governing Law
+                  9. Governing Law
                 </h2>
                 <div className={`text-gray-900 leading-relaxed space-y-4 ${montserrat.className}`}>
                   <p>
@@ -295,16 +313,16 @@ export default function PrivacyPolicyPage() {
                 </div>
               </motion.div>
 
-              {/* Section 9: Contact */}
+              {/* Section 10: Contact */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.8 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
                 className="bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-sm rounded-2xl border border-purple-200/50 p-8 shadow-lg"
               >
                 <h2 className={`text-2xl font-bold mb-6 bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}>
-                  9. Contact Us
+                  10. Contact Us
                 </h2>
                 <div className={`text-gray-900 leading-relaxed space-y-4 ${montserrat.className}`}>
                   <p>
