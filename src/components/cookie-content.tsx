@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { X } from "lucide-react";
+import { X, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 type CookiePreferences = {
   necessary: boolean;
@@ -113,38 +114,68 @@ export function CookieConsent() {
   };
 
   return (
-    <>
-      {/* Cookie Consent Banner */}
+    <AnimatePresence>
       {showBanner && (
-        <div className="fixed bottom-5 left-5 w-2/5 z-50 p-4 bg-background rounded-2xl shadow-lg">
-          <div className="container mx-auto max-w-4xl">
-            <div className="flex flex-col space-y-4">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-lg font-semibold">Cookie Preferences</h3>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    We use cookies to enhance your browsing experience and analyze our traffic with Google Analytics.
-                  </p>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={decline}
-                  className="h-8 w-8 p-0"
-                >
-                  <X className="h-4 w-4" />
-                </Button>
+        <motion.div
+          initial={{ opacity: 0, y: 100, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 100, scale: 0.95 }}
+          transition={{ 
+            duration: 0.4, 
+            ease: [0.25, 0.46, 0.45, 0.94],
+            type: "spring",
+            stiffness: 300,
+            damping: 30
+          }}
+          className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md mx-4"
+        >
+          <div className="bg-gray-900/95 backdrop-blur-xl border border-gray-800/50 rounded-2xl shadow-2xl shadow-black/20 p-6">
+            <div className="flex items-start space-x-4">
+              {/* Icon */}
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
+                <Shield className="w-5 h-5 text-white" />
               </div>
-              <div className="flex flex-col lg:flex-row justify-end space-2">
-                <Button variant="outline" onClick={decline}>
-                  Decline All
-                </Button>
-                <Button onClick={acceptAll}>Accept All</Button>
+              
+              {/* Content */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-white mb-2">
+                      Cookies & Privacy
+                    </h3>
+                    <p className="text-sm text-gray-300 leading-relaxed mb-4">
+                      We use only essential cookies to ensure a smooth experience on Karhuno AI. No tracking, no ads.
+                    </p>
+                  </div>
+                  <button
+                    onClick={decline}
+                    className="flex-shrink-0 ml-2 p-1 text-gray-400 hover:text-white transition-colors duration-200"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+                
+                {/* Buttons */}
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button
+                    variant="outline"
+                    onClick={decline}
+                    className="flex-1 h-10 px-4 border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white hover:border-gray-600 transition-all duration-200 rounded-xl"
+                  >
+                    Decline
+                  </Button>
+                  <Button
+                    onClick={acceptAll}
+                    className="flex-1 h-10 px-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium transition-all duration-200 rounded-xl shadow-lg hover:shadow-purple-500/25"
+                  >
+                    Accept
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
-    </>
+    </AnimatePresence>
   );
 }
