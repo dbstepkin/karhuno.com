@@ -146,6 +146,9 @@ export default function PrivacyPolicyPage() {
                   <p className="font-semibold text-purple-700">
                     Note: We do not store complete payment card details on our servers.
                   </p>
+                  <p>
+                    In accordance with GDPR and local interpretations of public data usage, some LinkedIn comment data may be restricted or limited in countries such as Germany, France, and Austria. Karhuno AI does not simulate login sessions or bypass LinkedIn's visibility controls. All data collected is publicly available and handled in compliance with international privacy standards.
+                  </p>
                 </div>
               </motion.div>
 
@@ -162,7 +165,7 @@ export default function PrivacyPolicyPage() {
                 </h2>
                 <div className={`text-gray-900 leading-relaxed space-y-4 ${montserrat.className}`}>
                   <p>
-                    In accordance with GDPR and local interpretations of public data usage, some LinkedIn comment data may be restricted or limited in countries such as Germany, France, and Austria. Karhuno AI does not simulate login sessions or bypass LinkedIn's visibility controls.
+                    In accordance with GDPR and local interpretations of public data usage, some LinkedIn comment data may be restricted or limited in countries such as Germany, France, and Austria. Karhuno AI does not simulate login sessions or bypass LinkedIn's visibility controls. All data collected is publicly available and handled in compliance with international privacy standards.
                   </p>
                   <p>
                     The availability and visibility of publicly accessible content may vary depending on national privacy laws. We are committed to complying with these regulations and adapting our platform's behavior accordingly in restricted jurisdictions.

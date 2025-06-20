@@ -115,9 +115,21 @@ export default function TermsOfServicePage() {
               transition={{ duration: 0.6 }}
               className="bg-gradient-to-r from-purple-500/15 via-blue-500/15 to-cyan-500/15 backdrop-blur-sm rounded-2xl border border-purple-200/50 p-8 shadow-lg mb-12"
             >
-              <div className={`text-gray-900 leading-relaxed ${montserrat.className}`}>
+              <div className={`text-gray-900 leading-relaxed space-y-4 ${montserrat.className}`}>
                 <p>
-                  These Terms of Service ("Terms") govern your access to and use of Karhuno AI ("the Platform"), a self-service tool developed and owned by Karhuno AI Oy. By registering an account or using any part of the Platform, you agree to be bound by these Terms.
+                  These Terms of Service ("Terms") govern your access to and use of Karhuno AI ("the Platform"), a self-service tool developed and owned by Daring Spirit Oy.
+                </p>
+                <div className="bg-white/50 rounded-lg p-4 border border-purple-200/30">
+                  <p className="font-semibold text-purple-700 mb-2">Company Information:</p>
+                  <p className="text-gray-800">
+                    Daring Spirit Oy<br />
+                    Business ID: 3461256-6<br />
+                    Hiihtomäentie 14, 00810<br />
+                    Helsinki, Finland
+                  </p>
+                </div>
+                <p>
+                  By registering an account or using any part of the Platform, you agree to be bound by these Terms.
                 </p>
               </div>
             </motion.div>
@@ -253,7 +265,7 @@ export default function TermsOfServicePage() {
                 </h2>
                 <div className={`text-gray-900 leading-relaxed space-y-4 ${montserrat.className}`}>
                   <p>
-                    All content, code, and design elements of Karhuno AI are the exclusive property of Karhuno AI Oy.
+                    All content, code, and design elements of Karhuno AI are the exclusive property of Daring Spirit Oy.
                   </p>
                   <p>
                     Users may not copy, distribute, or exploit any part of the platform without prior written consent.
