@@ -162,7 +162,10 @@ export default function PrivacyPolicyPage() {
                 </h2>
                 <div className={`text-gray-900 leading-relaxed space-y-4 ${montserrat.className}`}>
                   <p>
-                    In accordance with GDPR and local interpretations of public data usage, some LinkedIn comment data may be restricted or limited in countries such as Germany, France, and Austria. Karhuno AI does not simulate login sessions or bypass LinkedIn's visibility controls. The availability and visibility of publicly accessible content may vary depending on national privacy laws. We are committed to complying with these regulations and adapting our platform's behavior accordingly in restricted jurisdictions.
+                    In accordance with GDPR and local interpretations of public data usage, some LinkedIn comment data may be restricted or limited in countries such as Germany, France, and Austria. Karhuno AI does not simulate login sessions or bypass LinkedIn's visibility controls.
+                  </p>
+                  <p>
+                    The availability and visibility of publicly accessible content may vary depending on national privacy laws. We are committed to complying with these regulations and adapting our platform's behavior accordingly in restricted jurisdictions.
                   </p>
                 </div>
               </motion.div>

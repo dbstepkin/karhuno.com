@@ -180,9 +180,12 @@ export default function TermsOfServicePage() {
                   <p>Karhuno AI operates on a credit-based system, where:</p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Each action (e.g., profile scan, research launch, email enrichment) consumes a specific number of credits</li>
-                    <li>Credits are purchased upfront and are valid indefinitely</li>
+                    <li>Credits are purchased upfront and are valid for 12 months from the date of purchase</li>
                     <li>Credit usage is fully visible in the user dashboard</li>
                   </ul>
+                  <p className="font-semibold text-purple-700">
+                    All credits purchased on Karhuno AI are valid for 12 months from the date of purchase. After this period, any unused credits will expire and cannot be refunded or reactivated.
+                  </p>
                   <p className="font-semibold text-purple-700">
                     Note: Purchased credits are final and non-refundable.
                   </p>
