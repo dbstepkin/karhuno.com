@@ -171,7 +171,7 @@ export const Navbar: React.FC = () => {
               Log in
             </Link>
             <Link
-              href="/early-access"
+              href="https://my.karhuno.com/signup"
               className={`bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2.5 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
             >
               Free Trial
@@ -275,7 +275,7 @@ export const Navbar: React.FC = () => {
                   Log in
                 </Link>
                 <Link
-                  href="/early-access"
+                  href="https://my.karhuno.com/signup"
                   className={`block w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 text-center ${montserrat.className}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

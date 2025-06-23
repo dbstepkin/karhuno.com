@@ -60,7 +60,7 @@ export default function TutorialPage() {
                   Start Learning
                 </button>
                 <Link 
-                  href="/early-access" 
+                  href="https://my.karhuno.com/signup" 
                   className={`inline-flex items-center px-8 py-4 bg-transparent border-2 border-purple-500 text-white font-semibold rounded-xl hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-blue-500/10 transition-all duration-300 transform hover:scale-105 shadow-lg backdrop-blur-sm min-h-[56px] ${montserrat.className}`}
                 >
                   Claim 1,000 Free Credits
@@ -914,7 +914,7 @@ export default function TutorialPage() {
               Join thousands of sales professionals who have transformed their results with our platform.
             </p>
             <Link
-              href="/early-access"
+              href="https://my.karhuno.com/signup"
               className={`inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
             >
               Start Your Free Trial

@@ -188,7 +188,7 @@ export default function PricingPage() {
               </div>
 
               <button 
-                onClick={() => window.location.href = '/early-access'}
+                onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
                 className={`w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 mb-6 ${montserrat.className}`}
               >
                 Get Started
