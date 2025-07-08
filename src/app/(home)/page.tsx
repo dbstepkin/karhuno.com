@@ -94,7 +94,7 @@ export default function Home() {
               className={`flex-1 rounded-l-full px-6 py-3 text-gray-900 border border-gray-200 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent ${montserrat.className}`}
             />
             <button 
-                onClick={() => window.location.href = '/early-access'}
+                onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
               className={`bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-r-full px-6 py-3 font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
               >
                 Find
@@ -104,7 +104,7 @@ export default function Home() {
           {/* Try for free button */}
           <div className="flex flex-col items-center">
             <button 
-              onClick={() => window.location.href = '/early-access'}
+              onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
               className={`bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
             >
               Try for free
