@@ -59,14 +59,19 @@ export default function HowItWorks() {
           </span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto items-start">
-          {/* Deep Research Card */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-8 gap-y-8 md:gap-y-0 max-w-6xl mx-auto items-start">
+          {/* Corporate News Search Card */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-gradient-to-br from-white to-purple-50/50 backdrop-blur-sm rounded-2xl shadow-lg p-6 md:p-8 border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+            className="bg-gradient-to-br from-white to-purple-50/50 backdrop-blur-sm rounded-2xl shadow-lg p-6 md:p-8 border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, #f4efff 0%, #ffffff 100%)',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+              border: '1px solid rgba(255, 255, 255, 0.08)'
+            }}
           >
             <div className="flex flex-col gap-6 flex-1">
               <div className="flex items-start gap-4">
@@ -74,78 +79,104 @@ export default function HowItWorks() {
                   <FileText className="w-8 h-8 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Deep signal search</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Corporate News Search</h3>
                   <p className="text-gray-700">
-                    Discover companies with real buying signals from thousands of articles, news, tenders, and more.
+                    Find companies based on recent news, signals, and events — just type what you're looking for.
                   </p>
                 </div>
               </div>
 
-              <div className="space-y-4 min-h-[120px] flex flex-col justify-between">
+              {/* Step 1 - What kind of company */}
+              <div className="space-y-4">
                 <div className="flex gap-4">
-                  <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-sm font-bold">
+                  <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-8 md:h-8 rounded-full bg-purple-100 text-purple-700 text-base md:text-sm font-semibold">
                     1
                   </span>
-                  <p className="text-gray-800 leading-relaxed">
-                    Submit your Ideal Customer Profile (ICP) or buying signal in plain language.
-                  </p>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">What kind of company are you looking for?</h4>
+                    <p className="text-gray-600 text-sm mb-3">Specify the type of business or sector.</p>
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                      <input 
+                        type="text" 
+                        placeholder="e.g. IT companies in Europe"
+                        className="w-full bg-transparent border-none outline-none text-gray-700 placeholder-gray-400"
+                        aria-label="What kind of company are you looking for"
+                      />
+                    </div>
+                  </div>
                 </div>
+
+                {/* Step 2 - What happened */}
                 <div className="flex gap-4">
-                  <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-sm font-bold">
+                  <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-8 md:h-8 rounded-full bg-purple-100 text-purple-700 text-base md:text-sm font-semibold">
                     2
                   </span>
-                  <p className="text-gray-800 leading-relaxed">
-                    Select search period and depth — define how far back and how many articles to analyze.
-                  </p>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">What kind of news or event?</h4>
+                    <p className="text-gray-600 text-sm mb-3">Write the signal you're searching for.</p>
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 flex items-center gap-2">
+                      <input 
+                        type="text" 
+                        placeholder="e.g. raised Series A funding, new office, hiring"
+                        className="flex-1 bg-transparent border-none outline-none text-gray-700 placeholder-gray-400"
+                        aria-label="What kind of news or event"
+                      />
+                      <div className="flex items-center gap-1 text-xs text-purple-600">
+                        <span>💡</span>
+                        <span>AI refines your input automatically.</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Interactive Image Carousel for Deep Research */}
-              <div className="flex justify-center mt-6">
-                <div className="relative w-full max-w-[600px] h-[300px] rounded-xl overflow-hidden bg-white">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentImageIndex}
-                      initial={{ y: -300, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: 300, opacity: 0 }}
-                      transition={{ 
-                        duration: 0.6,
-                        ease: "easeInOut"
-                      }}
-                      className="absolute inset-0"
-                    >
-                      <Image 
-                        src={deepResearchImages[currentImageIndex].src}
-                        alt={deepResearchImages[currentImageIndex].alt}
-                        fill
-                        priority
-                        className="object-contain p-2"
+                {/* Step 3 - Where */}
+                <div className="flex gap-4">
+                  <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-8 md:h-8 rounded-full bg-purple-100 text-purple-700 text-base md:text-sm font-semibold">
+                    3
+                  </span>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Where did it happen?</h4>
+                    <p className="text-gray-600 text-sm mb-3">Optional — add countries or regions to narrow your search.</p>
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                      <input 
+                        type="text" 
+                        placeholder="e.g. Germany, Netherlands"
+                        className="w-full bg-transparent border-none outline-none text-gray-700 placeholder-gray-400"
+                        aria-label="Where did it happen"
                       />
-                    </motion.div>
-                  </AnimatePresence>
-                  
-                  {/* Navigation dots */}
-                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                    {deepResearchImages.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentImageIndex(index)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          index === currentImageIndex 
-                            ? 'bg-purple-600 scale-125' 
-                            : 'bg-purple-300 hover:bg-purple-400'
-                        }`}
-                      />
-                    ))}
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">🌍 Global</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 4 - Launch search */}
+                <div className="flex gap-4">
+                  <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-8 md:h-8 rounded-full bg-purple-100 text-purple-700 text-base md:text-sm font-semibold">
+                    4
+                  </span>
+                  <div className="flex-1">
+                    <div className="flex flex-col md:flex-row items-center gap-3 mt-6 mb-8">
+                      <button 
+                        onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
+                        className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-200 shadow-lg min-h-[48px] md:min-h-[44px] w-full md:w-auto"
+                      >
+                        Search now
+                      </button>
+                      <span className="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full flex items-center gap-1">
+                        <span>🧠</span>
+                        <span>AI-powered search</span>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-purple-50 rounded-lg p-4 mt-6">
-                <h4 className="text-purple-800 font-semibold mb-1">Outcome:</h4>
-                <p className="text-purple-700 text-sm">
-                  Get a list of companies matching your ICP, each with proof links to verified sources.
+              {/* Micro-copy */}
+              <div className="mt-auto pt-4">
+                <p className="text-[#C7BFFF] text-sm italic pl-4">
+                  "You can describe your ICP in natural language — no setup required."
                 </p>
               </div>
             </div>
@@ -157,7 +188,12 @@ export default function HowItWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-gradient-to-br from-white to-purple-50/50 backdrop-blur-sm rounded-2xl shadow-lg p-6 md:p-8 border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+            className="bg-gradient-to-br from-white to-purple-50/50 backdrop-blur-sm rounded-2xl shadow-lg p-6 md:p-8 border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, #f4efff 0%, #ffffff 100%)',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+              border: '1px solid rgba(255, 255, 255, 0.08)'
+            }}
           >
             <div className="flex flex-col gap-6 flex-1">
               <div className="flex items-start gap-4">
@@ -167,76 +203,95 @@ export default function HowItWorks() {
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">LinkedIn Tracker</h3>
                   <p className="text-gray-700">
-                    Track live LinkedIn posts and comments from key decision-makers, applying unlimited filters.
+                    Find contacts based on LinkedIn activity — posts, keywords, and commenters.
                   </p>
                 </div>
               </div>
 
-              <div className="space-y-4 min-h-[120px] flex flex-col justify-between">
+              {/* Step 1 - What kind of post */}
+              <div className="space-y-4">
                 <div className="flex gap-4">
-                  <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-sm font-bold">
+                  <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-8 md:h-8 rounded-full bg-purple-100 text-purple-700 text-base md:text-sm font-semibold">
                     1
                   </span>
-                  <p className="text-gray-800 leading-relaxed">
-                    Enter keywords describing topics or roles you want to track.
-                  </p>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">What kind of post are you tracking?</h4>
+                    <p className="text-gray-600 text-sm mb-3">Define the topic or keywords used in LinkedIn posts.</p>
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                      <input 
+                        type="text" 
+                        placeholder="e.g. hiring SDRs in the US"
+                        className="w-full bg-transparent border-none outline-none text-gray-700 placeholder-gray-400"
+                        aria-label="What kind of post are you tracking"
+                      />
+                    </div>
+                  </div>
                 </div>
+
+                {/* Step 2 - Who posted or commented */}
                 <div className="flex gap-4">
-                  <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-sm font-bold">
+                  <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-8 md:h-8 rounded-full bg-purple-100 text-purple-700 text-base md:text-sm font-semibold">
                     2
                   </span>
-                  <p className="text-gray-800 leading-relaxed">
-                    Apply precise filters by role, company attributes, and post content to narrow results.
-                  </p>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Who posted or commented?</h4>
+                    <p className="text-gray-600 text-sm mb-3">Use filters to include or exclude job titles, seniority, or industry.</p>
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                      <input 
+                        type="text" 
+                        placeholder="e.g. VP of Sales, exclude recruiters"
+                        className="w-full bg-transparent border-none outline-none text-gray-700 placeholder-gray-400"
+                        aria-label="Who posted or commented"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Interactive Image Carousel for LinkedIn Tracker */}
-              <div className="flex justify-center mt-6">
-                <div className="relative w-full max-w-[600px] h-[300px] rounded-xl overflow-hidden bg-white">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentLinkedInImageIndex}
-                      initial={{ y: -300, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: 300, opacity: 0 }}
-                      transition={{ 
-                        duration: 0.6,
-                        ease: "easeInOut"
-                      }}
-                      className="absolute inset-0"
-                    >
-                      <Image 
-                        src={linkedInTrackerImages[currentLinkedInImageIndex].src}
-                        alt={linkedInTrackerImages[currentLinkedInImageIndex].alt}
-                        fill
-                        priority
-                        className="object-contain p-2"
+                {/* Step 3 - Which company or sector */}
+                <div className="flex gap-4">
+                  <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-8 md:h-8 rounded-full bg-purple-100 text-purple-700 text-base md:text-sm font-semibold">
+                    3
+                  </span>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Which company or sector? (Optional)</h4>
+                    <p className="text-gray-600 text-sm mb-3">Limit to certain industries or companies.</p>
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                      <input 
+                        type="text" 
+                        placeholder="e.g. SaaS companies, Mid-market"
+                        className="w-full bg-transparent border-none outline-none text-gray-700 placeholder-gray-400"
+                        aria-label="Which company or sector"
                       />
-                    </motion.div>
-                  </AnimatePresence>
-                  
-                  {/* Navigation dots for LinkedIn Tracker */}
-                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                    {linkedInTrackerImages.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentLinkedInImageIndex(index)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          index === currentLinkedInImageIndex 
-                            ? 'bg-purple-600 scale-125' 
-                            : 'bg-purple-300 hover:bg-purple-400'
-                        }`}
-                      />
-                    ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 4 - Launch search */}
+                <div className="flex gap-4">
+                  <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-8 md:h-8 rounded-full bg-purple-100 text-purple-700 text-base md:text-sm font-semibold">
+                    4
+                  </span>
+                  <div className="flex-1">
+                    <div className="flex flex-col md:flex-row items-center gap-3 mt-6 mb-8">
+                      <button 
+                        onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
+                        className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-200 shadow-lg min-h-[48px] md:min-h-[44px] w-full md:w-auto"
+                      >
+                        Search now
+                      </button>
+                      <span className="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full flex items-center gap-1">
+                        <span>🧠</span>
+                        <span>AI-enhanced filtering</span>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-purple-50 rounded-lg p-4 mt-6">
-                <h4 className="text-purple-800 font-semibold mb-1">Outcome:</h4>
-                <p className="text-purple-700 text-sm">
-                  Receive verified contacts linked to live posts and comments, with full post context.
+              {/* Micro-copy */}
+              <div className="mt-auto pt-4">
+                <p className="text-[#C7BFFF] text-sm italic pl-4">
+                  "Karhuno finds LinkedIn signals daily — so you don't have to scroll for hours."
                 </p>
               </div>
             </div>

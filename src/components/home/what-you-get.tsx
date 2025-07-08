@@ -17,7 +17,7 @@ const tabs = [
   {
     id: "scan",
     title: "Scan",
-    description: "Our AI continuously scans thousands of online sources — news, social media, company reports, blogs, forums, and more — to detect real-time market signals relevant to your business.",
+    description: "Discover signals from the open web. Karhuno scans publicly available content — from press releases and articles to job boards and blog mentions — helping you find signals that matter without relying on scraping or private data.",
     image: "/images/scan-icons.png"
   },
   {
@@ -44,55 +44,55 @@ interface Logo {
   bgGradient: string;
 }
 
-// Array of logos with their information
+// Array of public source icons with their information
 const logos: Logo[] = [
   {
-    src: "/images/logos/g2 logo vecto.png",
-    alt: "G2 Logo",
-    width: 80,
-    height: 80,
-    borderColor: "border-orange-500/30",
-    bgGradient: "from-orange-500/10 to-orange-600/5"
-  },
-  {
-    src: "/images/logos/crunch base.png",
-    alt: "Crunchbase Logo",
+    src: "🌐",
+    alt: "News & Articles",
     width: 80,
     height: 80,
     borderColor: "border-blue-500/30",
     bgGradient: "from-blue-500/10 to-blue-600/5"
   },
   {
-    src: "/images/logos/linkedin logo.png",
-    alt: "LinkedIn Logo",
+    src: "📃",
+    alt: "Press Releases",
     width: 80,
     height: 80,
-    borderColor: "border-sky-500/30",
-    bgGradient: "from-sky-500/10 to-sky-600/5"
+    borderColor: "border-purple-500/30",
+    bgGradient: "from-purple-500/10 to-purple-600/5"
   },
   {
-    src: "/images/logos/reddit logo.webp.png",
-    alt: "Reddit Logo",
-    width: 80,
-    height: 80,
-    borderColor: "border-orange-400/30",
-    bgGradient: "from-orange-400/10 to-orange-500/5"
-  },
-  {
-    src: "/images/logos/meta logo.png",
-    alt: "Meta Logo",
-    width: 80,
-    height: 80,
-    borderColor: "border-blue-600/30",
-    bgGradient: "from-blue-600/10 to-blue-700/5"
-  },
-  {
-    src: "/images/logos/web logo.png",
-    alt: "Web Logo",
+    src: "💼",
+    alt: "Job Listings",
     width: 80,
     height: 80,
     borderColor: "border-green-500/30",
     bgGradient: "from-green-500/10 to-green-600/5"
+  },
+  {
+    src: "📊",
+    alt: "Company Reports",
+    width: 80,
+    height: 80,
+    borderColor: "border-orange-500/30",
+    bgGradient: "from-orange-500/10 to-orange-600/5"
+  },
+  {
+    src: "📝",
+    alt: "Blogs",
+    width: 80,
+    height: 80,
+    borderColor: "border-pink-500/30",
+    bgGradient: "from-pink-500/10 to-pink-600/5"
+  },
+  {
+    src: "🧠",
+    alt: "Thought Leadership",
+    width: 80,
+    height: 80,
+    borderColor: "border-indigo-500/30",
+    bgGradient: "from-indigo-500/10 to-indigo-600/5"
   }
 ];
 
@@ -230,20 +230,15 @@ const ScrollingLogos = () => {
     <div className="relative w-full h-full overflow-hidden rounded-xl flex items-center justify-center">
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="flex gap-12 animate-scroll-horizontal whitespace-nowrap py-12">
-          {/* First set of logos */}
+          {/* First set of icons */}
           <div className="flex gap-12 min-w-max">
             {logos.map((logo, index) => (
               <div 
                 key={index}
                 className={`w-28 h-28 rounded-2xl flex items-center justify-center bg-gradient-to-br ${logo.bgGradient} ${logo.borderColor} border-2 backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-lg`}
               >
-                <div className="w-20 h-20 relative">
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    fill
-                    className="object-contain p-2 transition-transform duration-300"
-                  />
+                <div className="w-20 h-20 flex items-center justify-center text-4xl">
+                  {logo.src}
                 </div>
               </div>
             ))}
@@ -255,13 +250,8 @@ const ScrollingLogos = () => {
                 key={`duplicate-${index}`}
                 className={`w-28 h-28 rounded-2xl flex items-center justify-center bg-gradient-to-br ${logo.bgGradient} ${logo.borderColor} border-2 backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-lg`}
               >
-                <div className="w-20 h-20 relative">
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    fill
-                    className="object-contain p-2 transition-transform duration-300"
-                  />
+                <div className="w-20 h-20 flex items-center justify-center text-4xl">
+                  {logo.src}
                 </div>
               </div>
             ))}
@@ -273,13 +263,8 @@ const ScrollingLogos = () => {
                 key={`triple-${index}`}
                 className={`w-28 h-28 rounded-2xl flex items-center justify-center bg-gradient-to-br ${logo.bgGradient} ${logo.borderColor} border-2 backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-lg`}
               >
-                <div className="w-20 h-20 relative">
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    fill
-                    className="object-contain p-2 transition-transform duration-300"
-                  />
+                <div className="w-20 h-20 flex items-center justify-center text-4xl">
+                  {logo.src}
                 </div>
               </div>
             ))}
@@ -768,7 +753,7 @@ export default function WhatYouGet() {
                     className={`text-2xl md:text-3xl font-bold mb-6 ${roboto.className}`}
                   >
                     <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-                      Continuous discovery of high-intent signals
+                      Discover signals from the open web
                     </span>
                   </motion.h3>
                 )}

@@ -123,27 +123,27 @@ export default function Home() {
           </h2>
           
           {/* Single column layout */}
-          <div className="space-y-12">
+          <div className="space-y-16">
             {/* LinkedIn Block */}
             <div className="flex flex-col lg:flex-row gap-8 items-stretch">
               {/* Chart 1 */}
               <div className="flex-1">
-                <div className="w-full h-48 lg:h-64 bg-gray-100 border-2 border-purple-300 rounded-2xl overflow-hidden">
+                <div className="w-full h-64 lg:h-80 bg-gray-100 border-2 border-purple-300 rounded-2xl overflow-hidden">
                   <img 
                     src="/heyreachchart.jpeg" 
                     alt="Heyreach Chart" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
               </div>
               {/* LinkedIn Content */}
               <div className="flex-1 flex flex-col justify-start">
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-black">
+                <h3 className="text-xl md:text-2xl font-bold mb-6 text-black">
                   Listen to your prospects on LinkedIn
                 </h3>
-                <div className="space-y-3 mb-4">
+                <div className="space-y-4 mb-6">
                   <div className="flex items-center">
-                    <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#502AFB] to-[#6B46C1] bg-clip-text text-transparent mr-2">
+                    <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#502AFB] to-[#6B46C1] bg-clip-text text-transparent mr-3">
                       61.7%
                     </span>
                     <span className="text-base md:text-lg text-black">
@@ -151,7 +151,7 @@ export default function Home() {
                     </span>
                   </div>
                   <div className="flex items-center">
-                    <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#502AFB] to-[#6B46C1] bg-clip-text text-transparent mr-2">
+                    <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#502AFB] to-[#6B46C1] bg-clip-text text-transparent mr-3">
                       5×
                     </span>
                     <span className="text-base md:text-lg text-black">
@@ -159,13 +159,14 @@ export default function Home() {
                     </span>
                   </div>
                 </div>
-                {/* Campaign note */}
-                <div className="flex items-center justify-end mt-auto">
-                  <span className="text-xs text-gray-500 mr-1">🤝</span>
-                  <div className="w-16 h-5 bg-gray-100 rounded border border-gray-200 flex items-center justify-center mr-2">
-                    <span className="text-xs text-gray-600 font-medium">Heyreach</span>
-                  </div>
-                  <span className="text-xs text-gray-500">Campaign launched using Heyreach</span>
+                {/* Powered by section */}
+                <div className="flex flex-col items-center mt-auto pt-3">
+                  <span className="text-base text-gray-500 mb-3">Powered by</span>
+                  <img 
+                    src="/heyreach logo - Modificata.png" 
+                    alt="Heyreach Logo" 
+                    className="h-16 w-auto opacity-95"
+                  />
                 </div>
               </div>
             </div>
@@ -174,12 +175,12 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row gap-8 items-stretch">
               {/* Cold Email Content */}
               <div className="flex-1 flex flex-col justify-start">
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-black">
+                <h3 className="text-xl md:text-2xl font-bold mb-6 text-black">
                   Listen to buying signals from real companies
                 </h3>
-                <div className="space-y-3 mb-4">
+                <div className="space-y-4 mb-6">
                   <div className="flex items-center">
-                    <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#502AFB] to-[#6B46C1] bg-clip-text text-transparent mr-2">
+                    <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#502AFB] to-[#6B46C1] bg-clip-text text-transparent mr-3">
                       24.36%
                     </span>
                     <span className="text-base md:text-lg text-black">
@@ -187,7 +188,7 @@ export default function Home() {
                     </span>
                   </div>
                   <div className="flex items-center">
-                    <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#502AFB] to-[#6B46C1] bg-clip-text text-transparent mr-2">
+                    <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#502AFB] to-[#6B46C1] bg-clip-text text-transparent mr-3">
                       10h
                     </span>
                     <span className="text-base md:text-lg text-black">
@@ -195,20 +196,24 @@ export default function Home() {
                     </span>
                   </div>
                 </div>
-                {/* Campaign note */}
-                <div className="flex items-center justify-end mt-auto">
-                  <span className="text-xs text-gray-500 mr-1">🤝</span>
-                  <div className="w-16 h-5 bg-gray-100 rounded border border-gray-200 flex items-center justify-center mr-2">
-                    <span className="text-xs text-gray-600 font-medium">Success AI</span>
-                  </div>
-                  <span className="text-xs text-gray-500">Campaign launched using Success AI</span>
+                {/* Powered by section */}
+                <div className="flex flex-col items-center mt-auto pt-3">
+                  <span className="text-base text-gray-500 mb-3">Powered by</span>
+                  <img 
+                    src="/success ai logo  - Modificata.png" 
+                    alt="Success AI Logo" 
+                    className="h-16 w-auto opacity-95"
+                  />
                 </div>
               </div>
               {/* Chart 2 */}
               <div className="flex-1">
-                <div className="w-full h-48 lg:h-64 bg-gray-100 border-2 border-dashed border-blue-300 rounded-2xl flex items-center justify-center text-gray-400 text-lg">
-                  {/* TODO: Insert Chart 2 here */}
-                  Chart 2
+                <div className="w-full h-64 lg:h-80 bg-white border-2 border-blue-300 rounded-2xl overflow-hidden flex items-center justify-center p-4">
+                  <img 
+                    src="/graficosuccessai.png" 
+                    alt="Success AI Chart" 
+                    className="w-full h-full object-contain max-w-[90%] max-h-[90%]"
+                  />
                 </div>
               </div>
             </div>
@@ -228,6 +233,9 @@ export default function Home() {
             >
               Start Free Trial
             </button>
+            <p className="text-sm text-[#71717A] mt-3 text-center">
+              No credit card required – cancel anytime
+            </p>
           </div>
         </div>
       </section>
