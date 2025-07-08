@@ -367,11 +367,14 @@ export default function Automation() {
               transition={{ duration: 0.5, delay: 0.9 }}
               className="text-center pt-8 flex-shrink-0"
             >
-              <button className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25 bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 ${montserrat.className}`}
-              >
-                Try Signal Search
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="flex flex-col items-center">
+                <button className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25 bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 ${montserrat.className}`}
+                >
+                  Try Signal Search
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <span className="text-xs text-gray-400 mt-2">14-day free access. Cancel anytime, no card upfront.</span>
+              </div>
             </motion.div>
           </div>
 
@@ -569,11 +572,14 @@ export default function Automation() {
               transition={{ duration: 0.5, delay: 0.9 }}
               className="text-center pt-8 flex-shrink-0"
             >
-              <button className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25 bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 ${montserrat.className}`}
-              >
-                Try LinkedIn Tracker
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="flex flex-col items-center">
+                <button className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25 bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 ${montserrat.className}`}
+                >
+                  Try LinkedIn Tracker
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <span className="text-xs text-gray-400 mt-2">Test the platform first — no billing info asked.</span>
+              </div>
             </motion.div>
           </div>
         </div>
