@@ -52,23 +52,23 @@ export default function HowItWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className={`text-4xl md:text-5xl font-bold text-center mb-12 ${roboto.className}`}
+          className={`text-4xl md:text-6xl font-bold text-center mb-16 ${roboto.className}`}
         >
           <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-            How It Works
+            How it works
           </span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-8 gap-y-8 md:gap-y-0 max-w-6xl mx-auto items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-8 gap-y-8 md:gap-y-0 max-w-6xl mx-auto items-stretch">
           {/* Corporate News Search Card */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-gradient-to-br from-white to-purple-50/50 backdrop-blur-sm rounded-2xl shadow-lg p-6 md:p-8 border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative overflow-hidden"
+            className="bg-gradient-to-br from-white to-blue-50/50 backdrop-blur-sm rounded-2xl shadow-lg p-6 md:p-8 border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative overflow-hidden"
             style={{
-              background: 'linear-gradient(135deg, #f4efff 0%, #ffffff 100%)',
+              background: 'linear-gradient(135deg, #eff6ff 0%, #ffffff 100%)',
               boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
               border: '1px solid rgba(255, 255, 255, 0.08)'
             }}
@@ -79,7 +79,7 @@ export default function HowItWorks() {
                   <FileText className="w-8 h-8 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Corporate News Search</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Corporate news search</h3>
                   <p className="text-gray-700">
                     Find companies based on recent news, signals, and events — just type what you're looking for.
                   </p>
@@ -87,7 +87,7 @@ export default function HowItWorks() {
               </div>
 
               {/* Step 1 - What kind of company */}
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="flex gap-4">
                   <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-8 md:h-8 rounded-full bg-purple-100 text-purple-700 text-base md:text-sm font-semibold">
                     1
@@ -98,7 +98,7 @@ export default function HowItWorks() {
                     <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
                       <input 
                         type="text" 
-                        placeholder="e.g. IT companies in Europe"
+                        placeholder="e.g. SaaS companies, Mid-market, Europe"
                         className="w-full bg-transparent border-none outline-none text-gray-700 placeholder-gray-400"
                         aria-label="What kind of company are you looking for"
                       />
@@ -114,17 +114,13 @@ export default function HowItWorks() {
                   <div className="flex-1">
                     <h4 className="text-lg font-semibold text-gray-900 mb-1">What kind of news or event?</h4>
                     <p className="text-gray-600 text-sm mb-3">Write the signal you're searching for.</p>
-                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 flex items-center gap-2">
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
                       <input 
                         type="text" 
-                        placeholder="e.g. raised Series A funding, new office, hiring"
-                        className="flex-1 bg-transparent border-none outline-none text-gray-700 placeholder-gray-400"
+                        placeholder="e.g. hiring, funding, layoffs"
+                        className="w-full bg-transparent border-none outline-none text-gray-700 placeholder-gray-400"
                         aria-label="What kind of news or event"
                       />
-                      <div className="flex items-center gap-1 text-xs text-purple-600">
-                        <span>💡</span>
-                        <span>AI refines your input automatically.</span>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -140,13 +136,10 @@ export default function HowItWorks() {
                     <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
                       <input 
                         type="text" 
-                        placeholder="e.g. Germany, Netherlands"
+                        placeholder="e.g. Germany, Netherlands, UK"
                         className="w-full bg-transparent border-none outline-none text-gray-700 placeholder-gray-400"
                         aria-label="Where did it happen"
                       />
-                      <div className="flex items-center gap-2 mt-2">
-                        <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">🌍 Global</span>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -175,7 +168,7 @@ export default function HowItWorks() {
 
               {/* Micro-copy */}
               <div className="mt-auto pt-4">
-                <p className="text-[#C7BFFF] text-sm italic pl-4">
+                <p className="text-[#C7BFFF] text-sm pl-4">
                   "You can describe your ICP in natural language — no setup required."
                 </p>
               </div>
@@ -190,7 +183,7 @@ export default function HowItWorks() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="bg-gradient-to-br from-white to-purple-50/50 backdrop-blur-sm rounded-2xl shadow-lg p-6 md:p-8 border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative overflow-hidden"
             style={{
-              background: 'linear-gradient(135deg, #f4efff 0%, #ffffff 100%)',
+              background: 'linear-gradient(135deg, #faf5ff 0%, #ffffff 100%)',
               boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
               border: '1px solid rgba(255, 255, 255, 0.08)'
             }}
@@ -201,15 +194,15 @@ export default function HowItWorks() {
                   <Linkedin className="w-8 h-8 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">LinkedIn Tracker</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">LinkedIn hot leads finder</h3>
                   <p className="text-gray-700">
-                    Find contacts based on LinkedIn activity — posts, keywords, and commenters.
+                    Find people who talk about topics you care about — and filter them however you like.
                   </p>
                 </div>
               </div>
 
               {/* Step 1 - What kind of post */}
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="flex gap-4">
                   <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-8 md:h-8 rounded-full bg-purple-100 text-purple-700 text-base md:text-sm font-semibold">
                     1
@@ -220,7 +213,7 @@ export default function HowItWorks() {
                     <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
                       <input 
                         type="text" 
-                        placeholder="e.g. hiring SDRs in the US"
+                        placeholder="e.g. hiring, funding, layoffs"
                         className="w-full bg-transparent border-none outline-none text-gray-700 placeholder-gray-400"
                         aria-label="What kind of post are you tracking"
                       />
@@ -235,7 +228,7 @@ export default function HowItWorks() {
                   </span>
                   <div className="flex-1">
                     <h4 className="text-lg font-semibold text-gray-900 mb-1">Who posted or commented?</h4>
-                    <p className="text-gray-600 text-sm mb-3">Use filters to include or exclude job titles, seniority, or industry.</p>
+                    <p className="text-gray-600 text-sm mb-3">Filter by roles, seniority, or industry — unlimited.</p>
                     <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
                       <input 
                         type="text" 
@@ -290,7 +283,7 @@ export default function HowItWorks() {
 
               {/* Micro-copy */}
               <div className="mt-auto pt-4">
-                <p className="text-[#C7BFFF] text-sm italic pl-4">
+                <p className="text-[#C7BFFF] text-sm pl-4">
                   "Karhuno finds LinkedIn signals daily — so you don't have to scroll for hours."
                 </p>
               </div>

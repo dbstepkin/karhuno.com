@@ -109,111 +109,103 @@ export default function Home() {
             >
               Try for free
             </button>
-            <span className="text-xs text-gray-400 mt-2">Start your free trial — no payment needed.</span>
+            <span className="text-xs text-gray-400 mt-2">Start your free trial — no credit card needed.</span>
           </div>
         </div>
       </header>
 
       {/* Real results from real outreach section */}
-      <section className="w-full bg-white py-20">
+      <section className="w-full bg-gradient-to-b from-gray-50 to-white py-20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl md:text-6xl font-bold text-center mb-16">
             <span className="text-black">Real results from real </span>
             <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">outreach</span>
           </h2>
           
-          {/* Single column layout */}
-          <div className="space-y-16">
-            {/* LinkedIn Block */}
-            <div className="flex flex-col lg:flex-row gap-8 items-stretch">
-              {/* Chart 1 */}
-              <div className="flex-1">
-                <div className="w-full h-64 lg:h-80 bg-gray-100 border-2 border-purple-300 rounded-2xl overflow-hidden">
+          {/* Results Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* LinkedIn Results Card */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center mr-4">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                    <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-black">
+                  LinkedIn Outreach
+                </h3>
+              </div>
+              
+              <p className="text-gray-600 mb-6">Listen to your prospects on LinkedIn</p>
+              
+              {/* Chart */}
+              <div className="mb-6">
+                <div className="w-full h-48 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl overflow-hidden border border-purple-200">
                   <img 
                     src="/heyreachchart.jpeg" 
-                    alt="Heyreach Chart" 
-                    className="w-full h-full object-contain"
+                    alt="LinkedIn Outreach Results" 
+                    className="w-full h-full object-contain p-2"
                   />
                 </div>
               </div>
-              {/* LinkedIn Content */}
-              <div className="flex-1 flex flex-col justify-start">
-                <h3 className="text-xl md:text-2xl font-bold mb-6 text-black">
-                  Listen to your prospects on LinkedIn
-                </h3>
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center">
-                    <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#502AFB] to-[#6B46C1] bg-clip-text text-transparent mr-3">
-                      61.7%
-                    </span>
-                    <span className="text-base md:text-lg text-black">
-                      reply rate on LinkedIn
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#502AFB] to-[#6B46C1] bg-clip-text text-transparent mr-3">
-                      5×
-                    </span>
-                    <span className="text-base md:text-lg text-black">
-                      faster to book qualified meetings
-                    </span>
-                  </div>
+              
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl">
+                  <span className="text-lg text-gray-700">Reply rate</span>
+                  <span className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                    61.7%
+                  </span>
                 </div>
-                {/* Powered by section */}
-                <div className="flex flex-col items-center mt-auto pt-3">
-                  <span className="text-base text-gray-500 mb-3">Powered by</span>
-                  <img 
-                    src="/heyreach logo - Modificata.png" 
-                    alt="Heyreach Logo" 
-                    className="h-16 w-auto opacity-95"
-                  />
+                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl">
+                  <span className="text-lg text-gray-700">Meeting booking speed</span>
+                  <span className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                    5× faster
+                  </span>
                 </div>
               </div>
             </div>
 
-            {/* Cold Email Block */}
-            <div className="flex flex-col lg:flex-row gap-8 items-stretch">
-              {/* Cold Email Content */}
-              <div className="flex-1 flex flex-col justify-start">
-                <h3 className="text-xl md:text-2xl font-bold mb-6 text-black">
-                  Listen to buying signals from real companies
-                </h3>
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center">
-                    <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#502AFB] to-[#6B46C1] bg-clip-text text-transparent mr-3">
-                      24.36%
-                    </span>
-                    <span className="text-base md:text-lg text-black">
-                      reply rate on cold emails
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#502AFB] to-[#6B46C1] bg-clip-text text-transparent mr-3">
-                      10h
-                    </span>
-                    <span className="text-base md:text-lg text-black">
-                      saved weekly by automating research & prospecting
-                    </span>
-                  </div>
+            {/* Cold Email Results Card */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mr-4">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                  </svg>
                 </div>
-                {/* Powered by section */}
-                <div className="flex flex-col items-center mt-auto pt-3">
-                  <span className="text-base text-gray-500 mb-3">Powered by</span>
+                <h3 className="text-xl md:text-2xl font-bold text-black">
+                  Cold Email Campaigns
+                </h3>
+              </div>
+              
+              <p className="text-gray-600 mb-6">Listen to buying signals from real companies</p>
+              
+              {/* Chart */}
+              <div className="mb-6">
+                <div className="w-full h-48 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl overflow-hidden border border-blue-200">
                   <img 
-                    src="/success ai logo  - Modificata.png" 
-                    alt="Success AI Logo" 
-                    className="h-16 w-auto opacity-95"
+                    src="/graficosuccessai.png" 
+                    alt="Cold Email Results" 
+                    className="w-full h-full object-contain p-2"
                   />
                 </div>
               </div>
-              {/* Chart 2 */}
-              <div className="flex-1">
-                <div className="w-full h-64 lg:h-80 bg-white border-2 border-blue-300 rounded-2xl overflow-hidden flex items-center justify-center p-4">
-                  <img 
-                    src="/graficosuccessai.png" 
-                    alt="Success AI Chart" 
-                    className="w-full h-full object-contain max-w-[90%] max-h-[90%]"
-                  />
+              
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
+                  <span className="text-lg text-gray-700">Reply rate</span>
+                  <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    24.36%
+                  </span>
+                </div>
+                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
+                  <span className="text-lg text-gray-700">Time saved weekly</span>
+                  <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    10h
+                  </span>
                 </div>
               </div>
             </div>
@@ -234,7 +226,7 @@ export default function Home() {
               Start Free Trial
             </button>
             <p className="text-sm text-[#71717A] mt-3 text-center">
-              No credit card required – cancel anytime
+              No credit card required
             </p>
           </div>
         </div>

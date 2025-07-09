@@ -23,7 +23,7 @@ const tabs = [
   {
     id: "identify",
     title: "Identify",
-    description: "Using advanced filters, you can precisely define your Ideal Customer Profile (ICP) or buying signal in plain language, specifying industries, geographies, roles, and keywords.",
+    description: "Using advanced filters, you can describe the buying signal or news you're looking for in plain language — specifying industries, geographies, roles, and keywords.",
     image: "/images/sales-pipeline.png"
   },
   {
@@ -665,7 +665,28 @@ const IdentifyProcess = () => {
 };
 
 export default function WhatYouGet() {
-  const [activeTab, setActiveTab] = useState("identify");
+  const [activeTab, setActiveTab] = useState("scan");
+  const [userInteracted, setUserInteracted] = useState(false);
+
+  // Auto-switching between tabs (only if user hasn't interacted)
+  useEffect(() => {
+    if (userInteracted) return; // Stop auto-switching if user clicked
+
+    const interval = setInterval(() => {
+      setActiveTab((current) => {
+        if (current === "scan") return "identify";
+        if (current === "identify") return "act";
+        return "scan";
+      });
+    }, 8000); // Switch every 8 seconds (slower)
+
+    return () => clearInterval(interval);
+  }, [userInteracted]);
+
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId);
+    setUserInteracted(true); // Stop auto-switching when user clicks
+  };
 
   return (
     <section className="min-h-screen bg-[#0f1117] text-white flex flex-col items-center justify-center py-20 px-4">
@@ -704,7 +725,7 @@ export default function WhatYouGet() {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabClick(tab.id)}
                 className={`
                   px-8 py-3 text-base font-medium rounded-full transition-all duration-200 ${montserrat.className}
                   ${activeTab === tab.id 
@@ -764,7 +785,7 @@ export default function WhatYouGet() {
                     className={`text-2xl md:text-3xl font-bold mb-6 tracking-tight ${roboto.className}`}
                   >
                     <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-                      Turn signals into sales with proof-backed contacts
+                      Every signal comes with context, source, and verified contacts.
                     </span>
                   </motion.h3>
                 )}

@@ -15,46 +15,33 @@ interface PricingPackage {
   pricePerCredit: number;
   features: Feature[];
   isPopular: boolean;
+  isFree?: boolean;
 }
 
 const pricingPackages: PricingPackage[] = [
+  {
+    price: 0,
+    credits: 1000,
+    pricePerCredit: 0.0000,
+    features: [
+      { text: "Scan 1,000 LinkedIn profiles (1 credit = 1 profile)" },
+      { text: "Launch 5 Deep Research scans (2,500+ articles each)" },
+      { text: "Or run 10 Light Research scans (500+ articles each)" },
+      { text: "Enrich up to 200 verified emails (5 credits per email)" },
+      { text: "*Valid for new users only*" },
+    ],
+    isPopular: false,
+    isFree: true,
+  },
   {
     price: 20,
     credits: 2000,
     pricePerCredit: 0.0100,
     features: [
-      {
-        text: "Scan 2,000 LinkedIn profiles (1 credit = 1 profile)",
-      },
-      {
-        text: "Launch 10 Deep Research scans (2,500+ articles each)",
-      },
-      {
-        text: "Or run 20 Light Research scans (500+ articles each)",
-      },
-      {
-        text: "Enrich up to 400 verified emails (5 credits per email)",
-      },
-    ],
-    isPopular: false,
-  },
-  {
-    price: 29,
-    credits: 3000,
-    pricePerCredit: 0.0097,
-    features: [
-      {
-        text: "Scan 3,000 LinkedIn profiles (1 credit = 1 profile)",
-      },
-      {
-        text: "Launch 15 Deep Research scans (2,500+ articles each)",
-      },
-      {
-        text: "Or run 30 Light Research scans (500+ articles each)",
-      },
-      {
-        text: "Enrich up to 600 verified emails (5 credits per email)",
-      },
+      { text: "Scan 2,000 LinkedIn profiles (1 credit = 1 profile)" },
+      { text: "Launch 10 Deep Research scans (2,500+ articles each)" },
+      { text: "Or run 20 Light Research scans (500+ articles each)" },
+      { text: "Enrich up to 400 verified emails (5 credits per email)" },
     ],
     isPopular: false,
   },
@@ -63,18 +50,10 @@ const pricingPackages: PricingPackage[] = [
     credits: 5000,
     pricePerCredit: 0.0090,
     features: [
-      {
-        text: "Scan 5,000 LinkedIn profiles (1 credit = 1 profile)",
-      },
-      {
-        text: "Launch 25 Deep Research scans (2,500+ articles each)",
-      },
-      {
-        text: "Or run 50 Light Research scans (500+ articles each)",
-      },
-      {
-        text: "Enrich up to 1,000 verified emails (5 credits per email)",
-      },
+      { text: "Scan 5,000 LinkedIn profiles (1 credit = 1 profile)" },
+      { text: "Launch 25 Deep Research scans (2,500+ articles each)" },
+      { text: "Or run 50 Light Research scans (500+ articles each)" },
+      { text: "Enrich up to 1,000 verified emails (5 credits per email)" },
     ],
     isPopular: true,
   },
@@ -83,18 +62,10 @@ const pricingPackages: PricingPackage[] = [
     credits: 10000,
     pricePerCredit: 0.0080,
     features: [
-      {
-        text: "Scan 10,000 LinkedIn profiles (1 credit = 1 profile)",
-      },
-      {
-        text: "Launch 50 Deep Research scans (2,500+ articles each)",
-      },
-      {
-        text: "Or run 100 Light Research scans (500+ articles each)",
-      },
-      {
-        text: "Enrich up to 2,000 verified emails (5 credits per email)",
-      },
+      { text: "Scan 10,000 LinkedIn profiles (1 credit = 1 profile)" },
+      { text: "Launch 50 Deep Research scans (2,500+ articles each)" },
+      { text: "Or run 100 Light Research scans (500+ articles each)" },
+      { text: "Enrich up to 2,000 verified emails (5 credits per email)" },
     ],
     isPopular: false,
   },
@@ -161,9 +132,18 @@ export default function PricingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`relative flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-xl transition-all duration-300 hover:scale-[1.03] ${
-                pkg.isPopular ? "ring-2 ring-purple-500" : ""
+                pkg.isPopular ? "ring-2 ring-purple-500" : pkg.isFree ? "shadow-lg border border-purple-200" : ""
               }`}
             >
+              {/* Free Trial Label */}
+              {pkg.isFree && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span className="bg-gradient-to-r from-purple-400 to-blue-400 text-white text-sm font-semibold px-4 py-1 rounded-full shadow font-montserrat">
+                    Free Trial
+                  </span>
+                </div>
+              )}
+              {/* Most Popular Label */}
               {pkg.isPopular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                   <span className="bg-gradient-to-r from-purple-600 to-purple-700 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-lg font-montserrat">
@@ -171,29 +151,25 @@ export default function PricingPage() {
                   </span>
                 </div>
               )}
-
               <div className="mb-6">
-                <span className="text-5xl font-bold text-purple-600 font-roboto">
+                <span className={`text-5xl font-bold font-roboto ${pkg.isFree ? "text-blue-500" : "text-purple-600"}`}>
                   €{pkg.price}
                 </span>
               </div>
-
               <div className="mb-6 text-center">
-                <p className="text-2xl font-semibold text-purple-900 font-roboto mb-1">
+                <p className={`text-2xl font-semibold font-roboto mb-1 ${pkg.isFree ? "text-blue-900" : "text-purple-900"}`}>
                   {pkg.credits.toLocaleString()} credits
                 </p>
                 <p className="text-sm text-gray-500 font-montserrat">
                   €{pkg.pricePerCredit.toFixed(4)} per credit
                 </p>
               </div>
-
               <button 
                 onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
                 className={`w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 mb-6 ${montserrat.className}`}
               >
                 Get Started
               </button>
-
               <div className="w-full">
                 <h4 className="text-sm font-semibold text-purple-900 font-montserrat mb-4">
                   How you can use your credits:

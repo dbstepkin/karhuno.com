@@ -5,6 +5,8 @@ import { Montserrat, Roboto } from "next/font/google";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Linkedin } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 const montserrat = Montserrat({ 
   subsets: ['latin'],
@@ -42,85 +44,25 @@ const avatarColors = [
   "bg-[#ddd6fe]", // purple-200
 ];
 
-const testimonials = [
+const reviews = [
   {
-    id: "julia-kramer",
-    quote: (
-      <>
-        I just click 'run daily' and get warm replies every morning — my LinkedIn reply rate is up to <span className="font-bold">61.7%</span>.
-      </>
-    ),
-    name: "Julia Kramer",
-    role: "Enterprise SDR",
-    initials: "JK",
-    avatarColor: "bg-[#a974ff]",
-    topPick: true,
+    quote: "Karhuno helps us act on buying intent in real time. I don’t waste hours on generic lists anymore — now I get warm leads based on actual signals.",
+    name: "Marco Rossi",
+    role: "Business Development Manager @ LeadSphere",
+    image: "/marco rossi .jpg"
   },
   {
-    id: "adam-cho",
-    quote: (
-      <>
-        Karhuno turned my inbox into a meeting machine — I now get a <span className="font-bold">24.36% cold email reply rate</span>.
-      </>
-    ),
-    name: "Adam Cho",
-    role: "Account Executive",
-    initials: "AC",
-    avatarColor: "bg-[#679eff]",
-    topPick: false,
+    quote: "I was surprised by the precision. It’s not just keywords — it’s context. Karhuno surfaces leads that are 10x more relevant than what we used to get from SalesNav.",
+    name: "Sarah Johnson",
+    role: "Head of Sales Enablement @ Innovtech Group",
+    image: "/sarahfoto.jpeg"
   },
   {
-    id: "laura-mendes",
-    quote: (
-      <>
-        Best sales tool I've used since Outreach. <span className="font-bold">Contextual leads</span>, no guessing.
-      </>
-    ),
-    name: "Laura Mendes",
-    role: "AE Mid-Market",
-    initials: "LM",
-    avatarColor: "bg-[#7c3aed]",
-    topPick: false,
-  },
-  {
-    id: "lucas-tan",
-    quote: (
-      <>
-        <span className="font-bold">Zero risk</span>. Verified contacts from public posts. No login required.
-      </>
-    ),
-    name: "Lucas Tan",
-    role: "Outbound Specialist",
-    initials: "LT",
-    avatarColor: "bg-[#2563eb]",
-    topPick: false,
-  },
-  {
-    id: "anita-g",
-    quote: (
-      <>
-        I used to burn 6h/week in Sales Nav. Now I close <span className="font-bold">3x faster</span>.
-      </>
-    ),
-    name: "Anita G.",
-    role: "B2B Sales Rep",
-    initials: "AG",
-    avatarColor: "bg-[#818cf8]",
-    topPick: false,
-  },
-  {
-    id: "ben-r",
-    quote: (
-      <>
-        Karhuno feeds my CRM all week with one click. I save at least <span className="font-bold">10h weekly</span>.
-      </>
-    ),
-    name: "Ben R.",
-    role: "SDR Team Lead",
-    initials: "BR",
-    avatarColor: "bg-[#a5b4fc]",
-    topPick: false,
-  },
+    quote: "Finally a platform that connects real company news with verified contacts. We’ve booked 3 demos in the first week — without scraping anything.",
+    name: "Luca Moretti",
+    role: "SDR Team Lead @ Nexora Systems",
+    image: "/luca moretti.jpeg"
+  }
 ];
 
 // Gradient border utility
@@ -141,89 +83,68 @@ function TopPickBadge() {
 }
 
 export default function UserTestimonials() {
-  return (
-    <section className="relative py-20 px-4 bg-gradient-to-b from-[#f7f4ff] to-[#edf0ff] overflow-hidden">
-      {/* Optional soft blur/pattern background */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[80vw] h-[40vw] bg-gradient-to-br from-[#a974ff33] to-[#679eff22] blur-2xl opacity-60 rounded-full" />
-      </div>
-      <div className="container mx-auto max-w-6xl relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className={`text-4xl md:text-5xl font-bold mb-4 ${roboto.className}`}
-          >
-            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-              What our users are saying
-            </span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className={`text-xl text-gray-700 max-w-2xl mx-auto ${montserrat.className}`}
-          >
-            Real testimonials from sales professionals using Karhuno AI
-          </motion.p>
-        </motion.div>
+  const [current, setCurrent] = useState(0);
 
-        {/* Masonry Grid */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6"
-        >
-          {testimonials.map((item, idx) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.08 * idx }}
-              whileHover={{ y: -3, boxShadow: "0 8px 32px 0 rgba(60,60,120,0.10)", filter: "brightness(1.03)" }}
-            >
-              <GradientBorder>
-                <Card
-                  className={
-                    `relative rounded-2xl shadow-lg bg-white px-7 py-8 flex flex-col justify-between min-h-[160px] transition-all duration-300 hover:shadow-2xl hover:ring-2 hover:ring-white/10 hover:ring-inset`
-                  }
-                >
-                  {item.topPick && <TopPickBadge />}
-                  <div className="flex flex-col h-full justify-between">
-                    <div className="mb-5">
-                      <div className={`text-lg md:text-xl font-medium leading-relaxed mb-2 text-gray-900 ${roboto.className}`}
-                      >
-                        {item.quote}
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 mt-auto">
-                      <Avatar className={`h-10 w-10 ${item.avatarColor} text-white text-base font-bold`}>
-                        <AvatarFallback>{item.initials}</AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <div className={`font-bold text-base leading-tight flex items-center gap-1 text-gray-900 ${roboto.className}`}>
-                          {item.name}
-                          <Linkedin className="w-4 h-4 text-[#a974ff] ml-1" />
-                        </div>
-                        <div className={`text-xs opacity-80 ${montserrat.className}`}>{item.role}</div>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </GradientBorder>
-            </motion.div>
-          ))}
+  // Clean up dashes from quotes for a smoother look
+  const cleanQuote = (quote: string) => quote.replace(/—/g, "");
+
+  const prev = () => setCurrent((current - 1 + reviews.length) % reviews.length);
+  const next = () => setCurrent((current + 1) % reviews.length);
+
+  return (
+    <section className="py-24 relative overflow-hidden before:-z-10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-purple-200/80 before:via-pink-200/60 before:to-purple-200/80 before:animate-gradient-shift before:opacity-75 flex flex-col items-center justify-center min-h-[400px]">
+      {/* Navigation arrows - left */}
+      <button
+        onClick={prev}
+        className="absolute left-0 md:left-12 top-1/2 -translate-y-1/2 w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-[#a974ff] to-[#679eff] flex items-center justify-center text-white text-3xl shadow-lg hover:scale-105 transition-all z-20 focus:outline-none px-4 md:px-8"
+        aria-label="Previous review"
+      >
+        &#8592;
+      </button>
+      {/* Navigation arrows - right */}
+      <button
+        onClick={next}
+        className="absolute right-0 md:right-12 top-1/2 -translate-y-1/2 w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-[#a974ff] to-[#679eff] flex items-center justify-center text-white text-3xl shadow-lg hover:scale-105 transition-all z-20 focus:outline-none px-4 md:px-8"
+        aria-label="Next review"
+      >
+        &#8594;
+      </button>
+      <div className="max-w-3xl w-full mx-auto flex flex-col items-center px-4 sm:px-8">
+        <div className="text-center mb-10">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent drop-shadow-sm">What our users are saying</h2>
+        </div>
+        <div className="relative w-full flex flex-col items-center">
+          <div className="text-center w-full flex flex-col items-center">
+            <div className="text-[1.6rem] sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-10 leading-snug max-w-2xl mx-auto drop-shadow-sm" style={{letterSpacing: '-0.01em'}}>
+              “{cleanQuote(reviews[current].quote)}”
+            </div>
+            <div className="flex flex-col items-center gap-0.5 mb-8 w-full">
+              <Image src={reviews[current].image} alt={reviews[current].name} width={72} height={72} className="rounded-full object-cover shadow-lg border-4 border-white mx-auto" />
+              <div className="font-bold text-lg text-gray-900 mt-4 mb-1 text-center">{reviews[current].name}</div>
+              <div className="text-gray-700 text-sm text-center font-normal" style={{fontWeight: 400}}>{reviews[current].role}</div>
+            </div>
+          </div>
+          <div className="flex items-center justify-center gap-2 mt-2">
+            {reviews.map((_, idx) => (
+              <span key={idx} className={`w-3 h-3 rounded-full ${idx === current ? 'bg-[#a974ff]' : 'bg-gray-300'}`}></span>
+            ))}
+          </div>
         </div>
       </div>
+      <style jsx>{`
+        @media (max-width: 640px) {
+          section {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+          }
+          .text-[1.6rem] {
+            font-size: 1.1rem;
+          }
+          .md\\:text-4xl {
+            font-size: 1.5rem;
+          }
+        }
+      `}</style>
     </section>
   );
 } 
