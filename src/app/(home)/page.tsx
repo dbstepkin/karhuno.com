@@ -103,12 +103,21 @@ export default function Home() {
 
           {/* Try for free button */}
           <div className="flex flex-col items-center">
-            <button 
-              onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
-              className={`bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
-            >
-              Try for free
-            </button>
+            <div className="flex items-center gap-4">
+              <button 
+                onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
+                className={`bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
+              >
+                Try for free
+              </button>
+              <span className={`text-gray-500 ${montserrat.className}`}>or</span>
+              <button 
+                onClick={() => window.open('https://calendly.com/team-karhuno/30min', '_blank')}
+                className={`bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-xl font-semibold hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-gray-500/25 ${montserrat.className}`}
+              >
+                Book a demo
+              </button>
+            </div>
             <span className="text-xs text-gray-400 mt-2">Start your free trial — no credit card needed.</span>
           </div>
         </div>
