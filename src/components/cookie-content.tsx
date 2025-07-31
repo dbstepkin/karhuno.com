@@ -127,7 +127,7 @@ export function CookieConsent() {
             stiffness: 300,
             damping: 30
           }}
-          className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md mx-4"
+          className="fixed bottom-3 left-0 right-0 z-50 w-full max-w-full sm:max-w-md px-2 sm:px-0 mx-auto"
         >
           <div className="bg-gray-900/95 backdrop-blur-xl border border-gray-800/50 rounded-2xl shadow-2xl shadow-black/20 p-6">
             <div className="flex items-start space-x-4">

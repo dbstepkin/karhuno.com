@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Linkedin, DollarSign, EarthIcon, FileSpreadsheet } from "lucide-react";
+import { Linkedin, DollarSign, EarthIcon, FileSpreadsheet, Globe, Megaphone, FileText, Upload } from "lucide-react";
 
 export default function SignalCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -10,38 +10,50 @@ export default function SignalCarousel() {
 
   const signals = [
     {
-      icon: <Linkedin className="size-6 text-[#0A66C2]" />,
-      text: "A new company launched Ad Campaign",
+      icon: <Globe className="size-6 text-[#0A66C2]" />,
+      text: "Company announced expansion to a new market",
+      description: "Sign of growth — often leads to new vendor needs.",
+    },
+    {
+      icon: <Megaphone className="size-6 text-[#0A66C2]" />,
+      text: "Hiring for SDRs or Sales roles",
+      description: "Sales team is growing — potential demand for tools or contact data.",
+    },
+    {
+      icon: <FileText className="size-6 text-[#0A66C2]" />,
+      text: "Published a report on AI or sustainability",
+      description: "Strategic positioning — good timing for consultative outreach.",
     },
     {
       icon: <Linkedin className="size-6 text-[#0A66C2]" />,
       text: "A post on a certain topic among your network or outside of it",
-    },
-    {
-      icon: (
-        <Image src="/kickstarter.svg" alt="hiring" width={46} height={46} />
-      ),
-      text: "pledged 100% on Kickstarter",
+      description: "Track specific conversations and engagement patterns.",
     },
     {
       icon: <DollarSign className="size-6 text-[#0A66C2]" />,
       text: "A company attracted investment",
+      description: "Funding rounds indicate growth and new vendor opportunities.",
     },
     {
       icon: <EarthIcon className="size-6 text-[#0A66C2]" />,
       text: "A company announced the purchase of green credits",
+      description: "Sustainability initiatives create new partnership opportunities.",
     },
     {
       icon: <EarthIcon className="size-6 text-[#0A66C2]" />,
       text: "A company announced plans to open a warehouse",
+      description: "Physical expansion signals operational growth needs.",
     },
     {
       icon: <Image src="/hiring.svg" alt="hiring" width={52} height={52} />,
       text: "A company is hiring a biochemist",
+      description: "Specialized hiring indicates strategic business development.",
     },
     {
-      icon: <FileSpreadsheet className="size-7 text-[#0A66C2]" />,
-      text: "Competitor's client list",
+      icon: <Upload className="size-6 text-[#0A66C2]" />,
+      text: "Listen to the companies from your list",
+      description: "Upload your list — we'll track changes automatically.",
+      badge: "Coming soon",
     },
   ];
 
@@ -102,15 +114,29 @@ export default function SignalCarousel() {
                 key={index}
                 className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 transform-gpu"
               >
-                <div className="flex flex-col items-center text-center gap-6">
-                  <div className="p-4 bg-[#f5f5ff] rounded-full flex items-center justify-center w-14 h-14">
-                    <div className="w-7 h-7 flex items-center justify-center">
-                      {signal.icon}
+                <div className="flex flex-col items-center text-center gap-4">
+                  <div className="relative">
+                    <div className="p-4 bg-[#f5f5ff] rounded-full flex items-center justify-center w-14 h-14">
+                      <div className="w-7 h-7 flex items-center justify-center">
+                        {signal.icon}
+                      </div>
                     </div>
+                    {signal.badge && (
+                      <div className="absolute -top-2 -right-2 bg-purple-600 text-white text-xs px-2 py-1 rounded-full font-medium">
+                        {signal.badge}
+                      </div>
+                    )}
                   </div>
-                  <p className="text-base font-medium text-gray-700">
-                    {signal.text}
-                  </p>
+                  <div className="space-y-2">
+                    <p className="text-base font-medium text-gray-700">
+                      {signal.text}
+                    </p>
+                    {signal.description && (
+                      <p className="text-sm text-gray-500 leading-relaxed">
+                        {signal.description}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}

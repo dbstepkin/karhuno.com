@@ -213,30 +213,27 @@ export default function Automation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-auto md:h-[200px] flex flex-col justify-between"
+                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-auto md:h-[240px] flex flex-col justify-between"
                 style={{ boxShadow: '0 4px 20px rgba(123, 47, 247, 0.15)' }}
               >
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <motion.div 
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ delay: 0.2, type: "spring" }}
-                      className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold"
-                      style={{ background: 'linear-gradient(90deg, #7B2FF7, #4FACFE)' }}
-                    >
-                      1
-                    </motion.div>
-                    <h4 className={`text-lg md:text-xl font-bold ${roboto.className}`} style={{ color: '#202040' }}>
-                      Just say what you're looking for
-                    </h4>
-                  </div>
-                  
-                  <p className={`text-sm md:text-base mb-4 leading-relaxed ${montserrat.className}`} style={{ color: '#555A77' }}>
-                    No complex filters or setup. Describe your ideal customer in plain language.
-                  </p>
+                <div className="flex items-center gap-3 mb-4">
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ delay: 0.2, type: "spring" }}
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold"
+                    style={{ background: 'linear-gradient(90deg, #7B2FF7, #4FACFE)' }}
+                  >
+                    1
+                  </motion.div>
+                  <h4 className={`text-lg md:text-xl font-bold ${roboto.className}`} style={{ color: '#202040' }}>
+                    Just say what you're looking for
+                  </h4>
                 </div>
-                
+                <p className={`text-sm md:text-base mb-4 leading-relaxed ${montserrat.className}`} style={{ color: '#555A77' }}>
+                  No complex setup. Just describe the signal you want to track.
+                </p>
+                {/* Search Bar fully inside the card, no margin-top */}
                 <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
                   <div className="flex items-center gap-2 mb-3">
                     <Search className="w-4 h-4" style={{ color: '#7B2FF7' }} />
@@ -244,7 +241,6 @@ export default function Automation() {
                       Describe your ideal customer
                     </span>
                   </div>
-                  
                   <div className="relative">
                     <div className={`text-sm md:text-base min-h-[1.5rem] ${montserrat.className}`} style={{ color: '#202040' }}>
                       {currentText}
@@ -348,7 +344,7 @@ export default function Automation() {
                   </div>
                   
                   <p className={`text-sm md:text-base mb-4 leading-relaxed ${montserrat.className}`} style={{ color: '#555A77' }}>
-                    Company names, context, proof links — ready to qualify.
+                    Company name, website, LinkedIn URL, context, and proof links — ready to qualify
                   </p>
                 </div>
                 
@@ -367,11 +363,14 @@ export default function Automation() {
               transition={{ duration: 0.5, delay: 0.9 }}
               className="text-center pt-8 flex-shrink-0"
             >
-              <button className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25 bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 ${montserrat.className}`}
-              >
-                Try Signal Search
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="flex flex-col items-center">
+                <button className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25 bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 ${montserrat.className}`}
+                >
+                  Try Signal Search
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <span className="text-xs text-gray-400 mt-2">14-day free access. Cancel anytime, no card upfront.</span>
+              </div>
             </motion.div>
           </div>
 
@@ -409,30 +408,27 @@ export default function Automation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-auto md:h-[200px] flex flex-col justify-between"
+                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-auto md:h-[240px] flex flex-col justify-between"
                 style={{ boxShadow: '0 4px 20px rgba(79, 172, 254, 0.15)' }}
               >
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <motion.div 
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ delay: 0.2, type: "spring" }}
-                      className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold"
-                      style={{ background: 'linear-gradient(90deg, #4FACFE, #7B2FF7)' }}
-                    >
-                      1
-                    </motion.div>
-                    <h4 className={`text-lg md:text-xl font-bold ${roboto.className}`} style={{ color: '#202040' }}>
-                      Find signals in LinkedIn posts
-                    </h4>
-                  </div>
-                  
-                  <p className={`text-sm md:text-base mb-4 leading-relaxed ${montserrat.className}`} style={{ color: '#555A77' }}>
-                    Enter keywords or paste LinkedIn post URLs. Target specific roles, companies, and content themes.
-                  </p>
+                <div className="flex items-center gap-3 mb-4">
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ delay: 0.2, type: "spring" }}
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold"
+                    style={{ background: 'linear-gradient(90deg, #4FACFE, #7B2FF7)' }}
+                  >
+                    1
+                  </motion.div>
+                  <h4 className={`text-lg md:text-xl font-bold ${roboto.className}`} style={{ color: '#202040' }}>
+                    Find signals in LinkedIn posts
+                  </h4>
                 </div>
-                
+                <p className={`text-sm md:text-base mb-4 leading-relaxed ${montserrat.className}`} style={{ color: '#555A77' }}>
+                  Type your topic or paste a LinkedIn post to find relevant contacts.
+                </p>
+                {/* Search Bar fully inside the card, no margin-top */}
                 <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
                   <div className="flex items-center gap-2 mb-3">
                     <Link2 className="w-4 h-4" style={{ color: '#4FACFE' }} />
@@ -440,7 +436,6 @@ export default function Automation() {
                       Keywords or LinkedIn post URL
                     </span>
                   </div>
-                  
                   <div className="relative">
                     <div className={`text-sm md:text-base min-h-[1.5rem] ${montserrat.className}`} style={{ color: '#202040' }}>
                       {linkedinCurrentText}
@@ -493,7 +488,7 @@ export default function Automation() {
                   </div>
                   
                   <p className={`text-sm md:text-base mb-4 leading-relaxed ${montserrat.className}`} style={{ color: '#555A77' }}>
-                    No noise — filters go beyond Sales Navigator. Works with keywords or commenters.
+                    Filters that go beyond job titles — track intent, content, and real engagement.
                   </p>
                 </div>
                 
@@ -544,7 +539,7 @@ export default function Automation() {
                   </div>
                   
                   <p className={`text-sm md:text-base mb-4 leading-relaxed ${montserrat.className}`} style={{ color: '#555A77' }}>
-                    Enriched with verified email. Sent daily to your CRM.
+                    Enriched with verified email.
                   </p>
                 </div>
                 
@@ -569,11 +564,14 @@ export default function Automation() {
               transition={{ duration: 0.5, delay: 0.9 }}
               className="text-center pt-8 flex-shrink-0"
             >
-              <button className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25 bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 ${montserrat.className}`}
-              >
-                Try LinkedIn Tracker
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="flex flex-col items-center">
+                <button className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25 bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 ${montserrat.className}`}
+                >
+                  Try LinkedIn Tracker
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <span className="text-xs text-gray-400 mt-2">Test the platform first — no billing info asked.</span>
+              </div>
             </motion.div>
           </div>
         </div>

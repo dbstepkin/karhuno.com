@@ -32,7 +32,7 @@ const features: ComparisonFeature[] = [
     karhuno: true,
   },
   {
-    feature: "Define your ICP exactly — no presets",
+    feature: "Define your sales trigger",
     zoomInfo: false,
     apollo: false,
     karhuno: true,
