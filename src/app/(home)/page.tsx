@@ -83,7 +83,7 @@ export default function Home() {
 
           {/* Subheading */}
           <p className={`text-xl md:text-2xl text-gray-500 mb-12 max-w-2xl mx-auto text-center ${montserrat.className}`}>
-            We spot every mention that matters and turn it into a sales-ready contact
+            B2B sales signals, made simple and proven
           </p>
 
           {/* Search Bar */}
