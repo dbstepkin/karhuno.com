@@ -92,7 +92,7 @@ export default function UserTestimonials() {
   const next = () => setCurrent((current + 1) % reviews.length);
 
   return (
-    <section className="py-24 relative overflow-hidden before:-z-10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-purple-200/80 before:via-pink-200/60 before:to-purple-200/80 before:animate-gradient-shift before:opacity-75 flex flex-col items-center justify-center min-h-[400px]">
+    <section id="after-comparison" className="py-24 relative overflow-hidden before:-z-10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-purple-200/80 before:via-pink-200/60 before:to-purple-200/80 before:animate-gradient-shift before:opacity-75 flex flex-col items-center justify-center min-h-[400px]">
       {/* Navigation arrows - left */}
       <button
         onClick={prev}
