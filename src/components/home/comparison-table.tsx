@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, X } from "lucide-react";
+import { Check, X, ImageIcon } from "lucide-react";
 import { Montserrat, Roboto } from "next/font/google";
+import Image from "next/image";
 
 const montserrat = Montserrat({ 
   subsets: ['latin'],
@@ -17,260 +18,193 @@ const roboto = Roboto({
   variable: '--font-roboto'
 });
 
-interface ComparisonFeature {
-  feature: string;
-  karhuno: {
-    available: boolean;
-    label: string;
-  };
-  competitor: {
-    available: boolean;
-    label: string;
-  };
-}
-
-const competitors = [
-  { 
-    id: "zoominfo", 
-    name: "ZoomInfo", 
-    subtitle: "Traditional database",
-    color: "bg-blue-50",
-    textColor: "text-blue-900"
-  },
-  { 
-    id: "apollo", 
-    name: "Apollo", 
-    subtitle: "Basic lead generation",
-    color: "bg-purple-50",
-    textColor: "text-purple-900"
-  },
-  { 
-    id: "lusha", 
-    name: "Lusha", 
-    subtitle: "Contact enrichment",
-    color: "bg-green-50",
-    textColor: "text-green-900"
-  },
-  { 
-    id: "chatgpt", 
-    name: "ChatGPT", 
-    subtitle: "AI conversation tool",
-    color: "bg-emerald-50",
-    textColor: "text-emerald-900"
-  },
-  { 
-    id: "perplexity", 
-    name: "Perplexity", 
-    subtitle: "Search assistant",
-    color: "bg-indigo-50",
-    textColor: "text-indigo-900"
-  },
-  { 
-    id: "claude", 
-    name: "Claude", 
-    subtitle: "AI analysis tool",
-    color: "bg-orange-50",
-    textColor: "text-orange-900"
-  },
-];
-
-const features: ComparisonFeature[] = [
-  {
-    feature: "Buying signals with context",
-    karhuno: { available: true, label: "AI-powered" },
-    competitor: { available: false, label: "Basic alerts" },
-  },
-  {
-    feature: "Define your own trigger or signal",
-    karhuno: { available: true, label: "Custom rules" },
-    competitor: { available: false, label: "Predefined only" },
-  },
-  {
-    feature: "Signal proof (news, post, URL)",
-    karhuno: { available: true, label: "Verified sources" },
-    competitor: { available: false, label: "Limited context" },
-  },
-  {
-    feature: "Launch speed / ease of use",
-    karhuno: { available: true, label: "Minutes setup" },
-    competitor: { available: false, label: "Weeks required" },
-  },
-  {
-    feature: "Email & LinkedIn contact info included",
-    karhuno: { available: true, label: "Ready to use" },
-    competitor: { available: true, label: "Basic info" },
-  },
-  {
-    feature: "Filtering by job role, geography, etc.",
-    karhuno: { available: true, label: "Advanced filters" },
-    competitor: { available: true, label: "Standard filters" },
-  },
-];
-
 export default function ComparisonTable() {
+  const fadeUp = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-80px" },
+    transition: { duration: 0.5 }
+  } as const;
+
   return (
     <section className="py-20 px-4 bg-gradient-to-b from-[#f7f4ff] to-[#edf0ff]">
       <div className="container mx-auto max-w-6xl">
-        {/* Title and Subtitle */}
-        <div className="text-center mb-16">
+        {/* Title */}
+        <div className="text-center mb-12">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            {...fadeUp}
             className={`inline-block bg-purple-100 text-purple-700 px-3 py-1 text-xs font-medium rounded-full uppercase tracking-wider mb-4 ${montserrat.className}`}
           >
             Feature Comparison
           </motion.div>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className={`text-4xl md:text-5xl font-bold text-center mb-4 ${roboto.className}`}
+            {...fadeUp}
+            className={`text-4xl md:text-5xl font-bold text-center mb-2 ${roboto.className}`}
           >
             <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-              Why top sales teams choose Karhuno AI
+              Karhuno AI vs AI tools for the same query
             </span>
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className={`text-xl text-gray-600 max-w-2xl mx-auto ${roboto.className}`}
+            {...fadeUp}
+            className={`text-lg text-gray-600 max-w-2xl mx-auto ${roboto.className}`}
           >
-            Compare Karhuno with your current stack
+            Example query: "logistic company open new warehouse in the US"
           </motion.p>
         </div>
 
-        {/* Progressive Comparison Sections */}
-        <div className="space-y-16">
-          {competitors.map((competitor, index) => (
-            <motion.div
-              key={competitor.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="grid md:grid-cols-2 gap-8"
-            >
-              {/* Karhuno AI Column */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 + 0.1 }}
-                className="relative"
-              >
-                <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl p-8 text-white h-[500px] flex flex-col">
-                  {/* Logo placeholder space */}
-                  <div className="w-16 h-16 bg-white/20 rounded-xl mb-6 flex items-center justify-center">
-                    <span className="text-2xl font-bold">K</span>
-                  </div>
-                  
-                  {/* Tool name and subtitle */}
-                  <div className="mb-8">
-                    <h3 className={`text-2xl font-bold mb-2 ${roboto.className}`}>Karhuno AI</h3>
-                    <p className="text-purple-100">Your AI-powered sales intelligence</p>
-                  </div>
-                  
-                  {/* Features table */}
-                  <div className="flex-1 space-y-4">
-                    {features.map((feature, featureIndex) => (
-                      <motion.div
-                        key={featureIndex}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: index * 0.1 + featureIndex * 0.05 }}
-                        className="flex items-start gap-4"
-                      >
-                        <div className="flex-shrink-0 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                          {feature.karhuno.available ? (
-                            <Check className="w-5 h-5 text-green-300" />
-                          ) : (
-                            <X className="w-5 h-5 text-red-300" />
-                          )}
-                        </div>
-                        <div className="flex-1">
-                          <p className={`font-medium text-sm ${roboto.className}`}>{feature.feature}</p>
-                          <p className="text-xs text-purple-200 mt-1">{feature.karhuno.label}</p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Competitor Column */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                className="relative"
-              >
-                <div className={`${competitor.color} rounded-2xl p-8 h-[500px] flex flex-col ${competitor.textColor}`}>
-                  {/* Logo placeholder space */}
-                  <div className="w-16 h-16 bg-white/60 rounded-xl mb-6 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-gray-700">{competitor.name.charAt(0)}</span>
-                  </div>
-                  
-                  {/* Tool name and subtitle */}
-                  <div className="mb-8">
-                    <h3 className={`text-2xl font-bold mb-2 ${roboto.className}`}>{competitor.name}</h3>
-                    <p className="text-gray-600">{competitor.subtitle}</p>
-                  </div>
-                  
-                  {/* Features table */}
-                  <div className="flex-1 space-y-4">
-                    {features.map((feature, featureIndex) => (
-                      <motion.div
-                        key={featureIndex}
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: index * 0.1 + featureIndex * 0.05 }}
-                        className="flex items-start gap-4"
-                      >
-                        <div className="flex-shrink-0 w-8 h-8 bg-white/60 rounded-full flex items-center justify-center">
-                          {feature.competitor.available ? (
-                            <Check className="w-5 h-5 text-green-600" />
-                          ) : (
-                            <X className="w-5 h-5 text-red-600" />
-                          )}
-                        </div>
-                        <div className="flex-1">
-                          <p className={`font-medium text-sm ${roboto.className}`}>{feature.feature}</p>
-                          <p className="text-xs text-gray-500 mt-1">{feature.competitor.label}</p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Optional Dot Navigation */}
+        {/* Top: Karhuno AI box (elevated, slightly wider) */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex justify-center mt-16"
+          {...fadeUp}
+          className="relative -mt-2 mb-8"
         >
-          <div className="flex gap-2">
-            {competitors.map((_, index) => (
-              <div
-                key={index}
-                className="w-3 h-3 rounded-full bg-purple-300"
-              />
-            ))}
+          <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl p-6 md:p-9 text-white shadow-xl ring-1 ring-white/20 md:max-w-[90%] mx-auto">
+            <div className="grid md:grid-cols-3 gap-6 items-stretch">
+              {/* Screenshot (left) */}
+              <div className="md:col-span-1">
+                <div className="rounded-xl overflow-hidden border border-white/20 bg-white/10">
+                  <div className="relative w-full h-44 md:h-56">
+                    <Image src="/result warehouskarhuno.png" alt="Karhuno AI result" fill className="object-contain" />
+                  </div>
+                </div>
+                <p className="text-xs text-white/80 mt-2 text-center">Karhuno AI result</p>
+              </div>
+
+              {/* Content (right) */}
+              <div className="md:col-span-2 flex flex-col justify-center">
+                <h3 className={`text-2xl font-bold mb-3 ${roboto.className}`}>Karhuno AI</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                      <Check className="w-4 h-4 text-green-300" />
+                    </div>
+                    <div>
+                      <p className="text-base font-medium">10+ results</p>
+                      <p className="text-sm text-purple-100">Multiple verified signals for the same query</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                      <Check className="w-4 h-4 text-green-300" />
+                    </div>
+                    <div>
+                      <p className="text-base font-medium">Proof URLs</p>
+                      <p className="text-sm text-purple-100">News, posts, or pages linked for verification</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                      <Check className="w-4 h-4 text-green-300" />
+                    </div>
+                    <div>
+                      <p className="text-base font-medium">Ready to qualify</p>
+                      <p className="text-sm text-purple-100">Structured output for sales workflows</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
+          <p className="text-xs text-gray-600 mt-5 mb-6 text-center">Karhuno detects real events. These tools don’t.</p>
         </motion.div>
+
+        {/* Context text above AI tools */}
+        <motion.p
+          {...fadeUp}
+          className={`text-sm text-gray-600 text-center mt-8 mb-8 ${roboto.className}`}
+        >
+          Other tools struggle to surface verified buying signals.
+        </motion.p>
+
+        {/* Bottom: three AI tools (uniform neutral style, concise lines) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* ChatGPT */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: 0.0 }}
+            className="w-full rounded-2xl p-6 bg-gradient-to-br from-zinc-50 to-zinc-200 text-zinc-900"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-xl bg-white/80 flex items-center justify-center overflow-hidden">
+                <Image src="/logo verde chatgpt.webp" alt="ChatGPT logo" width={40} height={40} className="object-contain" />
+              </div>
+              <div>
+                <h4 className={`text-lg font-bold ${roboto.className}`}>ChatGPT</h4>
+                <p className="text-sm text-zinc-700">AI conversation tool</p>
+              </div>
+            </div>
+            <div className="space-y-2 mb-4">
+              <p className="text-sm">❌ 2 vague results</p>
+              <p className="text-sm">⚠️ No buying signal context</p>
+            </div>
+            <div className="rounded-lg overflow-hidden border border-gray-200 py-6">
+              <div className="relative w-full h-56">
+                <Image src="/result warehousechatgpt.png" alt="ChatGPT result" fill className="object-contain" />
+              </div>
+            </div>
+            <p className="text-xs text-zinc-700 mt-2 text-center">ChatGPT result</p>
+          </motion.div>
+
+          {/* Perplexity */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="w-full rounded-2xl p-6 bg-gradient-to-br from-zinc-50 to-zinc-200 text-zinc-900"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-xl bg-white/80 flex items-center justify-center overflow-hidden">
+                <Image src="/logobluperplexity.jpg" alt="Perplexity logo" width={40} height={40} className="object-contain" />
+              </div>
+              <div>
+                <h4 className={`text-lg font-bold ${roboto.className}`}>Perplexity</h4>
+                <p className="text-sm text-zinc-700">Search assistant</p>
+              </div>
+            </div>
+            <div className="space-y-2 mb-4">
+              <p className="text-sm">❌ 4 vague results</p>
+              <p className="text-sm">⚠️ No buying signal context</p>
+            </div>
+            <div className="rounded-lg overflow-hidden border border-gray-200 py-6">
+              <div className="relative w-full h-56">
+                <Image src="/new perplecity warehouse.png" alt="Perplexity result" fill className="object-contain" />
+              </div>
+            </div>
+            <p className="text-xs text-zinc-700 mt-2 text-center">Perplexity result</p>
+          </motion.div>
+
+          {/* Claude */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="w-full rounded-2xl p-6 bg-gradient-to-br from-zinc-50 to-zinc-200 text-zinc-900"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-xl bg-white/80 flex items-center justify-center overflow-hidden">
+                <Image src="/logoarancioclaude.png" alt="Claude logo" width={40} height={40} className="object-contain" />
+              </div>
+              <div>
+                <h4 className={`text-lg font-bold ${roboto.className}`}>Claude</h4>
+                <p className="text-sm text-zinc-700">AI analysis tool</p>
+              </div>
+            </div>
+            <div className="space-y-2 mb-4">
+              <p className="text-sm">❌ 4 vague results</p>
+              <p className="text-sm">⚠️ No buying signal context</p>
+            </div>
+            <div className="rounded-lg overflow-hidden border border-gray-200 py-6">
+              <div className="relative w-full h-56">
+                <Image src="/result warehouse claude.png" alt="Claude result" fill className="object-contain" />
+              </div>
+            </div>
+            <p className="text-xs text-zinc-700 mt-2 text-center">Claude result</p>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

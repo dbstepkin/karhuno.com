@@ -38,6 +38,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Search Console verification */}
+        <meta name="google-site-verification" content="MdQm3LcQ4z30lGaZ8FmMb4MXQdz931PvTa0nfo0tDlo" />
+
         {/* Google tag (gtag.js) */}
         <Script
           async
@@ -47,7 +50,7 @@ export default function RootLayout({
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag(){dataLayer.push(arguments);} 
             gtag('js', new Date());
             gtag('config', 'G-VQ94784XQM');
           `}
