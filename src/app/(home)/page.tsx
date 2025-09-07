@@ -76,16 +76,21 @@ export default function Home() {
 
   // Handle form submission
   const handleFindNow = () => {
+    console.log('Find Now button clicked!');
+    console.log('Form data:', formData);
+    
     const newErrors = {
       companyType: !formData.companyType.trim(),
       news: !formData.news.trim(),
       location: !formData.location.trim()
     };
     
+    console.log('Validation errors:', newErrors);
     setErrors(newErrors);
     
     // Check if any field is empty
     if (newErrors.companyType || newErrors.news || newErrors.location) {
+      console.log('Form has validation errors, showing shake animation');
       // Add vibration effect to empty fields
       Object.keys(newErrors).forEach(field => {
         if (newErrors[field as keyof typeof newErrors]) {
@@ -101,6 +106,7 @@ export default function Home() {
       return;
     }
     
+    console.log('All fields valid, showing email modal');
     // All fields filled, show email modal
     setShowEmailModal(true);
   };
@@ -278,7 +284,11 @@ export default function Home() {
                </div>
               
               <button 
-                onClick={handleFindNow}
+                onClick={(e) => {
+                  console.log('Button click event triggered');
+                  e.preventDefault();
+                  handleFindNow();
+                }}
                 className={`w-full mt-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl px-6 py-3 font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
               >
                 Find now
