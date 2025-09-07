@@ -127,23 +127,23 @@ export function CookieConsent() {
             stiffness: 300,
             damping: 30
           }}
-          className="fixed bottom-3 left-0 right-0 z-50 w-full max-w-full sm:max-w-md px-2 sm:px-0 mx-auto"
+          className="fixed bottom-3 left-3 z-50 w-full max-w-sm"
         >
-          <div className="bg-gray-900/95 backdrop-blur-xl border border-gray-800/50 rounded-2xl shadow-2xl shadow-black/20 p-6">
-            <div className="flex items-start space-x-4">
+          <div className="bg-gray-900/95 backdrop-blur-xl border border-gray-800/50 rounded-xl shadow-2xl shadow-black/20 p-4">
+            <div className="flex items-start space-x-3">
               {/* Icon */}
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
-                <Shield className="w-5 h-5 text-white" />
+              <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
+                <Shield className="w-4 h-4 text-white" />
               </div>
               
               {/* Content */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-white mb-2">
+                    <h3 className="text-base font-semibold text-white mb-1">
                       Cookies & Privacy
                     </h3>
-                    <p className="text-sm text-gray-300 leading-relaxed mb-4">
+                    <p className="text-xs text-gray-300 leading-relaxed mb-3">
                       We use only essential cookies to ensure a smooth experience on Karhuno AI. No tracking, no ads.
                     </p>
                   </div>
@@ -151,22 +151,22 @@ export function CookieConsent() {
                     onClick={decline}
                     className="flex-shrink-0 ml-2 p-1 text-gray-400 hover:text-white transition-colors duration-200"
                   >
-                    <X className="w-4 h-4" />
+                    <X className="w-3 h-3" />
                   </button>
                 </div>
                 
                 {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex gap-2">
                   <Button
                     variant="outline"
                     onClick={decline}
-                    className="flex-1 h-10 px-4 border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white hover:border-gray-600 transition-all duration-200 rounded-xl"
+                    className="flex-1 h-8 px-3 text-xs border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white hover:border-gray-600 transition-all duration-200 rounded-lg"
                   >
                     Decline
                   </Button>
                   <Button
                     onClick={acceptAll}
-                    className="flex-1 h-10 px-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium transition-all duration-200 rounded-xl shadow-lg hover:shadow-purple-500/25"
+                    className="flex-1 h-8 px-3 text-xs bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium transition-all duration-200 rounded-lg shadow-lg hover:shadow-purple-500/25"
                   >
                     Accept
                   </Button>
