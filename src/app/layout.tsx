@@ -9,6 +9,8 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-montserrat",
+  fallback: ["system-ui", "arial"],
+  preload: false,
 });
 
 const roboto = Roboto({
@@ -16,6 +18,8 @@ const roboto = Roboto({
   weight: ["300", "400", "500", "700", "900"],
   display: "swap", 
   variable: "--font-roboto",
+  fallback: ["system-ui", "arial"],
+  preload: false,
 });
 
 export const metadata: Metadata = {

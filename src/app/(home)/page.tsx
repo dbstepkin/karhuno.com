@@ -21,14 +21,18 @@ import HowItWorks from "@/components/home/how-it-works";
 const montserrat = Montserrat({ 
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-montserrat'
+  variable: '--font-montserrat',
+  fallback: ['system-ui', 'arial'],
+  preload: false
 });
 
 const roboto = Roboto({ 
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-roboto'
+  variable: '--font-roboto',
+  fallback: ['system-ui', 'arial'],
+  preload: false
 });
 
 const placeholderTexts = [
