@@ -9,14 +9,13 @@ import { motion, AnimatePresence } from "framer-motion";
 // COMPONENTS
 import WhatYouGet from "@/components/home/what-you-get";
 import CaseStudies from "@/components/home/case-studies";
-import Automation from "@/components/home/automation";
 import ContactCarousel from "@/components/home/contact-carousel";
 import ComparisonTable from "@/components/home/comparison-table";
 import UserTestimonials from "@/components/home/user-testimonials";
 import FAQ from "@/components/home/faq";
 import Footer from "@/components/home/footer";
 import SignalCarousel from "@/components/home/signal-carousel";
-import HowItWorks from "@/components/home/how-it-works";
+import HowKarhunoWorks from "@/components/home/how-karhuno-works";
 
 const montserrat = Montserrat({ 
   subsets: ['latin'],
@@ -426,9 +425,8 @@ export default function Home() {
 
       <WhatYouGet />
       <SignalCarousel />
-      <HowItWorks />
+      <HowKarhunoWorks />
       <CaseStudies id="case-studies" />
-      <Automation />
       <ComparisonTable />
              <UserTestimonials />
        <Footer />
