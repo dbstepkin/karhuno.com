@@ -217,22 +217,22 @@ export default function Home() {
     <>
       <header className="relative overflow-hidden mt-12">
         {/* Main Content */}
-        <div className="relative z-10 flex items-center justify-between min-h-[80vh] px-4 max-w-7xl mx-auto">
+        <div className="relative z-10 px-4 max-w-7xl mx-auto min-h-[80vh] flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
           {/* Left Side - Heading */}
-          <div className="flex-1 max-w-2xl">
-            <h1 className={`text-5xl md:text-7xl font-bold mb-6 text-left ${roboto.className}`}>
+          <div className="flex-1 max-w-2xl pt-12 lg:pt-0">
+            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-center lg:text-left leading-tight ${roboto.className}`}>
               <span className="text-black">Stop Searching,</span>
               <br />
               <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">Start Selling</span>
             </h1>
 
-            <p className={`text-xl md:text-2xl text-gray-500 mb-8 text-left ${montserrat.className}`}>
+            <p className={`text-lg sm:text-xl md:text-2xl text-gray-500 mb-8 text-center lg:text-left ${montserrat.className}`}>
               B2B sales signals, made simple and proven
             </p>
           </div>
 
           {/* Right Side - Search Form */}
-          <div className="flex-1 max-w-md ml-12">
+          <div className="flex-1 max-w-md mx-auto lg:mx-0">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 p-6 shadow-lg">
               <h2 className={`text-xl font-semibold text-gray-900 mb-1 text-center ${roboto.className}`}>
                 Find corporate signals
