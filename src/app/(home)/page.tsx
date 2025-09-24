@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import WhatYouGet from "@/components/home/what-you-get";
 import CaseStudies from "@/components/home/case-studies";
 import ContactCarousel from "@/components/home/contact-carousel";
-import ComparisonTable from "@/components/home/comparison-table";
+import AIComparison from "@/components/home/ai-comparison";
 import UserTestimonials from "@/components/home/user-testimonials";
 import FAQ from "@/components/home/faq";
 import Footer from "@/components/home/footer";
@@ -427,7 +427,7 @@ export default function Home() {
       <SignalCarousel />
       <HowKarhunoWorks />
       <CaseStudies id="case-studies" />
-      <ComparisonTable />
+      <AIComparison />
              <UserTestimonials />
        <Footer />
 
