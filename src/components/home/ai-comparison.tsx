@@ -192,7 +192,10 @@ export default function AIComparison() {
             </div>
 
             {/* CTA Button */}
-            <button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 px-6 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25">
+            <button 
+              onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
+              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 px-6 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
+            >
               Try the same query
             </button>
             <p className="text-xs text-gray-500 mt-2 text-center">97% of users find more qualified leads with Karhuno AI</p>

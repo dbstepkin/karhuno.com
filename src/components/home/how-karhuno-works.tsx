@@ -27,7 +27,7 @@ const features = [
     id: 1,
     title: "Corporate News Search",
     subtitle: "Find companies based on real-time corporate events",
-    description: "Stay ahead of the market by identifying companies making strategic business moves such as hiring, funding, expansions, or partnerships as soon as they happen. Karhuno scans trusted sources to detect signals that reveal real buying intent.",
+    description: "Karhuno scans news sources to detect companies making strategic moves like funding, hiring, or expansions—helping you find leads based on real-time business events.",
     bullets: [
       "Track companies by **industry**, **company size**, and **geographic location**",
       "Monitor high-intent signals like **funding rounds**, **job openings**, and **new partnerships**",
@@ -38,13 +38,13 @@ const features = [
     bgGradient: "from-purple-50 to-blue-50",
     borderColor: "border-purple-200",
     ctaText: "Try Corporate Search",
-    ctaLink: "/signup"
+    ctaLink: "https://my.karhuno.com/signup"
   },
   {
     id: 2,
     title: "Track LinkedIn Conversation",
     subtitle: "Capture buying intent from LinkedIn posts, comments, and conversations",
-    description: "Type a topic you're interested in like \"hiring trends\" or \"new office openings\" and Karhuno AI automatically detects relevant LinkedIn conversations. Our engine suggests the best keywords, scans recent posts, and helps you extract high-intent contacts with advanced filters.",
+    description: "Enter a topic and Karhuno finds LinkedIn posts and comments that match. The engine suggests keywords and extracts leads based on real engagement data.",
     bullets: [
       "**Autogenerate keywords** to surface relevant conversations at scale",
       "Filter by **role**, **seniority**, **company size**, and verified LinkedIn attributes",
@@ -55,13 +55,13 @@ const features = [
     bgGradient: "from-purple-50 to-blue-50",
     borderColor: "border-purple-200",
     ctaText: "Track Conversations",
-    ctaLink: "/signup"
+    ctaLink: "https://my.karhuno.com/signup"
   },
   {
     id: 3,
     title: "Who Engages with My Competitors",
     subtitle: "Turn LinkedIn engagement into warm leads automatically",
-    description: "Just enter your website, and Karhuno AI will instantly identify up to 50 of your top competitors. We then track everyone who likes, comments, or shares their LinkedIn content so you can discover high-intent leads already engaging in your market. Every contact comes with full context and verifiable proof of interaction.",
+    description: "Enter your website. Karhuno finds your top competitors and shows who interacts with their LinkedIn posts, giving you leads with full context and verified proof.",
     bullets: [
       "**Autodetect competitors** based on your website",
       "Monitor real-time LinkedIn **likes**, **comments**, and **shares**",
@@ -72,7 +72,7 @@ const features = [
     bgGradient: "from-purple-50 to-blue-50",
     borderColor: "border-purple-200",
     ctaText: "Monitor Competitors",
-    ctaLink: "/signup"
+    ctaLink: "https://my.karhuno.com/signup"
   }
 ];
 
@@ -217,7 +217,7 @@ export default function HowKarhunoWorks() {
         </div>
 
         <div className="relative z-10 container mx-auto px-6">
-          <div className="text-center mb-20">
+          <div className="text-center mb-8">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -400,7 +400,7 @@ export default function HowKarhunoWorks() {
               Start tracking the signals that matter most to your business growth.
             </p>
             <motion.a
-              href="/signup"
+              href="https://my.karhuno.com/signup"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 shadow-lg text-lg ${montserrat.className}`}
