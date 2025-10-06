@@ -34,12 +34,12 @@ const roboto = Roboto({
 export default function KarhunoBlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const categories = ["All", "Sales Signals", "Use Cases", "Product Updates", "Comparisons"];
+  const categories = ["All", "Sales signals", "Use cases", "Automation recipes", "Comparisons"];
   
   // Featured post data (in a real app, this would come from CMS/API)
   const featuredPost = {
-    title: "5 Signals That Predict Buying Intent on LinkedIn",
-    category: "Sales Signals",
+    title: "5 signals that predict buying intent on LinkedIn",
+    category: "Sales signals",
     teaser: "We analyzed 3000+ LinkedIn posts to uncover the most reliable engagement patterns that indicate when prospects are ready to buy. Learn the specific signals that increased our reply rates by 400%.",
     readingTime: "6 min read",
     slug: "5-signals-buying-intent-linkedin",
@@ -48,23 +48,23 @@ export default function KarhunoBlogPage() {
 
   const blogPosts = [
     {
-      title: "5 Signals That Predict Buying Intent on LinkedIn",
+      title: "5 signals that predict buying intent on LinkedIn",
       summary: "We analyzed 3000+ LinkedIn posts to uncover the most reliable engagement patterns for outbound sales.",
-      category: "Sales Signals",
+      category: "Sales signals",
       readingTime: "6 min read",
       image: "/images/blog/linkedIn-signals.png",
       slug: "5-signals-buying-intent-linkedin"
     },
     {
-      title: "How We Reached 24% Reply Rate with Deep Signal Search",
+      title: "How we reached 24% reply rate with deep signal search",
       summary: "A full breakdown of the outbound experiment that delivered record-level response rates.",
-      category: "Use Cases",
+      category: "Use cases",
       readingTime: "4 min read",
       image: "/images/blog/reply-rate.png",
       slug: "24-percent-reply-rate-signal-search"
     },
     {
-      title: "Karhuno vs ChatGPT: Which Tool Finds Better Leads?",
+      title: "Karhuno vs ChatGPT: which tool finds better leads?",
       summary: "A side-by-side benchmark on the same query. The results will surprise you.",
       category: "Comparisons",
       readingTime: "5 min read",
@@ -72,23 +72,23 @@ export default function KarhunoBlogPage() {
       slug: "karhuno-vs-chatgpt-lead-finding"
     },
     {
-      title: "The Hidden Patterns in Corporate News That Signal Vendor Needs",
+      title: "The hidden patterns in corporate news that signal vendor needs",
       summary: "Discover how to read between the lines of press releases and news articles to find buying signals.",
-      category: "Sales Signals",
+      category: "Sales signals",
       readingTime: "7 min read",
       image: "/images/blog/corporate-news.png",
       slug: "hidden-patterns-corporate-news-signals"
     },
     {
-      title: "From 2% to 18%: How Signal-Based Outreach Transformed Our Sales",
+      title: "From 2% to 18%: how signal-based outreach transformed our sales",
       summary: "A case study showing how one sales team completely changed their approach using buying signals.",
-      category: "Use Cases",
+      category: "Use cases",
       readingTime: "5 min read",
       image: "/images/blog/sales-transformation.png",
       slug: "signal-outreach-sales-transformation"
     },
     {
-      title: "Karhuno vs Traditional Lead Generation: The ROI Breakdown",
+      title: "Karhuno vs traditional lead generation: the ROI breakdown",
       summary: "A detailed comparison of time investment, cost, and results between signal-based and traditional lead gen.",
       category: "Comparisons",
       readingTime: "8 min read",
@@ -110,7 +110,7 @@ export default function KarhunoBlogPage() {
           {/* Main Title */}
           <div className="text-center mb-16">
             <h1 className={`text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#7e51ff] to-[#5ca9ff] ${roboto.className}`}>
-              Karhuno AI Blog: Where Signals Become Strategy
+              Karhuno AI blog: where signals become strategy
             </h1>
             <p className={`text-gray-600 mt-4 text-lg max-w-2xl mx-auto ${montserrat.className}`}>
               Learn how real-time triggers from the web and LinkedIn are reshaping B2B sales.
@@ -122,28 +122,12 @@ export default function KarhunoBlogPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               {/* Featured Image */}
               <div>
-                <div className="aspect-[4/3] bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 rounded-xl shadow-xl overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <div className="w-20 h-20 bg-gradient-to-r from-[#7e51ff] to-[#5ca9ff] rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                          <path d="M8 2v4"></path>
-                          <path d="M12 2v4"></path>
-                          <path d="M16 2v4"></path>
-                          <path d="M8 10h8"></path>
-                          <path d="M8 14h5"></path>
-                        </svg>
-                      </div>
-                      <h3 className={`text-lg font-semibold text-gray-800 mb-2 ${roboto.className}`}>
-                        LinkedIn Signals Analysis
-                      </h3>
-                      <p className={`text-sm text-gray-600 ${montserrat.className}`}>
-                        3,000+ posts analyzed to find buying patterns
-                      </p>
-                    </div>
-                  </div>
+                <div className="aspect-[4/3] bg-gray-100 rounded-xl shadow-xl overflow-hidden">
+                  <img 
+                    src="/images/blog/linkedin-signals-hero.png" 
+                    alt="5 signals that predict buying intent on LinkedIn"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
 
@@ -162,7 +146,7 @@ export default function KarhunoBlogPage() {
                   href={`/blog/${featuredPost.slug}`}
                   className={`inline-block bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:opacity-90 transition ${montserrat.className}`}
                 >
-                  Read Full Article →
+                  Read full article →
                 </a>
               </div>
             </div>
@@ -209,7 +193,7 @@ export default function KarhunoBlogPage() {
               </button>
             </div>
             <p className={`text-xs text-gray-500 mt-4 ${montserrat.className}`}>
-              Weekly insights • No spam • Unsubscribe anytime
+              Weekly insights • no spam • unsubscribe anytime
             </p>
           </div>
         </div>
@@ -236,17 +220,28 @@ export default function KarhunoBlogPage() {
       <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 mb-24">
         {filteredPosts.map((post, index) => (
           <div key={index} className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition duration-200 group">
-            <div className="h-44 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center">
-              <div className="text-center p-4">
-                <div className="w-16 h-16 bg-gradient-to-r from-[#7e51ff] to-[#5ca9ff] rounded-full flex items-center justify-center mx-auto mb-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                  </svg>
-                </div>
-                <p className="text-sm text-gray-500 font-medium">Article Preview</p>
+            {/* Post Image */}
+            {post.slug === "5-signals-buying-intent-linkedin" ? (
+              <div className="h-44 relative overflow-hidden">
+                <img 
+                  src="/images/blog/linkedin-signals-hero.png" 
+                  alt={post.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
               </div>
-            </div>
+            ) : (
+              <div className="h-44 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center">
+                <div className="text-center p-4">
+                  <div className="w-16 h-16 bg-gradient-to-r from-[#7e51ff] to-[#5ca9ff] rounded-full flex items-center justify-center mx-auto mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                  </div>
+                  <p className="text-sm text-gray-500 font-medium">Article preview</p>
+                </div>
+              </div>
+            )}
             <div className="p-5">
               <span className={`text-xs uppercase tracking-wider text-gray-500 ${roboto.className}`}>
                 {post.category}
@@ -288,17 +283,17 @@ export default function KarhunoBlogPage() {
                   href="https://my.karhuno.com/signup"
                   className={`bg-[#7e51ff] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#6842e6] transition-colors shadow-2xl hover:shadow-[#7e51ff]/20 ${montserrat.className}`}
                 >
-                  Start Free Trial
+                  Start free trial
                 </a>
                 <a
                   href="/pricing"
                   className={`border-2 border-[#7e51ff] text-[#7e51ff] px-8 py-4 rounded-xl font-semibold hover:bg-[#7e51ff] hover:text-white transition-colors shadow-lg hover:shadow-[#7e51ff]/10 ${montserrat.className}`}
                 >
-                  View Pricing
+                  View pricing
                 </a>
               </div>
               <p className={`text-gray-600 text-sm mt-4 ${montserrat.className}`}>
-                No credit card required • Setup in under 5 minutes
+                No credit card required • setup in under 5 minutes
               </p>
             </div>
           </div>
@@ -335,7 +330,7 @@ export default function KarhunoBlogPage() {
               </svg>
             </div>
             <h4 className={`text-gray-900 text-lg md:text-xl font-semibold mb-3 ${roboto.className}`}>
-              Stay Updated with Karhuno AI
+              Stay updated with Karhuno AI
             </h4>
             <p className={`text-gray-600 text-sm md:text-base tracking-wide ${montserrat.className}`}>
               Discover the latest insights on B2B sales signals and strategies.
