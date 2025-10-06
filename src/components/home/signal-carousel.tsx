@@ -1,0 +1,148 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { Linkedin, DollarSign, EarthIcon, FileSpreadsheet, Globe, Megaphone, FileText, Upload } from "lucide-react";
+
+export default function SignalCarousel() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const signals = [
+    {
+      icon: <Globe className="size-6 text-[#0A66C2]" />,
+      text: "Company announced expansion to a new market",
+      description: "Sign of growth — often leads to new vendor needs.",
+    },
+    {
+      icon: <Megaphone className="size-6 text-[#0A66C2]" />,
+      text: "Hiring for SDRs or Sales roles",
+      description: "Sales team is growing — potential demand for tools or contact data.",
+    },
+    {
+      icon: <FileText className="size-6 text-[#0A66C2]" />,
+      text: "Published a report on AI or sustainability",
+      description: "Strategic positioning — good timing for consultative outreach.",
+    },
+    {
+      icon: <Linkedin className="size-6 text-[#0A66C2]" />,
+      text: "A post on a certain topic among your network or outside of it",
+      description: "Track specific conversations and engagement patterns.",
+    },
+    {
+      icon: <DollarSign className="size-6 text-[#0A66C2]" />,
+      text: "A company attracted investment",
+      description: "Funding rounds indicate growth and new vendor opportunities.",
+    },
+    {
+      icon: <EarthIcon className="size-6 text-[#0A66C2]" />,
+      text: "A company announced the purchase of green credits",
+      description: "Sustainability initiatives create new partnership opportunities.",
+    },
+    {
+      icon: <EarthIcon className="size-6 text-[#0A66C2]" />,
+      text: "A company announced plans to open a warehouse",
+      description: "Physical expansion signals operational growth needs.",
+    },
+    {
+      icon: <Image src="/hiring.svg" alt="hiring" width={52} height={52} />,
+      text: "A company is hiring a biochemist",
+      description: "Specialized hiring indicates strategic business development.",
+    },
+    {
+      icon: <Upload className="size-6 text-[#0A66C2]" />,
+      text: "Listen to the companies from your list",
+      description: "Upload your list — we'll track changes automatically.",
+      badge: "Coming soon",
+    },
+  ];
+
+  const repeated = [...signals, ...signals, ...signals];
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    const speed = 0.08;
+
+    const scroll = (time: number) => {
+      const delta = time - lastTime;
+      lastTime = time;
+
+      if (!isHovered) {
+        container.scrollLeft += delta * speed;
+
+        if (container.scrollLeft >= container.scrollWidth / 3) {
+          container.scrollLeft = 0;
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isHovered]);
+
+  return (
+    <section className="py-24 relative before:-z-10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-purple-200/80 before:via-pink-200/60 before:to-purple-200/80 before:animate-gradient-shift before:opacity-75 overflow-hidden">
+      <div className="container mx-auto flex h-full flex-col overflow-hidden">
+        {/* Heading */}
+        <div className="w-full pt-16 pb-8 px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+              Some examples of{" "}
+              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                signals we can track
+              </span>
+            </h2>
+          </div>
+        </div>
+
+        {/* Scrolling container */}
+        <div className="flex-1 flex items-center justify-center overflow-hidden">
+          <div
+            ref={containerRef}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="flex gap-8 w-full overflow-x-scroll no-scrollbar transform-gpu p-4"
+          >
+            {repeated.map((signal, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 transform-gpu"
+              >
+                <div className="flex flex-col items-center text-center gap-4">
+                  <div className="relative">
+                    <div className="p-4 bg-[#f5f5ff] rounded-full flex items-center justify-center w-14 h-14">
+                      <div className="w-7 h-7 flex items-center justify-center">
+                        {signal.icon}
+                      </div>
+                    </div>
+                    {signal.badge && (
+                      <div className="absolute -top-2 -right-2 bg-purple-600 text-white text-xs px-2 py-1 rounded-full font-medium">
+                        {signal.badge}
+                      </div>
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-base font-medium text-gray-700">
+                      {signal.text}
+                    </p>
+                    {signal.description && (
+                      <p className="text-sm text-gray-500 leading-relaxed">
+                        {signal.description}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

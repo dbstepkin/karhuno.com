@@ -1,0 +1,331 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ULTRA AGGRESSIVE: Hide ALL Next.js development indicators */
+*[data-nextjs-build-indicator="true"],
+*[data-nextjs-build-indicator="false"], 
+*[data-nextjs-build-indicator],
+*[class*="nextjs"],
+*[class*="__next"],
+*[id*="__next"],
+*[class*="build-indicator"],
+*[id*="build-indicator"],
+div[style*="position: fixed"][style*="bottom"],
+div[style*="position: fixed"][style*="left"],
+div[style*="position: fixed"][style*="right"],
+div[style*="z-index: 99"],
+div[style*="z-index: 999"],
+div[style*="z-index: 9999"],
+div[style*="z-index: 99999"],
+div[style*="font-family: menlo"],
+div[style*="font-family: monaco"],
+div[style*="font-family: consolas"],
+div[style*="border-radius: 5px"][style*="position: fixed"],
+div[style*="padding: 2px"][style*="position: fixed"],
+div[style*="background-color: rgb(0, 0, 0)"][style*="position: fixed"],
+div[style*="background-color: #000"][style*="position: fixed"],
+div[style*="color: rgb(255, 255, 255)"][style*="position: fixed"],
+div[style*="color: #fff"][style*="position: fixed"],
+div[style*="color: #ffffff"][style*="position: fixed"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  left: -99999px !important;
+  top: -99999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
+/* Target specific text content */
+div:has-text("Static route"),
+div:has-text("⚡"),
+div:has-text("🔥"),
+*:contains("Static route"),
+*:contains("⚡"),
+*:contains("🔥") {
+  display: none !important;
+}
+
+/* Hide Next.js development indicators - AGGRESSIVE APPROACH */
+div[data-nextjs-build-indicator],
+div[data-nextjs-build-indicator="true"],
+div[data-nextjs-build-indicator="false"],
+[data-nextjs-build-indicator],
+.__next-build-indicator,
+div[data-nextjs-router-prefetch],
+*[class*="__next"],
+*[id*="__next-build"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hide lightning bolt and static route indicators */
+div[style*="position: fixed"][style*="bottom"],
+div[style*="position: fixed"][style*="left"],
+div[style*="position: fixed"][style*="z-index: 99"],
+div[style*="position: fixed"][style*="z-index: 999"],
+div[style*="position: fixed"][style*="z-index: 9999"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Target specific Next.js dev indicator patterns */
+div[style*="font-family: menlo"],
+div[style*="border-radius: 5px"][style*="position: fixed"],
+div[style*="padding: 2px"][style*="position: fixed"] {
+  display: none !important;
+}
+
+/* Hide any element that might contain "Static route" text */
+*:before,
+*:after {
+  content: none !important;
+}
+
+/* Prevent any fixed positioned elements in bottom area during development */
+body div[style*="position: fixed"][style*="bottom: 10px"],
+body div[style*="position: fixed"][style*="bottom: 20px"],
+body div[style*="position: fixed"][style*="left: 20px"] {
+  display: none !important;
+}
+
+/* globals.css */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.gradient-border {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2px;
+  border-radius: 12px;
+}
+
+@layer base {
+  :root {
+    --font-montserrat: "Montserrat", sans-serif;
+    --font-roboto: "Roboto", sans-serif;
+    --background: 240 13% 96%;
+    --foreground: 223 24% 25%;
+    --card: 0 0% 100%;
+    --card-foreground: 223 24% 25%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 223 24% 25%;
+    --primary: 274 67% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-darken-1: 236 72% 64%;
+    --primary-light: 238 100% 77%;
+    --secondary: 215 12% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-darken-1: 216 9% 53%;
+    --secondary-light: 214 15% 69%;
+    --success: 100 72% 55%;
+    --success-foreground: 0 0% 100%;
+    --success-darken-1: 101 61% 50%;
+    --success-light: 156 59% 60%;
+    --info: 189 98% 47%;
+    --info-foreground: 0 0% 100%;
+    --info-darken-1: 189 97% 44%;
+    --info-light: 190 85% 56%;
+    --warning: 40 100% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-darken-1: 39 83% 46%;
+    --warning-light: 41 100% 59%;
+    --error: 7 100% 55%;
+    --error-foreground: 0 0% 100%;
+    --error-darken-1: 6 80% 50%;
+    --error-light: 7 100% 68%;
+    --border: 223 24% 25%;
+    --input: 223 24% 25%;
+    --ring: 223 24% 25%;
+    --grey-50: 0 0% 98%;
+    --grey-100: 0 0% 96%;
+    --grey-200: 0 0% 93%;
+    --grey-300: 0 0% 88%;
+    --grey-400: 0 0% 74%;
+    --grey-500: 0 0% 62%;
+    --grey-600: 0 0% 46%;
+    --grey-700: 0 0% 38%;
+    --grey-800: 0 0% 26%;
+    --grey-900: 0 0% 13%;
+    --chat-bg: 0 0% 97%;
+    --surface: 0, 0, 100%;
+    --input: 214.3,31.8%,91.4%;
+  }
+
+  .dark {
+    --background: 240 12% 14%;
+    --foreground: 229 60% 92%;
+    --card: 240 15% 16%;
+    --card-foreground: 229 60% 92%;
+    --popover: 240 15% 16%;
+    --popover-foreground: 229 60% 92%;
+    --primary: 275 100% 75%;
+    --primary-foreground: 0 0% 100%;
+    --primary-darken-1: 236 72% 64%;
+    --primary-light: 238 100% 77%;
+    --secondary: 215 12% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-darken-1: 216 9% 53%;
+    --secondary-light: 214 15% 69%;
+    --success: 100 72% 55%;
+    --success-foreground: 0 0% 100%;
+    --success-darken-1: 101 61% 50%;
+    --success-light: 156 59% 60%;
+    --info: 189 98% 47%;
+    --info-foreground: 0 0% 100%;
+    --info-darken-1: 189 97% 44%;
+    --info-light: 190 85% 56%;
+    --warning: 40 100% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-darken-1: 39 83% 46%;
+    --warning-light: 41 100% 59%;
+    --error: 7 100% 55%;
+    --error-foreground: 0 0% 100%;
+    --error-darken-1: 6 80% 50%;
+    --error-light: 7 100% 68%;
+    --border: 229 60% 92%;
+    --input: 229 60% 92%;
+    --ring: 229 60% 92%;
+    --grey-50: 240 10% 18%;
+    --grey-100: 240 10% 21%;
+    --grey-200: 240 10% 18%;
+    --grey-300: 240 20% 36%;
+    --grey-400: 240 25% 47%;
+    --grey-500: 240 45% 64%;
+    --grey-600: 240 55% 80%;
+    --grey-700: 240 60% 85%;
+    --grey-800: 240 70% 90%;
+    --grey-900: 240 85% 95%;
+    --chat-bg: 240 10% 12%;
+    --surface: 240, 19%, 17%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply font-montserrat bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-roboto font-bold;
+  }
+}
+
+@layer components {
+  .dialogTitleStyle {
+    @apply text-2xl font-semibold text-center;
+  }
+  .dialogContentStyle {
+    @apply bg-white text-gray-900 max-w-md w-full mx-auto p-6 rounded-lg;
+  }
+  .dialogDescriptionStyle {
+    @apply text-lg mb-4;
+  }
+  .inputStyle {
+    @apply w-full bg-white border-2 border-gray-300 rounded-md p-2 mb-4;
+  }
+
+  .arrowShape {
+    clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+  }
+  .arrowShape::before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    height: 100%;
+    width: 40px;
+    clip-path: polygon(0% 0%, 0% 0%, 100% 50%, 0% 100%, 0% 100%);
+    background-color: #F3F3F6;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Karhuno AI Brand Gradient */
+  .text-gradient-primary {
+    background: linear-gradient(90deg, #a974ff, #679eff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll-horizontal {
+  animation: scroll-horizontal 30s linear infinite;
+}
+
+.animate-scroll-vertical {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll > * {
+  min-width: 200px;
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll > * {
+  min-width: 200px;
+}
