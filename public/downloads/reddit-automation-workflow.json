@@ -1,0 +1,1147 @@
+{
+  "name": "Reddit automations",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 11
+            },
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -416,
+        -496
+      ],
+      "id": "064fe895-415d-4599-99bb-03a825333d5b",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d60b2bb4-81ec-44aa-8607-a510a2f4ebf6",
+              "name": "subredditList",
+              "value": "[   \"B2BSaaS\", \"NoCodeSaaS\", \"micro_saas\", \"indiebiz\", \"startup_resources\",   \"LaunchMyStartup\", \"ProductHunters\", \"saasapps\", \"SaaSMarketing\", \"ProductMarketing\",   \"MarketingHelp\", \"ecommerce_growth\", \"email\", \"EmailOutreach\", \"AskGrowth\",   \"stripe\", \"PaymentProcessing\", \"TestMyApp\", \"FPandA\", \"CustomerService\",   \"customervalue\", \"CustomerSuccessHub\", \"NextGenAITool\", \"JAMstack_dev\", \"pocketbase\" ]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -192,
+        -496
+      ],
+      "id": "0d63076f-0fb5-435b-b0a1-7936d078481d",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const subredditList = $json.subredditList;\n\n// Calcola numero del giorno dell’anno (0-364)\nconst today = new Date();\nconst start = new Date(today.getFullYear(), 0, 0);\nconst diff = (today - start) + (start.getTimezoneOffset() - today.getTimezoneOffset()) * 60 * 1000;\nconst dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));\n\n// Calcola indice ciclico\nconst index = dayOfYear % subredditList.length;\n\n// Output del subreddit selezionato\nreturn [\n  {\n    json: {\n      selectedSubreddit: subredditList[index]\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        16,
+        -496
+      ],
+      "id": "43717d5c-a29d-4406-94e2-0f05281a5c9e",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "subreddit": "={{ $json.selectedSubreddit }}",
+        "title": "Validating a new B2B lead gen tool,  happy to run a free test for a few businesses",
+        "text": "=Hey everyone 👋\n\nMy name is Francesco and I’m currently validating a startup I’ve been working on for a while,  it’s called Karhuno AI  (https://karhuno.com).\n\nIt’s a B2B lead generation tool, but with a slightly different approach:  \nInstead of static lists, we use AI to detect real signals (like funding rounds, hiring in key roles, tech stack changes, etc.) that suggest a company might actually be interested in your product or service.\n\n🎁 If you run a business and you're looking for clients, I’d love a small favor:  \nJust drop your website + a one-liner about what you do in the comments.\n\n🎯 For the first 5, I’ll manually run a search using Karhuno to see if we can find some relevant leads for you,  completely free.\n\nThis is part of our validation process, and I’d really appreciate feedback on whether the results are useful from your side.\n\nIf you’re not in this mini round, you can still test it for free on the site.\n\nWould love to help while learning if the tool brings real value to other founders and teams 🚀"
+      },
+      "type": "n8n-nodes-base.reddit",
+      "typeVersion": 1,
+      "position": [
+        224,
+        -496
+      ],
+      "id": "1ec49bd0-8877-45e1-bb1a-c9e599789306",
+      "name": "Create a post",
+      "credentials": {
+        "redditOAuth2Api": {
+          "id": "LgMHzE586JosSkS6",
+          "name": "Reddit account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 20
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -416,
+        -304
+      ],
+      "id": "0e0ab560-0439-4377-8ee6-a80997c36345",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d60b2bb4-81ec-44aa-8607-a510a2f4ebf6",
+              "name": "subredditList",
+              "value": "[   \"SQLServer\",   \"lowcode\",   \"AISaaSHunter\",   \"LLMO_SaaS\",   \"startupinvesting\",   \"SaasIdea\",   \"SaaS\",   \"EntrepreneurRideAlong\",   \"SideProject\",   \"thesidehustle\",   \"growmybusiness\",   \"indiehackers\",   \"startups\",   \"BootstrappedSaaS\",   \"startups_promotion\",   \"Design_Critiques\",   \"webdev\",   \"InternetIsBeautiful\",   \"AlphaandBetausers\",   \"startup\",   \"Marketing\",   \"AskMarketing\",   \"SocialMedia\",   \"CopyWriting\",   \"Advertising\",   \"WebMarketing\",   \"EmailMarketing\",   \"Sales\",   \"PlugYourProduct\",   \"GrowthHacking\",   \"VentureCapital\",   \"Crowdfunding\",   \"Kickstarter\",   \"roastmystartup\",   \"sweatystartup\",   \"SmallBusiness\",   \"Entrepreneur\" ]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -192,
+        -304
+      ],
+      "id": "f5f5c73d-78ed-47f0-82bf-01cbe18bc92f",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "const subredditList = $json.subredditList;\n\n// Calcola numero del giorno dell’anno (0-364)\nconst today = new Date();\nconst start = new Date(today.getFullYear(), 0, 0);\nconst diff = (today - start) + (start.getTimezoneOffset() - today.getTimezoneOffset()) * 60 * 1000;\nconst dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));\n\n// Calcola indice ciclico\nconst index = dayOfYear % subredditList.length;\n\n// Output del subreddit selezionato\nreturn [\n  {\n    json: {\n      selectedSubreddit: subredditList[index]\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        16,
+        -304
+      ],
+      "id": "5a4a92e7-d54b-4c20-aaf8-c8f1ad03405b",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "subreddit": "={{ $json.selectedSubreddit }}",
+        "title": "Trying a new approach to lead generation, curious if it’s useful",
+        "text": "=Hey everyone 👋\nI’m Francesco, currently working on validating a side project I’ve helped build,  it’s called Karhuno AI.\n\nThe idea is simple: instead of static prospecting lists, it tracks buying signals online (like new job postings, tech stack changes, funding rounds, etc.) and connects them to relevant company profiles.\n\nRight now I’m just trying to understand if this is genuinely useful for founders or sales teams.\n\nIf you run a business and are open to sharing:\n→ your website\n→ a short line on who you help\n\n…I’d be happy to run a quick test and send back what Karhuno finds, free of course.\n\nMostly looking for feedback on the signal quality and usefulness if it helps, great. If not, also helpful to know.\n\nThanks in advance! "
+      },
+      "type": "n8n-nodes-base.reddit",
+      "typeVersion": 1,
+      "position": [
+        224,
+        -304
+      ],
+      "id": "bc190c5b-ec59-462a-9c32-09ad16e99953",
+      "name": "Create a post1",
+      "credentials": {
+        "redditOAuth2Api": {
+          "id": "LgMHzE586JosSkS6",
+          "name": "Reddit account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "eca3a8fb-8c50-4227-becc-5fc3630e8196",
+      "name": "Merge Input",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        32,
+        -1952
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "0823d10a-ad54-4d82-bcea-9dd236e97857",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              },
+              "leftValue": "={{ $json.ups }}",
+              "rightValue": 2
+            },
+            {
+              "id": "bb8187aa-f0f1-4999-8d4b-bdc9abba0618",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.selftext }}",
+              "rightValue": ""
+            },
+            {
+              "id": "539f0f5c-025a-4f82-9b3a-2ef1ad3a2d96",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              },
+              "leftValue": "={{ DateTime.fromSeconds($json.created).toISO() }}",
+              "rightValue": "={{ $today.minus(180,'days').toISO() }}"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c449f93e-f560-4121-b9c1-b2681b86c5e8",
+      "name": "Filter Posts By Features",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        -864,
+        -1904
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "d5d38c01-3a88-4767-b488-d9c04145bb8f",
+              "operator": {
+                "name": "filter.operator.equals",
+                "type": "string",
+                "operation": "equals"
+              },
+              "leftValue": "={{ $json.text }}",
+              "rightValue": "yes"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "98265a36-10d9-46e8-a4f4-81c41ed1deb9",
+      "name": "Filter Posts By Content",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        304,
+        -1952
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e5082ecc-3add-474e-bdb5-b8ad64729930",
+              "name": "upvotes",
+              "type": "string",
+              "value": "={{ $json.ups }}"
+            },
+            {
+              "id": "a92b5859-fbcc-40c2-95e0-452b12530d98",
+              "name": "subreddit_subscribers",
+              "type": "number",
+              "value": "={{ $json.subreddit_subscribers }}"
+            },
+            {
+              "id": "a846e21c-6cff-4521-9e0c-a32fa1305376",
+              "name": "postcontent",
+              "type": "string",
+              "value": "={{ $json.selftext }}"
+            },
+            {
+              "id": "b8045389-684d-4872-9e32-9a6b5511eb2b",
+              "name": "url",
+              "type": "string",
+              "value": "={{ $json.url }}"
+            },
+            {
+              "id": "f182fedc-1b09-40fe-aeb5-2473263da442",
+              "name": "date",
+              "type": "string",
+              "value": "={{ DateTime.fromSeconds($json.created).toISO() }}"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "29007c10-d88b-46e1-a061-9e71caf06ae1",
+      "name": "Select Key Fields",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -624,
+        -1920
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "subreddit": "={{ $json.selectedSubreddit }}",
+        "keyword": "lead generation ",
+        "limit": 20,
+        "additionalFields": {
+          "sort": "hot"
+        }
+      },
+      "id": "1c6c8614-963a-4800-a845-b8b27e022e20",
+      "name": "Get Posts",
+      "type": "n8n-nodes-base.reddit",
+      "position": [
+        -2672,
+        -1904
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "redditOAuth2Api": {
+          "id": "LgMHzE586JosSkS6",
+          "name": "Reddit account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "postComment",
+        "postId": "={{ $json.id }}",
+        "commentText": "={{ $json.text }}"
+      },
+      "type": "n8n-nodes-base.reddit",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        -1840
+      ],
+      "id": "26f65721-a325-4635-b90a-572120cbf777",
+      "name": "Create a comment in a post",
+      "credentials": {
+        "redditOAuth2Api": {
+          "id": "LgMHzE586JosSkS6",
+          "name": "Reddit account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You're a business analyst for Karhuno AI, a tool that helps B2B sales teams identify buying signals like new funding, hiring activity, tech stack changes, and geographic expansion.\n\nYour task is to evaluate the following Reddit post and decide if it describes a **business-related problem** or **need for a solution** — something where a tool like Karhuno AI could potentially help.\n\n**Say \"yes\"** if the post:\n- Describes a struggle to grow, acquire clients, or generate leads\n- Mentions challenges in B2B sales, outreach, or finding prospects\n- Highlights inefficiencies in identifying or targeting potential customers\n- Asks for help with CRM, prospecting tools, or outbound strategies\n\n**Say \"no\"** if the post:\n- Is just storytelling, general discussion, or not about a business problem\n- Does not involve client acquisition, lead generation, or market signals\n- Is personal, off-topic, or not actionable from a business standpoint\n\nReddit post:  \n`{{ $json.postcontent }}`\n\nOutput only one word: `yes` or `no`.",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -368,
+        -2304
+      ],
+      "id": "34a4113f-a62c-4add-9e7b-8a55295a8e8e",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2",
+        "options": {
+          "maxRetries": 2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        -368,
+        -2112
+      ],
+      "id": "35ef4ea8-c9c4-46c5-bef4-7f14c9e97b9f",
+      "name": "Azure OpenAI Chat Model1",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "xzrfmOrONpjPguTz",
+          "name": "Azure Open AI gpt-4o (mini)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You're the founder of Karhuno AI (https://karhuno.com), a SaaS tool that helps B2B sales teams identify real buying signals — like funding rounds, job openings, tech stack changes, and public problem mentions.\n\nA Reddit user posted this:\n\"{{ $json.postcontent }}\"\n\nWrite a short Reddit comment (max 2–3 lines) responding naturally to the post. Your tone should be that of a **builder/founder**, not a marketer. You can mention Karhuno AI directly if the post describes a pain that Karhuno can help with.\n\nOnly include the link https://karhuno.com if it makes sense and doesn’t feel forced. No vague praise or filler — be direct, contextual, and helpful.\n\nIf the post is relevant: say something like “we’re tackling this exact problem” or “you can test that on Karhuno” and include the link.\n\nIf the post isn't a fit, just leave a short, kind, non-promotional comment.\n\nRespond only with the comment text. No extra formatting or markdown.",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        576,
+        -2272
+      ],
+      "id": "7622c46c-40c8-439e-bd9f-65d26a90abc0",
+      "name": "Basic LLM Chain1"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2",
+        "options": {
+          "maxRetries": 2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        576,
+        -2032
+      ],
+      "id": "d547ebb7-0a37-419b-9a49-c243f9709a52",
+      "name": "Azure OpenAI Chat Model2",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "xzrfmOrONpjPguTz",
+          "name": "Azure Open AI gpt-4o (mini)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {
+          "clashHandling": {
+            "values": {
+              "resolveClash": "preferInput1"
+            }
+          }
+        }
+      },
+      "id": "9c037e4d-37ff-4971-a913-8a6e8b9db57c",
+      "name": "Merge Input1",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        960,
+        -1968
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1168,
+        -1968
+      ],
+      "id": "94b4d72b-5ff4-40af-bf58-10d356072a4e",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * (300 - 60 + 1)) + 60 }}"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2048,
+        -1824
+      ],
+      "id": "bbf5daec-e4a1-4d53-9159-72542f8006f1",
+      "name": "Wait",
+      "webhookId": "974f24f8-4a5d-4fc3-a63a-d75efd3c919f"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1600,
+        -1888
+      ],
+      "id": "970d2528-b87c-4047-a049-657bcca4598f",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "tableId": "sales_automations",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "reddit",
+              "fieldValue": "={{ $json.url }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        -1888
+      ],
+      "id": "63ccda24-0666-4509-9469-92a61dad2c56",
+      "name": "Remeber that we commented this post",
+      "credentials": {
+        "supabaseApi": {
+          "id": "uf5IKqsSl0ZmYNEC",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -2416,
+        -1904
+      ],
+      "id": "60df2487-ff1d-47c8-b600-a6952c0f5a26",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "sales_automations",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "reddit",
+              "keyValue": "={{ $json.url }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1952,
+        -1888
+      ],
+      "id": "cf094b13-44e1-419d-ab01-86f49b3d85a6",
+      "name": "Get a row",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "uf5IKqsSl0ZmYNEC",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "77e8a302-2bf9-4967-8b3f-3483a96f7977",
+              "leftValue": "={{ $json }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1728,
+        -1856
+      ],
+      "id": "37980d35-151e-4a57-aeff-c7b4833c4545",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -1184,
+        -1632
+      ],
+      "id": "5b2ce00c-d6ac-4294-a325-1bd78af5ae5d",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e6875856-c42b-44ba-926f-60863e39fd9f",
+              "name": "processed",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1472,
+        -1712
+      ],
+      "id": "7cf3ca6f-9c5e-4814-8a31-5debf3a0415f",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2748e804-7f20-456c-bef3-391ea31bd2f0",
+              "name": "processed",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1472,
+        -1808
+      ],
+      "id": "fa902581-20e5-4450-a14b-caab5dc21730",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "36e75e37-45dc-42c4-9391-58700bef1d0d",
+              "leftValue": "={{ $json.processed}}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1120,
+        -2160
+      ],
+      "id": "db8c15e0-c38d-460e-8544-f9a0fa7f1222",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "content": "{{ 't3_' + $json.url.split('/comments/')[1].split('/')[0] }}"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2272,
+        -2272
+      ],
+      "typeVersion": 1,
+      "id": "fe5f8120-dbe3-47ad-b246-7792e461563e",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -3360,
+        -1952
+      ],
+      "id": "527f30e2-5a45-4d43-8690-a5b3a06c5552",
+      "name": "Schedule Trigger2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8fc6e09f-b504-45e4-b195-bbe6f5451677",
+              "name": "subredditlist",
+              "value": "{   \"subreddits\": [     \"sales\",     \"agency\",     \"b2b_sales\",     \"b2bmarketing\",     \"coldemail\",     \"salesdevelopment\",     \"SideProject\",     \"SalesOperations\",     \"microsaas\",     \"SaaS\",     \"Entrepreneurs\",     \"founderledsales\"   ] }",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3088,
+        -1920
+      ],
+      "id": "82461f37-6528-43f3-9c51-efce09cea1e8",
+      "name": "select subreddit"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Fai il parse del JSON stringato\nconst parsed = JSON.parse($json.subredditlist);\nconst subredditList = parsed.subreddits;\n\n// Calcola numero del giorno dell’anno (0–364)\nconst today = new Date();\nconst start = new Date(today.getFullYear(), 0, 0);\nconst diff = (today - start) + (start.getTimezoneOffset() - today.getTimezoneOffset()) * 60 * 1000;\nconst dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));\n\n// Calcola indice ciclico\nconst index = dayOfYear % subredditList.length;\n\n// Output del subreddit selezionato\nreturn [\n  {\n    json: {\n      selectedSubreddit: subredditList[index]\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2880,
+        -1904
+      ],
+      "id": "d929acd5-3d3a-427d-a9c4-d2bb4bd2c3ab",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Create a post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Create a post1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Posts": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Input": {
+      "main": [
+        [
+          {
+            "node": "Filter Posts By Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Key Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge Input",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Posts By Content": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge Input1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Filter Posts By Features": {
+      "main": [
+        [
+          {
+            "node": "Select Key Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Merge Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "Merge Input1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Input1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Create a comment in a post",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a comment in a post": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Remeber that we commented this post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remeber that we commented this post": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Get a row": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Filter Posts By Features",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger2": {
+      "main": [
+        [
+          {
+            "node": "select subreddit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "select subreddit": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Get Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0456adfc-6102-48bf-9802-d36533c2f530",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b314f6c1458b849378ef9dc879b38ca307cccd8d33059998a1d2492997f05145"
+  },
+  "id": "Hzm2dQ3oKM3gWaff",
+  "tags": []
+}
