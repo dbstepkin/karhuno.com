@@ -38,7 +38,7 @@ export default function KarhunoBlogPage() {
   
   // Featured post data (in a real app, this would come from CMS/API)
   const featuredPost = {
-    title: "SignalPlay: How We Automated Reddit to Generate B2B Leads (Without Being Spammy)",
+    title: "SignalPlay: how we automated Reddit to generate B2B leads (without being spammy)",
     category: "Automation recipes",
     teaser: "A step-by-step guide to building a Reddit commenting engine using n8n + GPT + Supabase. We achieved 70% LinkedIn acceptance rate and 24% reply rate — all from automated Reddit engagement.",
     readingTime: "6 min read",
@@ -48,6 +48,14 @@ export default function KarhunoBlogPage() {
 
   const blogPosts = [
     {
+      title: "How warehouse buying signals closed a deal in 24 hours",
+      summary: "A real case study of how a small industrial company used warehouse buying signals from Karhuno AI to close a deal in under 24 hours.",
+      category: "Use cases",
+      readingTime: "8 min read",
+      image: "/images/blog/warehouse-case-study.png",
+      slug: "warehouse-buying-signals-24h-deal"
+    },
+    {
       title: "5 signals that predict buying intent on LinkedIn",
       summary: "We analyzed 3000+ LinkedIn posts to uncover the most reliable engagement patterns for outbound sales.",
       category: "Sales signals",
@@ -56,7 +64,7 @@ export default function KarhunoBlogPage() {
       slug: "5-signals-buying-intent-linkedin"
     },
     {
-      title: "SignalPlay: How We Automated Reddit to Generate B2B Leads",
+      title: "SignalPlay: how we automated Reddit to generate B2B leads",
       summary: "A step-by-step guide to building a Reddit commenting engine using n8n + GPT + Supabase for automated lead generation.",
       category: "Automation recipes",
       readingTime: "6 min read",
@@ -64,7 +72,7 @@ export default function KarhunoBlogPage() {
       slug: "reddit-n8n-automation"
     },
     {
-      title: "58 Positive Replies Using Real-Time Buying Signals",
+      title: "58 positive replies using real-time buying signals",
       summary: "How a B2B outbound strategy achieved over 38% reply rate with just two tools: Karhuno AI and HeyReach.",
       category: "Use cases",
       readingTime: "5 min read",
@@ -72,15 +80,7 @@ export default function KarhunoBlogPage() {
       slug: "real-time-buying-signals-linkedin-outreach"
     },
     {
-      title: "How we reached 24% reply rate with deep signal search",
-      summary: "A full breakdown of the outbound experiment that delivered record-level response rates.",
-      category: "Use cases",
-      readingTime: "4 min read",
-      image: "/images/blog/reply-rate.png",
-      slug: "24-percent-reply-rate-signal-search"
-    },
-    {
-      title: "10 Best Alternatives to ZoomInfo for Smarter B2B Prospecting (2025)",
+      title: "10 best alternatives to ZoomInfo for smarter B2B prospecting (2025)",
       summary: "Discover modern alternatives to ZoomInfo that offer better flexibility, real-time signals, and clearer ROI.",
       category: "Comparisons",
       readingTime: "10 min read",
@@ -88,44 +88,12 @@ export default function KarhunoBlogPage() {
       slug: "zoominfo-alternatives-2025"
     },
     {
-      title: "Karhuno AI vs Perplexity: Which Tool Is Best for Finding B2B Buying Signals?",
+      title: "Karhuno AI vs Perplexity: which tool is best for finding B2B buying signals?",
       summary: "A side-by-side comparison for sales teams who care about timing, context, and real lead quality.",
       category: "Comparisons",
       readingTime: "7 min read",
       image: "/images/blog/karhuno-vs-perplexity-hero.png",
       slug: "karhuno-vs-perplexity"
-    },
-    {
-      title: "Karhuno vs ChatGPT: which tool finds better leads?",
-      summary: "A side-by-side benchmark on the same query. The results will surprise you.",
-      category: "Comparisons",
-      readingTime: "5 min read",
-      image: "/images/blog/karhuno-vs-chatgpt.png",
-      slug: "karhuno-vs-chatgpt-lead-finding"
-    },
-    {
-      title: "The hidden patterns in corporate news that signal vendor needs",
-      summary: "Discover how to read between the lines of press releases and news articles to find buying signals.",
-      category: "Sales signals",
-      readingTime: "7 min read",
-      image: "/images/blog/corporate-news.png",
-      slug: "hidden-patterns-corporate-news-signals"
-    },
-    {
-      title: "From 2% to 18%: how signal-based outreach transformed our sales",
-      summary: "A case study showing how one sales team completely changed their approach using buying signals.",
-      category: "Use cases",
-      readingTime: "5 min read",
-      image: "/images/blog/sales-transformation.png",
-      slug: "signal-outreach-sales-transformation"
-    },
-    {
-      title: "Karhuno vs traditional lead generation: the ROI breakdown",
-      summary: "A detailed comparison of time investment, cost, and results between signal-based and traditional lead gen.",
-      category: "Comparisons",
-      readingTime: "8 min read",
-      image: "/images/blog/roi-comparison.png",
-      slug: "karhuno-vs-traditional-lead-gen-roi"
     }
   ];
 
@@ -157,7 +125,7 @@ export default function KarhunoBlogPage() {
                 <div className="aspect-[4/3] bg-gray-100 rounded-xl shadow-xl overflow-hidden">
                   <img 
                     src="/images/blog/reddit-automation-hero.png" 
-                    alt="SignalPlay: How We Automated Reddit to Generate B2B Leads"
+                    alt="SignalPlay: how we automated Reddit to generate B2B leads"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -253,7 +221,7 @@ export default function KarhunoBlogPage() {
         {filteredPosts.map((post, index) => (
           <div key={index} className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition duration-200 group">
             {/* Post Image */}
-            {post.slug === "5-signals-buying-intent-linkedin" || post.slug === "reddit-n8n-automation" || post.slug === "karhuno-vs-perplexity" || post.slug === "real-time-buying-signals-linkedin-outreach" || post.slug === "zoominfo-alternatives-2025" ? (
+            {post.slug === "5-signals-buying-intent-linkedin" || post.slug === "reddit-n8n-automation" || post.slug === "karhuno-vs-perplexity" || post.slug === "real-time-buying-signals-linkedin-outreach" || post.slug === "zoominfo-alternatives-2025" || post.slug === "warehouse-buying-signals-24h-deal" ? (
               <div className="h-44 relative overflow-hidden">
                 <img 
                   src={
@@ -261,7 +229,8 @@ export default function KarhunoBlogPage() {
                     post.slug === "reddit-n8n-automation" ? "/images/blog/reddit-automation-hero.png" : 
                     post.slug === "karhuno-vs-perplexity" ? "/images/blog/karhuno-vs-perplexity-hero.png" :
                     post.slug === "real-time-buying-signals-linkedin-outreach" ? "/images/blog/linkedin-outreach-results.png" :
-                    "/images/blog/zoominfo-alternatives.png"
+                    post.slug === "zoominfo-alternatives-2025" ? "/images/blog/zoominfo-alternatives.png" :
+                    "/images/blog/warehouse-case-study.png"
                   }
                   alt={post.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
