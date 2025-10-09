@@ -25,8 +25,6 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isResourcesHovered, setIsResourcesHovered] = useState(false);
-  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,13 +46,8 @@ export const Navbar: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (hoverTimeout) {
-        clearTimeout(hoverTimeout);
-      }
-    };
-  }, [lastScrollY, hoverTimeout]);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   return (
     <header className={`fixed top-4 left-16 right-12 z-50 transition-all duration-300 ${
@@ -92,27 +85,12 @@ export const Navbar: React.FC = () => {
             </Link>
             
             {/* Resource Dropdown */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => {
-                if (hoverTimeout) {
-                  clearTimeout(hoverTimeout);
-                  setHoverTimeout(null);
-                }
-                setIsResourcesHovered(true);
-              }}
-              onMouseLeave={() => {
-                const timeout = setTimeout(() => {
-                  setIsResourcesHovered(false);
-                }, 150);
-                setHoverTimeout(timeout);
-              }}
-            >
+            <div className="relative group">
               <button
                 className={`flex items-center text-sm font-medium text-gray-900 group-hover:text-purple-600 transition-colors focus:outline-none px-3 py-2 rounded-full hover:bg-purple-50/80 ${montserrat.className}`}
               >
                 Resources
-                <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${isResourcesHovered ? 'rotate-180' : 'rotate-0'}`} />
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform group-hover:rotate-180`} />
               </button>
               
               {/* Invisible hover bridge */}
@@ -120,9 +98,7 @@ export const Navbar: React.FC = () => {
               
               {/* Dropdown Menu */}
               <div 
-                className={`absolute top-[calc(100%+0.5rem)] left-1/2 transform -translate-x-1/2 w-52 py-3 z-50 border border-white/20 transition-all duration-200 ${
-                  isResourcesHovered ? 'opacity-100 visible' : 'opacity-0 invisible'
-                }`}
+                className="absolute top-[calc(100%+0.5rem)] left-1/2 transform -translate-x-1/2 w-52 py-3 z-50 border border-white/20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
                 style={{ 
                   backgroundColor: 'rgba(255, 255, 255, 0.9)',
                   borderRadius: '16px',
@@ -173,18 +149,6 @@ export const Navbar: React.FC = () => {
                       className="mr-3"
                     />
                     ROI Calculation
-                  </span>
-                </Link>
-                <Link
-                  href="/blog"
-                  className={`block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50/80 hover:text-purple-600 transition-colors rounded-lg mx-2 ${montserrat.className}`}
-                >
-                  <span className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-purple-600">
-                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                    </svg>
-                    Blog
                   </span>
                 </Link>
               </div>
@@ -290,19 +254,6 @@ export const Navbar: React.FC = () => {
                       className="mr-3"
                     />
                     ROI Calculation
-                  </span>
-                </Link>
-                <Link
-                  href="/blog"
-                  className={`block text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors px-4 py-3 rounded-xl hover:bg-purple-50/80 ${montserrat.className}`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <span className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-purple-600">
-                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                    </svg>
-                    Blog
                   </span>
                 </Link>
               </div>
