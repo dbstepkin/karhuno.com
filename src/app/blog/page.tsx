@@ -48,6 +48,14 @@ export default function KarhunoBlogPage() {
 
   const blogPosts = [
     {
+      title: "X.com comment automation: respond to the right posts in real time, automatically",
+      summary: "Discover how Karhuno AI users leverage X.com automation to respond to the right posts in real time. Build your B2B social presence with zero manual effort.",
+      category: "Automation recipes",
+      readingTime: "9 min read",
+      image: "/images/blog/x-com-automation-hero.png",
+      slug: "x-com-smart-comment-engine"
+    },
+    {
       title: "How warehouse buying signals closed a deal in 24 hours",
       summary: "A real case study of how a small industrial company used warehouse buying signals from Karhuno AI to close a deal in under 24 hours.",
       category: "Use cases",
@@ -221,7 +229,7 @@ export default function KarhunoBlogPage() {
         {filteredPosts.map((post, index) => (
           <div key={index} className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition duration-200 group">
             {/* Post Image */}
-            {post.slug === "5-signals-buying-intent-linkedin" || post.slug === "reddit-n8n-automation" || post.slug === "karhuno-vs-perplexity" || post.slug === "real-time-buying-signals-linkedin-outreach" || post.slug === "zoominfo-alternatives-2025" || post.slug === "warehouse-buying-signals-24h-deal" ? (
+            {post.slug === "5-signals-buying-intent-linkedin" || post.slug === "reddit-n8n-automation" || post.slug === "karhuno-vs-perplexity" || post.slug === "real-time-buying-signals-linkedin-outreach" || post.slug === "zoominfo-alternatives-2025" || post.slug === "warehouse-buying-signals-24h-deal" || post.slug === "x-com-smart-comment-engine" ? (
               <div className="h-44 relative overflow-hidden">
                 <img 
                   src={
@@ -230,7 +238,8 @@ export default function KarhunoBlogPage() {
                     post.slug === "karhuno-vs-perplexity" ? "/images/blog/karhuno-vs-perplexity-hero.png" :
                     post.slug === "real-time-buying-signals-linkedin-outreach" ? "/images/blog/linkedin-outreach-results.png" :
                     post.slug === "zoominfo-alternatives-2025" ? "/images/blog/zoominfo-alternatives.png" :
-                    "/images/blog/warehouse-case-study.png"
+                    post.slug === "warehouse-buying-signals-24h-deal" ? "/images/blog/warehouse-case-study.png" :
+                    "/images/blog/x-com-automation-hero.png"
                   }
                   alt={post.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
