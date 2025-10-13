@@ -135,11 +135,11 @@ export default function PricingPage() {
                 pkg.isPopular ? "ring-2 ring-purple-500" : pkg.isFree ? "shadow-lg border border-purple-200" : ""
               }`}
             >
-              {/* Free Trial Label */}
+              {/* Sign Up Label */}
               {pkg.isFree && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                   <span className="bg-gradient-to-r from-purple-400 to-blue-400 text-white text-sm font-semibold px-4 py-1 rounded-full shadow font-montserrat">
-                    Free Trial
+                    Sign Up
                   </span>
                 </div>
               )}

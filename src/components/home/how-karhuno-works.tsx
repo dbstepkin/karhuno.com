@@ -405,7 +405,7 @@ export default function HowKarhunoWorks() {
               whileTap={{ scale: 0.95 }}
               className={`inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 shadow-lg text-lg ${montserrat.className}`}
             >
-              Start Free Trial
+              Start Sign Up
               <ArrowRight className="w-5 h-5" />
             </motion.a>
             <p className={`text-sm text-gray-500 mt-4 ${montserrat.className}`}>

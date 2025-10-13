@@ -299,7 +299,7 @@ export default function KarhunoBlogPage() {
                   href="https://my.karhuno.com/signup"
                   className={`bg-[#7e51ff] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#6842e6] transition-colors shadow-2xl hover:shadow-[#7e51ff]/20 ${montserrat.className}`}
                 >
-                  Start free trial
+                  Start sign up
                 </a>
                 <a
                   href="/pricing"

@@ -428,7 +428,7 @@ export default function BlogArticle() {
               href="https://my.karhuno.com/signup"
               className={`bg-white text-[#7e51ff] px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-colors shadow-lg ${montserrat.className}`}
             >
-              Start free trial
+              Start sign up
             </a>
             <a
               href="/blog"

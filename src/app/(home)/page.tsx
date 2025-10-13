@@ -414,7 +414,7 @@ export default function Home() {
               onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
               className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
             >
-              Start Free Trial
+              Start Sign Up
             </button>
             <p className="text-sm text-[#71717A] mt-3 text-center">
               No credit card required

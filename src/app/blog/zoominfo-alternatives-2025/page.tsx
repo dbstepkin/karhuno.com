@@ -152,7 +152,7 @@ const alternatives = [
       "CRM & outreach integrations"
     ],
     bestFor: "Large outbound teams running daily prospecting at volume",
-    pricing: "Custom pricing · Free trial available",
+    pricing: "Custom pricing · Sign up available",
     color: "from-indigo-500 to-purple-500"
   },
   {
@@ -180,7 +180,7 @@ const alternatives = [
       "Salesforce + HubSpot integrations"
     ],
     bestFor: "SDRs needing real-time enrichment while browsing LinkedIn",
-    pricing: "Free trial · Paid from $75/user/month",
+    pricing: "Sign up · Paid from $75/user/month",
     color: "from-blue-600 to-indigo-600"
   },
   {
@@ -418,7 +418,7 @@ export default function BlogArticle() {
               href="https://my.karhuno.com/signup"
               className={`bg-white text-[#7e51ff] px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-colors shadow-lg ${montserrat.className}`}
             >
-              Start free trial
+              Start sign up
             </a>
             <a
               href="/blog"

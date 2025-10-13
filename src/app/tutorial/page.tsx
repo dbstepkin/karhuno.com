@@ -70,7 +70,7 @@ export default function TutorialPage() {
               <div className={`flex flex-col sm:flex-row gap-4 text-sm text-gray-400 ${montserrat.className}`}>
                 <span>No credit card required</span>
                 <span className="hidden sm:block">•</span>
-                <span>Free trial — 14 days</span>
+                <span>Sign up — 14 days</span>
               </div>
             </div>
           </div>
@@ -577,7 +577,7 @@ export default function TutorialPage() {
                   No credit card required
                 </p>
                 <p className="text-sm text-gray-500">
-                  Free trial — 14 days
+                  Sign up — 14 days
                 </p>
               </div>
             </div>
@@ -601,7 +601,7 @@ export default function TutorialPage() {
               href="https://my.karhuno.com/signup"
               className={`inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
             >
-              Start Your Free Trial
+              Start Your Sign Up
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
           </div>
