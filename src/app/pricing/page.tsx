@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import Footer from "@/components/home/footer";
 import { Montserrat } from "next/font/google";
-import { Crown, Shield, Check } from "lucide-react";
+import { Crown, Shield, Check, ChevronDown } from "lucide-react";
 
 interface PricingPlan {
   name: string;
@@ -95,6 +95,31 @@ const montserrat = Montserrat({
 });
 
 export default function PricingPage() {
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+
+  const faqData = [
+    {
+      question: "What happens after the free trial ends?",
+      answer: "After your trial period, you'll automatically be charged for your selected plan. You can cancel anytime before the trial ends to avoid charges."
+    },
+    {
+      question: "Can I cancel anytime?",
+      answer: "Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees."
+    },
+    {
+      question: "Do I need to enter my credit card now?",
+      answer: "Yes, a credit card is required to start. However, you can use a specific code to get a free week trial to test our platform before any charges."
+    },
+    {
+      question: "What's included in the weekly vs monthly plan?",
+      answer: "The weekly plan offers the same features as the monthly plan but with different usage limits. Weekly plans are perfect for testing, while monthly plans provide better value for regular use."
+    }
+  ];
+
+  const toggleFAQ = (index: number) => {
+    setOpenFAQ(openFAQ === index ? null : index);
+  };
+
   useEffect(() => {
     const cta = document.querySelector('a[href="https://calendly.com/team-karhuno/30min"]');
 
@@ -143,8 +168,10 @@ export default function PricingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative flex flex-col bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:scale-[1.02] ${
-                plan.isRecommended ? "ring-2 ring-purple-500" : ""
+              className={`relative flex flex-col rounded-2xl transition-all duration-300 ${
+                plan.isRecommended 
+                  ? "bg-[#f8f7ff] border-2 border-purple-600 shadow-xl hover:scale-105 ring-1 ring-purple-300 ring-offset-1" 
+                  : "bg-white shadow-lg hover:shadow-xl"
               }`}
             >
               {/* Save Badge */}
@@ -165,144 +192,110 @@ export default function PricingPage() {
               )}
 
               {/* Plan Header */}
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-purple-600 mb-2 font-roboto">
+              <div className="p-8 pb-6">
+                <h3 className="text-2xl font-bold text-purple-600 mb-2 font-roboto uppercase">
                   {plan.name}
                 </h3>
-                <p className="text-gray-500 text-sm font-montserrat">
+                
+                {/* Price */}
+                <div className="mb-6">
+                  <div className="flex items-baseline gap-2 mb-1">
+                    <span className="text-5xl font-bold text-black font-roboto">
+                      ${plan.price}
+                    </span>
+                    <span className="text-lg text-gray-400 line-through">
+                      ${plan.originalPrice}
+                    </span>
+                  </div>
+                  <p className="text-gray-500 text-sm font-montserrat">
+                    per user per {plan.period}
+                  </p>
+                </div>
+
+                {/* CTA Button */}
+                <button 
+                  onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
+                  className={`w-full px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${montserrat.className} ${
+                    plan.isRecommended 
+                      ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 hover:shadow-purple-500/25' 
+                      : 'bg-gray-600 text-white hover:bg-gray-700'
+                  }`}
+                >
+                  Get Started
+                </button>
+
+                {/* Description */}
+                <p className="text-gray-600 text-sm mt-4 font-montserrat">
                   {plan.description}
                 </p>
               </div>
 
-              {/* Price */}
-              <div className="text-center mb-8">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <span className="text-4xl font-bold text-purple-600 font-roboto">
-                    ${plan.price}
-                  </span>
-                  <span className="text-lg text-gray-400 line-through">
-                    ${plan.originalPrice}
-                  </span>
-                </div>
-                <p className="text-gray-500 text-sm font-montserrat">
-                  /{plan.period}
-                </p>
-              </div>
-
               {/* Features */}
-              <div className="space-y-6 mb-8">
-                {/* News Search */}
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 font-roboto">News Search</p>
-                    <p className="text-sm text-gray-500 font-montserrat">{plan.features.newsSearch.triggers} news triggers</p>
-                  </div>
-                </div>
-
-                {/* LinkedIn Conversations */}
-                <div className="space-y-2">
+              <div className="px-8 pb-8 flex-1">
+                <div className="space-y-4">
+                  {/* News Search */}
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                      </svg>
+                    <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-purple-600" />
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900 font-roboto">LinkedIn conversations</p>
-                      <p className="text-sm text-gray-500 font-montserrat">{plan.features.linkedinConversations.topics} topics</p>
+                      <p className="text-sm text-gray-600 font-montserrat">News search – {plan.features.newsSearch.triggers} triggers</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 ml-11">
-                    <div className="w-6 h-6 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                      </svg>
-                    </div>
-                    <p className="text-sm text-gray-500 font-montserrat">Up to {plan.features.linkedinConversations.keywordsPerTopic} keywords/topic</p>
-                  </div>
-                </div>
 
-                {/* Competitor Monitoring */}
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
+                  {/* LinkedIn Conversations */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-purple-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-600 font-montserrat">LinkedIn conversations – {plan.features.linkedinConversations.topics} topics</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 font-roboto">Competitor monitoring</p>
-                    <p className="text-sm text-gray-500 font-montserrat">Up to {plan.features.competitorMonitoring.competitors} competitors</p>
-                  </div>
-                </div>
 
-                {/* Weekly Features */}
-                <div className="border-t pt-6">
-                  <h4 className="font-semibold text-gray-900 mb-4 font-roboto">Features {plan.period === 'weekly' ? '(per week)' : ''}:</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 bg-purple-100 rounded-lg flex items-center justify-center">
-                        <svg className="w-3 h-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                      </div>
-                      <p className="text-sm text-gray-600 font-montserrat">{plan.features.weeklyFeatures.deepSearches} deep searches</p>
+                  {/* Competitor Monitoring */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-purple-600" />
                     </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 bg-purple-100 rounded-lg flex items-center justify-center">
-                        <svg className="w-3 h-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <p className="text-sm text-gray-600 font-montserrat">{plan.features.weeklyFeatures.verifiedEmails} verified emails</p>
+                    <div>
+                      <p className="text-sm text-gray-600 font-montserrat">Competitor monitoring – {plan.features.competitorMonitoring.competitors} competitors</p>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 bg-purple-100 rounded-lg flex items-center justify-center">
-                        <svg className="w-3 h-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                        </svg>
+                  </div>
+
+                  {/* Weekly Features */}
+                  <div className="pt-4 border-t border-gray-100">
+                    <h4 className="font-semibold text-gray-900 mb-3 font-roboto text-sm">
+                      Features:
+                    </h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Check className="w-4 h-4 text-purple-600" />
+                        </div>
+                        <p className="text-sm text-gray-600 font-montserrat">{plan.features.weeklyFeatures.deepSearches} deep searches</p>
                       </div>
-                      <p className="text-sm text-gray-600 font-montserrat">New leads - {plan.features.weeklyFeatures.newLeads}</p>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Check className="w-4 h-4 text-purple-600" />
+                        </div>
+                        <p className="text-sm text-gray-600 font-montserrat">{plan.features.weeklyFeatures.verifiedEmails} verified emails</p>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Check className="w-4 h-4 text-purple-600" />
+                        </div>
+                        <p className="text-sm text-gray-600 font-montserrat">Fresh leads delivered daily</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* Select Plan Button */}
-              <button 
-                onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
-                className={`w-full px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${montserrat.className} ${
-                  plan.isRecommended 
-                    ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 hover:shadow-purple-500/25' 
-                    : 'bg-gray-600 text-white hover:bg-gray-700'
-                }`}
-              >
-                Select Plan
-              </button>
             </motion.div>
           ))}
         </div>
 
-        {/* Money-back Guarantee */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-center py-8"
-        >
-          <div className="inline-flex items-center gap-3 bg-green-100 text-green-800 px-6 py-3 rounded-xl">
-            <Shield className="w-5 h-5" />
-            <span className="font-semibold font-montserrat">
-              7 days moneyback guarantee. No questions asked. One-click refund.
-            </span>
-          </div>
-        </motion.div>
-
-        {/* Sales Callout Section */}
+        {/* Sales Callout Section - Immediately under pricing cards */}
         <div className="max-w-screen-xl mx-auto px-6 mt-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -334,6 +327,182 @@ export default function PricingPage() {
             </div>
           </motion.div>
         </div>
+
+        {/* Money-back Guarantee Section - New Design */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="py-16"
+        >
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="text-center">
+              {/* Shield Icon */}
+              <div className="flex justify-center mb-6">
+                <Shield className="w-16 h-16 text-purple-600" />
+              </div>
+              
+              {/* Headline */}
+              <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-roboto">
+                7-Day Money-Back Guarantee
+              </h3>
+              
+              {/* Subtitle */}
+              <p className="text-xl text-gray-600 font-montserrat max-w-2xl mx-auto">
+                No questions asked. One-click refund. Try it 100% risk-free.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* FAQ Section - New Design */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="py-20"
+        >
+          <div className="max-w-6xl mx-auto px-6">
+            {/* Header */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-3 mb-6">
+                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-purple-600 font-semibold font-montserrat">FAQ</span>
+              </div>
+              <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-roboto">
+                Got Questions?
+              </h3>
+              <p className="text-xl text-gray-600 font-montserrat max-w-2xl mx-auto">
+                We've got answers. Here are the most common questions about our pricing and plans.
+              </p>
+            </div>
+
+            {/* FAQ Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {faqData.map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 * index }}
+                  className="group"
+                >
+                  <div className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-2 ${
+                    openFAQ === index 
+                      ? 'border-purple-200 bg-gradient-to-br from-purple-50 to-blue-50' 
+                      : 'border-gray-100 hover:border-purple-100'
+                  }`}>
+                    {/* Question */}
+                    <button
+                      onClick={() => toggleFAQ(index)}
+                      className="w-full text-left group-hover:scale-[1.02] transition-transform duration-200"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-200 ${
+                          openFAQ === index 
+                            ? 'bg-gradient-to-r from-purple-500 to-blue-500' 
+                            : 'bg-gray-100 group-hover:bg-purple-100'
+                        }`}>
+                          <span className={`text-lg font-bold ${
+                            openFAQ === index ? 'text-white' : 'text-gray-600 group-hover:text-purple-600'
+                          }`}>
+                            {String(index + 1).padStart(2, '0')}
+                          </span>
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="text-lg font-bold text-gray-900 mb-2 font-roboto group-hover:text-purple-600 transition-colors duration-200">
+                            {faq.question}
+                          </h4>
+                          <div className="flex items-center gap-2">
+                            <span className={`text-sm font-medium transition-colors duration-200 ${
+                              openFAQ === index ? 'text-purple-600' : 'text-gray-500 group-hover:text-purple-500'
+                            }`}>
+                              {openFAQ === index ? 'Click to close' : 'Click to expand'}
+                            </span>
+                            <ChevronDown 
+                              className={`w-4 h-4 transition-all duration-200 ${
+                                openFAQ === index 
+                                  ? 'rotate-180 text-purple-600' 
+                                  : 'text-gray-400 group-hover:text-purple-500'
+                              }`} 
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+
+                    {/* Answer */}
+                    <AnimatePresence>
+                      {openFAQ === index && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                          animate={{ opacity: 1, height: 'auto', marginTop: 24 }}
+                          exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="flex items-start gap-4">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-green-100 to-emerald-100 flex items-center justify-center flex-shrink-0">
+                              <Check className="w-6 h-6 text-green-600" />
+                            </div>
+                            <div className="flex-1">
+                              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-white/50">
+                                <p className="text-gray-700 font-montserrat leading-relaxed">
+                                  {faq.answer}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Bottom CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1.2 }}
+              className="text-center mt-16"
+            >
+              <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-8 border border-purple-100">
+                <h4 className="text-2xl font-bold text-gray-900 mb-4 font-roboto">
+                  Still have questions?
+                </h4>
+                <p className="text-gray-600 mb-6 font-montserrat">
+                  Our team is here to help you choose the perfect plan for your business.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a
+                    href="https://calendly.com/team-karhuno/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
+                  >
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                    Chat with us
+                  </a>
+                  <button 
+                    onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
+                    className={`inline-flex items-center px-6 py-3 bg-white text-purple-600 font-semibold rounded-xl border-2 border-purple-200 hover:border-purple-300 hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 shadow-lg ${montserrat.className}`}
+                  >
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    Get started now
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
 
       </div>
 
