@@ -4,71 +4,89 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import Footer from "@/components/home/footer";
 import { Montserrat } from "next/font/google";
+import { Crown, Shield, Check } from "lucide-react";
 
-interface Feature {
-  text: string;
-}
-
-interface PricingPackage {
+interface PricingPlan {
+  name: string;
+  description: string;
   price: number;
-  credits: number;
-  pricePerCredit: number;
-  features: Feature[];
-  isPopular: boolean;
-  isFree?: boolean;
+  originalPrice: number;
+  period: string;
+  isRecommended: boolean;
+  features: {
+    newsSearch: {
+      triggers: number;
+    };
+    linkedinConversations: {
+      topics: number;
+      keywordsPerTopic: number;
+    };
+    competitorMonitoring: {
+      competitors: number;
+    };
+    weeklyFeatures: {
+      deepSearches: number | string;
+      verifiedEmails: number;
+      newLeads: string;
+    };
+  };
 }
 
-const pricingPackages: PricingPackage[] = [
+const pricingPlans: PricingPlan[] = [
   {
-    price: 0,
-    credits: 1000,
-    pricePerCredit: 0.0000,
-    features: [
-      { text: "Scan 1,000 LinkedIn profiles (1 credit = 1 profile)" },
-      { text: "Launch 5 Deep Research scans (2,500+ articles each)" },
-      { text: "Or run 10 Light Research scans (500+ articles each)" },
-      { text: "Enrich up to 200 verified emails (5 credits per email)" },
-      { text: "*Valid for new users only*" },
-    ],
-    isPopular: false,
-    isFree: true,
+    name: "Optimal (weekly)",
+    description: "Perfect for getting started",
+    price: 25,
+    originalPrice: 49,
+    period: "weekly",
+    isRecommended: false,
+    features: {
+      newsSearch: { triggers: 2 },
+      linkedinConversations: { topics: 2, keywordsPerTopic: 5 },
+      competitorMonitoring: { competitors: 20 },
+      weeklyFeatures: {
+        deepSearches: 6,
+        verifiedEmails: 70,
+        newLeads: "daily!"
+      }
+    }
   },
   {
-    price: 20,
-    credits: 2000,
-    pricePerCredit: 0.0100,
-    features: [
-      { text: "Scan 2,000 LinkedIn profiles (1 credit = 1 profile)" },
-      { text: "Launch 10 Deep Research scans (2,500+ articles each)" },
-      { text: "Or run 20 Light Research scans (500+ articles each)" },
-      { text: "Enrich up to 400 verified emails (5 credits per email)" },
-    ],
-    isPopular: false,
+    name: "Optimal",
+    description: "Most popular choice",
+    price: 79,
+    originalPrice: 149,
+    period: "monthly",
+    isRecommended: true,
+    features: {
+      newsSearch: { triggers: 2 },
+      linkedinConversations: { topics: 2, keywordsPerTopic: 5 },
+      competitorMonitoring: { competitors: 20 },
+      weeklyFeatures: {
+        deepSearches: 20,
+        verifiedEmails: 300,
+        newLeads: "daily!"
+      }
+    }
   },
   {
-    price: 45,
-    credits: 5000,
-    pricePerCredit: 0.0090,
-    features: [
-      { text: "Scan 5,000 LinkedIn profiles (1 credit = 1 profile)" },
-      { text: "Launch 25 Deep Research scans (2,500+ articles each)" },
-      { text: "Or run 50 Light Research scans (500+ articles each)" },
-      { text: "Enrich up to 1,000 verified emails (5 credits per email)" },
-    ],
-    isPopular: true,
-  },
-  {
-    price: 80,
-    credits: 10000,
-    pricePerCredit: 0.0080,
-    features: [
-      { text: "Scan 10,000 LinkedIn profiles (1 credit = 1 profile)" },
-      { text: "Launch 50 Deep Research scans (2,500+ articles each)" },
-      { text: "Or run 100 Light Research scans (500+ articles each)" },
-      { text: "Enrich up to 2,000 verified emails (5 credits per email)" },
-    ],
-    isPopular: false,
-  },
+    name: "Professional",
+    description: "For power users",
+    price: 139,
+    originalPrice: 249,
+    period: "monthly",
+    isRecommended: false,
+    features: {
+      newsSearch: { triggers: 3 },
+      linkedinConversations: { topics: 3, keywordsPerTopic: 7 },
+      competitorMonitoring: { competitors: 50 },
+      weeklyFeatures: {
+        deepSearches: "Unlimited",
+        verifiedEmails: 1000,
+        newLeads: "daily!"
+      }
+    }
+  }
 ];
 
 const montserrat = Montserrat({
@@ -110,99 +128,178 @@ export default function PricingPage() {
           className="text-center mb-16 px-4"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-roboto leading-tight">
-            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">Pay</span>{" "}
-            only for
-            <br />
-            what you{" "}
-            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-              use
-            </span>
+            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">Choose</span>{" "}
+            Your Plan
           </h2>
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base font-montserrat">
-            Choose the credit package that best fits your prospecting needs
+            Select the perfect plan for your business needs
           </p>
         </motion.div>
 
         {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 py-12">
-          {pricingPackages.map((pkg, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 py-12">
+          {pricingPlans.map((plan, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-xl transition-all duration-300 hover:scale-[1.03] ${
-                pkg.isPopular ? "ring-2 ring-purple-500" : pkg.isFree ? "shadow-lg border border-purple-200" : ""
+              className={`relative flex flex-col bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:scale-[1.02] ${
+                plan.isRecommended ? "ring-2 ring-purple-500" : ""
               }`}
             >
-              {/* Sign Up Label */}
-              {pkg.isFree && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-purple-400 to-blue-400 text-white text-sm font-semibold px-4 py-1 rounded-full shadow font-montserrat">
-                    Sign Up
-                  </span>
-                </div>
-              )}
-              {/* Most Popular Label */}
-              {pkg.isPopular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-purple-600 to-purple-700 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-lg font-montserrat">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-              <div className="mb-6">
-                <span className={`text-5xl font-bold font-roboto ${pkg.isFree ? "text-blue-500" : "text-purple-600"}`}>
-                  €{pkg.price}
+              {/* Save Badge */}
+              <div className="absolute -top-3 -right-3">
+                <span className="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-md shadow-lg">
+                  Save until Oct 14
                 </span>
               </div>
-              <div className="mb-6 text-center">
-                <p className={`text-2xl font-semibold font-roboto mb-1 ${pkg.isFree ? "text-blue-900" : "text-purple-900"}`}>
-                  {pkg.credits.toLocaleString()} credits
-                </p>
-                <p className="text-sm text-gray-500 font-montserrat">
-                  €{pkg.pricePerCredit.toFixed(4)} per credit
+
+              {/* Recommended Badge */}
+              {plan.isRecommended && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="bg-gradient-to-r from-purple-600 to-purple-700 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-lg flex items-center gap-1">
+                    <Crown className="w-4 h-4" />
+                    Recommended
+                  </span>
+                </div>
+              )}
+
+              {/* Plan Header */}
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-purple-600 mb-2 font-roboto">
+                  {plan.name}
+                </h3>
+                <p className="text-gray-500 text-sm font-montserrat">
+                  {plan.description}
                 </p>
               </div>
+
+              {/* Price */}
+              <div className="text-center mb-8">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <span className="text-4xl font-bold text-purple-600 font-roboto">
+                    ${plan.price}
+                  </span>
+                  <span className="text-lg text-gray-400 line-through">
+                    ${plan.originalPrice}
+                  </span>
+                </div>
+                <p className="text-gray-500 text-sm font-montserrat">
+                  /{plan.period}
+                </p>
+              </div>
+
+              {/* Features */}
+              <div className="space-y-6 mb-8">
+                {/* News Search */}
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 font-roboto">News Search</p>
+                    <p className="text-sm text-gray-500 font-montserrat">{plan.features.newsSearch.triggers} news triggers</p>
+                  </div>
+                </div>
+
+                {/* LinkedIn Conversations */}
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-900 font-roboto">LinkedIn conversations</p>
+                      <p className="text-sm text-gray-500 font-montserrat">{plan.features.linkedinConversations.topics} topics</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 ml-11">
+                    <div className="w-6 h-6 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
+                    </div>
+                    <p className="text-sm text-gray-500 font-montserrat">Up to {plan.features.linkedinConversations.keywordsPerTopic} keywords/topic</p>
+                  </div>
+                </div>
+
+                {/* Competitor Monitoring */}
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 font-roboto">Competitor monitoring</p>
+                    <p className="text-sm text-gray-500 font-montserrat">Up to {plan.features.competitorMonitoring.competitors} competitors</p>
+                  </div>
+                </div>
+
+                {/* Weekly Features */}
+                <div className="border-t pt-6">
+                  <h4 className="font-semibold text-gray-900 mb-4 font-roboto">Features {plan.period === 'weekly' ? '(per week)' : ''}:</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-6 h-6 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <svg className="w-3 h-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                      </div>
+                      <p className="text-sm text-gray-600 font-montserrat">{plan.features.weeklyFeatures.deepSearches} deep searches</p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-6 h-6 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <svg className="w-3 h-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <p className="text-sm text-gray-600 font-montserrat">{plan.features.weeklyFeatures.verifiedEmails} verified emails</p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-6 h-6 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <svg className="w-3 h-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                      </div>
+                      <p className="text-sm text-gray-600 font-montserrat">New leads - {plan.features.weeklyFeatures.newLeads}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Select Plan Button */}
               <button 
                 onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
-                className={`w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 mb-6 ${montserrat.className}`}
+                className={`w-full px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${montserrat.className} ${
+                  plan.isRecommended 
+                    ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 hover:shadow-purple-500/25' 
+                    : 'bg-gray-600 text-white hover:bg-gray-700'
+                }`}
               >
-                Get Started
+                Select Plan
               </button>
-              <div className="w-full">
-                <h4 className="text-sm font-semibold text-purple-900 font-montserrat mb-4">
-                  How you can use your credits:
-                </h4>
-                <ul className="space-y-3 text-left font-montserrat">
-                  {pkg.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                      <span className="text-gray-400 mt-1">•</span>
-                      <span>{feature.text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Credit Usage Explanation */}
+        {/* Money-back Guarantee */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="py-[60px] text-center"
+          className="text-center py-8"
         >
-          <div className="credit-system-info">
-            <h2 className="text-[26px] font-bold font-roboto leading-tight mb-6">
-              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-                Flexible Credit System
-              </span>
-            </h2>
-            <p className="text-[18px] font-normal text-[#4A4A4A] max-w-[700px] mx-auto mt-[10px] font-montserrat">
-              Credits are valid forever and can be used anytime. Purchase more credits as you need them, with better rates for larger packages.
-            </p>
+          <div className="inline-flex items-center gap-3 bg-green-100 text-green-800 px-6 py-3 rounded-xl">
+            <Shield className="w-5 h-5" />
+            <span className="font-semibold font-montserrat">
+              7 days moneyback guarantee. No questions asked. One-click refund.
+            </span>
           </div>
         </motion.div>
 
@@ -222,7 +319,7 @@ export default function PricingPage() {
                   </span>
                 </h3>
                 <p className="text-base text-gray-500 font-montserrat max-w-xl">
-                  Talk to our team for custom credit packages and tailored support for large-scale prospecting.
+                  Talk to our team for custom plans and tailored support for large-scale operations.
                 </p>
               </div>
               <div className="flex-shrink-0">
