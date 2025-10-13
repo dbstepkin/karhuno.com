@@ -128,8 +128,7 @@ export default function PricingPage() {
           className="text-center mb-16 px-4"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-roboto leading-tight">
-            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">Choose</span>{" "}
-            Your Plan
+            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">Choose Your Plan</span>
           </h2>
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base font-montserrat">
             Select the perfect plan for your business needs
@@ -334,86 +333,6 @@ export default function PricingPage() {
               </div>
             </div>
           </motion.div>
-        </div>
-
-        {/* Included Features Section */}
-        <div className="py-16 bg-[#F4F2FD]">
-          <div className="max-w-[1100px] mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-10 font-roboto">
-              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-                Included in every plan
-              </span>
-            </h2>
-
-            <div className="flex flex-col md:flex-row justify-center gap-6">
-              {/* API Access Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="flex-1 bg-[#0F0F0F] p-6 rounded-2xl hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-in-out relative"
-              >
-                {/* Coming Soon Badge */}
-                <div className="absolute -top-2 -right-2">
-                  <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg font-montserrat">
-                    Coming Soon
-                  </span>
-                </div>
-                
-                <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
-                </div>
-                <h3 className="text-white text-lg font-semibold mt-4 font-roboto">
-                  API Access
-                </h3>
-                <p className="text-gray-400 mt-1 text-sm leading-relaxed font-montserrat">
-                  Integrate Karhuno AI into your internal tools and workflows with ease.
-                </p>
-              </motion.div>
-
-              {/* CSV Export Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="flex-1 bg-[#0F0F0F] p-6 rounded-2xl hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-in-out"
-              >
-                <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                </div>
-                <h3 className="text-white text-lg font-semibold mt-4 font-roboto">
-                  CSV / Excel Export
-                </h3>
-                <p className="text-gray-400 mt-1 text-sm leading-relaxed font-montserrat">
-                  Export all discovered companies and contacts as .csv or .xlsx files.
-                </p>
-              </motion.div>
-
-              {/* Support Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex-1 bg-[#0F0F0F] p-6 rounded-2xl hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-in-out"
-              >
-                <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-white text-lg font-semibold mt-4 font-roboto">
-                  Dedicated Support
-                </h3>
-                <p className="text-gray-400 mt-1 text-sm leading-relaxed font-montserrat">
-                  Get help directly from our team — fast response, always included.
-                </p>
-              </motion.div>
-            </div>
-          </div>
         </div>
 
       </div>
