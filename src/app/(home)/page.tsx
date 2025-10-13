@@ -375,7 +375,7 @@ export default function Home() {
               Start Sign Up
             </button>
             <p className="text-sm text-[#71717A] mt-3 text-center">
-              No credit card required
+              Weekly or monthly plans • 7‑day money‑back guarantee
             </p>
           </div>
         </div>

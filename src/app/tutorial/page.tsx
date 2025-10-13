@@ -63,14 +63,14 @@ export default function TutorialPage() {
                   href="https://my.karhuno.com/signup" 
                   className={`inline-flex items-center px-10 py-5 bg-transparent border-2 border-purple-500 text-white font-semibold rounded-2xl hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-blue-500/10 transition-all duration-300 transform hover:scale-105 shadow-xl backdrop-blur-sm ${montserrat.className}`}
                 >
-                  Claim 1,000 Free Credits
+                  Sign up to get started
                   <ArrowRight className="w-6 h-6 ml-3" />
                 </Link>
               </div>
               <div className={`flex flex-col sm:flex-row gap-4 text-sm text-gray-400 ${montserrat.className}`}>
-                <span>No credit card required</span>
+                <span>Weekly or monthly plans</span>
                 <span className="hidden sm:block">•</span>
-                <span>Sign up — 14 days</span>
+                <span>7‑day money‑back guarantee</span>
               </div>
             </div>
           </div>
@@ -391,11 +391,11 @@ export default function TutorialPage() {
                 href="https://my.karhuno.com/signup"
                 className={`inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
               >
-                Try Corporate News Search for Free
+                Sign up to use Corporate News Search
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <p className={`text-sm text-gray-400 mt-3 ${montserrat.className}`}>
-                No credit card required
+                Weekly or monthly plans • 7‑day money‑back guarantee
               </p>
             </div>
           </div>
@@ -480,11 +480,11 @@ export default function TutorialPage() {
                 href="https://my.karhuno.com/signup"
                 className={`inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
               >
-                Try Search LinkedIn Conversation for Free
+                Sign up to use LinkedIn Conversation Search
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <p className={`text-sm mt-3 ${montserrat.className}`} style={{ color: '#666666' }}>
-                No credit card required
+                Weekly or monthly plans • 7‑day money‑back guarantee
               </p>
                       </div>
                     </div>
@@ -569,15 +569,15 @@ export default function TutorialPage() {
                 href="https://my.karhuno.com/signup"
                 className={`inline-flex items-center px-10 py-5 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-2xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-purple-500/30 ${montserrat.className}`}
               >
-                Try Competitor Engagement Tracking for Free
+                Sign up to use Competitor Engagement Tracking
                 <ArrowRight className="w-5 h-5 ml-3" />
               </Link>
               <div className={`mt-4 space-y-1 ${montserrat.className}`}>
                 <p className="text-sm text-gray-400">
-                  No credit card required
+                  Weekly or monthly plans
                 </p>
                 <p className="text-sm text-gray-500">
-                  Sign up — 14 days
+                  7‑day money‑back guarantee
                 </p>
               </div>
             </div>
