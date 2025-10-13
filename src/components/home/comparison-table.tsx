@@ -63,8 +63,8 @@ export default function ComparisonTable() {
               {/* Screenshot (left) */}
               <div className="md:col-span-1">
                 <div className="rounded-xl overflow-hidden border border-white/20 bg-white/10">
-                  <div className="relative w-full h-44 md:h-56">
-                    <Image src="/result warehouskarhuno.png" alt="Karhuno AI result" fill className="object-contain" />
+                <div className="relative w-full h-48 sm:h-44 md:h-56">
+                  <Image src="/result warehouskarhuno.png" alt="Karhuno AI result" fill className="object-cover" />
                   </div>
                 </div>
                 <p className="text-xs text-white/80 mt-2 text-center">Karhuno AI result</p>
@@ -140,8 +140,8 @@ export default function ComparisonTable() {
               <p className="text-sm">⚠️ No buying signal context</p>
             </div>
             <div className="rounded-lg overflow-hidden border border-gray-200 py-6">
-              <div className="relative w-full h-56">
-                <Image src="/result warehousechatgpt.png" alt="ChatGPT result" fill className="object-contain" />
+              <div className="relative w-full h-48 sm:h-56">
+                <Image src="/result warehousechatgpt.png" alt="ChatGPT result" fill className="object-cover" />
               </div>
             </div>
             <p className="text-xs text-zinc-700 mt-2 text-center">ChatGPT result</p>
@@ -169,8 +169,8 @@ export default function ComparisonTable() {
               <p className="text-sm">⚠️ No buying signal context</p>
             </div>
             <div className="rounded-lg overflow-hidden border border-gray-200 py-6">
-              <div className="relative w-full h-56">
-                <Image src="/new perplecity warehouse.png" alt="Perplexity result" fill className="object-contain" />
+              <div className="relative w-full h-48 sm:h-56">
+                <Image src="/new perplecity warehouse.png" alt="Perplexity result" fill className="object-cover" />
               </div>
             </div>
             <p className="text-xs text-zinc-700 mt-2 text-center">Perplexity result</p>
@@ -198,8 +198,8 @@ export default function ComparisonTable() {
               <p className="text-sm">⚠️ No buying signal context</p>
             </div>
             <div className="rounded-lg overflow-hidden border border-gray-200 py-6">
-              <div className="relative w-full h-56">
-                <Image src="/result warehouse claude.png" alt="Claude result" fill className="object-contain" />
+              <div className="relative w-full h-48 sm:h-56">
+                <Image src="/result warehouse claude.png" alt="Claude result" fill className="object-cover" />
               </div>
             </div>
             <p className="text-xs text-zinc-700 mt-2 text-center">Claude result</p>

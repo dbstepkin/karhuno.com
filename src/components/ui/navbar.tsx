@@ -50,11 +50,11 @@ export const Navbar: React.FC = () => {
   }, [lastScrollY]);
 
   return (
-    <header className={`fixed top-4 left-16 right-12 z-50 transition-all duration-300 ${
+    <header className={`fixed top-2 left-4 right-4 sm:top-4 sm:left-16 sm:right-12 z-50 transition-all duration-300 ${
       isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
     }`}>
       <nav 
-        className={`backdrop-blur-[8px] border border-white/20 px-6 py-4 transition-all duration-300 ${
+        className={`backdrop-blur-[8px] border border-white/20 px-4 py-3 sm:px-6 sm:py-4 transition-all duration-300 ${
           isScrolled ? 'shadow-xl shadow-black/10' : 'shadow-lg shadow-black/5'
         }`}
         style={{ 

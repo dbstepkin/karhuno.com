@@ -198,8 +198,8 @@ export default function Home() {
           </div>
 
           {/* Right Side - Search Form */}
-          <div className="flex-1 max-w-md mx-auto lg:mx-0">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 p-6 shadow-lg">
+          <div className="flex-1 max-w-sm sm:max-w-md mx-auto lg:mx-0">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 p-4 sm:p-6 shadow-lg">
               <h2 className={`text-xl font-semibold text-gray-900 mb-1 text-center ${roboto.className}`}>
                 Find corporate signals
               </h2>
@@ -264,9 +264,9 @@ export default function Home() {
       </header>
 
       {/* Real results from real outreach section */}
-      <section className="w-full bg-gradient-to-b from-gray-50 to-white py-20">
+      <section className="w-full bg-gradient-to-b from-gray-50 to-white py-12 sm:py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl md:text-6xl font-bold text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-center mb-8 sm:mb-16">
             <span className="text-black">Real results from real </span>
             <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">outreach</span>
           </h2>
@@ -274,7 +274,7 @@ export default function Home() {
           {/* Results Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* LinkedIn Results Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+            <div className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center mr-4">
                   <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -317,7 +317,7 @@ export default function Home() {
             </div>
 
             {/* Cold Email Results Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+            <div className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mr-4">
                   <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -453,11 +453,11 @@ export default function Home() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl"
+              className="bg-white rounded-2xl p-4 sm:p-8 max-w-md w-full shadow-2xl mx-4"
             >
               {!showSuccess ? (
                 <>
-                  <h3 className={`text-2xl font-bold text-gray-900 mb-4 text-center ${roboto.className}`}>
+                  <h3 className={`text-xl sm:text-2xl font-bold text-gray-900 mb-4 text-center ${roboto.className}`}>
                     What email should we send the results to?
                   </h3>
                   
