@@ -122,6 +122,21 @@ export const Navbar: React.FC = () => {
                   </span>
                 </Link>
                 <Link
+                  href="/blog"
+                  className={`block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50/80 hover:text-purple-600 transition-colors rounded-lg mx-2 ${montserrat.className}`}
+                >
+                  <span className="flex items-center">
+                    <Image
+                      src="/images/blog-icon.svg"
+                      alt="Blog"
+                      width={20}
+                      height={20}
+                      className="mr-3"
+                    />
+                    Blog
+                  </span>
+                </Link>
+                <Link
                   href="/faq"
                   className={`block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50/80 hover:text-purple-600 transition-colors rounded-lg mx-2 ${montserrat.className}`}
                 >
@@ -222,6 +237,22 @@ export const Navbar: React.FC = () => {
                       className="mr-3"
                     />
                     Tutorial
+                  </span>
+                </Link>
+                <Link
+                  href="/blog"
+                  className={`block text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors px-4 py-3 rounded-xl hover:bg-purple-50/80 ${montserrat.className}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span className="flex items-center">
+                    <Image
+                      src="/images/blog-icon.svg"
+                      alt="Blog"
+                      width={20}
+                      height={20}
+                      className="mr-3"
+                    />
+                    Blog
                   </span>
                 </Link>
                 <Link

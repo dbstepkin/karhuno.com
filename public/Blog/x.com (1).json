@@ -1,0 +1,912 @@
+{
+  "name": "x.com",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 13
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        1472,
+        2256
+      ],
+      "id": "7a70224c-b955-4c1e-ab29-3d90dc368d07",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"keyword_community_list\": [\n    \"lead generation\",\n    \"outbound sales\",\n    \"cold email\",\n    \"cold outreach\",\n    \"sales automation\",\n    \"b2b marketing\",\n    \"b2b sales\",\n    \"prospecting\",\n    \"icp definition\",\n    \"go to market\",\n    \"SaaS growth\",\n    \"signal based selling\",\n    \"sales triggers\",\n    \"sales stack\",\n    \"gtm strategy\",\n    \"startup sales\",\n    \"crm alternatives\",\n    \"LinkedIn prospecting\",\n    \"intent signals\",\n    \"demand capture\",\n    \"sales team\"\n  ],\n  \"failure\": {{ $runIndex === 0 ? 0 : ($json.failure || 0) }}\n}",
+        "options": {}
+      },
+      "id": "71104522-29bb-492a-b48f-d34cdde77b32",
+      "name": "Keyword/Community List1",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1728,
+        2256
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1c216d43-8f92-4a73-bd6e-b85368fb1b84",
+              "name": "randomized_item",
+              "value": "={{ $json.keyword_community_list.randomItem() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1936,
+        2256
+      ],
+      "id": "9b2c35e3-21b4-406a-97d9-362778d60830",
+      "name": "Randomized community, keyword1"
+    },
+    {
+      "parameters": {
+        "content": "https://apify.com/watcher.data/search-x-by-keywords/api/python"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2080,
+        2432
+      ],
+      "typeVersion": 1,
+      "id": "104c8efc-bc78-49a5-b400-48fca0782efd",
+      "name": "Sticky Note18"
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "8CiMefkv2yLlD7vYl",
+          "mode": "list",
+          "cachedResultName": "Search X By Keywords (watcher.data/search-x-by-keywords)",
+          "cachedResultUrl": "https://console.apify.com/actors/8CiMefkv2yLlD7vYl/input"
+        },
+        "customBody": "={\n  \"keywords\": [\n    \"={{ $json.randomized_item }}\"\n  ],\n  \"maxItemsPerKeyword\": 30,\n  \"proxyConfiguration\": {\n    \"useApifyProxy\": false\n  },\n  \"searchType\": \"tweets\",\n  \"sortBy\": \"latest\"\n}"
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        2144,
+        2256
+      ],
+      "id": "ccb22b94-c553-49a4-baac-5f4c1c70c99a",
+      "name": "Run an Actor",
+      "credentials": {
+        "apifyApi": {
+          "id": "z4kZuCemjHfzyl1V",
+          "name": "APIFY_TOKEN"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "Datasets",
+        "datasetId": "={{ $json.defaultDatasetId }}"
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        2352,
+        2256
+      ],
+      "id": "eabfca70-7752-40c7-a480-9fdd60b7977f",
+      "name": "Get dataset items1",
+      "credentials": {
+        "apifyApi": {
+          "id": "z4kZuCemjHfzyl1V",
+          "name": "APIFY_TOKEN"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an X (formerly Twitter) growth assistant specialized in crafting high-engagement replies.\n\nYour goal is to help grow my profile by analyzing each post and generating an intelligent, punchy, and human comment that feels authentic — never robotic, promotional, or generic.\n\n---\n\nHere is the post:\n\n{{ $json['post content'] }}\n\n---\n\nInstructions:\n\n1. Analyze the post and understand its tone, topic, and context.\n2. Your reply must be optimized to increase engagement and make my profile stand out.\n3. Follow the voice of a clever, sharp, and human commenter — think witty, sarcastic, dry, insightful, or supportive depending on the situation.\n4. Make it feel like a standalone thought, not a generic reply or conversation starter. No fluff, no emojis unless essential.\n5. DO NOT ask questions unless the original post explicitly does.\n6. Be concise: ideally under 100 characters.\n7. NEVER say things like “Great post!” or “Interesting thoughts.” Be original.\n\n---\n\nReply Style Guide (choose based on the tone of the post):\n\n• **Witty/Sarcastic** – For bold, controversial, or exaggerated takes  \n• **Informative** – When you can add real value or insight  \n• **Relatable Humor** – When the post is about shared pain points, startup struggles, etc.  \n• **Dry/Ironic** – For overly optimistic or cliché content  \n• **Supportive/Empathetic** – For emotional or honest stories  \n\n---\n\nOutput format :\n\nOnly return the reply text. Do not include JSON, quotation marks, keys, or any formatting. Just output the comment directly as plain text.\n\nIf the post is spammy, a giveaway, or has no real content (e.g., only emojis), output this:\n\n{\n  \"error\": \"Post filtered out\"\n}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        3968,
+        2160
+      ],
+      "id": "b6e2084d-d5fa-4ee6-bd58-65b7cf55f650",
+      "name": "Basic LLM Chain1"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2",
+        "options": {
+          "maxRetries": 2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        4096,
+        2336
+      ],
+      "id": "d33634da-55cb-4c40-bc96-7564154ba0ba",
+      "name": "Azure OpenAI Chat Model",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "xzrfmOrONpjPguTz",
+          "name": "Azure Open AI gpt-4o (mini)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an AI assistant helping a B2B SaaS company decide whether it's appropriate to comment on public social media posts.\n\nThe company is Karhuno AI – a lead generation tool that helps B2B sales teams find high-intent prospects by tracking buying signals such as company news, LinkedIn activity, and competitor engagement.\n\nAll posts you receive are already related to B2B sales, cold outreach, GTM, or lead generation.\n\nYour task is to decide if commenting from the official Karhuno AI account would feel natural, relevant, and not overly promotional.\n\nAssess whether the post provides a realistic and valuable opportunity to mention:\n– Sales signals  \n– Timing-based outreach  \n– Tracking competitor activity  \n– Identifying intent to buy\n\nOnly respond:\n- `\"yes\"` → if a reply about Karhuno AI would feel organic and valuable to the conversation.\n- `\"no\"` → if it would feel forced, irrelevant, or spammy.\n\nDo not explain your reasoning. Output only `YES` or `NO`.\n\nPost:\n\"\"{{ $json['post content'] }}\"\n\n",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        2768,
+        2000
+      ],
+      "id": "85609a38-514d-45e4-a47c-cf5c013983f9",
+      "name": "Basic LLM Chain2"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        2768,
+        2160
+      ],
+      "id": "e6d35959-9078-4960-a297-53b973541de5",
+      "name": "Azure OpenAI Chat Model1",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "xzrfmOrONpjPguTz",
+          "name": "Azure Open AI gpt-4o (mini)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are the official voice of Karhuno AI, a B2B SaaS startup that helps sales teams discover high-intent prospects by tracking buying signals like hiring surges, funding rounds, tech stack changes, LinkedIn activity, and competitor engagement.\n\nYour job is to craft **one intelligent, concise, and high-engagement reply** to a public post on X.com.\n\n🧠 Your reply should:\n- Feel like a **natural human comment**, not a pitch.\n- Be **context-aware**, adding **value or perspective** to the post.\n- Introduce Karhuno AI **only if relevant**, and in a **casual, non-promotional** way.\n- Be written in a tone that’s **witty, insightful, or lightly sarcastic** (depending on the post’s tone).\n- Max length: **<100 characters**, ideally 1 sentence.\n\n🎯 Goal:\nGrow visibility and engagement of the Karhuno AI account by posting clever, timely replies that spark interest **without sounding like marketing**.\n\n🚫 Avoid:\n- Overly formal or robotic language.\n- CTA phrases like “check us out” or “visit our site”.\n- Repeating the post or stating the obvious.\n\n---\n\n🧪 Context:\nYou will receive the full text of the post below. It is **already filtered as relevant** to topics like B2B sales, outbound, GTM, or lead generation.\n\nIf the post is sarcastic, reply with a clever twist.\nIf the post is insightful, respond with a sharp perspective or nuance.\nIf the post includes pain points, relate them subtly to what Karhuno AI helps solve (without naming features).\n\n💡 Examples of how to naturally include Karhuno AI:\n- “That’s basically our Tuesday at Karhuno.”\n- “We built Karhuno AI for *exactly* this mess.”\n- “Karhuno AI might have something to say about this 👀”\n- “We track these signals every day. It’s wild.”\n\n---\npost content: \n{{ $json['post content'] }}\n\n✍️ Output Format:\nRespond ONLY with the generated comment, no JSON or quotes. ",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        3984,
+        1600
+      ],
+      "id": "d7fea3f1-d683-47e7-8a3b-a17d217b3e72",
+      "name": "Basic LLM Chain3"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        1840
+      ],
+      "id": "f4fc6d10-11bd-42dd-8951-09dc412567aa",
+      "name": "Azure OpenAI Chat Model2",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "xzrfmOrONpjPguTz",
+          "name": "Azure Open AI gpt-4o (mini)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        3264,
+        2240
+      ],
+      "id": "4b8bad11-8887-49e4-8239-10db9a8167d8",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        4560,
+        2512
+      ],
+      "id": "d2c42731-2a50-479f-a6d3-280210ab0173",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c58dc8a3-246f-4442-8b4f-71bc59a1cc8d",
+              "name": "filter ",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3104,
+        2096
+      ],
+      "id": "e8960abd-d7dd-4081-a0f0-a066d427d2f4",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ee30b987-b334-4892-9d4f-06bebd378ed2",
+              "name": "xcomment",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4352,
+        2304
+      ],
+      "id": "767c6eb2-903f-4e2c-9db3-8df14e3855cf",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.xcomment }}",
+        "additionalFields": {
+          "inReplyToStatusId": {
+            "__rl": true,
+            "mode": "id",
+            "value": "={{ $json[\"post id \"] }}"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [
+        5680,
+        2624
+      ],
+      "id": "7ad7761f-7b06-4f09-ad1e-10db642be44f",
+      "name": "Create Tweet1",
+      "credentials": {
+        "twitterOAuth2Api": {
+          "id": "IdAis9l5tGOAUbdz",
+          "name": "X account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        5408,
+        2608
+      ],
+      "id": "42f8dd3d-e2eb-459b-96ad-e8c3e69e2a65",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * 151) + 300 }}"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5888,
+        2624
+      ],
+      "id": "ca567f90-a942-429e-93ea-dfd6e8d85f2c",
+      "name": "Wait1",
+      "webhookId": "6ad9544f-55fd-4008-9b67-2d5f603f76ca"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        4400,
+        1904
+      ],
+      "id": "484e4cb1-b3af-4bca-a926-1cf79f29d342",
+      "name": "Merge3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e40bf78d-b2a3-4740-9def-6566967ee4f1",
+              "name": "Post content",
+              "value": "={{ $json['post content'] }}",
+              "type": "string"
+            },
+            {
+              "id": "807bac10-e660-4ebd-8ea9-2eeddaf5e9ed",
+              "name": "post id ",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "bafe967e-5462-4f9c-8ad5-70969ef0fc10",
+              "name": "author",
+              "value": "={{ $json.author }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3728,
+        1936
+      ],
+      "id": "f5daf530-9945-4399-9080-2d131501ff28",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4af5c595-2c3c-4010-9c30-2486270464fa",
+              "name": "post content",
+              "value": "={{ $json['post content'] }}",
+              "type": "string"
+            },
+            {
+              "id": "f2eee80e-1e38-4924-9daa-6d1427c936f3",
+              "name": "post id ",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "39a07aa8-0585-4d94-b2f2-1ed447b851c5",
+              "name": "author",
+              "value": "={{ $json.author }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3632,
+        2368
+      ],
+      "id": "3466caf6-c813-4c4e-8c09-31d52b797855",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.text }}",
+        "additionalFields": {
+          "inReplyToStatusId": {
+            "__rl": true,
+            "value": "={{ $json['post id '] }}",
+            "mode": "id"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [
+        5696,
+        1936
+      ],
+      "id": "36e4a456-e3ba-4699-b56d-c572b3635c3a",
+      "name": "Create Tweet2",
+      "credentials": {
+        "twitterOAuth2Api": {
+          "id": "IdAis9l5tGOAUbdz",
+          "name": "X account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        5392,
+        1920
+      ],
+      "id": "f9f7735b-966a-4ea4-bb46-3c249f26148c",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * 151) + 300 }}"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5904,
+        1936
+      ],
+      "id": "2e1ab013-791a-4105-92b6-84b1745edc17",
+      "name": "Wait2",
+      "webhookId": "6ad9544f-55fd-4008-9b67-2d5f603f76ca"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e813c867-00a4-43c8-95b3-c37d8a43f015",
+              "leftValue": "={{ $json['filter '] }}",
+              "rightValue": "YES",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3424,
+        2240
+      ],
+      "id": "9fe3600f-f4c6-49e2-8cb1-839f73a6736e",
+      "name": "Content fits?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "41beaab7-a8de-48ca-b933-3b90193bd25c",
+              "name": "post content",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "d9745201-1fd1-4239-b868-ded3bf80b8fe",
+              "name": "author",
+              "value": "={{ $json.author }}",
+              "type": "string"
+            },
+            {
+              "id": "4e145338-3223-4b52-9f0d-337500212c58",
+              "name": "url",
+              "value": "={{ $json.url }}",
+              "type": "string"
+            },
+            {
+              "id": "9d6bf8ff-01ac-4b1e-91e7-a495fa3b9575",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2560,
+        2256
+      ],
+      "id": "bb051729-f1c0-4615-8690-703f0c95c00a",
+      "name": "Set prompt - content analsys"
+    }
+  ],
+  "pinData": {
+    "Schedule Trigger1": [
+      {
+        "json": {
+          "timestamp": "2025-09-30T08:04:23.755+00:00",
+          "Readable date": "September 30th 2025, 8:04:23 am",
+          "Readable time": "8:04:23 am",
+          "Day of week": "Tuesday",
+          "Year": "2025",
+          "Month": "September",
+          "Day of month": "30",
+          "Hour": "08",
+          "Minute": "04",
+          "Second": "23",
+          "Timezone": "UTC (UTC+00:00)"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Keyword/Community List1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keyword/Community List1": {
+      "main": [
+        [
+          {
+            "node": "Randomized community, keyword1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Randomized community, keyword1": {
+      "main": [
+        [
+          {
+            "node": "Run an Actor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run an Actor": {
+      "main": [
+        [
+          {
+            "node": "Get dataset items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get dataset items1": {
+      "main": [
+        [
+          {
+            "node": "Set prompt - content analsys",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain3",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain3": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Content fits?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Create Tweet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Tweet1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Create Tweet2": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Create Tweet2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Content fits?": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set prompt - content analsys": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b0c271be-6c95-4465-b226-0157cd183151",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b314f6c1458b849378ef9dc879b38ca307cccd8d33059998a1d2492997f05145"
+  },
+  "id": "cLa5xVezUHfajey5",
+  "tags": []
+}
