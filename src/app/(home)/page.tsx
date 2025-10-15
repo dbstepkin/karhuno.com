@@ -67,8 +67,9 @@ export default function Home() {
 
   // Email validation
   const isValidEmail = (email: string) => {
+    const normalizedEmail = email.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    return emailRegex.test(normalizedEmail);
   };
 
   // Handle email submission
@@ -87,7 +88,7 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: email.trim() }),
       });
 
       if (response.ok) {
