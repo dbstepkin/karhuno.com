@@ -37,23 +37,10 @@ const nextConfig: NextConfig = {
   },
   // Compression
   compress: true,
-  // Redirects for SEO - handle www and http redirects
-  async redirects() {
-    return [
-      // Redirect www to non-www
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.karhuno.com',
-          },
-        ],
-        destination: 'https://karhuno.com/:path*',
-        permanent: true,
-      },
-    ];
-  },
+  // Redirects temporarily disabled - handle via Vercel domain settings
+  // async redirects() {
+  //   return [];
+  // },
   // Security headers
   async headers() {
     return [

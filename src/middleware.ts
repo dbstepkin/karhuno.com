@@ -77,11 +77,7 @@ export async function middleware(request: NextRequest) {
 // Update the middleware to explicitly exclude API routes
 
 // Update the matcher configuration to ensure API routes are excluded
+// Middleware temporarily disabled to prevent redirect loops
 export const config = {
-  matcher: [
-    "/dashboard/:path*",
-    "/profile/:path*", 
-    "/settings/:path*",
-    "/account/:path*"
-  ],
+  matcher: [],
 }
