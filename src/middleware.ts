@@ -79,6 +79,9 @@ export async function middleware(request: NextRequest) {
 // Update the matcher configuration to ensure API routes are excluded
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|images|fonts).*)",
+    "/dashboard/:path*",
+    "/profile/:path*", 
+    "/settings/:path*",
+    "/account/:path*"
   ],
 }
