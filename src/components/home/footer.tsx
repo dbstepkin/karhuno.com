@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Linkedin } from "lucide-react";
+import { Linkedin, Youtube, Twitter } from "lucide-react";
 import { Montserrat, Roboto } from "next/font/google";
 
 const montserrat = Montserrat({ 
@@ -63,6 +63,12 @@ export default function Footer() {
               >
                 ROI Calculator
               </Link>
+              <Link
+                href="/contact"
+                className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
+              >
+                Contact
+              </Link>
             </div>
           </div>
 
@@ -100,6 +106,22 @@ export default function Footer() {
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Linkedin className="h-6 w-6" />
+              </Link>
+              <Link
+                href="https://x.com/KarhunoAI"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Twitter className="h-6 w-6" />
+              </Link>
+              <Link
+                href="https://www.youtube.com/@Karhuno"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                <Youtube className="h-6 w-6" />
               </Link>
             </div>
           </div>

@@ -4,7 +4,11 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
+"use client";
+
 import { Montserrat } from "next/font/google";
+import CanonicalHandler from "@/components/CanonicalHandler";
+import Head from "next/head";
 
 const montserrat = Montserrat({
   weight: "600",
@@ -13,7 +17,24 @@ const montserrat = Montserrat({
 
 export default function SignupPage() {
   return (
-    <div className="flex min-h-screen">
+    <>
+      <CanonicalHandler canonicalUrl="https://karhuno.com/signup" />
+      <Head>
+        <title>Sign Up | Karhuno AI - Start Your Free Trial | B2B Sales Intelligence</title>
+        <meta
+          name="description"
+          content="Start your free trial with Karhuno AI. Track LinkedIn signals, corporate news, and competitor monitoring to find high-intent B2B prospects. 7-day money-back guarantee."
+        />
+        <meta name="keywords" content="Karhuno AI signup, B2B sales intelligence trial, LinkedIn monitoring signup, buyer intent signals trial, sales intelligence free trial" />
+        <meta property="og:title" content="Sign Up | Karhuno AI - Start Your Free Trial" />
+        <meta property="og:description" content="Start your free trial with Karhuno AI. Track LinkedIn signals, corporate news, and competitor monitoring to find high-intent B2B prospects." />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sign Up | Karhuno AI - Start Your Free Trial" />
+        <meta name="twitter:description" content="Start your free trial with Karhuno AI. Track LinkedIn signals, corporate news, and competitor monitoring." />
+        <link rel="canonical" href="https://karhuno.com/signup" />
+      </Head>
+      <div className="flex min-h-screen">
       {/* Left side - Signup form */}
       <div className="flex w-full max-w-md flex-col justify-center p-8 md:p-12">
         <div className="mb-8">
@@ -130,5 +151,6 @@ export default function SignupPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

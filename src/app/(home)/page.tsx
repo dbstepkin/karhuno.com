@@ -5,6 +5,8 @@ import type React from "react";
 import { useState, useEffect } from "react";
 import { Montserrat, Roboto } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
+import Head from "next/head";
+import CanonicalHandler from "@/components/CanonicalHandler";
 
 // COMPONENTS
 import WhatYouGet from "@/components/home/what-you-get";
@@ -182,6 +184,23 @@ export default function Home() {
 
   return (
     <>
+      <CanonicalHandler canonicalUrl="https://karhuno.com" />
+      <Head>
+        <title>Karhuno AI - B2B Sales Intelligence Platform | Real-Time Buyer Intent Signals</title>
+        <meta
+          name="description"
+          content="Discover high-intent B2B prospects with Karhuno AI. Track LinkedIn conversations, corporate news, and competitor engagement to find companies actively seeking solutions. Start your free trial today."
+        />
+        <meta name="keywords" content="B2B sales, buyer intent, LinkedIn signals, corporate news, competitor monitoring, sales intelligence, lead generation" />
+        <meta property="og:title" content="Karhuno AI - B2B Sales Intelligence Platform" />
+        <meta property="og:description" content="Discover high-intent B2B prospects with real-time buyer intent signals. Track LinkedIn conversations, corporate news, and competitor engagement." />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Karhuno AI - B2B Sales Intelligence Platform" />
+        <meta name="twitter:description" content="Discover high-intent B2B prospects with real-time buyer intent signals." />
+        <link rel="canonical" href="https://karhuno.com" />
+        <link rel="canonical" href="https://karhuno.com/" />
+      </Head>
       <header className="relative overflow-hidden mt-12">
         {/* Main Content */}
         <div className="relative z-10 px-4 max-w-7xl mx-auto min-h-[80vh] flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Slider } from "@/components/ui/slider";
 import Footer from "@/components/home/footer";
 import { Montserrat } from "next/font/google";
+import Head from "next/head";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -22,6 +23,21 @@ export default function ROICalculation() {
 
   return (
     <>
+      <Head>
+        <title>ROI Calculator | Karhuno AI - Calculate Your B2B Sales Intelligence ROI</title>
+        <meta
+          name="description"
+          content="Calculate your ROI with Karhuno AI. See how much time and money you can save with our B2B sales intelligence platform. Free ROI calculator for sales teams."
+        />
+        <meta name="keywords" content="ROI calculator, B2B sales ROI, sales intelligence ROI, LinkedIn monitoring ROI, buyer intent signals ROI" />
+        <meta property="og:title" content="ROI Calculator | Karhuno AI" />
+        <meta property="og:description" content="Calculate your ROI with Karhuno AI. See how much time and money you can save with our B2B sales intelligence platform." />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="ROI Calculator | Karhuno AI" />
+        <meta name="twitter:description" content="Calculate your ROI with Karhuno AI. See how much time and money you can save." />
+        <link rel="canonical" href="https://karhuno.com/roi-calculation" />
+      </Head>
       <div className="min-h-screen bg-[#0f0f1a] py-20 px-4 relative overflow-hidden">
         {/* Gradient orbs for background effect */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

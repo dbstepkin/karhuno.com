@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Shield, Mail } from "lucide-react";
 import Footer from "@/components/home/footer";
 import { Montserrat, Roboto } from "next/font/google";
+import Head from "next/head";
 
 const montserrat = Montserrat({ 
   subsets: ['latin'],
@@ -20,7 +21,23 @@ const roboto = Roboto({
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen">
+    <>
+      <Head>
+        <title>Privacy Policy | Karhuno AI - Data Protection & Privacy</title>
+        <meta
+          name="description"
+          content="Learn how Karhuno AI protects your data and privacy. Our comprehensive privacy policy explains data collection, usage, and protection measures for B2B sales intelligence."
+        />
+        <meta name="keywords" content="Karhuno AI privacy policy, data protection, B2B sales privacy, LinkedIn data privacy, sales intelligence privacy" />
+        <meta property="og:title" content="Privacy Policy | Karhuno AI" />
+        <meta property="og:description" content="Learn how Karhuno AI protects your data and privacy. Our comprehensive privacy policy explains data collection, usage, and protection measures." />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Privacy Policy | Karhuno AI" />
+        <meta name="twitter:description" content="Learn how Karhuno AI protects your data and privacy." />
+        <link rel="canonical" href="https://karhuno.com/privacy-policy" />
+      </Head>
+      <div className="min-h-screen">
       <div className="pt-20">
         <section className="relative py-24 overflow-hidden">
           {/* Background Gradient */}
@@ -349,5 +366,6 @@ export default function PrivacyPolicyPage() {
       </div>
       <Footer />
     </div>
+    </>
   );
 } 

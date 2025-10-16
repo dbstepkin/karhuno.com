@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FileText, Mail } from "lucide-react";
 import Footer from "@/components/home/footer";
 import { Montserrat, Roboto } from "next/font/google";
+import Head from "next/head";
 
 const montserrat = Montserrat({ 
   subsets: ['latin'],
@@ -20,7 +21,23 @@ const roboto = Roboto({
 
 export default function TermsOfServicePage() {
   return (
-    <div className="min-h-screen">
+    <>
+      <Head>
+        <title>Terms of Service | Karhuno AI - Legal Terms & Conditions</title>
+        <meta
+          name="description"
+          content="Read Karhuno AI's terms of service and legal conditions. Understand your rights and obligations when using our B2B sales intelligence platform."
+        />
+        <meta name="keywords" content="Karhuno AI terms of service, legal terms, B2B sales terms, sales intelligence terms, platform terms" />
+        <meta property="og:title" content="Terms of Service | Karhuno AI" />
+        <meta property="og:description" content="Read Karhuno AI's terms of service and legal conditions. Understand your rights and obligations when using our platform." />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Terms of Service | Karhuno AI" />
+        <meta name="twitter:description" content="Read Karhuno AI's terms of service and legal conditions." />
+        <link rel="canonical" href="https://karhuno.com/terms-of-service" />
+      </Head>
+      <div className="min-h-screen">
       <div className="pt-20">
         <section className="relative py-24 overflow-hidden">
           {/* Background Gradient */}
@@ -368,5 +385,6 @@ export default function TermsOfServicePage() {
       </div>
       <Footer />
     </div>
+    </>
   );
 } 

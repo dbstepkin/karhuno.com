@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import Footer from "@/components/home/footer";
 import { Montserrat } from "next/font/google";
 import { Crown, Shield, Check, ChevronDown } from "lucide-react";
+import Head from "next/head";
+import CanonicalHandler from "@/components/CanonicalHandler";
 
 interface PricingPlan {
   name: string;
@@ -143,7 +145,24 @@ export default function PricingPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F6F3FF] to-[#EDEBFA]">
+    <>
+      <CanonicalHandler canonicalUrl="https://karhuno.com/pricing" />
+      <Head>
+        <title>Pricing Plans | Karhuno AI - Weekly & Monthly B2B Sales Intelligence</title>
+        <meta
+          name="description"
+          content="Compare our weekly and monthly plans. Start tracking real buyer intent with Karhuno AI. Corporate news search, LinkedIn signals, and competitor monitoring. 7-day money-back guarantee."
+        />
+        <meta name="keywords" content="B2B pricing, sales intelligence pricing, LinkedIn monitoring cost, corporate news search pricing, buyer intent signals pricing" />
+        <meta property="og:title" content="Pricing Plans | Karhuno AI" />
+        <meta property="og:description" content="Compare our weekly and monthly plans. Start tracking real buyer intent with Karhuno AI." />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Pricing Plans | Karhuno AI" />
+        <meta name="twitter:description" content="Compare our weekly and monthly plans. Start tracking real buyer intent with Karhuno AI." />
+        <link rel="canonical" href="https://karhuno.com/pricing" />
+      </Head>
+      <div className="min-h-screen bg-gradient-to-b from-[#F6F3FF] to-[#EDEBFA]">
       <div className="container mx-auto max-w-7xl pt-24 pb-16">
         {/* Header */}
         <motion.div
@@ -509,5 +528,6 @@ export default function PricingPage() {
       <Footer />
 
     </div>
+    </>
   );
 } 

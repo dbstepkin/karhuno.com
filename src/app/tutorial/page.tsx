@@ -134,7 +134,7 @@ export default function TutorialPage() {
                 <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
                   <iframe
                     className="absolute top-0 left-0 w-full h-full rounded-xl"
-                    src="https://www.youtube.com/embed/FejlAbOXU-Q"
+                    src="https://www.youtube.com/embed/VoihUjkTfag"
                     title="Getting Started Tutorial - Karhuno AI"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -334,18 +334,25 @@ export default function TutorialPage() {
               Discover companies making strategic moves through real-time news analysis. Track funding rounds, expansions, partnerships, and major announcements to identify high-intent prospects.
             </p>
             
-            {/* Coming Soon Placeholder */}
+            {/* Video Tutorial */}
             <div className="mb-16 max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-12 border border-purple-500/20 backdrop-blur-sm">
-                <div className="text-center">
-                  <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full flex items-center justify-center">
-                    <Play className="w-12 h-12 text-purple-400" />
-                  </div>
-                  <h3 className={`text-2xl font-bold text-white mb-4 ${roboto.className}`}>
-                    Coming Soon
-                  </h3>
-                  <p className={`text-gray-300 ${montserrat.className}`}>
-                    Video tutorial for Corporate News Search will be available soon
+              <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-6 border border-purple-500/20 backdrop-blur-sm">
+                {/* YouTube Video Embed */}
+                <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full rounded-xl"
+                    src="https://www.youtube.com/embed/1LuA6vI9mFA"
+                    title="Corporate News Search Tutorial - Karhuno AI"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                
+                {/* Video Label */}
+                <div className="mt-4 text-center">
+                  <p className={`text-lg font-medium text-white ${montserrat.className}`}>
+                    Learn how to use Corporate News Search
                   </p>
                 </div>
               </div>
@@ -423,18 +430,25 @@ export default function TutorialPage() {
               Find decision-makers actively discussing topics relevant to your business. Monitor LinkedIn conversations to identify prospects with immediate buying intent.
             </p>
             
-            {/* Coming Soon Placeholder */}
+            {/* Video Tutorial */}
             <div className="mb-16 max-w-4xl mx-auto">
-              <div className="bg-white rounded-2xl p-12 border border-gray-200 shadow-lg">
-                <div className="text-center">
-                  <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full flex items-center justify-center">
-                    <Play className="w-12 h-12 text-purple-500" />
-                  </div>
-                  <h3 className={`text-2xl font-bold mb-4 ${roboto.className}`} style={{ color: '#111111' }}>
-                    Coming Soon
-                  </h3>
-                  <p className={`${montserrat.className}`} style={{ color: '#666666' }}>
-                    Video tutorial for Search LinkedIn Conversation will be available soon
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
+                {/* YouTube Video Embed */}
+                <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full rounded-xl"
+                    src="https://www.youtube.com/embed/VOm9yJqnvqA"
+                    title="LinkedIn Signals Tutorial - Karhuno AI"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                
+                {/* Video Label */}
+                <div className="mt-4 text-center">
+                  <p className={`text-lg font-medium ${montserrat.className}`} style={{ color: '#666666' }}>
+                    Learn how to use LinkedIn Signals
                   </p>
                 </div>
               </div>
@@ -512,22 +526,29 @@ export default function TutorialPage() {
               Intercept in real-time everyone who interacts (likes, comments, shares) with your competitors' LinkedIn content. Turn their audience into your warm leads.
             </p>
             
-            {/* Coming Soon Placeholder */}
+            {/* Video Tutorial */}
             <div className="mb-16 max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-12 border border-purple-500/20 backdrop-blur-sm">
-                <div className="text-center">
-                  <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full flex items-center justify-center">
-                    <Play className="w-12 h-12 text-purple-400" />
-                      </div>
-                  <h3 className={`text-2xl font-bold text-white mb-4 ${roboto.className}`}>
-                    Coming Soon
-                  </h3>
-                  <p className={`text-gray-300 ${montserrat.className}`}>
-                    Video tutorial for Competitor Engagement Tracking will be available soon
-                  </p>
-                    </div>
-                  </div>
+              <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-6 border border-purple-500/20 backdrop-blur-sm">
+                {/* YouTube Video Embed */}
+                <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full rounded-xl"
+                    src="https://www.youtube.com/embed/7yfxE3WssrU"
+                    title="Competitor Monitoring Tutorial - Karhuno AI"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
                 </div>
+                
+                {/* Video Label */}
+                <div className="mt-4 text-center">
+                  <p className={`text-lg font-medium text-white ${montserrat.className}`}>
+                    Learn how to monitor competitor engagement
+                  </p>
+                </div>
+              </div>
+            </div>
 
             {/* Feature Boxes */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">

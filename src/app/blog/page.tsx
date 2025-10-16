@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Montserrat, Roboto } from "next/font/google";
 import Footer from "@/components/home/footer";
+import Head from "next/head";
 
 const montserrat = Montserrat({ 
   subsets: ['latin'],
@@ -110,7 +111,23 @@ export default function KarhunoBlogPage() {
     : blogPosts.filter(post => post.category === selectedCategory);
 
   return (
-    <main className={`bg-gradient-to-b from-[#f9f9fb] to-[#eef0ff] min-h-screen ${montserrat.variable} ${roboto.variable} font-montserrat`}>
+    <>
+      <Head>
+        <title>Blog | Karhuno AI - B2B Sales Intelligence Insights & Case Studies</title>
+        <meta
+          name="description"
+          content="Discover B2B sales intelligence insights, case studies, and strategies. Learn about LinkedIn signals, corporate news monitoring, and competitor tracking with Karhuno AI."
+        />
+        <meta name="keywords" content="B2B sales blog, LinkedIn signals case study, corporate news monitoring, buyer intent signals, sales intelligence insights" />
+        <meta property="og:title" content="Blog | Karhuno AI - B2B Sales Intelligence Insights" />
+        <meta property="og:description" content="Discover B2B sales intelligence insights, case studies, and strategies. Learn about LinkedIn signals, corporate news monitoring, and competitor tracking." />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Blog | Karhuno AI - B2B Sales Intelligence Insights" />
+        <meta name="twitter:description" content="Discover B2B sales intelligence insights, case studies, and strategies." />
+        <link rel="canonical" href="https://karhuno.com/blog" />
+      </Head>
+      <main className={`bg-gradient-to-b from-[#f9f9fb] to-[#eef0ff] min-h-screen ${montserrat.variable} ${roboto.variable} font-montserrat`}>
       
       {/* HERO */}
       <section className="bg-[#fafafa] py-20 md:py-28">
@@ -372,5 +389,6 @@ export default function KarhunoBlogPage() {
       {/* Footer */}
       <Footer />
     </main>
+    </>
   );
 }

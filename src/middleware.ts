@@ -1,7 +1,6 @@
-import { NextResponse } from "next/server"
-import type { NextRequest } from "next/server"
-import { jwtVerify } from "jose"
-
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import { jwtVerify } from 'jose'
 
 // Define paths that require authentication
 const protectedPaths = ["/dashboard", "/profile", "/settings", "/account"]
