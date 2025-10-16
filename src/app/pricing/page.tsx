@@ -98,6 +98,16 @@ const montserrat = Montserrat({
 
 export default function PricingPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  
+  // Calculate tomorrow's date for "Save until" message
+  const getTomorrowDate = () => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tomorrow.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric' 
+    });
+  };
 
   const faqData = [
     {
@@ -196,7 +206,7 @@ export default function PricingPage() {
               {/* Save Badge */}
               <div className="absolute -top-3 -right-3">
                 <span className="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-md shadow-lg">
-                  Save until Oct 14
+                  Save until {getTomorrowDate()}
                 </span>
               </div>
 

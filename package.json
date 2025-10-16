@@ -84,6 +84,6 @@
     "react-email": "^4.0.17",
     "tailwindcss": "^3.4.1",
     "tsx": "^4.20.3",
-    "typescript": "^5"
+    "typescript": "5.9.3"
   }
 }
