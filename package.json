@@ -41,6 +41,7 @@
     "@radix-ui/react-toggle-group": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
     "@react-email/components": "^0.1.1",
+    "@swc/helpers": "^0.5.17",
     "aws-sdk": "^2.1692.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -54,12 +55,11 @@
     "hono": "^4.7.2",
     "input-otp": "^1.4.2",
     "jiti": "^2.6.1",
-    "jose": "^6.1.0",
+    "jose": "^6.0.10",
     "lucide-react": "^0.475.0",
-    "next": "^15.5.5",
+    "next": "^15.3.4",
     "next-themes": "^0.4.4",
     "nodemailer": "^7.0.9",
-    "postcss-js": "^5.0.1",
     "react": "19.0.0",
     "react-day-picker": "8.10.1",
     "react-dom": "19.0.0",
@@ -75,8 +75,8 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@types/node": "^20.19.21",
-    "@types/react": "19.2.2",
+    "@types/node": "^20",
+    "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
@@ -84,6 +84,6 @@
     "react-email": "^4.0.17",
     "tailwindcss": "^3.4.1",
     "tsx": "^4.20.3",
-    "typescript": "5.9.3"
+    "typescript": "^5"
   }
 }

@@ -79,7 +79,6 @@ export async function middleware(request: NextRequest) {
 // Update the matcher configuration to ensure API routes are excluded
 export const config = {
   matcher: [
-    // Temporarily disable middleware for debugging
-    // "/((?!api|_next/static|_next/image|favicon.ico|images|fonts).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|images|fonts).*)",
   ],
 }
