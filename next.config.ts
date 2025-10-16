@@ -10,8 +10,8 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     appDocumentPreloading: false,
-    serverComponentsExternalPackages: [],
   },
+  serverExternalPackages: [],
   productionBrowserSourceMaps: false,
   poweredByHeader: false,
   compiler: {

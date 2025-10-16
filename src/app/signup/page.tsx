@@ -1,11 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
-"use client";
-
 import { Montserrat } from "next/font/google";
 import CanonicalHandler from "@/components/CanonicalHandler";
 import Head from "next/head";
