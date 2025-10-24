@@ -9,14 +9,15 @@ import Head from "next/head";
 import CanonicalHandler from "@/components/CanonicalHandler";
 
 // COMPONENTS
-import WhatYouGet from "@/components/home/what-you-get";
+import InteractiveWorkflow from "@/components/home/interactive-workflow";
 import CaseStudies from "@/components/home/case-studies";
 import ContactCarousel from "@/components/home/contact-carousel";
 import AIComparison from "@/components/home/ai-comparison";
 import UserTestimonials from "@/components/home/user-testimonials";
+import SignalCarousel from "@/components/home/signal-carousel";
+import WhyKarhuno from "@/components/home/why-karhuno";
 import FAQ from "@/components/home/faq";
 import Footer from "@/components/home/footer";
-import SignalCarousel from "@/components/home/signal-carousel";
 import HowKarhunoWorks from "@/components/home/how-karhuno-works";
 import LinkedInChart from "@/components/home/linkedin-chart";
 import ColdEmailChart from "@/components/home/cold-email-chart";
@@ -215,7 +216,7 @@ export default function Home() {
             </h1>
 
             <p className={`text-lg sm:text-xl md:text-2xl text-gray-500 mb-4 text-center lg:text-left ${montserrat.className}`}>
-              Discover fresh buying signals matched with real, active contacts — updated daily.
+              Discover fresh buying signals matched with real, active contacts updated daily.
             </p>
             
             <p className={`text-sm sm:text-base text-gray-400 mb-8 text-center lg:text-left ${montserrat.className}`}>
@@ -290,106 +291,10 @@ export default function Home() {
         
         {/* Trusted by Section */}
         <div className="relative z-10 px-4 max-w-7xl mx-auto py-8">
-          <div className="text-center mb-8">
-            <p className={`text-sm font-medium text-gray-500 mb-8 ${montserrat.className}`}>
-              Trusted by 500+ GTM Teams
+          <div className="text-center">
+            <p className={`text-sm font-medium text-black ${montserrat.className}`}>
+              Trusted by 100+ Sales Teams, Agencies, and B2B Founders
             </p>
-            
-            {/* Logos Grid with Infinite Scroll */}
-            <div className="relative w-full max-w-5xl mx-auto overflow-hidden">
-              <div className="flex items-center justify-center gap-8 md:gap-12 opacity-60">
-                <motion.div 
-                  className="flex items-center gap-8 md:gap-12"
-                  animate={{ x: [0, -800] }}
-                  transition={{ 
-                    duration: 25, 
-                    repeat: Infinity, 
-                    ease: "linear" 
-                  }}
-                >
-                  {/* First Set */}
-                  <div className="flex items-center justify-center w-24 h-12 flex-shrink-0 group cursor-pointer">
-                    <svg className="w-full h-full text-gray-400 group-hover:text-purple-500 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg group-hover:drop-shadow-purple-500/50" viewBox="0 0 100 40" fill="currentColor">
-                      <circle cx="15" cy="20" r="8" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M10 20 L20 20 M15 15 L15 25" stroke="currentColor" strokeWidth="2"/>
-                      <text x="30" y="25" fontSize="10" fontWeight="600" fontFamily="Arial, sans-serif">NexTech</text>
-                    </svg>
-                  </div>
-                  
-                  <div className="flex items-center justify-center w-24 h-12 flex-shrink-0 group cursor-pointer">
-                    <svg className="w-full h-full text-gray-400 group-hover:text-blue-500 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg group-hover:drop-shadow-blue-500/50" viewBox="0 0 100 40" fill="currentColor">
-                      <rect x="8" y="12" width="12" height="16" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M14 8 L14 12 M14 28 L14 32" stroke="currentColor" strokeWidth="2"/>
-                      <text x="28" y="25" fontSize="9" fontWeight="600" fontFamily="Arial, sans-serif">DataFlow</text>
-                    </svg>
-                  </div>
-                  
-                  <div className="flex items-center justify-center w-24 h-12 flex-shrink-0 group cursor-pointer">
-                    <svg className="w-full h-full text-gray-400 group-hover:text-green-500 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg group-hover:drop-shadow-green-500/50" viewBox="0 0 100 40" fill="currentColor">
-                      <path d="M12 20 Q8 16 12 12 Q16 8 20 12 Q24 8 28 12 Q32 16 28 20 L12 20" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <text x="35" y="25" fontSize="9" fontWeight="600" fontFamily="Arial, sans-serif">CloudSync</text>
-                    </svg>
-                  </div>
-                  
-                  <div className="flex items-center justify-center w-24 h-12 flex-shrink-0 group cursor-pointer">
-                    <svg className="w-full h-full text-gray-400 group-hover:text-orange-500 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg group-hover:drop-shadow-orange-500/50" viewBox="0 0 100 40" fill="currentColor">
-                      <polygon points="15,8 25,8 30,20 25,32 15,32 10,20" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <circle cx="20" cy="20" r="3" fill="currentColor"/>
-                      <text x="35" y="25" fontSize="8" fontWeight="600" fontFamily="Arial, sans-serif">ProVision</text>
-                    </svg>
-                  </div>
-                  
-                  <div className="flex items-center justify-center w-24 h-12 flex-shrink-0 group cursor-pointer">
-                    <svg className="w-full h-full text-gray-400 group-hover:text-pink-500 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg group-hover:drop-shadow-pink-500/50" viewBox="0 0 100 40" fill="currentColor">
-                      <path d="M10 15 L20 15 L25 20 L20 25 L10 25 L5 20 Z" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M15 10 L15 15 M15 25 L15 30" stroke="currentColor" strokeWidth="2"/>
-                      <text x="32" y="25" fontSize="9" fontWeight="600" fontFamily="Arial, sans-serif">TechFlow</text>
-                    </svg>
-                  </div>
-                  
-                  <div className="flex items-center justify-center w-24 h-12 flex-shrink-0 group cursor-pointer">
-                    <svg className="w-full h-full text-gray-400 group-hover:text-cyan-500 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg group-hover:drop-shadow-cyan-500/50" viewBox="0 0 100 40" fill="currentColor">
-                      <circle cx="12" cy="20" r="6" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <circle cx="28" cy="20" r="6" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M18 20 L22 20" stroke="currentColor" strokeWidth="2"/>
-                      <text x="38" y="25" fontSize="9" fontWeight="600" fontFamily="Arial, sans-serif">DataSync</text>
-                    </svg>
-                  </div>
-                  
-                  {/* Duplicate for seamless loop */}
-                  <div className="flex items-center justify-center w-24 h-12 flex-shrink-0 group cursor-pointer">
-                    <svg className="w-full h-full text-gray-400 group-hover:text-purple-500 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg group-hover:drop-shadow-purple-500/50" viewBox="0 0 100 40" fill="currentColor">
-                      <circle cx="15" cy="20" r="8" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M10 20 L20 20 M15 15 L15 25" stroke="currentColor" strokeWidth="2"/>
-                      <text x="30" y="25" fontSize="10" fontWeight="600" fontFamily="Arial, sans-serif">NexTech</text>
-                    </svg>
-                  </div>
-                  
-                  <div className="flex items-center justify-center w-24 h-12 flex-shrink-0 group cursor-pointer">
-                    <svg className="w-full h-full text-gray-400 group-hover:text-blue-500 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg group-hover:drop-shadow-blue-500/50" viewBox="0 0 100 40" fill="currentColor">
-                      <rect x="8" y="12" width="12" height="16" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M14 8 L14 12 M14 28 L14 32" stroke="currentColor" strokeWidth="2"/>
-                      <text x="28" y="25" fontSize="9" fontWeight="600" fontFamily="Arial, sans-serif">DataFlow</text>
-                    </svg>
-                  </div>
-                  
-                  <div className="flex items-center justify-center w-24 h-12 flex-shrink-0 group cursor-pointer">
-                    <svg className="w-full h-full text-gray-400 group-hover:text-green-500 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg group-hover:drop-shadow-green-500/50" viewBox="0 0 100 40" fill="currentColor">
-                      <path d="M12 20 Q8 16 12 12 Q16 8 20 12 Q24 8 28 12 Q32 16 28 20 L12 20" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <text x="35" y="25" fontSize="9" fontWeight="600" fontFamily="Arial, sans-serif">CloudSync</text>
-                    </svg>
-                  </div>
-                  
-                  <div className="flex items-center justify-center w-24 h-12 flex-shrink-0 group cursor-pointer">
-                    <svg className="w-full h-full text-gray-400 group-hover:text-orange-500 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg group-hover:drop-shadow-orange-500/50" viewBox="0 0 100 40" fill="currentColor">
-                      <polygon points="15,8 25,8 30,20 25,32 15,32 10,20" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <circle cx="20" cy="20" r="3" fill="currentColor"/>
-                      <text x="35" y="25" fontSize="8" fontWeight="600" fontFamily="Arial, sans-serif">ProVision</text>
-                    </svg>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
           </div>
         </div>
       </header>
@@ -606,12 +511,13 @@ export default function Home() {
         </div>
       </section>
 
-      <WhatYouGet />
+      <InteractiveWorkflow />
       <SignalCarousel />
+      <WhyKarhuno />
+      <UserTestimonials />
       <HowKarhunoWorks />
       <CaseStudies id="case-studies" />
       <AIComparison />
-      <UserTestimonials />
       <Footer />
 
       {/* Email Modal */}

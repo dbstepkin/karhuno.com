@@ -17,19 +17,19 @@ const tabs = [
   {
     id: "scan",
     title: "Scan",
-    description: "Discover signals from the open web. Karhuno scans publicly available content — from press releases and articles to job boards and blog mentions — helping you find signals that matter without relying on scraping or private data.",
+    description: "Karhuno scans public web sources and LinkedIn activity to detect buying intent — in real time. Forget static lists or scraped databases: We track press releases, job boards, blog mentions, and social signals to surface verified intent. What we scan: • Press & media announcements • Job openings and hiring trends • Product launches and partnerships • LinkedIn company updates & posts ✅ No scraping. No guesswork. Just public signals that reveal real momentum.",
     image: "/images/scan-icons.png"
   },
   {
     id: "identify",
     title: "Identify",
-    description: "Using advanced filters, you can describe the buying signal or news you're looking for in plain language — specifying industries, geographies, roles, and keywords.",
+    description: "Describe your ideal buying trigger in plain language — Karhuno turns it into actionable signals. Use smart filters to define your audience by: • Industry and region • Company type or size • Roles or departments involved • Keywords, intent topics, or trends 🎯 Instead of leads by volume, you get leads by timing. Only companies showing the signs you care about — right now.",
     image: "/images/sales-pipeline.png"
   },
   {
     id: "act",
     title: "Act",
-    description: "Receive a curated list of verified companies or contacts, complete with proof links and context, ready for targeted outreach — all accessible from a single intuitive dashboard. (coming soon)",
+    description: "Every signal comes with verified contact data, proof source, and context. You know not just who to contact, but why now. • One-click access to source links and summaries • Enriched contact info (no scraping) • Export-ready leads for outreach tools 📈 From insight to action — all in one place. No CRM noise. Just warm leads, ready to convert.",
     image: "/images/database-storage.png"
   }
 ];
@@ -707,7 +707,7 @@ export default function WhatYouGet() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className={`text-4xl md:text-5xl font-bold mb-6 ${roboto.className}`}
           >
-            What we <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">do</span>
+            What Karhuno AI <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">does</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -715,7 +715,7 @@ export default function WhatYouGet() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className={`text-gray-300 text-lg md:text-xl max-w-2xl mx-auto ${montserrat.className}`}
           >
-            Unlock actionable market signals to fuel your B2B growth
+            We track public buying signals and match them with up-to-date contacts — so you act when timing is right.
           </motion.p>
         </div>
 
@@ -763,7 +763,7 @@ export default function WhatYouGet() {
                     className={`text-2xl md:text-3xl font-bold mb-6 ${roboto.className}`}
                   >
                     <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-                      Supercharge your conversions with sales signals
+                      Pinpoint the Right Opportunities
                     </span>
                   </motion.h3>
                 )}
@@ -774,7 +774,7 @@ export default function WhatYouGet() {
                     className={`text-2xl md:text-3xl font-bold mb-6 ${roboto.className}`}
                   >
                     <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-                      Discover signals from the open web
+                      Discover Real-Time Buying Signals
                     </span>
                   </motion.h3>
                 )}
@@ -785,7 +785,7 @@ export default function WhatYouGet() {
                     className={`text-2xl md:text-3xl font-bold mb-6 tracking-tight ${roboto.className}`}
                   >
                     <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-                      Every signal comes with context, source, and verified contacts.
+                      Reach Out With Context and Confidence
                     </span>
                   </motion.h3>
                 )}

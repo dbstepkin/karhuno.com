@@ -14,6 +14,8 @@ const nextConfig: NextConfig = {
   serverExternalPackages: [],
   productionBrowserSourceMaps: false,
   poweredByHeader: false,
+  // Fix per multiple lockfiles warning
+  outputFileTracingRoot: __dirname,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },

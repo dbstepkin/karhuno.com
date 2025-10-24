@@ -46,19 +46,19 @@ const avatarColors = [
 
 const reviews = [
   {
-    quote: "Karhuno helps us act on buying intent in real time. I don’t waste hours on generic lists anymore — now I get warm leads based on actual signals.",
+    quote: "With Karhuno, I no longer chase cold leads. Every signal is tied to a real-time event, so I reach out when timing actually makes sense — not just because someone fits a profile.",
     name: "Marco Rossi",
     role: "Business Development Manager @ LeadSphere",
     image: "/marco rossi .jpg"
   },
   {
-    quote: "I was surprised by the precision. It’s not just keywords — it’s context. Karhuno surfaces leads that are 10x more relevant than what we used to get from SalesNav.",
+    quote: "What sets Karhuno apart is the context. It's not a scraped list or generic data — it's companies showing intent right now. The leads we get are laser-focused and 10x more relevant than anything we got with SalesNav or Apollo.",
     name: "Sarah Johnson",
     role: "Head of Sales Enablement @ Innovtech Group",
     image: "/sarahfoto.jpeg"
   },
   {
-    quote: "Finally a platform that connects real company news with verified contacts. We’ve booked 3 demos in the first week — without scraping anything.",
+    quote: "Karhuno is the only platform we found that connects public company news with verified contacts — no scraping involved. We booked 3 qualified demos in the first week, just by acting on the signals.",
     name: "Luca Moretti",
     role: "SDR Team Lead @ Nexora Systems",
     image: "/luca moretti.jpeg"
@@ -115,11 +115,11 @@ export default function UserTestimonials() {
         </div>
         <div className="relative w-full flex flex-col items-center">
           <div className="text-center w-full flex flex-col items-center">
-            <div className="text-[1.6rem] sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-10 leading-snug max-w-2xl mx-auto drop-shadow-sm" style={{letterSpacing: '-0.01em'}}>
-              “{cleanQuote(reviews[current].quote)}”
+            <div className="text-[1.6rem] sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-10 leading-snug max-w-2xl mx-auto drop-shadow-sm text-left" style={{letterSpacing: '-0.01em'}}>
+              "{cleanQuote(reviews[current].quote)}"
             </div>
             <div className="flex flex-col items-center gap-0.5 mb-8 w-full">
-              <Image src={reviews[current].image} alt={reviews[current].name} width={72} height={72} className="rounded-full object-cover shadow-lg border-4 border-white mx-auto" />
+              <Image src={reviews[current].image} alt={reviews[current].name} width={72} height={72} className="rounded-full object-cover object-top shadow-lg border-4 border-white mx-auto w-[72px] h-[72px] flex-shrink-0" style={{objectPosition: 'center 20%'}} />
               <div className="font-bold text-lg text-gray-900 mt-4 mb-1 text-center">{reviews[current].name}</div>
               <div className="text-gray-700 text-sm text-center font-normal" style={{fontWeight: 400}}>{reviews[current].role}</div>
             </div>

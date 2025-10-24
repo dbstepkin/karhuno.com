@@ -93,11 +93,14 @@ export default function SignalCarousel() {
         <div className="w-full pt-16 pb-8 px-4">
           <div className="text-center mb-8">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-              Some examples of{" "}
               <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-                signals we can track
+                Buying signals Karhuno can detect
               </span>
+              , before your competitors do
             </h2>
+            <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              From hiring spikes to product launches, here are the high-conversion triggers we track to help you reach the right companies at the right time.
+            </p>
           </div>
         </div>
 
