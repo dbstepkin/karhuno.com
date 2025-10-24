@@ -118,11 +118,6 @@ export default function SignalCarousel() {
                         {signal.icon}
                       </div>
                     </div>
-                    {signal.badge && (
-                      <div className="absolute -top-2 -right-2 bg-purple-600 text-white text-xs px-2 py-1 rounded-full font-medium">
-                        {signal.badge}
-                      </div>
-                    )}
                   </div>
                   <div className="space-y-2">
                     <p className="text-base font-medium text-gray-700">
