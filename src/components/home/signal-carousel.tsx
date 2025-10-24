@@ -12,48 +12,42 @@ export default function SignalCarousel() {
     {
       icon: <Globe className="size-6 text-[#0A66C2]" />,
       text: "Company announced expansion to a new market",
-      description: "Sign of growth — often leads to new vendor needs.",
+      description: "A company entering a new country or region often invests in local vendors, logistics, and marketing. Strong buying intent indicator.",
     },
     {
       icon: <Megaphone className="size-6 text-[#0A66C2]" />,
       text: "Hiring for SDRs or Sales roles",
-      description: "Sales team is growing — potential demand for tools or contact data.",
+      description: "Hiring for sales roles (like SDRs, AEs, or BDMs) shows active revenue expansion — a sign they're investing in prospecting tools or enablement tech.",
     },
     {
       icon: <FileText className="size-6 text-[#0A66C2]" />,
       text: "Published a report on AI or sustainability",
-      description: "Strategic positioning — good timing for consultative outreach.",
+      description: "When a company releases research or reports on AI, ESG, or innovation topics, it often marks a shift toward strategic partnerships or digital transformation.",
     },
     {
       icon: <Linkedin className="size-6 text-[#0A66C2]" />,
       text: "A post on a certain topic among your network or outside of it",
-      description: "Track specific conversations and engagement patterns.",
+      description: "Monitoring specific post topics and engagement trends reveals what problems or priorities your target accounts are discussing right now.",
     },
     {
       icon: <DollarSign className="size-6 text-[#0A66C2]" />,
       text: "A company attracted investment",
-      description: "Funding rounds indicate growth and new vendor opportunities.",
+      description: "Investment or fundraising news shows fresh capital and new budgets — ideal timing to offer solutions that support their next growth phase.",
     },
     {
       icon: <EarthIcon className="size-6 text-[#0A66C2]" />,
       text: "A company announced the purchase of green credits",
-      description: "Sustainability initiatives create new partnership opportunities.",
+      description: "Buying carbon or green credits indicates ESG compliance efforts — a trigger for partnerships in sustainability, energy, or reporting services.",
     },
     {
       icon: <EarthIcon className="size-6 text-[#0A66C2]" />,
       text: "A company announced plans to open a warehouse",
-      description: "Physical expansion signals operational growth needs.",
+      description: "Announcing a new warehouse or facility is a strong indicator of operational growth — often followed by hiring, logistics, or tech investments.",
     },
     {
       icon: <Image src="/hiring.svg" alt="hiring" width={52} height={52} />,
       text: "A company is hiring a biochemist",
-      description: "Specialized hiring indicates strategic business development.",
-    },
-    {
-      icon: <Upload className="size-6 text-[#0A66C2]" />,
-      text: "Listen to the companies from your list",
-      description: "Upload your list — we'll track changes automatically.",
-      badge: "Coming soon",
+      description: "Recruiting for niche technical roles (like biochemists, AI engineers, or process experts) often points to R&D activity or new product development.",
     },
   ];
 

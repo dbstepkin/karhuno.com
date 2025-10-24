@@ -320,7 +320,7 @@ export default function Home() {
             
             <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6">
               <span className="text-white">Real Results. </span>
-              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
                 Signal-Driven Outreach
               </span>
             </h2>
@@ -474,7 +474,7 @@ export default function Home() {
                   Start tracking the signals that matter and transform your outreach campaigns
                 </p>
                 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                   <button 
                     onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
                     className="group relative bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-2xl font-semibold hover:from-purple-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
@@ -483,26 +483,25 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </button>
                   
-                  <div className="flex items-center text-white/60 text-sm">
+                  <button 
+                    onClick={() => window.open('https://calendly.com/team-karhuno/30min', '_blank')}
+                    className="group relative bg-transparent border-2 border-white/30 text-white px-8 py-4 rounded-2xl font-semibold hover:border-white/60 hover:bg-white/10 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      Book a Demo
+                    </span>
+                  </button>
+                </div>
+                
+                <div className="mt-6 flex justify-center items-center text-white/60 text-sm">
+                  <div className="flex items-center">
                     <svg className="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                     </svg>
                     7-day free trial • No credit card required
-                  </div>
-                </div>
-                
-                <div className="mt-6 flex justify-center items-center space-x-8 text-white/50 text-sm">
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd"/>
-                    </svg>
-                    SOC 2 Compliant
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd"/>
-                    </svg>
-                    Money-back guarantee
                   </div>
                 </div>
               </div>

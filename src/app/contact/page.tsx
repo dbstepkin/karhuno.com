@@ -119,7 +119,7 @@ export default function ContactPage() {
                 </div>
               </motion.div>
 
-              {/* Coming Soon Notice */}
+              {/* Book a Call CTA */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -127,14 +127,30 @@ export default function ContactPage() {
                 className="bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-indigo-500/10 backdrop-blur-sm rounded-2xl border border-purple-200/50 p-8 text-center"
               >
                 <div className="flex items-center justify-center mb-4">
-                  <Clock className="w-8 h-8 text-purple-600 mr-3" />
+                  <svg className="w-8 h-8 text-purple-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
                   <h2 className={`text-2xl font-bold text-gray-800 ${roboto.className}`}>
-                    Contact Form Coming Soon
+                    Book a Call with Our Team
                   </h2>
                 </div>
-                <p className={`text-gray-600 max-w-2xl mx-auto leading-relaxed ${montserrat.className}`}>
-                  We're working on a comprehensive contact form to make it even easier to reach us. 
-                  In the meantime, feel free to reach out via email or phone using the contact information above.
+                <p className={`text-gray-600 max-w-2xl mx-auto leading-relaxed mb-6 ${montserrat.className}`}>
+                  Ready to see how Karhuno AI can transform your B2B sales? Schedule a personalized demo with our experts.
+                </p>
+                <button
+                  onClick={() => window.open('https://calendly.com/team-karhuno/30min', '_blank')}
+                  className="group inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Schedule Your Demo
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <p className={`text-sm text-gray-500 mt-4 ${montserrat.className}`}>
+                  30-minute personalized demo • No commitment required
                 </p>
               </motion.div>
             </div>
