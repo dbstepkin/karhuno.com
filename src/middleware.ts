@@ -53,8 +53,8 @@ export async function middleware(request: NextRequest) {
 
   // If no token is found, redirect to sign-in page
   if (!authToken) {
-    // Create a new URL for the redirect
-    const redirectUrl = new URL("/login", request.url)
+    // Create a new URL for the redirect to my.karhuno.com
+    const redirectUrl = new URL("https://my.karhuno.com/signin")
     redirectUrl.searchParams.set("callbackUrl", pathname)
     return NextResponse.redirect(redirectUrl)
   }
@@ -64,8 +64,8 @@ export async function middleware(request: NextRequest) {
 
   // If token is invalid, redirect to sign-in page
   if (!payload) {
-    // Create a new URL for the redirect
-    const redirectUrl = new URL("/login", request.url)
+    // Create a new URL for the redirect to my.karhuno.com
+    const redirectUrl = new URL("https://my.karhuno.com/signin")
     redirectUrl.searchParams.set("callbackUrl", pathname)
     return NextResponse.redirect(redirectUrl)
   }

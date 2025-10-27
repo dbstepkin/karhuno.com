@@ -102,24 +102,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/early-access`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/login`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/signup`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.3,
-    },
-    {
       url: `${baseUrl}/privacy-policy`,
       lastModified: currentDate,
       changeFrequency: 'yearly',

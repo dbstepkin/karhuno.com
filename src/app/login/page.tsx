@@ -20,6 +20,7 @@ export default function LoginPage() {
     <>
       <CanonicalHandler canonicalUrl="https://karhuno.com/login" />
       <Head>
+        <meta name="robots" content="noindex, nofollow" />
         <title>Login | Karhuno AI - Access Your B2B Sales Intelligence Dashboard</title>
         <meta
           name="description"
@@ -141,7 +142,7 @@ export default function LoginPage() {
             <div className="text-sm text-center">
               Don't have an account?{" "}
               <Link
-                href="/signup"
+                href="https://my.karhuno.com/signup"
                 className="text-purple-500 hover:text-purple-600 hover:underline"
               >
                 Sign up

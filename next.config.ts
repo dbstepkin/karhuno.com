@@ -39,10 +39,21 @@ const nextConfig: NextConfig = {
   },
   // Compression
   compress: true,
-  // Redirects temporarily disabled - handle via Vercel domain settings
-  // async redirects() {
-  //   return [];
-  // },
+  // Redirects for login and signup pages to new domain
+  async redirects() {
+    return [
+      {
+        source: '/login',
+        destination: 'https://my.karhuno.com/signin',
+        permanent: true,
+      },
+      {
+        source: '/signup',
+        destination: 'https://my.karhuno.com/signup',
+        permanent: true,
+      },
+    ];
+  },
   // Security headers
   async headers() {
     return [
