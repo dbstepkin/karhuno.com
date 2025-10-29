@@ -89,6 +89,14 @@ export default function KarhunoBlogPage() {
       slug: "real-time-buying-signals-linkedin-outreach"
     },
     {
+      title: "How to identify who your competitors are: the ultimate 2025 strategy guide",
+      summary: "Learn how to identify who your competitors are with this updated 2025 guide. Discover powerful strategies, tools, and steps to build a winning market position.",
+      category: "Use cases",
+      readingTime: "12 min read",
+      image: "/images/blog/competitor-identification.png",
+      slug: "how-to-identify-competitors-2025"
+    },
+    {
       title: "10 best alternatives to ZoomInfo for smarter B2B prospecting (2025)",
       summary: "Discover modern alternatives to ZoomInfo that offer better flexibility, real-time signals, and clearer ROI.",
       category: "Comparisons",
