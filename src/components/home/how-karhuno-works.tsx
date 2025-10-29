@@ -382,7 +382,7 @@ export default function HowKarhunoWorks() {
               <ArrowRight className="w-5 h-5" />
             </a>
             <p className={`text-sm text-gray-500 mt-4 ${montserrat.className}`}>
-              No credit card required • Setup in under 5 minutes
+              Setup in under 5 minutes
             </p>
           </div>
         </div>

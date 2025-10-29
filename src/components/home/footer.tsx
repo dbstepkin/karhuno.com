@@ -19,7 +19,7 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 text-white">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Contact Details */}
           <div className="space-y-4">
             <h4 className={`text-lg font-semibold mb-4 text-purple-300 ${roboto.className}`}>
@@ -62,12 +62,6 @@ export default function Footer() {
                 className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
               >
                 ROI Calculator
-              </Link>
-              <Link
-                href="/contact"
-                className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
-              >
-                Contact
               </Link>
             </div>
           </div>
@@ -122,6 +116,27 @@ export default function Footer() {
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 <Youtube className="h-6 w-6" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Company */}
+          <div className="space-y-4">
+            <h4 className={`text-lg font-semibold mb-4 text-purple-300 ${roboto.className}`}>
+              Company
+            </h4>
+            <div className="space-y-2">
+              <Link
+                href="/career"
+                className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
+              >
+                Career
+              </Link>
+              <Link
+                href="/contact"
+                className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
+              >
+                Contact
               </Link>
             </div>
           </div>

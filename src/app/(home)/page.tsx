@@ -215,13 +215,62 @@ export default function Home() {
               <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">Start Selling</span>
             </h1>
 
-            <p className={`text-lg sm:text-xl md:text-2xl text-gray-500 mb-4 text-center lg:text-left ${montserrat.className}`}>
+            <p className={`text-lg sm:text-xl md:text-2xl text-gray-500 mb-6 text-center lg:text-left ${montserrat.className}`}>
               Discover fresh buying signals matched with real, active contacts updated daily.
             </p>
             
-            <p className={`text-sm sm:text-base text-gray-400 mb-8 text-center lg:text-left ${montserrat.className}`}>
-              🚀 Powered by real-time data
-            </p>
+            {/* AI Tech Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="inline-flex items-center gap-3 mb-8 text-center lg:text-left"
+            >
+              <div className="relative">
+                {/* Outer pulsing circle */}
+                <motion.div
+                  className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/30 to-blue-500/30"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 0.3, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                {/* Middle circle */}
+                <div className="relative w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center shadow-lg">
+                  {/* Inner glowing dot */}
+                  <motion.div
+                    className="w-3 h-3 rounded-full bg-white"
+                    animate={{
+                      scale: [1, 1.3, 1],
+                      opacity: [1, 0.7, 1],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  {/* Rotating ring */}
+                  <motion.div
+                    className="absolute inset-0 rounded-full border-2 border-white/30"
+                    animate={{ rotate: 360 }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  />
+                </div>
+              </div>
+              <span className={`text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}>
+                Powered by real-time data
+              </span>
+            </motion.div>
           </div>
 
           {/* Right Side - Search Form */}
@@ -501,7 +550,7 @@ export default function Home() {
                     <svg className="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                     </svg>
-                    7-day free trial • No credit card required
+                    7 days moneyback guaranteed
                   </div>
                 </div>
               </div>
