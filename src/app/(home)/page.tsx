@@ -21,6 +21,7 @@ import Footer from "@/components/home/footer";
 import HowKarhunoWorks from "@/components/home/how-karhuno-works";
 import LinkedInChart from "@/components/home/linkedin-chart";
 import ColdEmailChart from "@/components/home/cold-email-chart";
+import TypewriterText from "@/components/home/TypewriterText";
 
 const montserrat = Montserrat({ 
   subsets: ['latin'],
@@ -216,7 +217,7 @@ export default function Home() {
             </h1>
 
             <p className={`text-lg sm:text-xl md:text-2xl text-gray-500 mb-6 text-center lg:text-left ${montserrat.className}`}>
-              Discover fresh buying signals matched with real, active contacts updated daily.
+              Discover buying signals with proof, matched with real contacts updated in real-time
             </p>
             
             {/* AI Tech Badge */}
@@ -267,9 +268,7 @@ export default function Home() {
                   />
                 </div>
               </div>
-              <span className={`text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent ${roboto.className}`}>
-                Powered by real-time data
-              </span>
+              <TypewriterText className={`${roboto.className}`} />
             </motion.div>
           </div>
 

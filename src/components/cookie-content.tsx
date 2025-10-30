@@ -28,7 +28,7 @@ export function CookieConsent() {
       <div className="mx-auto max-w-5xl rounded-2xl border border-gray-200 bg-white/95 backdrop-blur p-4 shadow-xl">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <p className="text-sm text-gray-700">
-            Usiamo cookie per analisi e migliorare l'esperienza. Continuando, accetti la nostra politica.
+            We use cookies to analyze traffic and improve your experience. By continuing, you agree to our policy.
           </p>
           <div className="flex items-center gap-3">
             <a href="/privacy-policy" className="text-sm text-purple-700 hover:text-purple-800 underline">
@@ -38,7 +38,7 @@ export function CookieConsent() {
               onClick={accept}
               className="inline-flex items-center rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 text-sm font-semibold text-white shadow hover:from-purple-700 hover:to-blue-700"
             >
-              Accetta
+              Accept
             </button>
           </div>
         </div>
@@ -46,5 +46,6 @@ export function CookieConsent() {
     </div>
   );
 }
+
 
 
