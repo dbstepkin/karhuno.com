@@ -4,6 +4,9 @@ import path from 'path'
 
 type EarlyAccessBody = {
   email: string
+  companyType?: string
+  news?: string
+  location?: string
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -26,7 +29,7 @@ export async function POST(req: Request) {
       // ignore
     }
 
-    let existing: Array<{ email: string; timestamp: string }> = []
+    let existing: Array<{ email: string; timestamp: string; companyType?: string; news?: string; location?: string }> = []
     try {
       const file = await fs.readFile(filePath, 'utf-8')
       existing = JSON.parse(file)
@@ -35,8 +38,38 @@ export async function POST(req: Request) {
       existing = []
     }
 
-    existing.push({ email, timestamp: new Date().toISOString() })
+    const entry = {
+      email,
+      timestamp: new Date().toISOString(),
+      companyType: body.companyType,
+      news: body.news,
+      location: body.location
+    }
+    existing.push(entry)
     await fs.writeFile(filePath, JSON.stringify(existing, null, 2), 'utf-8')
+
+    // Send data to webhook
+    try {
+      const webhookUrl = new URL('/api/webhook', req.url).toString()
+      await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          companyType: body.companyType,
+          news: body.news,
+          location: body.location,
+        }),
+      }).catch((error) => {
+        // Log webhook error but don't fail the request
+        console.error('Error sending to webhook:', error)
+      })
+    } catch (webhookError) {
+      // Log webhook error but don't fail the request
+      console.error('Error sending to webhook:', webhookError)
+    }
 
     return NextResponse.json({ success: true })
   } catch (error) {

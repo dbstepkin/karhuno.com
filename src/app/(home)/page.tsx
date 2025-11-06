@@ -104,7 +104,12 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email: trimmedEmail }),
+        body: JSON.stringify({ 
+          email: trimmedEmail,
+          companyType: formData.companyType,
+          news: formData.news,
+          location: formData.location
+        }),
       });
 
       if (response.ok) {

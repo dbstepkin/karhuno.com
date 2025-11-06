@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 
 // The actual webhook URL that we'll call from the server side
-const WEBHOOK_URL = "https://n8n.karhuno.info/webhook/getready"
+const WEBHOOK_URL = "https://app.karhuno.com/webhook/free_request"
 
 // Flag to control whether we actually send data to the external webhook
 // Default to true unless explicitly set to "false"
