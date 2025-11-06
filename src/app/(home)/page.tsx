@@ -73,14 +73,24 @@ export default function Home() {
 
   // Email validation
   const isValidEmail = (email: string) => {
+    if (!email || typeof email !== 'string') return false;
     const normalizedEmail = email.trim();
+    if (normalizedEmail.length === 0) return false;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(normalizedEmail);
   };
 
   // Handle email submission
   const handleEmailSubmit = async () => {
-    if (!isValidEmail(email)) {
+    const trimmedEmail = email.trim();
+    
+    // Validate email format
+    if (!trimmedEmail) {
+      setEmailError(true);
+      return;
+    }
+    
+    if (!isValidEmail(trimmedEmail)) {
       setEmailError(true);
       return;
     }
@@ -94,7 +104,7 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({ email: trimmedEmail }),
       });
 
       if (response.ok) {
@@ -108,11 +118,15 @@ export default function Home() {
           setIsSubmitting(false);
         }, 3000);
       } else {
-        throw new Error('Failed to submit');
+        // If API returns error, don't show email format error
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Error submitting email:', errorData);
+        // Don't set emailError for API errors, just log them
+        setIsSubmitting(false);
       }
     } catch (error) {
       console.error('Error submitting email:', error);
-      setEmailError(true);
+      // Don't set emailError for network errors, just log them
       setIsSubmitting(false);
     }
   };
@@ -666,7 +680,7 @@ export default function Home() {
                     </button>
                     <button
                       onClick={handleEmailSubmit}
-                      disabled={!isValidEmail(email) || isSubmitting}
+                      disabled={isSubmitting}
                       className={`flex-1 px-4 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${montserrat.className}`}
                     >
                       {isSubmitting ? 'Sending...' : 'Find warm leads'}
