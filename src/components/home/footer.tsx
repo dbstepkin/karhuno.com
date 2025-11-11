@@ -133,6 +133,12 @@ export default function Footer() {
                 Career
               </Link>
               <Link
+                href="/affiliate"
+                className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
+              >
+                Affiliate
+              </Link>
+              <Link
                 href="/contact"
                 className={`block text-gray-300 hover:text-white transition-colors ${montserrat.className}`}
               >

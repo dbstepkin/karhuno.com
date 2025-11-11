@@ -27,16 +27,53 @@ interface Position {
   emoji: string;
   icon: React.ReactNode;
   description: string;
+  fullDescription?: string;
 }
 
 const positions: Position[] = [
   {
-    id: "bdm-uk",
-    title: "Business Developer Manager",
+    id: "sales-director-uk",
+    title: "Sales Director",
     location: "United Kingdom",
     emoji: "💼",
     icon: <Briefcase className="w-5 h-5" />,
-    description: "Join our UK team to drive business development and strategic partnerships."
+    description: "Lead our sales team in the UK and drive strategic business growth.",
+    fullDescription: `🇬🇧 UK – Job Description: Sales Director (United Kingdom – Remote)
+
+Title: Sales Director – UK Market (Remote)
+
+About Karhuno AI
+
+Karhuno AI is a fast-growing SaaS startup helping B2B sales teams find high-conversion leads using real-time buying signals from the web and social media. We're building the next generation of intent-driven sales workflows — and we're looking for an experienced Sales Director to lead growth in the UK market.
+
+What You'll Do
+
+• Own the UK outbound sales strategy from pipeline generation to closing
+• Identify and nurture strategic partnerships with sales agencies, tech vendors, and influencers
+• Collaborate with the product team to bring voice-of-customer feedback
+• Manage CRM, track KPIs, and report directly to the founders
+• Represent Karhuno AI in demos, events, and networking calls
+• Expand your team as revenue milestones are met
+
+What We're Looking For
+
+• 4+ years of experience in B2B sales (preferably SaaS or Martech)
+• Strong knowledge of the UK tech/startup ecosystem
+• Proven track record in outbound campaigns and closing deals
+• Independent mindset: you're proactive, analytical, and self-driven
+• Experience working remotely in fast-paced environments
+
+Why Join Us
+
+• 💸 Salary: £60–70K / year base + performance-based bonus
+• 🌍 Fully remote (UK timezone preferred)
+• 🎯 Direct impact role with autonomy and growth potential
+• 🧠 Work closely with a product and growth-focused founding team
+• 🛠 Access to cutting-edge tools and real-time intent data
+
+Location: UK-based (remote-first)
+
+Start date: Flexible, ideally within 1–2 months`
   },
   {
     id: "ai-pm-finland",
@@ -44,15 +81,105 @@ const positions: Position[] = [
     location: "Finland",
     emoji: "🤖",
     icon: <Zap className="w-5 h-5" />,
-    description: "Lead AI product initiatives from our Helsinki headquarters."
+    description: "Lead AI product initiatives from our Helsinki headquarters.",
+    fullDescription: `🇫🇮 Job Description: AI Product Manager (Finland – Remote)
+
+Title: AI Product Manager – Finland (Remote)
+
+About Karhuno AI
+
+Karhuno AI is a signal-based lead generation platform helping B2B sales teams discover real-time buying intent across the web and social media. From corporate expansion to LinkedIn trends, we turn unstructured signals into revenue opportunities.
+
+As we scale across Europe and North America, we're hiring a Product Manager based in Finland to lead the development of new AI-powered modules and accelerate customer feedback loops.
+
+⸻
+
+Your Role
+
+As an AI Product Manager, you'll sit at the intersection of product, engineering, and growth. You'll work closely with our founders, design team, and AI developers to shape our product roadmap — turning messy real-world data into clean, actionable sales signals.
+
+What You'll Do
+
+• Own the product strategy for AI-based modules (e.g. LinkedIn radar, Reddit conversations, tech stack change detection)
+• Translate customer problems into specs, wireframes, and sprint plans
+• Work closely with developers and designers in short iteration cycles
+• Prioritize features based on user feedback, data, and business impact
+• Collaborate with sales and support to identify new product opportunities
+• Ensure user-facing features deliver real business value
+
+⸻
+
+What We're Looking For
+
+• 3–5+ years of product management experience (B2B SaaS or data/AI tools)
+• Strong understanding of AI, machine learning workflows, or data enrichment products
+• Experience working in startup or high-autonomy environments
+• Clear communication skills — you're comfortable writing docs and making decisions
+• Based in Finland (or Nordic timezone overlap)
+
+Bonus if you have:
+
+• Familiarity with tools like Supabase, Vercel, n8n, Stripe, etc.
+• Experience launching early-stage products or features from 0→1
+
+⸻
+
+What You Get
+
+• 💸 Salary: €60,000–€70,000 / year + performance bonus
+• 🌍 Fully remote within Finland or Helsinki-based hybrid
+• ✨ Real ownership and autonomy over product direction
+• 🤝 Work closely with a small, driven team of builders
+• 📈 Opportunity to shape one of Europe's fastest-growing B2B AI platforms
+
+⸻
+
+Location: Finland (remote-first with Helsinki option)
+
+Start date: Flexible, ideally within the next 30–45 days`
   },
   {
-    id: "sales-ca",
-    title: "Sales Representative",
+    id: "sales-director-ca",
+    title: "Sales Director",
     location: "California, USA",
     emoji: "📈",
     icon: <Users className="w-5 h-5" />,
-    description: "Expand our presence in the US market from our California office."
+    description: "Lead our sales operations in California and expand our US market presence.",
+    fullDescription: `🇺🇸 California – Job Description: Sales Director (US – Pacific Time)
+
+Title: Sales Director – US West Coast (Remote)
+
+About Karhuno AI
+
+At Karhuno AI, we help B2B companies discover the right moment to sell — by analyzing intent signals from public web data and social conversations. We're a lean and ambitious team backed by real traction, looking for a Sales Director to lead growth efforts in the US West Coast region.
+
+Your Role
+
+• Drive US customer acquisition through outbound sales, partnerships, and demos
+• Own key relationships with mid-size B2B SaaS companies, agencies, and founders
+• Launch strategic outreach campaigns and shape GTM experiments
+• Collaborate with marketing to align messaging with customer feedback
+• Report directly to the CEO, with input on expansion and hiring
+
+You Bring
+
+• 4+ years experience in tech sales, business development or partnerships
+• Based in California or neighboring states (PST hours preferred)
+• Experience with cold outreach, CRM management, and closing high-velocity deals
+• Deep understanding of sales tooling, lead generation, and pipeline velocity
+• Entrepreneurial attitude — excited to build from 0 to 1
+
+What We Offer
+
+• 💰 Salary: $65,000–$75,000 / year base + commission bonus
+• 🏡 100% remote role (must work in PST overlap)
+• 📈 High-growth environment and fast decision-making
+• 🤝 Ownership of a strategic region (West Coast US)
+• ✨ Direct line to founders and product roadmap
+
+Location: California (or able to work West Coast hours remotely)
+
+Start date: ASAP preferred`
   }
 ];
 
@@ -178,11 +305,11 @@ export default function CareerPage() {
                         <p className="mb-2">
                           Interested in learning more? Send us an email at{" "}
                           <a 
-                            href={`mailto:team@karhuno.com?subject=Application for ${encodeURIComponent(position.title)}`}
+                            href={`mailto:hr@karhuno.com?subject=Application for ${encodeURIComponent(position.title)}`}
                             className="text-purple-600 hover:text-purple-700 font-semibold underline"
                             onClick={(e) => e.stopPropagation()}
                           >
-                            team@karhuno.com
+                            hr@karhuno.com
                           </a>
                         </p>
                         <p className="text-xs text-gray-500">
@@ -301,18 +428,24 @@ export default function CareerPage() {
                     <p className={`text-gray-700 leading-relaxed mb-6 ${montserrat.className}`}>
                       {selectedPosition.description}
                     </p>
+                    {selectedPosition.fullDescription ? (
+                      <div className={`text-gray-700 leading-relaxed mb-6 whitespace-pre-line ${montserrat.className}`}>
+                        {selectedPosition.fullDescription}
+                      </div>
+                    ) : (
                     <p className={`text-sm text-gray-500 ${montserrat.className}`}>
                       Full job description coming soon. For more information, please contact us at{" "}
-                      <a href="mailto:team@karhuno.com" className="text-purple-600 hover:text-purple-700 font-medium">
-                        team@karhuno.com
+                      <a href="mailto:hr@karhuno.com" className="text-purple-600 hover:text-purple-700 font-medium">
+                        hr@karhuno.com
                       </a>
                     </p>
+                    )}
                     <div className="mt-6">
                       <a
-                        href={`mailto:team@karhuno.com?subject=Application for ${encodeURIComponent(selectedPosition.title)}`}
+                        href={`mailto:hr@karhuno.com?subject=Application for ${encodeURIComponent(selectedPosition.title)}`}
                         className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
                       >
-                        Apply Now
+                        Send us your CV
                         <ArrowRight className="w-5 h-5" />
                       </a>
                     </div>

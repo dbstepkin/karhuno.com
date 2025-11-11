@@ -99,7 +99,10 @@ export default {
       fontFamily: {
         montserrat: ["var(--font-montserrat)", "sans-serif"],
         roboto: ["var(--font-roboto)", "sans-serif"],
-      }
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
