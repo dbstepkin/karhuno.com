@@ -11,83 +11,80 @@ import CanonicalHandler from "@/components/CanonicalHandler";
 interface PricingPlan {
   name: string;
   description: string;
-  price: number;
-  originalPrice: number;
-  period: string;
+  priceLabel: string;
+  originalPrice?: number;
+  periodLabel: string;
+  ctaLabel: string;
+  ctaVariant?: "primary" | "secondary";
   isRecommended: boolean;
-  features: {
-    newsSearch: {
-      triggers: number;
-    };
-    linkedinConversations: {
-      topics: number;
-      keywordsPerTopic: number;
-    };
-    competitorMonitoring: {
-      competitors: number;
-    };
-    weeklyFeatures: {
-      deepSearches: number | string;
-      verifiedEmails: number;
-      newLeads: string;
-    };
+  limits: {
+    signals: number | string;
+    topics: number | string;
+    competitors: number | string;
+    deepScans: number | string;
+    emails: number | string;
   };
+  extras?: string[];
 }
 
 const pricingPlans: PricingPlan[] = [
   {
-    name: "Optimal (weekly)",
-    description: "Perfect for getting started",
-    price: 25,
-    originalPrice: 49,
-    period: "weekly",
+    name: "Invite Only",
+    description: "Trial plan for early users by invitation",
+    priceLabel: "Invite Only",
+    periodLabel: "Exclusive Beta Access",
+    ctaLabel: "Request Access",
+    ctaVariant: "secondary",
     isRecommended: false,
-    features: {
-      newsSearch: { triggers: 2 },
-      linkedinConversations: { topics: 2, keywordsPerTopic: 5 },
-      competitorMonitoring: { competitors: 20 },
-      weeklyFeatures: {
-        deepSearches: 6,
-        verifiedEmails: 70,
-        newLeads: "daily!"
-      }
-    }
+    limits: {
+      signals: 2,
+      topics: 2,
+      competitors: 20,
+      deepScans: 6,
+      emails: 70
+    },
+    extras: ["Daily fresh leads to keep your pipeline moving"]
   },
   {
-    name: "Optimal",
+    name: "OPTIMAL",
     description: "Most popular choice",
-    price: 79,
+    priceLabel: "$79",
     originalPrice: 149,
-    period: "monthly",
+    periodLabel: "per user / month",
+    ctaLabel: "Get Started",
+    ctaVariant: "primary",
     isRecommended: true,
-    features: {
-      newsSearch: { triggers: 2 },
-      linkedinConversations: { topics: 2, keywordsPerTopic: 5 },
-      competitorMonitoring: { competitors: 20 },
-      weeklyFeatures: {
-        deepSearches: 20,
-        verifiedEmails: 300,
-        newLeads: "daily!"
-      }
-    }
+    limits: {
+      signals: 2,
+      topics: 2,
+      competitors: 20,
+      deepScans: 20,
+      emails: 300
+    },
+    extras: [
+      "Real-time alerts for signals that match your ICP",
+      "Daily fresh leads to never miss a hot opportunity"
+    ]
   },
   {
-    name: "Professional",
-    description: "For power users",
-    price: 139,
+    name: "PROFESSIONAL",
+    description: "For advanced teams",
+    priceLabel: "$139",
     originalPrice: 249,
-    period: "monthly",
+    periodLabel: "per user / month",
+    ctaLabel: "Get Started",
+    ctaVariant: "primary",
     isRecommended: false,
-    features: {
-      newsSearch: { triggers: 3 },
-      linkedinConversations: { topics: 3, keywordsPerTopic: 7 },
-      competitorMonitoring: { competitors: 50 },
-      weeklyFeatures: {
-        deepSearches: "Unlimited",
-        verifiedEmails: 1000,
-        newLeads: "daily!"
-      }
-    }
+    limits: {
+      signals: 3,
+      topics: 3,
+      competitors: 50,
+      deepScans: "Unlimited",
+      emails: 1000
+    },
+    extras: [
+      "Daily fresh leads to keep your pipeline full"
+    ]
   }
 ];
 
@@ -112,7 +109,7 @@ export default function PricingPage() {
   const faqData = [
     {
       question: "What happens after the free trial ends?",
-      answer: "After your trial period, you'll automatically be charged for your selected plan. You can cancel anytime before the trial ends to avoid charges."
+      answer: "After your invited free week, you can stay on the Free plan (limited) or upgrade to a monthly plan. No charges happen unless you choose to upgrade."
     },
     {
       question: "Can I cancel anytime?",
@@ -120,11 +117,11 @@ export default function PricingPage() {
     },
     {
       question: "Do I need to enter my credit card now?",
-      answer: "Yes, a credit card is required to start. However, you can use a specific code to get a free week trial to test our platform before any charges."
+      answer: "No card is needed for the invited Free trial. If you upgrade to a paid plan, you'll enter payment details at checkout."
     },
     {
-      question: "What's included in the weekly vs monthly plan?",
-      answer: "The weekly plan offers the same features as the monthly plan but with different usage limits. Weekly plans are perfect for testing, while monthly plans provide better value for regular use."
+      question: "What's included in the Free trial vs monthly plans?",
+      answer: "You get full access during the Free week (within the listed limits). Monthly plans keep the automation going with higher limits and ongoing support."
     }
   ];
 
@@ -158,22 +155,22 @@ export default function PricingPage() {
     <>
       <CanonicalHandler canonicalUrl="https://karhuno.com/pricing" />
       <Head>
-        <title>Pricing Plans | Karhuno AI - Weekly & Monthly B2B Sales Intelligence</title>
+        <title>Pricing Plans | Karhuno AI - Free Trial & Monthly B2B Sales Intelligence</title>
         <meta
           name="description"
-          content="Compare our weekly and monthly plans. Start tracking real buyer intent with Karhuno AI. Corporate news search, LinkedIn signals, and competitor monitoring. 7-day money-back guarantee."
+          content="Compare our free trial and monthly plans. Start tracking real buyer intent with Karhuno AI. Corporate news search, LinkedIn signals, and competitor monitoring. 7-day money-back guarantee."
         />
         <meta name="keywords" content="B2B pricing, sales intelligence pricing, LinkedIn monitoring cost, corporate news search pricing, buyer intent signals pricing" />
         <meta property="og:title" content="Pricing Plans | Karhuno AI" />
-        <meta property="og:description" content="Compare our weekly and monthly plans. Start tracking real buyer intent with Karhuno AI." />
+        <meta property="og:description" content="Compare our free trial and monthly plans. Start tracking real buyer intent with Karhuno AI." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Pricing Plans | Karhuno AI" />
-        <meta name="twitter:description" content="Compare our weekly and monthly plans. Start tracking real buyer intent with Karhuno AI." />
+        <meta name="twitter:description" content="Compare our free trial and monthly plans. Start tracking real buyer intent with Karhuno AI." />
         <link rel="canonical" href="https://karhuno.com/pricing" />
       </Head>
       <div className="min-h-screen bg-gradient-to-b from-[#F6F3FF] to-[#EDEBFA]">
-      <div className="container mx-auto max-w-7xl pt-24 pb-16">
+      <div className="container mx-auto max-w-7xl pt-12 pb-16">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -204,18 +201,20 @@ export default function PricingPage() {
               }`}
             >
               {/* Save Badge */}
-              <div className="absolute -top-3 -right-3">
-                <span className="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-md shadow-lg">
-                  Save until {getTomorrowDate()}
-                </span>
-              </div>
+              {plan.name !== "Invite Only" && (
+                <div className="absolute -top-3 -right-3">
+                  <span className="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-md shadow-lg">
+                    Save until {getTomorrowDate()}
+                  </span>
+                </div>
+              )}
 
               {/* Recommended Badge */}
               {plan.isRecommended && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <span className="bg-gradient-to-r from-purple-600 to-purple-700 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-lg flex items-center gap-1">
                     <Crown className="w-4 h-4" />
-                    Recommended
+                    Most Popular
                   </span>
                 </div>
               )}
@@ -229,28 +228,32 @@ export default function PricingPage() {
                 {/* Price */}
                 <div className="mb-6">
                   <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-5xl font-bold text-black font-roboto">
-                      ${plan.price}
+                    <span className="text-5xl font-bold text-black font-roboto leading-none">
+                      {plan.priceLabel}
                     </span>
-                    <span className="text-lg text-gray-400 line-through">
-                      ${plan.originalPrice}
-                    </span>
+                    {plan.originalPrice && (
+                      <span className="text-lg text-gray-400 line-through">
+                        ${plan.originalPrice}
+                      </span>
+                    )}
                   </div>
                   <p className="text-gray-500 text-sm font-montserrat">
-                    per user per {plan.period}
+                    {plan.periodLabel}
                   </p>
                 </div>
 
                 {/* CTA Button */}
                 <button 
                   onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
-                  className={`w-full px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${montserrat.className} ${
-                    plan.isRecommended 
-                      ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 hover:shadow-purple-500/25' 
-                      : 'bg-gray-600 text-white hover:bg-gray-700'
+                  className={`w-full px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${montserrat.className} ${
+                    plan.ctaVariant === "secondary"
+                      ? 'bg-transparent border border-purple-600 text-purple-700 hover:bg-purple-50 shadow-sm'
+                      : plan.isRecommended 
+                        ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 shadow-lg hover:shadow-purple-500/25' 
+                        : 'bg-gray-800 text-white hover:bg-gray-900 shadow-lg'
                   }`}
                 >
-                  Get Started
+                  {plan.ctaLabel}
                 </button>
 
                 {/* Description */}
@@ -261,67 +264,57 @@ export default function PricingPage() {
 
               {/* Features */}
               <div className="px-8 pb-8 flex-1">
-                <div className="space-y-4">
-                  {/* News Search */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Check className="w-4 h-4 text-purple-600" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-600 font-montserrat">News search – {plan.features.newsSearch.triggers} triggers</p>
-                    </div>
-                  </div>
-
-                  {/* LinkedIn Conversations */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Check className="w-4 h-4 text-purple-600" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-600 font-montserrat">LinkedIn conversations – {plan.features.linkedinConversations.topics} topics</p>
-                    </div>
-                  </div>
-
-                  {/* Competitor Monitoring */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Check className="w-4 h-4 text-purple-600" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-600 font-montserrat">Competitor monitoring – {plan.features.competitorMonitoring.competitors} competitors</p>
-                    </div>
-                  </div>
-
-                  {/* Weekly Features */}
-                  <div className="pt-4 border-t border-gray-100">
-                    <h4 className="font-semibold text-gray-900 mb-3 font-roboto text-sm">
-                      Features:
-                    </h4>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Check className="w-4 h-4 text-purple-600" />
-                        </div>
-                        <p className="text-sm text-gray-600 font-montserrat">{plan.features.weeklyFeatures.deepSearches} deep searches</p>
+                <div className="space-y-5">
+                  {[
+                    `Track ${plan.limits.signals} types of company buying signals, like hiring, expansion, or product launches`,
+                    `Monitor ${plan.limits.topics} LinkedIn discussion topics, and discover who’s posting or engaging in your niche`,
+                    `Identify leads engaging with up to ${plan.limits.competitors} competitor profiles, warm, high-intent contacts`,
+                    `${plan.limits.deepScans} Deep Market Scans (Max Results)`,
+                    `${plan.limits.emails} Verified Emails — reach real decision-makers`
+                  ].map((item, idx) => (
+                    <div className="flex items-start gap-3" key={idx}>
+                      <div className="w-6 h-6 mt-0.5 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Check className="w-4 h-4 text-purple-600" />
                       </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Check className="w-4 h-4 text-purple-600" />
-                        </div>
-                        <p className="text-sm text-gray-600 font-montserrat">{plan.features.weeklyFeatures.verifiedEmails} verified emails</p>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Check className="w-4 h-4 text-purple-600" />
-                        </div>
-                        <p className="text-sm text-gray-600 font-montserrat">Fresh leads delivered daily</p>
+                      <p className="text-sm text-gray-700 font-montserrat leading-relaxed">
+                        {item}
+                      </p>
+                    </div>
+                  ))}
+
+                  {plan.extras && plan.extras.length > 0 && (
+                    <div className="pt-4 border-t border-gray-100 space-y-3">
+                      <h4 className="font-semibold text-gray-900 font-roboto text-sm">
+                        What you get:
+                      </h4>
+                      <div className="space-y-3">
+                        {plan.extras.map((item, idx) => (
+                          <div className="flex items-start gap-3" key={idx}>
+                            <div className="w-6 h-6 mt-0.5 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                              <Check className="w-4 h-4 text-purple-600" />
+                            </div>
+                            <p className="text-sm text-gray-700 font-montserrat leading-relaxed">
+                              {item}
+                            </p>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Trust Section */}
+        <div className="px-4 mt-4">
+          <div className="max-w-3xl mx-auto bg-white/70 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-sm p-6 flex items-center gap-3 justify-center text-center">
+            <Shield className="w-6 h-6 text-purple-600 flex-shrink-0" />
+            <p className="text-gray-700 text-sm sm:text-base font-montserrat">
+              Risk-free trial. 7-day money-back guarantee, no questions asked.
+            </p>
+          </div>
         </div>
 
         {/* Sales Callout Section - Immediately under pricing cards */}

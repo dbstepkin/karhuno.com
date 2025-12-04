@@ -236,7 +236,7 @@ export default function Home() {
             </h1>
 
             <p className={`text-lg sm:text-xl md:text-2xl text-gray-500 mb-6 text-center lg:text-left ${montserrat.className}`}>
-              Discover buying signals with proof, matched with real contacts updated in real-time
+              Proof-backed buying signals for B2B teams selling globally, with real contacts updated in real time.
             </p>
             
             {/* AI Tech Badge */}
@@ -357,11 +357,16 @@ export default function Home() {
         </div>
         
         {/* Trusted by Section */}
-        <div className="relative z-10 px-4 max-w-7xl mx-auto py-8">
-          <div className="text-center">
-            <p className={`text-sm font-medium text-black ${montserrat.className}`}>
-              Trusted by 100+ Sales Teams, Agencies, and B2B Founders
-            </p>
+        <div className="relative z-10 px-4 max-w-7xl mx-auto pt-2 pb-4 -mt-6">
+          <div className="flex items-center justify-center gap-3 sm:gap-4">
+            <img
+              src="/Top-Lead-Generation-Software-Q4-2025@4x%20(2).png"
+              alt="Tekpon Top Lead Generation badge"
+              className="h-20 sm:h-24 w-auto object-contain drop-shadow"
+            />
+            <span className={`text-xs sm:text-sm text-black font-medium whitespace-nowrap ${montserrat.className}`}>
+              🏆 Recognized by Tekpon as a top lead gen tool (2025)
+            </span>
           </div>
         </div>
       </header>

@@ -11,9 +11,11 @@ type TypewriterTextProps = {
 };
 
 const DEFAULT_MESSAGES = [
-  "Powered by real-time data",
-  "Real proofs, not just a score",
-  "The right signal, at the right time",
+  "We find the signal, and give you the contact.",
+  "Signals updated daily, contact data only when you need it.",
+  "No scores. Just signals you can act on.",
+  "Get notified when a company is hiring or launching a product.",
+  "Track buyers who just interacted with a competitor.",
 ];
 
 export default function TypewriterText({
@@ -80,5 +82,4 @@ export default function TypewriterText({
     </p>
   );
 }
-
 
