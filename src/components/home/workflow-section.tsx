@@ -1,6 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, Target, Zap, CheckCircle, ArrowRight, Globe, Users, TrendingUp } from "lucide-react";
 import { Montserrat, Roboto } from "next/font/google";
 
 const montserrat = Montserrat({ subsets: ['latin'] });
@@ -9,44 +11,240 @@ const roboto = Roboto({
   subsets: ['latin'] 
 });
 
+const workflowSteps = [
+  {
+    id: "scan",
+    number: "1",
+    title: "Scan",
+    subtitle: "Discover Real-Time Buying Signals",
+    icon: Search,
+    color: "from-blue-500 to-cyan-500",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-200",
+    description: "Karhuno scans public web sources and LinkedIn activity to detect buying intent — in real time.",
+    features: [
+      "Press & media announcements",
+      "Job openings and hiring trends", 
+      "Product launches and partnerships",
+      "LinkedIn company updates & posts"
+    ],
+    badge: "Live Signals",
+    badgeColor: "bg-green-500"
+  },
+  {
+    id: "identify", 
+    number: "2",
+    title: "Identify",
+    subtitle: "Pinpoint the Right Opportunities",
+    icon: Target,
+    color: "from-purple-500 to-pink-500",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-200",
+    description: "Describe your ideal buying trigger in plain language — Karhuno turns it into actionable signals.",
+    features: [
+      "Industry and region filters",
+      "Company type or size",
+      "Roles or departments involved",
+      "Keywords, intent topics, or trends"
+    ],
+    badge: "AI-Powered",
+    badgeColor: "bg-purple-500"
+  },
+  {
+    id: "act",
+    number: "3", 
+    title: "Act",
+    subtitle: "Reach Out With Context and Confidence",
+    icon: Zap,
+    color: "from-orange-500 to-red-500",
+    bgColor: "bg-orange-50",
+    borderColor: "border-orange-200",
+    description: "Every signal comes with verified contact data, proof source, and context.",
+    features: [
+      "One-click access to source links",
+      "Enriched contact info (no scraping)",
+      "Export-ready leads for outreach tools",
+      "Context and timing insights"
+    ],
+    badge: "Ready to Convert",
+    badgeColor: "bg-orange-500"
+  }
+];
+
+const sampleLead = {
+  name: "Sarah Chen",
+  role: "VP of Sales, TechCorp",
+  company: "TechCorp",
+  email: "sarah.chen@techcorp.com",
+  linkedin: "linkedin.com/in/sarah-chen",
+  signals: [
+    { icon: TrendingUp, text: "Company raised $10M Series A", color: "text-green-600" },
+    { icon: Users, text: "Hiring 5 new sales reps", color: "text-blue-600" },
+    { icon: Globe, text: "Expanding to European market", color: "text-purple-600" }
+  ]
+};
+
 export default function WorkflowSection() {
+  const [activeStep, setActiveStep] = useState(0);
+  const [showLead, setShowLead] = useState(false);
+  const [showOutreach, setShowOutreach] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % workflowSteps.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    if (activeStep === 0) {
+      setShowLead(true);
+      setShowOutreach(false);
+      setShowResults(false);
+    } else if (activeStep === 1) {
+      setShowLead(true);
+      setShowOutreach(true);
+      setShowResults(false);
+    } else if (activeStep === 2) {
+      setShowLead(true);
+      setShowOutreach(true);
+      setShowResults(true);
+    }
+  }, [activeStep]);
+
   return (
     <section className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-20 px-4">
-      <div className="max-w-5xl mx-auto text-center">
-        <div className="mb-8">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-purple-100 text-purple-700 text-sm font-medium mb-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center px-4 py-2 rounded-full bg-purple-100 text-purple-700 text-sm font-medium mb-6"
+          >
+            <div className="w-2 h-2 bg-purple-500 rounded-full mr-2 animate-pulse"></div>
             How Karhuno AI Works
-          </div>
-
-          <h2 className={`text-4xl md:text-6xl font-bold mb-6 ${roboto.className}`}>
+          </motion.div>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className={`text-4xl md:text-6xl font-bold mb-6 ${roboto.className}`}
+          >
             <span className="text-gray-900">What Karhuno AI </span>
             <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">does</span>
-          </h2>
-
-          <p className={`text-xl text-gray-600 max-w-3xl mx-auto mb-8 ${montserrat.className}`}>
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className={`text-xl text-gray-600 max-w-3xl mx-auto ${montserrat.className}`}
+          >
             We track public buying signals and match them with up-to-date contacts — so you act when timing is right.
-          </p>
+          </motion.p>
         </div>
 
-        <div className="mb-8">
-          <video
-            src="/video/video%20finale-25_11_2025,%2010_19%20(online-video-cutter.com).mp4"
-            controls
-            loop
-            muted
-            className="w-full rounded-2xl max-h-[540px] object-cover shadow-lg border border-white/10"
-          />
+        {/* Workflow Steps */}
+        <div className="relative">
+          {/* Connection Lines */}
+          <div className="absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-purple-200 to-orange-200 hidden lg:block"></div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4">
+            {workflowSteps.map((step, index) => {
+              const Icon = step.icon;
+              const isActive = activeStep === index;
+              
+              return (
+                <motion.div
+                  key={step.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  className="relative"
+                >
+                  {/* Step Number */}
+                  <div className="flex justify-center mb-6">
+                    <motion.div
+                      animate={{ 
+                        scale: isActive ? 1.1 : 1,
+                        boxShadow: isActive ? "0 0 20px rgba(147, 51, 234, 0.3)" : "0 0 0px rgba(147, 51, 234, 0)"
+                      }}
+                      className={`w-16 h-16 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white text-2xl font-bold shadow-lg`}
+                    >
+                      {step.number}
+                    </motion.div>
+                  </div>
+
+                  {/* Step Card */}
+                  <motion.div
+                    animate={{ 
+                      scale: isActive ? 1.02 : 1,
+                      borderColor: isActive ? "#8b5cf6" : "#e5e7eb"
+                    }}
+                    className={`bg-white rounded-2xl p-6 border-2 ${step.borderColor} shadow-lg transition-all duration-300`}
+                  >
+                    {/* Badge */}
+                    <div className="flex justify-between items-start mb-4">
+                      <div className={`px-3 py-1 rounded-full text-xs font-medium text-white ${step.badgeColor}`}>
+                        {step.badge}
+                      </div>
+                      <Icon className={`w-6 h-6 ${isActive ? `text-${step.color.split('-')[1]}-500` : 'text-gray-400'}`} />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className={`text-2xl font-bold text-gray-900 mb-2 ${roboto.className}`}>
+                      {step.title}
+                    </h3>
+                    
+                    <h4 className={`text-lg font-semibold text-gray-700 mb-3 ${roboto.className}`}>
+                      {step.subtitle}
+                    </h4>
+
+                    {/* Description */}
+                    <p className={`text-gray-600 mb-4 ${montserrat.className}`}>
+                      {step.description}
+                    </p>
+
+                    {/* Features */}
+                    <ul className="space-y-2">
+                      {step.features.map((feature, featureIndex) => (
+                        <motion.li
+                          key={featureIndex}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ 
+                            opacity: isActive ? 1 : 0.7,
+                            x: isActive ? 0 : -10
+                          }}
+                          transition={{ delay: featureIndex * 0.1 }}
+                          className="flex items-center text-sm text-gray-600"
+                        >
+                          <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                          {feature}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+
+                  {/* Arrow (hidden on mobile) */}
+                  {index < workflowSteps.length - 1 && (
+                    <div className="hidden lg:block absolute top-24 -right-2 z-10">
+                      <ArrowRight className="w-6 h-6 text-gray-400" />
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
-        <div>
-          <Link href="/contact" className="inline-block bg-purple-600 hover:bg-purple-500 text-white font-semibold px-6 py-3 rounded-full">
-            Book a call
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
+        {/* Live Demo Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-16 bg-white rounded-3xl p-8 shadow-xl border border-gray-200"
