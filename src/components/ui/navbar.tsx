@@ -122,21 +122,6 @@ export const Navbar: React.FC = () => {
                   </span>
                 </Link>
                 <Link
-                  href="/blog"
-                  className={`block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50/80 hover:text-purple-600 transition-colors rounded-lg mx-2 ${montserrat.className}`}
-                >
-                  <span className="flex items-center">
-                    <Image
-                      src="/images/blog-icon.svg"
-                      alt="Blog"
-                      width={20}
-                      height={20}
-                      className="mr-3"
-                    />
-                    Blog
-                  </span>
-                </Link>
-                <Link
                   href="/faq"
                   className={`block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50/80 hover:text-purple-600 transition-colors rounded-lg mx-2 ${montserrat.className}`}
                 >
@@ -174,6 +159,12 @@ export const Navbar: React.FC = () => {
               className={`text-sm font-medium text-gray-900 hover:text-purple-600 transition-colors px-3 py-2 rounded-full hover:bg-purple-50/80 ${montserrat.className}`}
             >
               Pricing
+            </Link>
+            <Link
+              href="/blog"
+              className={`text-sm font-medium text-gray-900 hover:text-purple-600 transition-colors px-3 py-2 rounded-full hover:bg-purple-50/80 ${montserrat.className}`}
+            >
+              Blog
             </Link>
           </div>
 
@@ -240,22 +231,6 @@ export const Navbar: React.FC = () => {
                   </span>
                 </Link>
                 <Link
-                  href="/blog"
-                  className={`block text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors px-4 py-3 rounded-xl hover:bg-purple-50/80 ${montserrat.className}`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <span className="flex items-center">
-                    <Image
-                      src="/images/blog-icon.svg"
-                      alt="Blog"
-                      width={20}
-                      height={20}
-                      className="mr-3"
-                    />
-                    Blog
-                  </span>
-                </Link>
-                <Link
                   href="/faq"
                   className={`block text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors px-4 py-3 rounded-xl hover:bg-purple-50/80 ${montserrat.className}`}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -295,6 +270,13 @@ export const Navbar: React.FC = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Pricing
+              </Link>
+              <Link
+                href="/blog"
+                className={`text-sm font-medium text-gray-900 hover:text-purple-600 transition-colors px-4 py-3 rounded-xl hover:bg-purple-50/80 ${montserrat.className}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Blog
               </Link>
 
               <div className="pt-4 space-y-3">
