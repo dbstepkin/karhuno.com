@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
-import { Montserrat } from "next/font/google";
+import { Montserrat } from "@/lib/localFonts";
 import CanonicalHandler from "@/components/CanonicalHandler";
 import Head from "next/head";
 

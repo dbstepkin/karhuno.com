@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Footer from "@/components/home/footer";
-import { Montserrat } from "next/font/google";
+import { Montserrat } from "@/lib/localFonts";
 import { Crown, Shield, Check, ChevronDown } from "lucide-react";
 import Head from "next/head";
 import CanonicalHandler from "@/components/CanonicalHandler";

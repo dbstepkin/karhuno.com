@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/ui/navbar";
-import { Montserrat, Roboto } from "next/font/google";
+import { Montserrat, Roboto } from "@/lib/localFonts";
 
 const montserrat = Montserrat({
   subsets: ["latin"],

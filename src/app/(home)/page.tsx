@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { useState, useEffect } from "react";
-import { Montserrat, Roboto } from "next/font/google";
+import { Montserrat, Roboto } from "@/lib/localFonts";
 import { motion, AnimatePresence } from "framer-motion";
 import Head from "next/head";
 import CanonicalHandler from "@/components/CanonicalHandler";
@@ -209,19 +209,26 @@ export default function Home() {
     <>
       <CanonicalHandler canonicalUrl="https://karhuno.com" />
       <Head>
-        <title>Karhuno AI - B2B Sales Intelligence Platform | Real-Time Buyer Intent Signals</title>
+        <title>Karhuno AI – Real-Time Buying Signals</title>
         <meta
           name="description"
-          content="Discover high-intent B2B prospects with Karhuno AI. Track LinkedIn conversations, corporate news, and competitor engagement to find companies actively seeking solutions. Start your free trial today."
+          content="Track real-time buying intent across LinkedIn and the web. Get fresh leads matched to your ICP."
         />
-        <meta name="keywords" content="B2B sales, buyer intent, LinkedIn signals, corporate news, competitor monitoring, sales intelligence, lead generation" />
-        <meta property="og:title" content="Karhuno AI - B2B Sales Intelligence Platform" />
-        <meta property="og:description" content="Discover high-intent B2B prospects with real-time buyer intent signals. Track LinkedIn conversations, corporate news, and competitor engagement." />
+        <meta name="keywords" content="buying signals, real-time intent, LinkedIn signals, lead generation, Karhuno AI" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Karhuno AI – Real-Time Buying Signals" />
+        <meta property="og:description" content="Track real-time buying intent across LinkedIn and the web. Get fresh leads matched to your ICP." />
+        <meta property="og:image" content="https://karhuno.com/images/logonavbar.svg" />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://karhuno.com" />
+
+        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Karhuno AI - B2B Sales Intelligence Platform" />
-        <meta name="twitter:description" content="Discover high-intent B2B prospects with real-time buyer intent signals." />
-        <link rel="canonical" href="https://karhuno.com" />
+        <meta name="twitter:title" content="Karhuno AI – Real-Time Buying Signals" />
+        <meta name="twitter:description" content="Track real-time buying intent across LinkedIn and the web. Get fresh leads matched to your ICP." />
+        <meta name="twitter:image" content="https://karhuno.com/images/logonavbar.svg" />
+
         <link rel="canonical" href="https://karhuno.com/" />
       </Head>
       <header className="relative overflow-hidden mt-12">
@@ -356,15 +363,15 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Trusted by Section */}
-        <div className="relative z-10 px-4 max-w-7xl mx-auto pt-2 pb-4 -mt-6">
-          <div className="flex items-center justify-center gap-3 sm:gap-4">
+        {/* Trusted by Section (moved up and visually enhanced) */}
+        <div className="relative z-10 px-4 max-w-7xl mx-auto pt-2 pb-4 -mt-12 sm:-mt-16">
+          <div className="flex items-center justify-center gap-3 sm:gap-5">
             <img
               src="/Top-Lead-Generation-Software-Q4-2025@4x%20(2).png"
               alt="Tekpon Top Lead Generation badge"
-              className="h-20 sm:h-24 w-auto object-contain drop-shadow"
+              className="h-24 sm:h-28 w-auto object-contain drop-shadow-lg"
             />
-            <span className={`text-xs sm:text-sm text-black font-medium whitespace-nowrap ${montserrat.className}`}>
+            <span className={`text-sm sm:text-base text-black font-semibold whitespace-nowrap ${montserrat.className}`}>
               🏆 Recognized by Tekpon as a top lead gen tool (2025)
             </span>
           </div>

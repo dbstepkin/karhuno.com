@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Roboto } from "next/font/google";
+import { Montserrat, Roboto } from "@/lib/localFonts";
 import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/ui/navbar";

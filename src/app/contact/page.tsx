@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import Footer from "@/components/home/footer";
-import { Montserrat, Roboto } from "next/font/google";
+import { Montserrat, Roboto } from "@/lib/localFonts";
 import Head from "next/head";
 
 const montserrat = Montserrat({ 

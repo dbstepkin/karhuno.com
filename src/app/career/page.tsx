@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Briefcase, Users, Zap, CheckCircle2, X, MapPin, ArrowRight } from "lucide-react";
 import Footer from "@/components/home/footer";
-import { Montserrat, Roboto } from "next/font/google";
+import { Montserrat, Roboto } from "@/lib/localFonts";
 import Head from "next/head";
 
 const montserrat = Montserrat({ 

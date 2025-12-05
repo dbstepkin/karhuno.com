@@ -1,4 +1,4 @@
-import { Montserrat, Roboto } from "next/font/google";
+import { Montserrat, Roboto } from "@/lib/localFonts";
 import Footer from "@/components/home/footer";
 import Link from "next/link";
 import Image from "next/image";

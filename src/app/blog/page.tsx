@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Montserrat, Roboto } from "next/font/google";
+import { Montserrat, Roboto } from "@/lib/localFonts";
 import Footer from "@/components/home/footer";
 import Head from "next/head";
 
@@ -111,6 +111,14 @@ export default function KarhunoBlogPage() {
       readingTime: "7 min read",
       image: "/images/blog/karhuno-vs-perplexity-hero.png",
       slug: "karhuno-vs-perplexity"
+    },
+    {
+      title: "Top Clay Alternatives in 2025: Better Signals, Smarter Automation",
+      summary: "A complete guide to the best Clay alternatives in 2025 — with a focus on real-time buying signals and automated lead discovery.",
+      category: "Comparisons",
+      readingTime: "8 min read",
+      image: "/Blog/clay blog cover.png",
+      slug: "best-clay-alternatives-2025"
     }
   ];
 
@@ -253,36 +261,30 @@ export default function KarhunoBlogPage() {
       <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 mb-24">
         {filteredPosts.map((post, index) => (
           <div key={index} className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition duration-200 group">
-            {/* Post Image */}
-            {post.slug === "5-signals-buying-intent-linkedin" || post.slug === "reddit-n8n-automation" || post.slug === "karhuno-vs-perplexity" || post.slug === "real-time-buying-signals-linkedin-outreach" || post.slug === "zoominfo-alternatives-2025" || post.slug === "warehouse-buying-signals-24h-deal" || post.slug === "x-com-smart-comment-engine" ? (
-              <div className="h-44 relative overflow-hidden">
-                <img 
-                  src={
-                    post.slug === "5-signals-buying-intent-linkedin" ? "/images/blog/linkedin-signals-hero.png" : 
-                    post.slug === "reddit-n8n-automation" ? "/images/blog/reddit-automation-hero.png" : 
-                    post.slug === "karhuno-vs-perplexity" ? "/images/blog/karhuno-vs-perplexity-hero.png" :
-                    post.slug === "real-time-buying-signals-linkedin-outreach" ? "/images/blog/linkedin-outreach-results.png" :
-                    post.slug === "zoominfo-alternatives-2025" ? "/images/blog/zoominfo-alternatives.png" :
-                    post.slug === "warehouse-buying-signals-24h-deal" ? "/images/blog/warehouse-case-study.png" :
-                    "/images/blog/x-com-automation-hero.png"
-                  }
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            ) : (
-              <div className="h-44 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center">
-                <div className="text-center p-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#7e51ff] to-[#5ca9ff] rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                    </svg>
-                  </div>
-                  <p className="text-sm text-gray-500 font-medium">Article preview</p>
-                </div>
-              </div>
-            )}
+            {/* Post Image (use post.image when available, otherwise fall back to known slugs) */}
+            <div className="h-44 relative overflow-hidden">
+              <img
+                src={
+                  post.image
+                    ? post.image
+                    : post.slug === "5-signals-buying-intent-linkedin"
+                    ? "/images/blog/linkedin-signals-hero.png"
+                    : post.slug === "reddit-n8n-automation"
+                    ? "/images/blog/reddit-automation-hero.png"
+                    : post.slug === "karhuno-vs-perplexity"
+                    ? "/images/blog/karhuno-vs-perplexity-hero.png"
+                    : post.slug === "real-time-buying-signals-linkedin-outreach"
+                    ? "/images/blog/linkedin-outreach-results.png"
+                    : post.slug === "zoominfo-alternatives-2025"
+                    ? "/images/blog/zoominfo-alternatives.png"
+                    : post.slug === "warehouse-buying-signals-24h-deal"
+                    ? "/images/blog/warehouse-case-study.png"
+                    : "/images/blog/x-com-automation-hero.png"
+                }
+                alt={post.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
             <div className="p-5">
               <span className={`text-xs uppercase tracking-wider text-gray-500 ${roboto.className}`}>
                 {post.category}
