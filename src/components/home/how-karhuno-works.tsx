@@ -361,6 +361,84 @@ export default function HowKarhunoWorks() {
             </div>
           </div>
 
+          {/* Fourth Feature - Mentions & Social Listening */}
+          <div className="space-y-8">
+            {/* Mobile: Title First */}
+            <div className="lg:hidden text-center">
+              <h3 className={`text-3xl md:text-4xl font-bold mb-4 ${roboto.className}`}>
+                <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                  Mentions & Social Listening
+                </span>
+              </h3>
+              <p className={`text-xl text-gray-600 font-medium ${montserrat.className}`}>
+                Turn social conversations into qualified signals — and act on them instantly.
+              </p>
+            </div>
+
+            {/* Desktop: Grid Layout, Mobile: Stack Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Left Column - Video */}
+              <div>
+                <div className="w-full h-80 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl border-2 border-gray-300 shadow-lg overflow-hidden">
+                  <video
+                    className="w-full h-full object-cover rounded-2xl"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  >
+                    <source src="/video/social conversation video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+
+              {/* Right Column - Text Content for Mentions & Social Listening */}
+              <div className="space-y-6">
+                {/* Desktop: Title */}
+                <div className="hidden lg:block">
+                  <h3 className={`text-3xl md:text-4xl font-bold mb-4 ${roboto.className}`}>
+                    <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+                      Mentions & Social Listening
+                    </span>
+                  </h3>
+                  <p className={`text-xl text-gray-600 font-medium ${montserrat.className}`}>
+                    Turn social conversations into qualified signals — and act on them instantly.
+                  </p>
+                </div>
+
+                <p className={`text-gray-600 text-lg leading-relaxed ${montserrat.className}`}>
+                  Karhuno scans Reddit, Facebook, and X to detect conversations where your product, market, or brand is mentioned. Spot early buyer interest, join the right discussions, and drive warm traffic back to your platform.
+                </p>
+
+                <div className="space-y-4">
+                  {[
+                    'Track relevant discussions across Reddit, Facebook, and X',
+                    'Get real-time links to warm conversations about your niche',
+                    'Use AI to generate smart replies and join the conversation instantly'
+                  ].map((bullet, bulletIndex) => (
+                    <div key={bulletIndex} className="flex items-start gap-3">
+                      <div className={`w-6 h-6 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                        <CheckCircle className="w-4 h-4 text-white" />
+                      </div>
+                      <span className={`text-gray-600 leading-relaxed ${montserrat.className}`}>{bullet}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div>
+                  <a
+                    href="#"
+                    className={`inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 shadow-lg ${montserrat.className}`}
+                  >
+                    Monitor Mentions
+                    <ArrowRight className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
