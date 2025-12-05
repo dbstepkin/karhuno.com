@@ -39,11 +39,11 @@ export default function KarhunoBlogPage() {
   
   // Featured post data (in a real app, this would come from CMS/API)
   const featuredPost = {
-    title: "SignalPlay: how we automated Reddit to generate B2B leads (without being spammy)",
-    category: "Automation recipes",
-    teaser: "A step-by-step guide to building a Reddit commenting engine using n8n + GPT + Supabase. We achieved 70% LinkedIn acceptance rate and 24% reply rate — all from automated Reddit engagement.",
-    readingTime: "6 min read",
-    slug: "reddit-n8n-automation",
+    title: "Top Clay Alternatives in 2025: Better Signals, Smarter Automation",
+    category: "Comparisons",
+    teaser: "A complete guide to the best Clay alternatives in 2025 — with a focus on real-time buying signals and automated lead discovery.",
+    readingTime: "8 min read",
+    slug: "best-clay-alternatives-2025",
     hasContent: true // Set to false to show placeholder
   };
 
@@ -165,8 +165,8 @@ export default function KarhunoBlogPage() {
               <div>
                 <div className="aspect-[4/3] bg-gray-100 rounded-xl shadow-xl overflow-hidden">
                   <img 
-                    src="/images/blog/reddit-automation-hero.png" 
-                    alt="SignalPlay: how we automated Reddit to generate B2B leads"
+                    src="/Blog/clay blog cover.png" 
+                    alt="Top Clay Alternatives in 2025: Better Signals, Smarter Automation"
                     className="w-full h-full object-cover"
                   />
                 </div>

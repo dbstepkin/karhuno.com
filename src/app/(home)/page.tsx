@@ -367,7 +367,7 @@ export default function Home() {
         <div className="relative z-10 px-4 max-w-7xl mx-auto pt-2 pb-4 -mt-12 sm:-mt-16">
           <div className="flex items-center justify-center gap-3 sm:gap-5">
             <img
-              src="/Top-Lead-Generation-Software-Q4-2025@4x%20(2).png"
+              src="/tekpon-top-lead-generation.png"
               alt="Tekpon Top Lead Generation badge"
               className="h-24 sm:h-28 w-auto object-contain drop-shadow-lg"
             />
