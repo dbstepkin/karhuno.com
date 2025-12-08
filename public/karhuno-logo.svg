@@ -1,0 +1,12 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="karhunoGradient" x1="20" y1="20" x2="140" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a974ff"/>
+      <stop offset="1" stop-color="#679eff"/>
+    </linearGradient>
+  </defs>
+  <circle cx="80" cy="80" r="74" fill="url(#karhunoGradient)" opacity="0.16"/>
+  <circle cx="80" cy="80" r="62" fill="url(#karhunoGradient)" opacity="0.28"/>
+  <circle cx="80" cy="80" r="48" fill="white" stroke="url(#karhunoGradient)" stroke-width="6"/>
+  <path d="M62 54V106M96 54L74 78L96 106" stroke="url(#karhunoGradient)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
