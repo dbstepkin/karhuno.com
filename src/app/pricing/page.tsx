@@ -4,87 +4,79 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Footer from "@/components/home/footer";
 import { Montserrat } from "@/lib/localFonts";
-import { Crown, Shield, Check, ChevronDown } from "lucide-react";
+import { 
+  Crown, 
+  Shield, 
+  Check, 
+  ChevronDown, 
+  TrendingUp, 
+  Search, 
+  Linkedin, 
+  MessageSquare, 
+  Users, 
+  Mail, 
+  Download
+} from "lucide-react";
 import Head from "next/head";
 import CanonicalHandler from "@/components/CanonicalHandler";
 
-interface PricingPlan {
+interface Feature {
   name: string;
-  description: string;
-  priceLabel: string;
-  originalPrice?: number;
-  periodLabel: string;
-  ctaLabel: string;
-  ctaVariant?: "primary" | "secondary";
-  isRecommended: boolean;
-  limits: {
-    signals: number | string;
-    topics: number | string;
-    competitors: number | string;
-    deepScans: number | string;
-    emails: number | string;
-  };
-  extras?: string[];
+  icon: React.ReactNode;
+  free: string;
+  starter: string;
+  optimal: string;
 }
 
-const pricingPlans: PricingPlan[] = [
+const features: Feature[] = [
   {
-    name: "Invite Only",
-    description: "Trial plan for early users by invitation",
-    priceLabel: "Invite Only",
-    periodLabel: "Exclusive Beta Access",
-    ctaLabel: "Request Access",
-    ctaVariant: "secondary",
-    isRecommended: false,
-    limits: {
-      signals: 2,
-      topics: 2,
-      competitors: 20,
-      deepScans: 6,
-      emails: 70
-    },
-    extras: ["Daily fresh leads to keep your pipeline moving"]
+    name: "LIVE mode: daily results",
+    icon: <TrendingUp className="w-5 h-5 text-purple-600" />,
+    free: "Included",
+    starter: "Included",
+    optimal: "Included"
   },
   {
-    name: "OPTIMAL",
-    description: "Most popular choice",
-    priceLabel: "$79",
-    originalPrice: 149,
-    periodLabel: "per user / month",
-    ctaLabel: "Get Started",
-    ctaVariant: "primary",
-    isRecommended: true,
-    limits: {
-      signals: 2,
-      topics: 2,
-      competitors: 20,
-      deepScans: 20,
-      emails: 300
-    },
-    extras: [
-      "Real-time alerts for signals that match your ICP",
-      "Daily fresh leads to never miss a hot opportunity"
-    ]
+    name: "Corporate news search",
+    icon: <Search className="w-5 h-5 text-purple-600" />,
+    free: "1 signal topic, up to 2 countries",
+    starter: "2 signal topics, up to 5 countries",
+    optimal: "3 signal topics, up to 10 countries"
   },
   {
-    name: "PROFESSIONAL",
-    description: "For advanced teams",
-    priceLabel: "$139",
-    originalPrice: 249,
-    periodLabel: "per user / month",
-    ctaLabel: "Get Started",
-    ctaVariant: "primary",
-    isRecommended: false,
-    limits: {
-      signals: 3,
-      topics: 3,
-      competitors: 50,
-      deepScans: "Unlimited",
-      emails: 1000
-    },
-    extras: [
-      "Daily fresh leads to keep your pipeline full"
-    ]
+    name: "LinkedIn conversations",
+    icon: <Linkedin className="w-5 h-5 text-purple-600" />,
+    free: "1 topic, up to 6 keywords",
+    starter: "2 topics, up to 6 keywords",
+    optimal: "3 topics, up to 10 keywords"
+  },
+  {
+    name: "X, Facebook, Reddit listening",
+    icon: <MessageSquare className="w-5 h-5 text-purple-600" />,
+    free: "Core social listening across X, Facebook, Reddit",
+    starter: "Deeper social listening with more posts & history",
+    optimal: "Maximum depth listening with full history & coverage"
+  },
+  {
+    name: "Competitor monitoring",
+    icon: <Users className="w-5 h-5 text-purple-600" />,
+    free: "Track up to 5 competitors",
+    starter: "Track up to 10 competitors",
+    optimal: "Track up to 20 competitors"
+  },
+  {
+    name: "Decision makers & verified emails",
+    icon: <Mail className="w-5 h-5 text-purple-600" />,
+    free: "Up to 20 decision makers & 10 verified emails",
+    starter: "Up to 200 decision makers & 200 verified emails",
+    optimal: "Up to 500 decision makers & 500 verified emails"
+  },
+  {
+    name: "Data export",
+    icon: <Download className="w-5 h-5 text-purple-600" />,
+    free: "View inside Karhuno",
+    starter: "Unlimited exports & integrations",
+    optimal: "Unlimited exports & integrations"
   }
 ];
 
@@ -96,11 +88,10 @@ const montserrat = Montserrat({
 export default function PricingPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   
-  // Calculate tomorrow's date for "Save until" message
-  const getTomorrowDate = () => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    return tomorrow.toLocaleDateString('en-US', { 
+  const getFutureDate = (days: number) => {
+    const date = new Date();
+    date.setDate(date.getDate() + days);
+    return date.toLocaleDateString('en-US', { 
       month: 'short', 
       day: 'numeric' 
     });
@@ -109,7 +100,7 @@ export default function PricingPage() {
   const faqData = [
     {
       question: "What happens after the free trial ends?",
-      answer: "After your invited free week, you can stay on the Free plan (limited) or upgrade to a monthly plan. No charges happen unless you choose to upgrade."
+      answer: "After your 7-day free trial, you can stay on the Free plan (limited) or upgrade to a monthly plan. No charges happen unless you choose to upgrade."
     },
     {
       question: "Can I cancel anytime?",
@@ -117,11 +108,11 @@ export default function PricingPage() {
     },
     {
       question: "Do I need to enter my credit card now?",
-      answer: "No card is needed for the invited Free trial. If you upgrade to a paid plan, you'll enter payment details at checkout."
+      answer: "No card is needed for the free trial. If you upgrade to a paid plan, you'll enter payment details at checkout."
     },
     {
       question: "What's included in the Free trial vs monthly plans?",
-      answer: "You get full access during the Free week (within the listed limits). Monthly plans keep the automation going with higher limits and ongoing support."
+      answer: "You get full access during the Free 7-day trial (within the listed limits). Monthly plans keep the automation going with higher limits and ongoing support."
     }
   ];
 
@@ -170,155 +161,151 @@ export default function PricingPage() {
         <link rel="canonical" href="https://karhuno.com/pricing" />
       </Head>
       <div className="min-h-screen bg-gradient-to-b from-[#F6F3FF] to-[#EDEBFA]">
-      <div className="container mx-auto max-w-7xl pt-12 pb-16">
+      <div className="container mx-auto max-w-7xl pt-12 pb-16 px-4">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16 px-4"
+          className="text-center mb-12"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-roboto leading-tight">
             <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">Choose Your Plan</span>
           </h2>
-          <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base font-montserrat">
-            Select the perfect plan for your business needs
-          </p>
         </motion.div>
 
-        {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 py-12">
-          {pricingPlans.map((plan, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative flex flex-col rounded-2xl transition-all duration-300 ${
-                plan.isRecommended 
-                  ? "bg-[#f8f7ff] border-2 border-purple-600 shadow-xl hover:scale-105 ring-1 ring-purple-300 ring-offset-1" 
-                  : "bg-white shadow-lg hover:shadow-xl"
-              }`}
-            >
-              {/* Save Badge */}
-              {plan.name !== "Invite Only" && (
-                <div className="absolute -top-3 -right-3">
-                  <span className="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-md shadow-lg">
-                    Save until {getTomorrowDate()}
-                  </span>
-                </div>
-              )}
+        {/* Pricing Table Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="bg-white rounded-2xl shadow-xl overflow-hidden"
+        >
+          {/* Plan Headers - 4 columns: Feature label + 3 plans */}
+          <div className="grid grid-cols-1 md:grid-cols-4 border-b-2 border-gray-100">
+            {/* Feature label placeholder */}
+            <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-gray-100 flex items-center">
+              <span className="text-sm font-semibold text-gray-500 uppercase tracking-[0.12em] font-montserrat">Features</span>
+            </div>
 
-              {/* Recommended Badge */}
-              {plan.isRecommended && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-purple-600 to-purple-700 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-lg flex items-center gap-1">
-                    <Crown className="w-4 h-4" />
-                    Most Popular
-                  </span>
-                </div>
-              )}
-
-              {/* Plan Header */}
-              <div className="p-8 pb-6">
-                <h3 className="text-2xl font-bold text-purple-600 mb-2 font-roboto uppercase">
-                  {plan.name}
-                </h3>
-                
-                {/* Price */}
+            {/* Free Plan Header */}
+            <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-gray-100">
+              <div className="text-center flex flex-col h-full">
+                <div className="flex-1 flex flex-col items-center">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 font-roboto">Free test (7 days)</h3>
+                <p className="text-sm text-gray-500 mb-4 font-montserrat">Fast way to try Karhuno before upgrading</p>
                 <div className="mb-6">
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-5xl font-bold text-black font-roboto leading-none">
-                      {plan.priceLabel}
-                    </span>
-                    {plan.originalPrice && (
-                      <span className="text-lg text-gray-400 line-through">
-                        ${plan.originalPrice}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-gray-500 text-sm font-montserrat">
-                    {plan.periodLabel}
-                  </p>
+                  <span className="text-5xl font-bold text-purple-600 font-roboto leading-none">$0</span>
                 </div>
-
-                {/* CTA Button */}
-                <button 
+                </div>
+                <button
                   onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
-                  className={`w-full px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${montserrat.className} ${
-                    plan.ctaVariant === "secondary"
-                      ? 'bg-transparent border border-purple-600 text-purple-700 hover:bg-purple-50 shadow-sm'
-                      : plan.isRecommended 
-                        ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 shadow-lg hover:shadow-purple-500/25' 
-                        : 'bg-gray-800 text-white hover:bg-gray-900 shadow-lg'
-                  }`}
+                  className="w-full px-6 py-3 rounded-xl bg-gray-800 text-white font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105 shadow-lg mt-6"
                 >
-                  {plan.ctaLabel}
+                  Select Plan
                 </button>
-
-                {/* Description */}
-                <p className="text-gray-600 text-sm mt-4 font-montserrat">
-                  {plan.description}
-                </p>
               </div>
+            </div>
 
-              {/* Features */}
-              <div className="px-8 pb-8 flex-1">
-                <div className="space-y-5">
-                  {[
-                    `Track ${plan.limits.signals} types of company buying signals, like hiring, expansion, or product launches`,
-                    `Monitor ${plan.limits.topics} LinkedIn discussion topics, and discover who’s posting or engaging in your niche`,
-                    `Identify leads engaging with up to ${plan.limits.competitors} competitor profiles, warm, high-intent contacts`,
-                    `${plan.limits.deepScans} Deep Market Scans (Max Results)`,
-                    `${plan.limits.emails} Verified Emails — reach real decision-makers`
-                  ].map((item, idx) => (
-                    <div className="flex items-start gap-3" key={idx}>
-                      <div className="w-6 h-6 mt-0.5 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Check className="w-4 h-4 text-purple-600" />
-                      </div>
-                      <p className="text-sm text-gray-700 font-montserrat leading-relaxed">
-                        {item}
-                      </p>
-                    </div>
-                  ))}
+            {/* Starter Plan Header - Recommended */}
+            <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-gray-100 relative bg-gradient-to-br from-purple-50 to-blue-50">
+              <div className="absolute top-4 left-4 flex items-center gap-2">
+                <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  Recommended
+                </span>
+                <span className="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  $109 from Dec 15
+                </span>
+              </div>
+              <div className="text-center mt-8 flex flex-col h-full">
+                <div className="flex-1 flex flex-col items-center">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 font-roboto">Starter</h3>
+                <p className="text-sm text-gray-500 mb-4 font-montserrat">Most popular choice</p>
+                <div className="mb-2">
+                  <span className="text-5xl font-bold text-purple-600 font-roboto leading-none">$79</span>
+                  <span className="text-lg text-gray-500 ml-2">/monthly</span>
+                </div>
+                <div className="mb-6">
+                  <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md shadow-purple-500/25">
+                    x7 sales vs Free
+                  </span>
+                </div>
+                </div>
+                <button
+                  onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
+                  className="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 mt-6"
+                >
+                  Select Plan
+                </button>
+              </div>
+            </div>
 
-                  {plan.extras && plan.extras.length > 0 && (
-                    <div className="pt-4 border-t border-gray-100 space-y-3">
-                      <h4 className="font-semibold text-gray-900 font-roboto text-sm">
-                        What you get:
-                      </h4>
-                      <div className="space-y-3">
-                        {plan.extras.map((item, idx) => (
-                          <div className="flex items-start gap-3" key={idx}>
-                            <div className="w-6 h-6 mt-0.5 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                              <Check className="w-4 h-4 text-purple-600" />
-                            </div>
-                            <p className="text-sm text-gray-700 font-montserrat leading-relaxed">
-                              {item}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+            {/* Optimal Plan Header */}
+            <div className="p-6 md:p-8 relative">
+              <div className="absolute top-4 right-4">
+                <span className="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  $169 from Dec 15
+                </span>
+              </div>
+              <div className="text-center mt-8 flex flex-col h-full">
+                <div className="flex-1 flex flex-col items-center">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 font-roboto">Optimal</h3>
+                <p className="text-sm text-gray-500 mb-4 font-montserrat">For power users</p>
+                <div className="mb-2">
+                  <span className="text-5xl font-bold text-purple-600 font-roboto leading-none">$139</span>
+                  <span className="text-lg text-gray-500 ml-2">/monthly</span>
+                </div>
+                <div className="mb-6">
+                  <span className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md shadow-purple-500/25">
+                    x5 sales vs Starter
+                  </span>
+                </div>
+                </div>
+                <button
+                  onClick={() => window.location.href = 'https://my.karhuno.com/signup'}
+                  className="w-full px-6 py-3 rounded-xl bg-gray-800 text-white font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105 shadow-lg mt-6"
+                >
+                  Select Plan
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Features Table */}
+          <div className="divide-y divide-gray-100">
+            {features.map((feature, index) => (
+              <div key={index} className="grid grid-cols-1 md:grid-cols-4 hover:bg-gray-50 transition-colors">
+                {/* Feature Name */}
+                <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-gray-100 flex items-start gap-3">
+                  <div className="flex-shrink-0 mt-0.5">
+                    {feature.icon}
+                  </div>
+                  <div className="flex-1">
+                    <span className="text-base font-semibold text-gray-900 font-roboto">{feature.name}</span>
+                  </div>
+                </div>
+
+                {/* Free Plan Feature */}
+                <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-gray-100">
+                  <p className="text-sm text-gray-700 font-montserrat">{feature.free}</p>
+                </div>
+
+                {/* Starter Plan Feature */}
+                <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-gray-100 bg-gradient-to-br from-purple-50/50 to-blue-50/50">
+                  <p className="text-sm text-gray-700 font-montserrat">{feature.starter}</p>
+                </div>
+
+                {/* Optimal Plan Feature */}
+                <div className="p-6 md:p-8">
+                  <p className="text-sm text-gray-700 font-montserrat">{feature.optimal}</p>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Trust Section */}
-        <div className="px-4 mt-4">
-          <div className="max-w-3xl mx-auto bg-white/70 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-sm p-6 flex items-center gap-3 justify-center text-center">
-            <Shield className="w-6 h-6 text-purple-600 flex-shrink-0" />
-            <p className="text-gray-700 text-sm sm:text-base font-montserrat">
-              Risk-free trial. 7-day money-back guarantee, no questions asked.
-            </p>
+            ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Sales Callout Section - Immediately under pricing cards */}
-        <div className="max-w-screen-xl mx-auto px-6 mt-8">
+        {/* Sales Callout Section */}
+        <div className="max-w-screen-xl mx-auto mt-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -350,34 +337,7 @@ export default function PricingPage() {
           </motion.div>
         </div>
 
-        {/* Money-back Guarantee Section - New Design */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="py-16"
-        >
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="text-center">
-              {/* Shield Icon */}
-              <div className="flex justify-center mb-6">
-                <Shield className="w-16 h-16 text-purple-600" />
-              </div>
-              
-              {/* Headline */}
-              <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-roboto">
-                7-Day Money-Back Guarantee
-              </h3>
-              
-              {/* Subtitle */}
-              <p className="text-xl text-gray-600 font-montserrat max-w-2xl mx-auto">
-                No questions asked. One-click refund. Try it 100% risk-free.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* FAQ Section - New Design */}
+        {/* FAQ Section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -385,7 +345,6 @@ export default function PricingPage() {
           className="py-20"
         >
           <div className="max-w-6xl mx-auto px-6">
-            {/* Header */}
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-3 mb-6">
                 <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -401,7 +360,6 @@ export default function PricingPage() {
               </p>
             </div>
 
-            {/* FAQ Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {faqData.map((faq, index) => (
                 <motion.div
@@ -416,7 +374,6 @@ export default function PricingPage() {
                       ? 'border-purple-200 bg-gradient-to-br from-purple-50 to-blue-50' 
                       : 'border-gray-100 hover:border-purple-100'
                   }`}>
-                    {/* Question */}
                     <button
                       onClick={() => toggleFAQ(index)}
                       className="w-full text-left group-hover:scale-[1.02] transition-transform duration-200"
@@ -455,7 +412,6 @@ export default function PricingPage() {
                       </div>
                     </button>
 
-                    {/* Answer */}
                     <AnimatePresence>
                       {openFAQ === index && (
                         <motion.div
@@ -485,7 +441,6 @@ export default function PricingPage() {
               ))}
             </div>
 
-            {/* Bottom CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -533,4 +488,4 @@ export default function PricingPage() {
     </div>
     </>
   );
-} 
+}

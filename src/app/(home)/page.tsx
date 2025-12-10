@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Montserrat, Roboto } from "@/lib/localFonts";
 import { motion, AnimatePresence } from "framer-motion";
 import Head from "next/head";
+import Image from "next/image";
 import CanonicalHandler from "@/components/CanonicalHandler";
 
 // COMPONENTS
@@ -231,149 +232,68 @@ export default function Home() {
 
         <link rel="canonical" href="https://karhuno.com/" />
       </Head>
-      <header className="relative overflow-hidden mt-12">
-        {/* Main Content */}
-        <div className="relative z-10 px-4 max-w-7xl mx-auto min-h-[80vh] flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
-          {/* Left Side - Heading */}
-          <div className="flex-1 max-w-2xl pt-12 lg:pt-0">
-            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-center lg:text-left leading-tight ${roboto.className}`}>
-              <span className="text-black">Stop Searching,</span>
-              <br />
-              <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">Start Selling</span>
-            </h1>
-
-            <p className={`text-lg sm:text-xl md:text-2xl text-gray-500 mb-6 text-center lg:text-left ${montserrat.className}`}>
-              Proof-backed buying signals for B2B teams selling globally, with real contacts updated in real time.
-            </p>
-            
-            {/* AI Tech Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="inline-flex items-center gap-3 mb-8 text-center lg:text-left"
-            >
-              <div className="relative">
-                {/* Outer pulsing circle */}
-                <motion.div
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/30 to-blue-500/30"
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.5, 0.3, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                {/* Middle circle */}
-                <div className="relative w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center shadow-lg">
-                  {/* Inner glowing dot */}
-                  <motion.div
-                    className="w-3 h-3 rounded-full bg-white"
-                    animate={{
-                      scale: [1, 1.3, 1],
-                      opacity: [1, 0.7, 1],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
-                  {/* Rotating ring */}
-                  <motion.div
-                    className="absolute inset-0 rounded-full border-2 border-white/30"
-                    animate={{ rotate: 360 }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                  />
-                </div>
-              </div>
-              <TypewriterText className={`${roboto.className}`} />
-            </motion.div>
-          </div>
-
-          {/* Right Side - Search Form */}
-          <div className="flex-1 max-w-sm sm:max-w-md mx-auto lg:mx-0">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 p-4 sm:p-6 shadow-lg">
-              <h2 className={`text-xl font-semibold text-gray-900 mb-1 text-center ${roboto.className}`}>
-                Find corporate signals
-              </h2>
-              <p className={`text-xs text-gray-500 mb-6 text-center ${montserrat.className}`}>
-                within a week
-              </p>
-              
-              <div className="space-y-4">
-                <div>
-                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${montserrat.className}`}>
-                    What kind of company? <span className="text-xs italic text-gray-500">(required)</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="companyType"
-                    value={formData.companyType}
-                    onChange={(e) => handleInputChange('companyType', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, 'companyType')}
-                    placeholder="e.g. IT company"
-                    className={`w-full rounded-xl px-4 py-3 text-gray-900 border ${errors.companyType ? 'border-red-500' : 'border-gray-200'} bg-white/90 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent ${montserrat.className}`}
-                  />
-                </div>
-                <div>
-                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${montserrat.className}`}>
-                    What news? <span className="text-xs italic text-gray-500">(required)</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="news"
-                    value={formData.news}
-                    onChange={(e) => handleInputChange('news', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, 'news')}
-                    placeholder="e.g. announced new partnership"
-                    className={`w-full rounded-xl px-4 py-3 text-gray-900 border ${errors.news ? 'border-red-500' : 'border-gray-200'} bg-white/90 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent ${montserrat.className}`}
-                  />
-                </div>
-                <div>
-                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${montserrat.className}`}>
-                    Where? <span className="text-xs italic text-gray-500">(required)</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="location"
-                    value={formData.location}
-                    onChange={(e) => handleInputChange('location', e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(e, 'location')}
-                    placeholder="e.g. UK and California"
-                    className={`w-full rounded-xl px-4 py-3 text-gray-900 border ${errors.location ? 'border-red-500' : 'border-gray-200'} bg-white/90 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent ${montserrat.className}`}
-                  />
-                </div>
-              </div>
-              
-              <button
-                onClick={handleFormSubmit}
-                className={`w-full mt-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 ${montserrat.className}`}
-              >
-                Find warm leads
-              </button>
-            </div>
-          </div>
+      <header className="relative overflow-hidden mt-6">
+        {/* Background accents */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-10 -left-16 h-64 w-64 md:h-80 md:w-80 rounded-full bg-gradient-to-br from-[#a974ff]/25 via-[#679eff]/20 to-transparent blur-3xl" />
+          <div className="absolute bottom-0 right-[-10%] h-72 w-72 md:h-96 md:w-96 rounded-full bg-gradient-to-br from-[#679eff]/20 via-[#a974ff]/15 to-transparent blur-3xl" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_40%)]" />
         </div>
-        
-        {/* Trusted by Section (moved up and visually enhanced) */}
-        <div className="relative z-10 px-4 max-w-7xl mx-auto pt-2 pb-4 -mt-12 sm:-mt-16">
-          <div className="flex items-center justify-center gap-3 sm:gap-5">
-            <img
-              src="/tekpon-top-lead-generation.png"
-              alt="Tekpon Top Lead Generation badge"
-              className="h-24 sm:h-28 w-auto object-contain drop-shadow-lg"
-            />
-            <span className={`text-sm sm:text-base text-black font-semibold whitespace-nowrap ${montserrat.className}`}>
-              🏆 Recognized by Tekpon as a top lead gen tool (2025)
+
+        <div className="relative z-10 px-6 max-w-6xl mx-auto min-h-[80vh] pt-12 pb-14 md:pt-14 md:pb-16 flex flex-col items-center justify-center gap-5 md:gap-6 text-center">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_12px_36px_rgba(103,158,255,0.25)] text-[#a974ff] text-sm md:text-base font-semibold tracking-tight">
+            <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#a974ff] to-[#679eff] shadow-[0_0_10px_rgba(169,116,255,0.8)]" />
+            AI-Powered Buying Signal Engine
+          </div>
+          <h1 className={`text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold leading-[1.05] md:leading-[1.08] tracking-tight ${roboto.className}`}>
+            <span className="text-black">Stop Searching,</span>
+            <br />
+            <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
+              Start Selling.
             </span>
+          </h1>
+
+          <p className={`text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl leading-relaxed md:leading-8 tracking-tight ${montserrat.className}`}>
+            Proof-backed buying signals for B2B teams selling globally, with real contacts updated in real time.
+          </p>
+
+          <div className="flex flex-col items-center gap-2">
+            <button
+              className={`group px-8 py-4 rounded-2xl bg-gradient-to-r from-[#a974ff] to-[#679eff] text-white text-lg font-semibold shadow-[0_16px_42px_rgba(103,158,255,0.45)] hover:shadow-[0_20px_52px_rgba(103,158,255,0.55)] transition duration-200 flex items-center gap-3 ${montserrat.className}`}
+            >
+              <span>Start free trial</span>
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/20 group-hover:bg-white/30 transition text-sm">
+                <svg
+                  className="w-4 h-4"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 10h8m0 0-3-3m3 3-3 3"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+            <span className={`text-xs text-gray-500 ${montserrat.className}`}>No card needed</span>
+
+            {/* Trust badge area */}
+            <div className="mt-3 inline-flex items-center gap-3 px-0 py-1 text-gray-600 text-sm md:text-base">
+              <Image
+                src="/tekpon-top-lead-generation.png"
+                alt="Tekpon badge"
+                width={64}
+                height={64}
+                className="object-contain"
+                priority
+              />
+              <span className="w-px h-6 bg-gray-300/80" />
+              <span className="font-semibold text-gray-700">Trusted by 100+ sales teams</span>
+            </div>
           </div>
         </div>
       </header>

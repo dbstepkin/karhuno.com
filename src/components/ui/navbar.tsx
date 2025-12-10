@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Montserrat, Roboto } from "next/font/google";
 
@@ -21,42 +21,11 @@ const roboto = Roboto({
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isResourceOpen, setIsResourceOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Add shadow when scrolled
-      setIsScrolled(currentScrollY > 20);
-      
-      // Hide/show navbar based on scroll direction
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down
-        setIsVisible(false);
-      } else {
-        // Scrolling up
-        setIsVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
 
   return (
-    <header className={`fixed top-2 left-4 right-4 sm:top-4 sm:left-16 sm:right-12 z-50 transition-all duration-300 ${
-      isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
-    }`}>
+    <header className="fixed top-2 left-4 right-4 sm:top-4 sm:left-16 sm:right-12 z-50">
       <nav 
-        className={`backdrop-blur-[8px] border border-white/20 px-4 py-3 sm:px-6 sm:py-4 transition-all duration-300 ${
-          isScrolled ? 'shadow-xl shadow-black/10' : 'shadow-lg shadow-black/5'
-        }`}
+        className="backdrop-blur-[8px] border border-white/20 px-4 py-3 sm:px-6 sm:py-4 shadow-xl shadow-black/10 transition-all duration-300"
         style={{ 
           backgroundColor: 'rgba(255, 255, 255, 0.8)',
           borderRadius: '16px'
