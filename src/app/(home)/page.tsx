@@ -233,28 +233,40 @@ export default function Home() {
         <link rel="canonical" href="https://karhuno.com/" />
       </Head>
       <header className="relative overflow-hidden mt-6">
-        {/* Background accents */}
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-indigo-50 to-pink-50" />
+        
+        {/* Background accents with purple grid texture */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-10 -left-16 h-64 w-64 md:h-80 md:w-80 rounded-full bg-gradient-to-br from-[#a974ff]/25 via-[#679eff]/20 to-transparent blur-3xl" />
           <div className="absolute bottom-0 right-[-10%] h-72 w-72 md:h-96 md:w-96 rounded-full bg-gradient-to-br from-[#679eff]/20 via-[#a974ff]/15 to-transparent blur-3xl" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_40%)]" />
+          {/* Purple grid pattern overlay */}
+          <div 
+            className="absolute inset-0 opacity-40"
+            style={{
+              backgroundImage: `linear-gradient(rgba(169, 116, 255, 0.3) 1px, transparent 1px),
+                                linear-gradient(90deg, rgba(169, 116, 255, 0.3) 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }}
+          />
         </div>
 
         <div className="relative z-10 px-6 max-w-6xl mx-auto min-h-[80vh] pt-12 pb-14 md:pt-14 md:pb-16 flex flex-col items-center justify-center gap-5 md:gap-6 text-center">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_12px_36px_rgba(103,158,255,0.25)] text-[#a974ff] text-sm md:text-base font-semibold tracking-tight">
             <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#a974ff] to-[#679eff] shadow-[0_0_10px_rgba(169,116,255,0.8)]" />
-            AI-Powered Buying Signal Engine
+            For B2B sales teams
           </div>
-          <h1 className={`text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold leading-[1.05] md:leading-[1.08] tracking-tight ${roboto.className}`}>
-            <span className="text-black">Stop Searching,</span>
+          <h1 className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] md:leading-[1.08] tracking-tight ${roboto.className}`}>
+            <span className="text-black">Stop searching.</span>
             <br />
             <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
               Start Selling.
             </span>
           </h1>
 
-          <p className={`text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl leading-relaxed md:leading-8 tracking-tight ${montserrat.className}`}>
-            Proof-backed buying signals for B2B teams selling globally, with real contacts updated in real time.
+          <p className={`text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl leading-relaxed md:leading-relaxed tracking-tight ${montserrat.className}`}>
+            Track any open-data event, from news to social mentions, see the proof behind it, and reach the right decision makers in real time.
           </p>
 
           <div className="flex flex-col items-center gap-2">

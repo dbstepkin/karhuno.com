@@ -23,29 +23,32 @@ export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-2 left-4 right-4 sm:top-4 sm:left-16 sm:right-12 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full">
       <nav 
-        className="backdrop-blur-[8px] border border-white/20 px-4 py-3 sm:px-6 sm:py-4 shadow-xl shadow-black/10 transition-all duration-300"
+        className="backdrop-blur-[8px] border-b border-white/20 shadow-sm transition-all duration-300 w-full"
         style={{ 
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
-          borderRadius: '16px'
+          backgroundColor: 'rgba(255, 255, 255, 0.8)'
         }}
       >
-        <div className="flex items-center justify-between max-w-7xl mx-auto">
-          {/* Logo */}
-          <Link href="/" className="flex items-center flex-shrink-0">
-            <Image
-              src="/images/logonavbar.svg"
-              alt="Karhuno AI Logo"
-              width={160}
-              height={40}
-              className="h-9 w-auto"
-              priority
-            />
-          </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center h-16 lg:h-20">
+            {/* Logo - Left */}
+            <div className="flex-shrink-0">
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/images/logonavbar.svg"
+                  alt="Karhuno AI Logo"
+                  width={160}
+                  height={40}
+                  className="h-9 w-auto"
+                  priority
+                />
+              </Link>
+            </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+            {/* Desktop Navigation - Center */}
+            <div className="hidden lg:flex items-center justify-center flex-1">
+              <div className="flex items-center space-x-8">
             <Link
               href="/"
               className={`text-sm font-medium text-gray-900 hover:text-purple-600 transition-colors px-3 py-2 rounded-full hover:bg-purple-50/80 ${montserrat.className}`}
@@ -135,10 +138,11 @@ export const Navbar: React.FC = () => {
             >
               Blog
             </Link>
-          </div>
+              </div>
+            </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-3 flex-shrink-0">
+            {/* CTA Buttons - Right */}
+            <div className="hidden md:flex items-center space-x-3 flex-shrink-0 ml-auto">
             <Link
               href="https://my.karhuno.com/signin"
               className={`border border-gray-300/80 px-5 py-2.5 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50/80 hover:border-gray-400 transition-all ${montserrat.className}`}
@@ -153,24 +157,25 @@ export const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex-shrink-0">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-700 hover:text-purple-600 focus:outline-none p-2 rounded-full hover:bg-purple-50/80 transition-colors"
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
+            {/* Mobile Menu Button */}
+            <div className="md:hidden flex-shrink-0 ml-auto">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-gray-700 hover:text-purple-600 focus:outline-none p-2 rounded-full hover:bg-purple-50/80 transition-colors"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-6 pt-6 border-t border-gray-100/50">
+          <div className="md:hidden px-4 pb-6 pt-4 border-t border-gray-100/50">
             <div className="flex flex-col space-y-3">
               <Link
                 href="/"
