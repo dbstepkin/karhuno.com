@@ -190,7 +190,7 @@ export default function PricingPage() {
 
             {/* Free Plan Header */}
             <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-gray-100">
-              <div className="text-center flex flex-col h-full">
+              <div className="text-center flex flex-col h-full pt-8">
                 <div className="flex-1 flex flex-col items-center">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2 font-roboto">Free test (7 days)</h3>
                 <p className="text-sm text-gray-500 mb-4 font-montserrat">Fast way to try Karhuno before upgrading</p>
@@ -213,16 +213,13 @@ export default function PricingPage() {
                 <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
                   Recommended
                 </span>
-                <span className="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                  $109 from Dec 15
-                </span>
               </div>
-              <div className="text-center mt-8 flex flex-col h-full">
+              <div className="text-center flex flex-col h-full pt-8">
                 <div className="flex-1 flex flex-col items-center">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2 font-roboto">Starter</h3>
                 <p className="text-sm text-gray-500 mb-4 font-montserrat">Most popular choice</p>
                 <div className="mb-2">
-                  <span className="text-5xl font-bold text-purple-600 font-roboto leading-none">$79</span>
+                  <span className="text-5xl font-bold text-purple-600 font-roboto leading-none">$109</span>
                   <span className="text-lg text-gray-500 ml-2">/monthly</span>
                 </div>
                 <div className="mb-6">
@@ -242,17 +239,12 @@ export default function PricingPage() {
 
             {/* Optimal Plan Header */}
             <div className="p-6 md:p-8 relative">
-              <div className="absolute top-4 right-4">
-                <span className="bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                  $169 from Dec 15
-                </span>
-              </div>
-              <div className="text-center mt-8 flex flex-col h-full">
+              <div className="text-center flex flex-col h-full pt-8">
                 <div className="flex-1 flex flex-col items-center">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2 font-roboto">Optimal</h3>
                 <p className="text-sm text-gray-500 mb-4 font-montserrat">For power users</p>
                 <div className="mb-2">
-                  <span className="text-5xl font-bold text-purple-600 font-roboto leading-none">$139</span>
+                  <span className="text-5xl font-bold text-purple-600 font-roboto leading-none">$169</span>
                   <span className="text-lg text-gray-500 ml-2">/monthly</span>
                 </div>
                 <div className="mb-6">
