@@ -27,7 +27,7 @@ export const Navbar: React.FC = () => {
       <nav 
         className="backdrop-blur-[8px] border-b border-white/20 shadow-sm transition-all duration-300 w-full"
         style={{ 
-          backgroundColor: 'rgba(255, 255, 255, 0.8)'
+          backgroundColor: 'rgba(255, 255, 255, 1)'
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

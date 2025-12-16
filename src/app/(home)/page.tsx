@@ -232,27 +232,86 @@ export default function Home() {
 
         <link rel="canonical" href="https://karhuno.com/" />
       </Head>
-      <header className="relative overflow-hidden mt-6">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-indigo-50 to-pink-50" />
-        
-        {/* Background accents with purple grid texture */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-10 -left-16 h-64 w-64 md:h-80 md:w-80 rounded-full bg-gradient-to-br from-[#a974ff]/25 via-[#679eff]/20 to-transparent blur-3xl" />
-          <div className="absolute bottom-0 right-[-10%] h-72 w-72 md:h-96 md:w-96 rounded-full bg-gradient-to-br from-[#679eff]/20 via-[#a974ff]/15 to-transparent blur-3xl" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_40%)]" />
-          {/* Purple grid pattern overlay */}
-          <div 
-            className="absolute inset-0 opacity-40"
+      <header className="relative overflow-hidden bg-white">
+        {/* Layered premium background */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#f9f5ff_0%,_#ebe8ff_45%,_#f5ecff_100%)]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#d2c6ff]/85 via-[#e2d6ff]/80 to-[#f8f2ff]/95" />
+          {/* Radial glow behind headline */}
+          <div className="absolute left-1/2 top-[28%] h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,_rgba(167,116,255,0.35)_0%,_rgba(167,116,255,0)_70%)] blur-3xl opacity-80 md:h-[620px] md:w-[620px]" />
+          <div className="absolute right-[12%] top-[15%] h-64 w-64 rounded-full bg-[radial-gradient(circle,_rgba(103,158,255,0.18)_0%,_rgba(103,158,255,0)_70%)] blur-3xl opacity-80 md:h-80 md:w-80" />
+          <div className="absolute left-[4%] bottom-[10%] h-56 w-56 rounded-full bg-[radial-gradient(circle,_rgba(98,198,255,0.12)_0%,_rgba(98,198,255,0)_70%)] blur-3xl opacity-70 md:h-72 md:w-72" />
+          {/* Subtle signal pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.22]"
             style={{
-              backgroundImage: `linear-gradient(rgba(169, 116, 255, 0.3) 1px, transparent 1px),
-                                linear-gradient(90deg, rgba(169, 116, 255, 0.3) 1px, transparent 1px)`,
-              backgroundSize: '40px 40px'
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, rgba(82,122,215,0.35) 1.8px, transparent 0)",
+              backgroundSize: "60px 60px",
+            }}
+          />
+          {/* Soft radar rings */}
+          <div
+            className="absolute inset-0 opacity-[0.07]"
+            style={{
+              backgroundImage:
+                "repeating-radial-gradient(circle at 50% 40%, rgba(149,176,255,0.25) 0, rgba(149,176,255,0.25) 1px, transparent 1px, transparent 70px)",
+            }}
+          />
+          {/* Subtle scanning-inspired lines */}
+          <div
+            className="absolute inset-0 opacity-[0.06]"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(180deg, rgba(118,152,255,0.25) 0px, rgba(118,152,255,0.25) 1px, transparent 1px, transparent 56px), repeating-linear-gradient(90deg, rgba(180,210,255,0.18) 0px, rgba(180,210,255,0.18) 1px, transparent 1px, transparent 68px)",
+            }}
+          />
+          {/* Tech layered lines */}
+          <div
+            className="absolute inset-0 opacity-[0.09]"
+            style={{
+              backgroundImage:
+                "linear-gradient(120deg, transparent 0%, rgba(136,164,255,0.4) 35%, transparent 65%), linear-gradient(300deg, transparent 15%, rgba(189,214,255,0.35) 50%, transparent 80%)",
+              backgroundSize: "280px 280px, 280px 280px",
+            }}
+          />
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(145deg, transparent 0 70px, rgba(150,190,255,0.35) 70px 71px), repeating-linear-gradient(325deg, transparent 0 90px, rgba(205,220,255,0.3) 90px 91px)",
+            }}
+          />
+          {/* Tech diagonal traces */}
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage:
+                "linear-gradient(120deg, rgba(120,150,255,0.2) 0%, rgba(120,150,255,0) 45%), linear-gradient(300deg, rgba(165,210,255,0.15) 0%, rgba(165,210,255,0) 55%)",
+            }}
+          />
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(135deg, transparent 0 56px, rgba(155,188,255,0.25) 56px 57px), repeating-linear-gradient(315deg, transparent 0 64px, rgba(185,215,255,0.18) 64px 65px)",
+            }}
+          />
+          {/* Gentle scanning sweep */}
+          <div
+            className="absolute inset-y-0 left-0 right-0 hero-scan-sweep opacity-[0.14]"
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, transparent 20%, rgba(142,188,255,0.55) 50%, transparent 80%)",
+              filter: "blur(0.5px)",
             }}
           />
         </div>
 
-        <div className="relative z-10 px-6 max-w-6xl mx-auto min-h-[80vh] pt-12 pb-14 md:pt-14 md:pb-16 flex flex-col items-center justify-center gap-5 md:gap-6 text-center">
+        <div className="relative z-10 px-6 max-w-6xl mx-auto min-h-[80vh] pt-20 pb-14 md:pt-24 md:pb-16 flex flex-col items-center justify-center gap-5 md:gap-6 text-center">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_12px_36px_rgba(103,158,255,0.25)] text-[#a974ff] text-sm md:text-base font-semibold tracking-tight">
             <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#a974ff] to-[#679eff] shadow-[0_0_10px_rgba(169,116,255,0.8)]" />
             For B2B sales teams

@@ -304,6 +304,36 @@ body div[style*="position: fixed"][style*="left: 20px"] {
   }
 }
 
+@keyframes hero-scan-sweep {
+  0% {
+    transform: translateX(-35%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.05;
+  }
+  50% {
+    opacity: 0.12;
+  }
+  80% {
+    opacity: 0.05;
+  }
+  100% {
+    transform: translateX(35%);
+    opacity: 0;
+  }
+}
+
+.hero-scan-sweep {
+  animation: hero-scan-sweep 30s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scan-sweep {
+    animation: none;
+  }
+}
+
 .animate-scroll {
   animation: scroll 30s linear infinite;
 }
