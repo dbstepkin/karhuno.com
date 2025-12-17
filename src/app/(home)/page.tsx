@@ -330,6 +330,7 @@ export default function Home() {
 
           <div className="flex flex-col items-center gap-2">
             <button
+              onClick={() => window.location.href = '/signup'}
               className={`group px-8 py-4 rounded-2xl bg-gradient-to-r from-[#a974ff] to-[#679eff] text-white text-lg font-semibold shadow-[0_16px_42px_rgba(103,158,255,0.45)] hover:shadow-[0_20px_52px_rgba(103,158,255,0.55)] transition duration-200 flex items-center gap-3 ${montserrat.className}`}
             >
               <span>Start free trial</span>
