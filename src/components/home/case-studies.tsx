@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Package, Search } from "lucide-react";
+import { Package, Search, Lightbulb, Target } from "lucide-react";
 import { Montserrat, Roboto } from "next/font/google";
 
 const montserrat = Montserrat({ 
@@ -21,82 +21,67 @@ const roboto = Roboto({
 
 const caseStudies = [
   {
-    id: "logtech",
-    label: "LogTech",
+    id: "logistic",
+    label: "Logistic",
     product: {
       title: "Smart Lighting Systems for Cold Storage and Industrial Warehouses",
       icon: <Package className="w-5 h-5 text-purple-400" />
     },
-    signalSearch: {
+    signals: {
       title: "Detection of warehouse expansion news, including cold storage build-outs and infrastructure upgrades. Tracking press releases, local news and investment announcements.",
       icon: <Search className="w-5 h-5 text-purple-400" />
+    },
+    whyItMatters: {
+      title: "Warehouse expansions signal immediate need for infrastructure solutions. Companies investing in new facilities are actively evaluating vendors and making purchasing decisions.",
+      icon: <Lightbulb className="w-5 h-5 text-purple-400" />
+    },
+    howToAct: {
+      title: "Reach out within 24-48 hours of the announcement. Position your solution as essential infrastructure for their new facility. Offer a site visit or consultation to demonstrate value.",
+      icon: <Target className="w-5 h-5 text-purple-400" />
     },
     image: "/images/Logtech.webp",
   },
   {
-    id: "hrtech",
-    label: "HRTech",
+    id: "b2b-saas",
+    label: "B2B SaaS",
     product: {
-      title: "Gamification Platforms for Corporate Learning & Engagement",
+      title: "Sales Automation & CRM Integration Platforms for Growing Teams",
       icon: <Package className="w-5 h-5 text-purple-400" />
     },
-    signalSearch: {
-      title: "Companies promoting internal entrepreneurship or team agility through SCRUM-based frameworks.",
+    signals: {
+      title: "Companies hiring for sales roles (SDRs, AEs, Sales Managers), indicating active revenue expansion and need for sales tools. Tracking job boards, LinkedIn hiring posts, and growth announcements.",
       icon: <Search className="w-5 h-5 text-purple-400" />
     },
-    image: "/images/HRTech.webp",
+    whyItMatters: {
+      title: "Hiring sales talent means they're scaling revenue operations. This is the perfect moment to offer tools that help new hires ramp faster and existing teams close more deals.",
+      icon: <Lightbulb className="w-5 h-5 text-purple-400" />
+    },
+    howToAct: {
+      title: "Connect with the hiring manager or VP of Sales. Frame your solution as essential for onboarding new reps and scaling their sales process. Offer a demo focused on team efficiency.",
+      icon: <Target className="w-5 h-5 text-purple-400" />
+    },
+    image: "/images/Logtech.webp",
   },
   {
-    id: "legaltech",
-    label: "LegalTech",
+    id: "manufacturing",
+    label: "Manufacturing",
     product: {
-      title: "Intellectual Property Platforms for Startup & Crowdfunding Compliance",
+      title: "Industrial Automation Solutions and Production Line Optimization",
       icon: <Package className="w-5 h-5 text-purple-400" />
     },
-    signalSearch: {
-      title: "Startups that completed successful crowdfunding campaigns, indicating a need for IP protection or licensing.",
+    signals: {
+      title: "Manufacturing companies announcing new production facilities, equipment upgrades, or automation initiatives. Tracking industry news, expansion announcements, and technology adoption signals.",
       icon: <Search className="w-5 h-5 text-purple-400" />
     },
-    image: "/images/LegalTech.webp",
-  },
-  {
-    id: "greentech",
-    label: "GreenTech",
-    product: {
-      title: "AI-Based Energy Management Software for Sustainable Operations",
-      icon: <Package className="w-5 h-5 text-purple-400" />
+    whyItMatters: {
+      title: "New facilities and automation projects require comprehensive planning. Companies are actively evaluating vendors and solutions during the planning phase, making this the ideal time to engage.",
+      icon: <Lightbulb className="w-5 h-5 text-purple-400" />
     },
-    signalSearch: {
-      title: "Companies investing in green technology, energy efficiency, or sustainability-driven upgrades.",
-      icon: <Search className="w-5 h-5 text-purple-400" />
+    howToAct: {
+      title: "Reach out to operations or engineering leadership. Position your solution as critical infrastructure for their new facility. Offer a technical consultation or case study from similar projects.",
+      icon: <Target className="w-5 h-5 text-purple-400" />
     },
-    image: "/images/GreenTech.webp",
-  },
-  {
-    id: "fintech",
-    label: "FinTech",
-    product: {
-      title: "Real-Time Money Transfer Solutions for the UAE Market",
-      icon: <Package className="w-5 h-5 text-purple-400" />
-    },
-    signalSearch: {
-      title: "Fintech companies operating or expanding in the UAE, flagged by financial activity and product launches.",
-      icon: <Search className="w-5 h-5 text-purple-400" />
-    },
-    image: "/images/Fintech.webp",
-  },
-  {
-    id: "martech",
-    label: "MarTech",
-    product: {
-      title: "Marketing Strategy & Campaign Services for the HoReCa Sector",
-      icon: <Package className="w-5 h-5 text-purple-400" />
-    },
-    signalSearch: {
-      title: "Rapidly growing Instagram profiles of Brazilian HoReCa brands, signaling active audience engagement and digital investment.",
-      icon: <Search className="w-5 h-5 text-purple-400" />
-    },
-    image: "/images/MarTech.webp",
+    image: "/images/Logtech.webp",
   },
 ];
 
@@ -105,7 +90,7 @@ interface CaseStudiesProps {
 }
 
 export default function CaseStudies({ id }: CaseStudiesProps) {
-  const [activeTab, setActiveTab] = useState("logtech");
+  const [activeTab, setActiveTab] = useState("logistic");
   const activeCase = caseStudies.find((cs) => cs.id === activeTab);
 
   return (
@@ -119,7 +104,7 @@ export default function CaseStudies({ id }: CaseStudiesProps) {
             transition={{ duration: 0.5 }}
             className="inline-block px-4 py-1.5 bg-purple-700/20 rounded-full text-purple-300 text-sm font-medium mb-4"
           >
-            case studies
+            Real examples
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -129,7 +114,7 @@ export default function CaseStudies({ id }: CaseStudiesProps) {
             className={`text-4xl md:text-5xl font-bold mb-4 ${roboto.className}`}
           >
             <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
-              Success Stories
+              Signal-Based Use Cases
             </span>
           </motion.h2>
           <motion.p
@@ -187,7 +172,7 @@ export default function CaseStudies({ id }: CaseStudiesProps) {
                 </div>
 
                 {/* Right Column - Content */}
-                <div className="bg-[#12141b] backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-white/10 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="bg-[#12141b] backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-white/10 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-6">
                   {/* Product Section */}
                   <div>
                     <div className="flex items-center gap-2 mb-3">
@@ -204,20 +189,56 @@ export default function CaseStudies({ id }: CaseStudiesProps) {
                   </div>
 
                   {/* Divider */}
-                  <div className="border-t border-white/10 my-6" />
+                  <div className="border-t border-white/10" />
 
-                  {/* Signal Search Section */}
+                  {/* Signals Section */}
                   <div>
                     <div className="flex items-center gap-2 mb-3">
                       <div className="p-2 bg-purple-500/10 rounded-lg">
-                        {activeCase.signalSearch.icon}
+                        {activeCase.signals.icon}
                       </div>
                       <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 font-semibold text-lg">
-                        Signal Search
+                        Signals
                       </h3>
                     </div>
                     <p className="text-gray-100 leading-relaxed">
-                      {activeCase.signalSearch.title}
+                      {activeCase.signals.title}
+                    </p>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="border-t border-white/10" />
+
+                  {/* Why it Matters Section */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="p-2 bg-purple-500/10 rounded-lg">
+                        {activeCase.whyItMatters.icon}
+                      </div>
+                      <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 font-semibold text-lg">
+                        Why it matters
+                      </h3>
+                    </div>
+                    <p className="text-gray-100 leading-relaxed">
+                      {activeCase.whyItMatters.title}
+                    </p>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="border-t border-white/10" />
+
+                  {/* How to Act Section */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="p-2 bg-purple-500/10 rounded-lg">
+                        {activeCase.howToAct.icon}
+                      </div>
+                      <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 font-semibold text-lg">
+                        How to act
+                      </h3>
+                    </div>
+                    <p className="text-gray-100 leading-relaxed">
+                      {activeCase.howToAct.title}
                     </p>
                   </div>
                 </div>
