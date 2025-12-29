@@ -8,13 +8,13 @@ import { Linkedin } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
-const montserrat = Montserrat({ 
+const montserrat = Montserrat({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-montserrat'
 });
 
-const roboto = Roboto({ 
+const roboto = Roboto({
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
   display: 'swap',
@@ -92,7 +92,7 @@ export default function UserTestimonials() {
   const next = () => setCurrent((current + 1) % reviews.length);
 
   return (
-    <section id="after-comparison" className="py-24 relative overflow-hidden before:-z-10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-purple-200/80 before:via-pink-200/60 before:to-purple-200/80 before:animate-gradient-shift before:opacity-75 flex flex-col items-center justify-center min-h-[400px]">
+    <section id="after-comparison" className="py-24 relative overflow-hidden bg-white flex flex-col items-center justify-center min-h-[400px]">
       {/* Navigation arrows - left */}
       <button
         onClick={prev}
@@ -115,13 +115,13 @@ export default function UserTestimonials() {
         </div>
         <div className="relative w-full flex flex-col items-center">
           <div className="text-center w-full flex flex-col items-center">
-            <div className="text-[1.6rem] sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-10 leading-snug max-w-2xl mx-auto drop-shadow-sm text-left" style={{letterSpacing: '-0.01em'}}>
+            <div className="text-[1.6rem] sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-10 leading-snug max-w-2xl mx-auto drop-shadow-sm text-left" style={{ letterSpacing: '-0.01em' }}>
               "{cleanQuote(reviews[current].quote)}"
             </div>
             <div className="flex flex-col items-center gap-0.5 mb-8 w-full">
-              <Image src={reviews[current].image} alt={reviews[current].name} width={72} height={72} className="rounded-full object-cover object-top shadow-lg border-4 border-white mx-auto w-[72px] h-[72px] flex-shrink-0" style={{objectPosition: 'center 20%'}} />
+              <Image src={reviews[current].image} alt={reviews[current].name} width={72} height={72} className="rounded-full object-cover object-top shadow-lg border-4 border-white mx-auto w-[72px] h-[72px] flex-shrink-0" style={{ objectPosition: 'center 20%' }} />
               <div className="font-bold text-lg text-gray-900 mt-4 mb-1 text-center">{reviews[current].name}</div>
-              <div className="text-gray-700 text-sm text-center font-normal" style={{fontWeight: 400}}>{reviews[current].role}</div>
+              <div className="text-gray-700 text-sm text-center font-normal" style={{ fontWeight: 400 }}>{reviews[current].role}</div>
             </div>
           </div>
           <div className="flex items-center justify-center gap-2 mt-2">

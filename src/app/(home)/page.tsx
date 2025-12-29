@@ -12,18 +12,16 @@ import CanonicalHandler from "@/components/CanonicalHandler";
 // COMPONENTS
 import CaseStudies from "@/components/home/case-studies";
 import ContactCarousel from "@/components/home/contact-carousel";
-import AIComparison from "@/components/home/ai-comparison";
 import UserTestimonials from "@/components/home/user-testimonials";
 import SignalCarousel from "@/components/home/signal-carousel";
-import WhyKarhuno from "@/components/home/why-karhuno";
+import FinalCTA from "@/components/home/final-cta";
+
 import FAQ from "@/components/home/faq";
 import Footer from "@/components/home/footer";
 import HowKarhunoWorks from "@/components/home/how-karhuno-works";
-import LinkedInChart from "@/components/home/linkedin-chart";
-import ColdEmailChart from "@/components/home/cold-email-chart";
 import TypewriterText from "@/components/home/TypewriterText";
 
-const montserrat = Montserrat({ 
+const montserrat = Montserrat({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-montserrat',
@@ -31,7 +29,7 @@ const montserrat = Montserrat({
   preload: false
 });
 
-const roboto = Roboto({ 
+const roboto = Roboto({
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
   display: 'swap',
@@ -50,7 +48,7 @@ export default function Home() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [placeholder, setPlaceholder] = useState("");
-  
+
   // Email modal states
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [email, setEmail] = useState("");
@@ -58,10 +56,10 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showFireworks, setShowFireworks] = useState(false);
-  
+
   // Video modal state
   const [showVideoModal, setShowVideoModal] = useState(false);
-  
+
   // Form states
   const [formData, setFormData] = useState({
     companyType: "",
@@ -86,13 +84,13 @@ export default function Home() {
   // Handle email submission
   const handleEmailSubmit = async () => {
     const trimmedEmail = email.trim();
-    
+
     // Validate email format
     if (!trimmedEmail) {
       setEmailError(true);
       return;
     }
-    
+
     if (!isValidEmail(trimmedEmail)) {
       setEmailError(true);
       return;
@@ -107,7 +105,7 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           email: trimmedEmail,
           companyType: formData.companyType,
           news: formData.news,
@@ -390,11 +388,11 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM5QzkyQUMiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIvPjwvZz48L2c+PC9zdmc+')] opacity-20"></div>
         </div>
-        
+
         {/* Floating elements */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-24">
           {/* Header */}
           <div className="text-center mb-20">
@@ -402,7 +400,7 @@ export default function Home() {
               <div className="w-2 h-2 bg-yellow-400 rounded-full mr-3 animate-pulse"></div>
               <span className="text-sm font-medium text-white/90">The Problem</span>
             </div>
-            
+
             <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6">
               <span className="text-white">Volume </span>
               <span className="text-white/50 mx-4">vs</span>
@@ -410,220 +408,135 @@ export default function Home() {
                 Timing
               </span>
             </h2>
-            
+
             <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
               Traditional list-based outreach fails. Here's how signal-driven approach wins with real results.
             </p>
           </div>
-          
-          {/* Results Grid - Modern Layout: Problem + Solutions */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-            
-            {/* Card 1: Traditional Approach (The Problem) */}
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+
+          {/* Extremely Simplified VS Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch relative">
+            {/* Center "VS" Decoration */}
+            <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-16 h-16 bg-slate-900 border-2 border-white/20 rounded-full items-center justify-center shadow-[0_0_30px_rgba(169,116,255,0.4)]">
+              <span className="text-white font-black italic text-xl">VS</span>
+            </div>
+
+            {/* Left Column: Traditional Way (Focus on Volume) */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="group relative"
+              transition={{ duration: 1 }}
+              className="relative bg-red-950/20 backdrop-blur-xl rounded-[2.5rem] p-10 border-2 border-red-500/30 flex flex-col group overflow-hidden"
             >
-              <div className="relative bg-red-900/20 backdrop-blur-xl rounded-3xl p-8 border-2 border-red-500/30 hover:border-red-500/50 transition-all duration-500">
-                {/* Problem Badge */}
-                <div className="absolute -top-4 left-8 bg-red-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd"/>
-                  </svg>
-                  Without Karhuno
+              <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/10 rounded-full blur-[80px] pointer-events-none" />
+
+              <div className="relative z-10">
+                <div className="text-red-500 font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-2">
+                  <span className="w-8 h-px bg-red-500/40"></span>
+                  The Problem: Volume
                 </div>
 
-                {/* Header */}
-                <div className="relative z-10 flex items-center mb-8">
-                  <div className="relative">
-                    <div className="w-16 h-16 bg-red-500/20 rounded-2xl flex items-center justify-center border-2 border-red-500/30">
-                      <svg className="w-8 h-8 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                        <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="ml-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Traditional Lists</h3>
-                    <p className="text-white/60">Cold outreach approach</p>
-                  </div>
-                </div>
+                <h3 className="text-5xl font-black text-white mb-8 leading-tight">
+                  Burning <span className="text-red-500">Leads</span> & <br />
+                  Standard Results
+                </h3>
 
-                {/* Problem Metrics */}
-                <div className="relative z-10 space-y-4 mb-6">
-                  <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
-                    <div className="text-white/60 text-sm mb-1">Reply Rate</div>
-                    <div className="text-2xl font-bold text-red-300">8-12%</div>
-                    <div className="text-red-400 text-xs flex items-center mt-1">
-                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
-                      </svg>
-                      Below industry avg
+                <ul className="space-y-8">
+                  <li className="flex items-start gap-4">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" /></svg>
                     </div>
-                  </div>
-                  <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
-                    <div className="text-white/60 text-sm mb-1">Time Wasted</div>
-                    <div className="text-2xl font-bold text-red-300">20h/week</div>
-                    <div className="text-red-400 text-xs flex items-center mt-1">
-                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
-                      </svg>
-                      On unqualified leads
+                    <div>
+                      <p className="text-xl font-bold text-white mb-1">Stale Static Databases</p>
+                      <p className="text-white/50 leading-relaxed">Reaching out to people based on outdated info from months ago.</p>
                     </div>
-                  </div>
-                  <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
-                    <div className="text-white/60 text-sm mb-1">Meeting Speed</div>
-                    <div className="text-2xl font-bold text-red-300">Slow</div>
-                    <div className="text-red-400 text-xs flex items-center mt-1">
-                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
-                      </svg>
-                      Weeks to book
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" /></svg>
                     </div>
-                  </div>
-                </div>
+                    <div>
+                      <p className="text-xl font-bold text-white mb-1">Generic "Spray & Pray"</p>
+                      <p className="text-white/50 leading-relaxed">Same script for everyone. 0.5% reply rate is the best you can hope for.</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" /></svg>
+                    </div>
+                    <div>
+                      <p className="text-xl font-bold text-white mb-1">Domain & Brand Fatigue</p>
+                      <p className="text-white/50 leading-relaxed">Ruining your reputation by messaging prospects who aren't interested.</p>
+                    </div>
+                  </li>
+                </ul>
               </div>
-            </motion.div>
-            
-            {/* LinkedIn Results Card - With Karhuno */}
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="group relative"
-            >
-              <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 hover:bg-white/10">
-                {/* Glassmorphism effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                {/* Solution Badge */}
-                <div className="absolute -top-4 left-8 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-                  </svg>
-                  With Karhuno
-                </div>
 
-                {/* Header */}
-                <div className="relative z-10 flex items-center mb-8">
-                  <div className="relative">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/25">
-                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                        <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
-                      </svg>
-                    </div>
-                    <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
-                  </div>
-                  <div className="ml-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">LinkedIn Outreach</h3>
-                    <p className="text-white/60">Signal-driven approach</p>
-                  </div>
-                </div>
-                
-                {/* Chart Container */}
-                <div className="relative z-10 mb-8">
-                  <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-                    <LinkedInChart />
-                  </div>
-                </div>
-                
-                {/* Metrics Grid */}
-                <div className="relative z-10 grid grid-cols-2 gap-4">
-                  <div className="bg-white/5 rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-colors duration-300">
-                    <div className="text-white/60 text-sm mb-1">Reply Rate</div>
-                    <div className="text-2xl font-bold text-white">61.7%</div>
-                    <div className="text-green-400 text-xs flex items-center mt-1">
-                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd"/>
-                      </svg>
-                      +12% vs industry
-                    </div>
-                  </div>
-                  <div className="bg-white/5 rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-colors duration-300">
-                    <div className="text-white/60 text-sm mb-1">Meeting Speed</div>
-                    <div className="text-2xl font-bold text-white">5× faster</div>
-                    <div className="text-blue-400 text-xs flex items-center mt-1">
-                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
-                      </svg>
-                      Time to book
-                    </div>
-                  </div>
+              <div className="mt-auto pt-16">
+                <div className="text-center p-6 bg-red-500/5 rounded-3xl border border-red-500/10">
+                  <div className="text-red-500 text-4xl font-black mb-1">Inefficient</div>
+                  <div className="text-white/40 text-xs font-bold tracking-widest uppercase">The Dead-End Approach</div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Cold Email Results Card - With Karhuno */}
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+            {/* Right Column: The Karhuno Way (Focus on Timing) */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="group relative"
+              transition={{ duration: 1 }}
+              className="relative bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-10 border-2 border-[#a974ff]/30 flex flex-col group overflow-hidden"
             >
-              <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 hover:bg-white/10">
-                {/* Glassmorphism effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                {/* Solution Badge */}
-                <div className="absolute -top-4 left-8 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-                  </svg>
-                  With Karhuno
+              <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-[80px] pointer-events-none" />
+
+              <div className="relative z-10">
+                <div className="text-[#a974ff] font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-2">
+                  <span className="w-8 h-px bg-[#a974ff]/40"></span>
+                  The Karhuno Way: Timing
                 </div>
 
-                {/* Header */}
-                <div className="relative z-10 flex items-center mb-8">
-                  <div className="relative">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/25">
-                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                      </svg>
+                <h3 className="text-5xl font-black text-white mb-8 leading-tight">
+                  Reach Them <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">Exactly</span> <br />
+                  When They Buy
+                </h3>
+
+                <ul className="space-y-8">
+                  <li className="flex items-start gap-4">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-green-400/20 border border-green-400/40 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(74,222,128,0.3)]">
+                      <svg className="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                     </div>
-                    <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
-                  </div>
-                  <div className="ml-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Cold Email</h3>
-                    <p className="text-white/60">Signal-driven approach</p>
-                  </div>
-                </div>
-                
-                {/* Chart Container */}
-                <div className="relative z-10 mb-8">
-                  <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-                    <ColdEmailChart />
-                  </div>
-                </div>
-                
-                {/* Metrics Grid */}
-                <div className="relative z-10 grid grid-cols-2 gap-4">
-                  <div className="bg-white/5 rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-colors duration-300">
-                    <div className="text-white/60 text-sm mb-1">Reply Rate</div>
-                    <div className="text-2xl font-bold text-white">24.36%</div>
-                    <div className="text-green-400 text-xs flex items-center mt-1">
-                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd"/>
-                      </svg>
-                      +8% vs industry
+                    <div>
+                      <p className="text-xl font-bold text-white mb-1">Live Buying Signals</p>
+                      <p className="text-white/70 leading-relaxed">Reach prospects <span className="text-white font-bold italic underline decoration-purple-500">minutes</span> after they trigger a signal (hiring, news, changes).</p>
                     </div>
-                  </div>
-                  <div className="bg-white/5 rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-colors duration-300">
-                    <div className="text-white/60 text-sm mb-1">Time Saved</div>
-                    <div className="text-2xl font-bold text-white">10h</div>
-                    <div className="text-blue-400 text-xs flex items-center mt-1">
-                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
-                      </svg>
-                      Weekly
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-green-400/20 border border-green-400/40 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(74,222,128,0.3)]">
+                      <svg className="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                     </div>
-                  </div>
+                    <div>
+                      <p className="text-xl font-bold text-white mb-1">Contextual Proof</p>
+                      <p className="text-white/70 leading-relaxed">AI automatically enriches outreach with <span className="text-white font-bold">real proof</span>. No more generic messaging.</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-green-400/20 border border-green-400/40 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(74,222,128,0.3)]">
+                      <svg className="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+                    </div>
+                    <div>
+                      <p className="text-xl font-bold text-white mb-1">High Intent = High ROI</p>
+                      <p className="text-white/70 leading-relaxed">Message only those who are <span className="text-white font-bold underline decoration-blue-500">actively</span> looking for solutions. Up to 60%+ reply rates.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="mt-auto pt-16">
+                <div className="text-center p-6 bg-gradient-to-r from-[#a974ff]/20 to-[#679eff]/20 rounded-3xl border border-[#a974ff]/20 shadow-[0_0_30px_rgba(169,116,255,0.15)]">
+                  <div className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent text-4xl font-black mb-1">Signal-Driven</div>
+                  <div className="text-white/40 text-xs font-bold tracking-widest uppercase">The Winning Advantage</div>
                 </div>
               </div>
             </motion.div>
@@ -643,199 +556,199 @@ export default function Home() {
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
                 <span className="text-sm font-medium text-white/90">The Solution</span>
               </div>
-              
+
               <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6">
                 <span className="text-white">Turn Timing Into </span>
                 <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
                   Your Advantage
                 </span>
               </h2>
-              
+
               <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
                 Real-time buying signals transform outreach from cold to contextual, making every message count.
               </p>
             </motion.div>
 
-          {/* Four Solution Pillars - Alternating Layout */}
-          <div className="space-y-24 mb-12">
-            {/* Step 1: Real-Time Market Signals - Text Left, Logos Right */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-            >
-              {/* Left: Text Content */}
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl flex items-center justify-center border border-green-500/30">
-                    <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
+            {/* Four Solution Pillars - Alternating Layout */}
+            <div className="space-y-24 mb-12">
+              {/* Step 1: Real-Time Market Signals - Text Left, Logos Right */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+              >
+                {/* Left: Text Content */}
+                <div className="space-y-6">
+                  <div className="inline-flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl flex items-center justify-center border border-purple-500/30">
+                      <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                    </div>
+                    <span className="text-sm font-medium text-purple-400/80">Signal</span>
                   </div>
-                  <span className="text-sm font-medium text-green-400/80">Step 1</span>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-white">Real-Time Market Signals</h3>
+                  <p className="text-lg text-white/70 leading-relaxed">
+                    Track buying intent as it happens across news, social, and public data—not static lists from weeks ago.
+                  </p>
                 </div>
-                <h3 className="text-3xl lg:text-4xl font-bold text-white">Real-Time Market Signals</h3>
-                <p className="text-lg text-white/70 leading-relaxed">
-                  Track buying intent as it happens across news, social, and public data—not static lists from weeks ago.
-                </p>
-              </div>
 
-              {/* Right: Data Sources Image */}
-              <div className="relative">
-                <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10 overflow-hidden">
-                  <div className="rounded-2xl overflow-hidden">
-                    <Image
-                      src="/datasource.png"
-                      alt="Data sources we track"
-                      width={800}
-                      height={600}
-                      className="w-full h-auto object-contain"
-                      priority
-                    />
+                {/* Right: Data Sources Image */}
+                <div className="relative">
+                  <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10 overflow-hidden">
+                    <div className="rounded-2xl overflow-hidden">
+                      <Image
+                        src="/datasource.png"
+                        alt="Data sources we track"
+                        width={800}
+                        height={600}
+                        className="w-full h-auto object-contain"
+                        priority
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
 
-            {/* Step 2: Built-In Context - Screenshot Left, Text Right */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-            >
-              {/* Left: Screenshot/Proof */}
-              <div className="relative order-2 lg:order-1">
-                <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10 overflow-hidden">
-                  <div className="rounded-2xl overflow-hidden">
-                    <Image
-                      src="/warehouse announcement proof.png"
-                      alt="Proof Link Included - Warehouse Announcement"
-                      width={800}
-                      height={600}
-                      className="w-full h-auto object-contain"
-                      priority
-                    />
+              {/* Step 2: Built-In Context - Screenshot Left, Text Right */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+              >
+                {/* Left: Screenshot/Proof */}
+                <div className="relative order-2 lg:order-1">
+                  <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10 overflow-hidden">
+                    <div className="rounded-2xl overflow-hidden">
+                      <Image
+                        src="/warehouse announcement proof.png"
+                        alt="Proof Link Included - Warehouse Announcement"
+                        width={800}
+                        height={600}
+                        className="w-full h-auto object-contain"
+                        priority
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Right: Text Content */}
-              <div className="space-y-6 order-1 lg:order-2">
-                <div className="inline-flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl flex items-center justify-center border border-purple-500/30">
-                    <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
+                {/* Right: Text Content */}
+                <div className="space-y-6 order-1 lg:order-2">
+                  <div className="inline-flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl flex items-center justify-center border border-purple-500/30">
+                      <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                    </div>
+                    <span className="text-sm font-medium text-purple-400/80">Context</span>
                   </div>
-                  <span className="text-sm font-medium text-purple-400/80">Step 2</span>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-white">Built-In Context</h3>
+                  <p className="text-lg text-white/70 leading-relaxed">
+                    Every signal includes the <span className="text-white font-semibold">context</span> you need—why they're buying, what triggered it, and when to reach out.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    <span className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-lg text-sm text-purple-300">Proof Link</span>
+                    <span className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-lg text-sm text-purple-300">Trigger Event</span>
+                    <span className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-lg text-sm text-purple-300">Timing Context</span>
+                  </div>
                 </div>
-                <h3 className="text-3xl lg:text-4xl font-bold text-white">Built-In Context</h3>
-                <p className="text-lg text-white/70 leading-relaxed">
-                  Every signal includes the <span className="text-white font-semibold">context</span> you need—why they're buying, what triggered it, and when to reach out.
-                </p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  <span className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-lg text-sm text-purple-300">Proof Link</span>
-                  <span className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-lg text-sm text-purple-300">Trigger Event</span>
-                  <span className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-lg text-sm text-purple-300">Timing Context</span>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
 
-            {/* Step 3: Contact Enrichment - Text Left, Screenshot Right */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-            >
-              {/* Left: Text Content */}
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-xl flex items-center justify-center border border-yellow-500/30">
-                    <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
+              {/* Step 3: Contact Enrichment - Text Left, Screenshot Right */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+              >
+                {/* Left: Text Content */}
+                <div className="space-y-6">
+                  <div className="inline-flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl flex items-center justify-center border border-purple-500/30">
+                      <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <span className="text-sm font-medium text-purple-400/80">People</span>
                   </div>
-                  <span className="text-sm font-medium text-yellow-400/80">Step 3</span>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-white">Contact Enrichment</h3>
+                  <p className="text-lg text-white/70 leading-relaxed">
+                    You get the signal first, <span className="text-white font-semibold">never the contact</span>.
+                    <br /><br />
+                    Karhuno enriches it in real time to find the right decision makers: email, LinkedIn when available.
+                    <br /><br />
+                    No outdated lists. Just the right person, at the right moment.
+                  </p>
                 </div>
-                <h3 className="text-3xl lg:text-4xl font-bold text-white">Contact Enrichment</h3>
-                <p className="text-lg text-white/70 leading-relaxed">
-                  You get the signal first, <span className="text-white font-semibold">never the contact</span>.
-                  <br /><br />
-                  Karhuno enriches it in real time to find the right decision makers: email, LinkedIn when available.
-                  <br /><br />
-                  No outdated lists. Just the right person, at the right moment.
-                </p>
-              </div>
 
-              {/* Right: Screenshot/Visual */}
-              <div className="relative">
-                <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10 overflow-hidden">
-                  <div className="rounded-2xl overflow-hidden">
-                    <Image
-                      src="/decision maker image.png"
-                      alt="Contact Enrichment - Decision Maker"
-                      width={800}
-                      height={600}
-                      className="w-full h-auto object-contain"
-                      priority
-                    />
+                {/* Right: Screenshot/Visual */}
+                <div className="relative">
+                  <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10 overflow-hidden">
+                    <div className="rounded-2xl overflow-hidden">
+                      <Image
+                        src="/decision maker image.png"
+                        alt="Contact Enrichment - Decision Maker"
+                        width={800}
+                        height={600}
+                        className="w-full h-auto object-contain"
+                        priority
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
 
-            {/* Step 4: Contact with Context & Integrations - Integrations Left, Text Right */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-            >
-              {/* Left: Integrations */}
-              <div className="relative order-2 lg:order-1">
-                <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10 overflow-hidden">
-                  <div className="rounded-2xl overflow-hidden">
-                    <Image
-                      src="/heropage/integration.png"
-                      alt="Integrations available"
-                      width={800}
-                      height={600}
-                      className="w-full h-auto object-contain"
-                      priority
-                    />
+              {/* Step 4: Contact with Context & Integrations - Integrations Left, Text Right */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+              >
+                {/* Left: Integrations */}
+                <div className="relative order-2 lg:order-1">
+                  <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10 overflow-hidden">
+                    <div className="rounded-2xl overflow-hidden">
+                      <Image
+                        src="/heropage/integration.png"
+                        alt="Integrations available"
+                        width={800}
+                        height={600}
+                        className="w-full h-auto object-contain"
+                        priority
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Right: Text Content */}
-              <div className="space-y-6 order-1 lg:order-2">
-                <div className="inline-flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center border border-blue-500/30">
-                    <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                    </svg>
+                {/* Right: Text Content */}
+                <div className="space-y-6 order-1 lg:order-2">
+                  <div className="inline-flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl flex items-center justify-center border border-purple-500/30">
+                      <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                      </svg>
+                    </div>
+                    <span className="text-sm font-medium text-purple-400/80">Action</span>
                   </div>
-                  <span className="text-sm font-medium text-blue-400/80">Step 4</span>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-white">Contact Them with Context</h3>
+                  <p className="text-lg text-white/70 leading-relaxed">
+                    Use enriched signals with <span className="text-white font-semibold">full context</span> on any channel—LinkedIn, email, or your CRM. Export via API, CSV, or connect directly to your workflow.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    <span className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-lg text-sm text-purple-300">API Export</span>
+                    <span className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-lg text-sm text-purple-300">CSV Export</span>
+                    <span className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-lg text-sm text-purple-300">Webhooks</span>
+                  </div>
                 </div>
-                <h3 className="text-3xl lg:text-4xl font-bold text-white">Contact Them with Context</h3>
-                <p className="text-lg text-white/70 leading-relaxed">
-                  Use enriched signals with <span className="text-white font-semibold">full context</span> on any channel—LinkedIn, email, or your CRM. Export via API, CSV, or connect directly to your workflow.
-                </p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  <span className="px-3 py-1.5 bg-blue-500/10 border border-blue-500/30 rounded-lg text-sm text-blue-300">API Export</span>
-                  <span className="px-3 py-1.5 bg-blue-500/10 border border-blue-500/30 rounded-lg text-sm text-blue-300">CSV Export</span>
-                  <span className="px-3 py-1.5 bg-blue-500/10 border border-blue-500/30 rounded-lg text-sm text-blue-300">Webhooks</span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+              </motion.div>
+            </div>
 
             {/* Closing Statement */}
             <motion.div
@@ -860,7 +773,7 @@ export default function Home() {
             >
               <div className="relative bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-purple-500/20 backdrop-blur-xl rounded-3xl p-12 border border-white/20 max-w-3xl mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-purple-500/10 rounded-3xl"></div>
-                
+
                 <div className="relative z-10">
                   <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                     Ready to turn signals into sales?
@@ -868,7 +781,7 @@ export default function Home() {
                   <p className="text-lg text-white/80 mb-8 max-w-xl mx-auto">
                     Stop wasting time on cold lists. Start finding decision makers at the perfect moment—when they're actually ready to buy.
                   </p>
-                  
+
                   <div className="flex justify-center items-center">
                     <button
                       onClick={() => window.location.href = '/signup'}
@@ -883,11 +796,11 @@ export default function Home() {
                       <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </button>
                   </div>
-                  
+
                   <div className="mt-6 flex justify-center items-center text-white/60 text-sm">
                     <div className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                       <span>No credit card required</span>
                     </div>
@@ -899,12 +812,11 @@ export default function Home() {
         </div>
       </section>
 
-      <SignalCarousel />
-      <WhyKarhuno />
       <UserTestimonials />
+      <SignalCarousel />
       <HowKarhunoWorks />
       <CaseStudies id="case-studies" />
-      <AIComparison />
+      <FinalCTA />
       <Footer />
 
       {/* Email Modal */}
@@ -923,19 +835,19 @@ export default function Home() {
                   <motion.div
                     key={i}
                     className="absolute w-2 h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
-                    initial={{ 
-                      x: "50%", 
-                      y: "50%", 
+                    initial={{
+                      x: "50%",
+                      y: "50%",
                       scale: 0,
-                      opacity: 1 
+                      opacity: 1
                     }}
-                    animate={{ 
-                      x: `${50 + (Math.random() - 0.5) * 200}%`, 
-                      y: `${50 + (Math.random() - 0.5) * 200}%`, 
+                    animate={{
+                      x: `${50 + (Math.random() - 0.5) * 200}%`,
+                      y: `${50 + (Math.random() - 0.5) * 200}%`,
                       scale: [0, 1.5, 0],
                       opacity: [1, 1, 0]
                     }}
-                    transition={{ 
+                    transition={{
                       duration: 2,
                       delay: i * 0.1,
                       ease: "easeOut"
@@ -946,19 +858,19 @@ export default function Home() {
                   <motion.div
                     key={`spark-${i}`}
                     className="absolute w-1 h-1 bg-yellow-400 rounded-full"
-                    initial={{ 
-                      x: "50%", 
-                      y: "50%", 
+                    initial={{
+                      x: "50%",
+                      y: "50%",
                       scale: 0,
-                      opacity: 1 
+                      opacity: 1
                     }}
-                    animate={{ 
-                      x: `${50 + (Math.random() - 0.5) * 300}%`, 
-                      y: `${50 + (Math.random() - 0.5) * 300}%`, 
+                    animate={{
+                      x: `${50 + (Math.random() - 0.5) * 300}%`,
+                      y: `${50 + (Math.random() - 0.5) * 300}%`,
                       scale: [0, 2, 0],
                       opacity: [1, 1, 0]
                     }}
-                    transition={{ 
+                    transition={{
                       duration: 1.5,
                       delay: i * 0.15,
                       ease: "easeOut"
@@ -978,7 +890,7 @@ export default function Home() {
                   <h3 className={`text-xl sm:text-2xl font-bold text-gray-900 mb-4 text-center ${roboto.className}`}>
                     What email should we send the results to?
                   </h3>
-                  
+
                   <div className="mb-6">
                     <input
                       type="email"
@@ -996,7 +908,7 @@ export default function Home() {
                       <p className="text-red-500 text-sm mt-2">Please enter a valid email address</p>
                     )}
                   </div>
-                  
+
                   <div className="flex gap-3">
                     <button
                       onClick={() => setShowEmailModal(false)}
@@ -1014,13 +926,13 @@ export default function Home() {
                   </div>
                 </>
               ) : (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
                   className="text-center"
                 >
-                  <motion.div 
+                  <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
@@ -1030,7 +942,7 @@ export default function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </motion.div>
-                  <motion.h3 
+                  <motion.h3
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
@@ -1038,7 +950,7 @@ export default function Home() {
                   >
                     Request submitted!
                   </motion.h3>
-                  <motion.p 
+                  <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}

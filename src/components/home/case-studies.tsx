@@ -3,16 +3,16 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Package, Search, Lightbulb, Target } from "lucide-react";
+import { Package, Search, Target } from "lucide-react";
 import { Montserrat, Roboto } from "next/font/google";
 
-const montserrat = Montserrat({ 
+const montserrat = Montserrat({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-montserrat'
 });
 
-const roboto = Roboto({ 
+const roboto = Roboto({
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
   display: 'swap',
@@ -28,39 +28,31 @@ const caseStudies = [
       icon: <Package className="w-5 h-5 text-purple-400" />
     },
     signals: {
-      title: "Detection of warehouse expansion news, including cold storage build-outs and infrastructure upgrades. Tracking press releases, local news and investment announcements.",
+      title: "Detection of warehouse expansions, cold storage build-outs, and infrastructure upgrades.",
       icon: <Search className="w-5 h-5 text-purple-400" />
     },
-    whyItMatters: {
-      title: "Warehouse expansions signal immediate need for infrastructure solutions. Companies investing in new facilities are actively evaluating vendors and making purchasing decisions.",
-      icon: <Lightbulb className="w-5 h-5 text-purple-400" />
-    },
     howToAct: {
-      title: "Reach out within 24-48 hours of the announcement. Position your solution as essential infrastructure for their new facility. Offer a site visit or consultation to demonstrate value.",
+      title: "Saw you’re planning a new warehouse in Australia. Given local energy costs and compliance requirements, many cold storage operators review lighting systems early to avoid locking in unnecessary long-term energy spend.",
       icon: <Target className="w-5 h-5 text-purple-400" />
     },
-    image: "/images/Logtech.webp",
+    image: "/new warehouse signals.png",
   },
   {
     id: "b2b-saas",
     label: "B2B SaaS",
     product: {
-      title: "Sales Automation & CRM Integration Platforms for Growing Teams",
+      title: "ESG Software",
       icon: <Package className="w-5 h-5 text-purple-400" />
     },
     signals: {
-      title: "Companies hiring for sales roles (SDRs, AEs, Sales Managers), indicating active revenue expansion and need for sales tools. Tracking job boards, LinkedIn hiring posts, and growth announcements.",
+      title: "Announcing the purchase of carbon credits. Tracking ESG reports, corporate sustainability announcements, and regulatory filings.",
       icon: <Search className="w-5 h-5 text-purple-400" />
     },
-    whyItMatters: {
-      title: "Hiring sales talent means they're scaling revenue operations. This is the perfect moment to offer tools that help new hires ramp faster and existing teams close more deals.",
-      icon: <Lightbulb className="w-5 h-5 text-purple-400" />
-    },
     howToAct: {
-      title: "Connect with the hiring manager or VP of Sales. Frame your solution as essential for onboarding new reps and scaling their sales process. Offer a demo focused on team efficiency.",
+      title: "Noticed your carbon-credit purchase, curious how you're currently managing ESG data, happy to share benchmarks.",
       icon: <Target className="w-5 h-5 text-purple-400" />
     },
-    image: "/images/Logtech.webp",
+    image: "/esg image .png",
   },
   {
     id: "manufacturing",
@@ -70,18 +62,14 @@ const caseStudies = [
       icon: <Package className="w-5 h-5 text-purple-400" />
     },
     signals: {
-      title: "Manufacturing companies announcing new production facilities, equipment upgrades, or automation initiatives. Tracking industry news, expansion announcements, and technology adoption signals.",
+      title: "Hiring production and automation managers",
       icon: <Search className="w-5 h-5 text-purple-400" />
     },
-    whyItMatters: {
-      title: "New facilities and automation projects require comprehensive planning. Companies are actively evaluating vendors and solutions during the planning phase, making this the ideal time to engage.",
-      icon: <Lightbulb className="w-5 h-5 text-purple-400" />
-    },
     howToAct: {
-      title: "Reach out to operations or engineering leadership. Position your solution as critical infrastructure for their new facility. Offer a technical consultation or case study from similar projects.",
+      title: "I saw that you’re hiring a Project Manager for your production operations. Companies usually do this right before starting automation or production line optimization projects. We work with manufacturers at this stage to help optimize line performance before changes are locked in.",
       icon: <Target className="w-5 h-5 text-purple-400" />
     },
-    image: "/images/Logtech.webp",
+    image: "/manufacturing signals.png",
   },
 ];
 
@@ -150,7 +138,7 @@ export default function CaseStudies({ id }: CaseStudiesProps) {
         </div>
 
         {/* Content */}
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <AnimatePresence mode="wait">
             {activeCase && (
               <motion.div
@@ -162,7 +150,7 @@ export default function CaseStudies({ id }: CaseStudiesProps) {
                 className="grid md:grid-cols-2 gap-8 items-center"
               >
                 {/* Left Column - Image */}
-                <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden border border-white/10">
+                <div className="relative h-[250px] md:h-[350px] rounded-2xl overflow-hidden border border-white/10">
                   <Image
                     src={activeCase.image}
                     alt={`${activeCase.label} case study`}
@@ -209,36 +197,18 @@ export default function CaseStudies({ id }: CaseStudiesProps) {
                   {/* Divider */}
                   <div className="border-t border-white/10" />
 
-                  {/* Why it Matters Section */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="p-2 bg-purple-500/10 rounded-lg">
-                        {activeCase.whyItMatters.icon}
-                      </div>
-                      <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 font-semibold text-lg">
-                        Why it matters
-                      </h3>
-                    </div>
-                    <p className="text-gray-100 leading-relaxed">
-                      {activeCase.whyItMatters.title}
-                    </p>
-                  </div>
-
-                  {/* Divider */}
-                  <div className="border-t border-white/10" />
-
-                  {/* How to Act Section */}
+                  {/* How they act Section */}
                   <div>
                     <div className="flex items-center gap-2 mb-3">
                       <div className="p-2 bg-purple-500/10 rounded-lg">
                         {activeCase.howToAct.icon}
                       </div>
                       <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 font-semibold text-lg">
-                        How to act
+                        How they act
                       </h3>
                     </div>
-                    <p className="text-gray-100 leading-relaxed">
-                      {activeCase.howToAct.title}
+                    <p className="text-gray-100 leading-relaxed italic">
+                      "{activeCase.howToAct.title}"
                     </p>
                   </div>
                 </div>
