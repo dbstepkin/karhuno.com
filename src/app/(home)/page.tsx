@@ -220,7 +220,7 @@ export default function Home() {
         {/* Open Graph */}
         <meta property="og:title" content="Karhuno AI – Real-Time Buying Signals" />
         <meta property="og:description" content="Track real-time buying intent across LinkedIn and the web. Get fresh leads matched to your ICP." />
-        <meta property="og:image" content="https://karhuno.com/images/logonavbar.svg" />
+        <meta property="og:image" content="https://karhuno.com/images/covervideo.jpg" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://karhuno.com" />
 
@@ -228,7 +228,7 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Karhuno AI – Real-Time Buying Signals" />
         <meta name="twitter:description" content="Track real-time buying intent across LinkedIn and the web. Get fresh leads matched to your ICP." />
-        <meta name="twitter:image" content="https://karhuno.com/images/logonavbar.svg" />
+        <meta name="twitter:image" content="https://karhuno.com/images/covervideo.jpg" />
 
         <link rel="canonical" href="https://karhuno.com/" />
       </Head>
@@ -393,15 +393,15 @@ export default function Home() {
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-24">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-12 md:py-16">
           {/* Header */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
               <div className="w-2 h-2 bg-yellow-400 rounded-full mr-3 animate-pulse"></div>
               <span className="text-sm font-medium text-white/90">The Problem</span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
               <span className="text-white">Volume </span>
               <span className="text-white/50 mx-4">vs</span>
               <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
@@ -409,7 +409,7 @@ export default function Home() {
               </span>
             </h2>
 
-            <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
               Traditional list-based outreach fails. Here's how signal-driven approach wins with real results.
             </p>
           </div>
@@ -417,8 +417,8 @@ export default function Home() {
           {/* Extremely Simplified VS Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch relative">
             {/* Center "VS" Decoration */}
-            <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-16 h-16 bg-slate-900 border-2 border-white/20 rounded-full items-center justify-center shadow-[0_0_30px_rgba(169,116,255,0.4)]">
-              <span className="text-white font-black italic text-xl">VS</span>
+            <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-slate-900 border-2 border-white/20 rounded-full items-center justify-center shadow-[0_0_20px_rgba(169,116,255,0.3)]">
+              <span className="text-white font-black italic text-lg">VS</span>
             </div>
 
             {/* Left Column: Traditional Way (Focus on Volume) */}
@@ -427,22 +427,22 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="relative bg-red-950/20 backdrop-blur-xl rounded-[2.5rem] p-10 border-2 border-red-500/30 flex flex-col group overflow-hidden"
+              className="relative bg-red-950/20 backdrop-blur-xl rounded-[2rem] p-6 lg:p-8 border-2 border-red-500/30 flex flex-col group overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/10 rounded-full blur-[80px] pointer-events-none" />
 
               <div className="relative z-10">
-                <div className="text-red-500 font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-2">
-                  <span className="w-8 h-px bg-red-500/40"></span>
+                <div className="text-red-500 font-bold uppercase tracking-widest text-[10px] mb-4 flex items-center gap-2">
+                  <span className="w-6 h-px bg-red-500/40"></span>
                   The Problem: Volume
                 </div>
 
-                <h3 className="text-5xl font-black text-white mb-8 leading-tight">
+                <h3 className="text-3xl lg:text-4xl font-black text-white mb-6 leading-tight">
                   Burning <span className="text-red-500">Leads</span> & <br />
                   Standard Results
                 </h3>
 
-                <ul className="space-y-8">
+                <ul className="space-y-4 lg:space-y-5">
                   <li className="flex items-start gap-4">
                     <div className="mt-1 w-6 h-6 rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center flex-shrink-0">
                       <svg className="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" /></svg>
@@ -473,10 +473,10 @@ export default function Home() {
                 </ul>
               </div>
 
-              <div className="mt-auto pt-16">
-                <div className="text-center p-6 bg-red-500/5 rounded-3xl border border-red-500/10">
-                  <div className="text-red-500 text-4xl font-black mb-1">Inefficient</div>
-                  <div className="text-white/40 text-xs font-bold tracking-widest uppercase">The Dead-End Approach</div>
+              <div className="mt-auto pt-8">
+                <div className="text-center p-4 bg-red-500/5 rounded-2xl border border-red-500/10">
+                  <div className="text-red-500 text-3xl font-black mb-1">Inefficient</div>
+                  <div className="text-white/40 text-[10px] font-bold tracking-widest uppercase">The Dead-End Approach</div>
                 </div>
               </div>
             </motion.div>
@@ -487,22 +487,22 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="relative bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-10 border-2 border-[#a974ff]/30 flex flex-col group overflow-hidden"
+              className="relative bg-white/5 backdrop-blur-xl rounded-[2rem] p-6 lg:p-8 border-2 border-[#a974ff]/30 flex flex-col group overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-[80px] pointer-events-none" />
 
               <div className="relative z-10">
-                <div className="text-[#a974ff] font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-2">
-                  <span className="w-8 h-px bg-[#a974ff]/40"></span>
+                <div className="text-[#a974ff] font-bold uppercase tracking-widest text-[10px] mb-4 flex items-center gap-2">
+                  <span className="w-6 h-px bg-[#a974ff]/40"></span>
                   The Karhuno Way: Timing
                 </div>
 
-                <h3 className="text-5xl font-black text-white mb-8 leading-tight">
+                <h3 className="text-3xl lg:text-4xl font-black text-white mb-6 leading-tight">
                   Reach Them <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">Exactly</span> <br />
                   When They Buy
                 </h3>
 
-                <ul className="space-y-8">
+                <ul className="space-y-4 lg:space-y-5">
                   <li className="flex items-start gap-4">
                     <div className="mt-1 w-6 h-6 rounded-full bg-green-400/20 border border-green-400/40 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(74,222,128,0.3)]">
                       <svg className="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
@@ -533,44 +533,44 @@ export default function Home() {
                 </ul>
               </div>
 
-              <div className="mt-auto pt-16">
-                <div className="text-center p-6 bg-gradient-to-r from-[#a974ff]/20 to-[#679eff]/20 rounded-3xl border border-[#a974ff]/20 shadow-[0_0_30px_rgba(169,116,255,0.15)]">
-                  <div className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent text-4xl font-black mb-1">Signal-Driven</div>
-                  <div className="text-white/40 text-xs font-bold tracking-widest uppercase">The Winning Advantage</div>
+              <div className="mt-auto pt-8">
+                <div className="text-center p-4 bg-gradient-to-r from-[#a974ff]/20 to-[#679eff]/20 rounded-2xl border border-[#a974ff]/20 shadow-[0_0_30px_rgba(169,116,255,0.15)]">
+                  <div className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent text-3xl font-black mb-1">Signal-Driven</div>
+                  <div className="text-white/40 text-[10px] font-bold tracking-widest uppercase">The Winning Advantage</div>
                 </div>
               </div>
             </motion.div>
           </div>
 
           {/* The Solution Section - Part 2 */}
-          <div className="mt-24">
+          <div className="mt-16">
             {/* Section Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+              className="text-center mb-12"
             >
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
                 <span className="text-sm font-medium text-white/90">The Solution</span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6">
+              <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold mb-4">
                 <span className="text-white">Turn Timing Into </span>
                 <span className="bg-gradient-to-r from-[#a974ff] to-[#679eff] bg-clip-text text-transparent">
                   Your Advantage
                 </span>
               </h2>
 
-              <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
                 Real-time buying signals transform outreach from cold to contextual, making every message count.
               </p>
             </motion.div>
 
             {/* Four Solution Pillars - Alternating Layout */}
-            <div className="space-y-24 mb-12">
+            <div className="space-y-16 mb-12">
               {/* Step 1: Real-Time Market Signals - Text Left, Logos Right */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
