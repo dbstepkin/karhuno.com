@@ -2,13 +2,13 @@ import Link from "next/link";
 import { Linkedin, Youtube, Twitter } from "lucide-react";
 import { Montserrat, Roboto } from "next/font/google";
 
-const montserrat = Montserrat({ 
+const montserrat = Montserrat({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-montserrat'
 });
 
-const roboto = Roboto({ 
+const roboto = Roboto({
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
   display: 'swap',
@@ -151,7 +151,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className={`text-gray-400 text-sm ${montserrat.className}`}>
-            © 2024 Karhuno AI. All rights reserved.
+            © 2026 Karhuno AI. All rights reserved.
           </p>
         </div>
       </div>

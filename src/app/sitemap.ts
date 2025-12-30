@@ -114,7 +114,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/blog/karhuno-vs-perplexity`,
+      url: `${baseUrl}/blog/karhuno-vs-popular-ai-tools`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
